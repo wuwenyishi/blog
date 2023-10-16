@@ -20,12 +20,12 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xuemingde.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","width":300,"display":"always","padding":18,"offset":10,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"blog.xuemingde.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","width":300,"display":"always","padding":18,"offset":10,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql索引原理">
-<meta property="og:url" content="https://xuemingde.com/posts/VB6XWR.html">
+<meta property="og:url" content="https://blog.xuemingde.com/posts/VB6XWR.html">
 <meta property="og:site_name" content="东夕月少年">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xuemingde.com/pages/image/2022/04/07/1300-vn2lXu.jpg">
@@ -51,7 +51,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://xuemingde.com/pages/image/2022/04/07/1300-vn2lXu.jpg">
 
-<link rel="canonical" href="https://xuemingde.com/posts/VB6XWR.html">
+<link rel="canonical" href="https://blog.xuemingde.com/posts/VB6XWR.html">
 
 
 <script id="page-configurations">
@@ -214,7 +214,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xuemingde.com/posts/VB6XWR.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.xuemingde.com/posts/VB6XWR.html">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/touxiang.jpeg">
@@ -361,7 +361,7 @@
 <p>**索引树的第三层：**第二层key数量为262144，那么第三层的树节点数量也就是262144，那么第三层索引树节点个数为512个，保存索引Key的数量=262144*512=134217728。</p>
 <p>根据一个计算我们可以基本得出，类型varchar，长度为10，字符类型为utf8mb4的索引字段，数据在512条之内树结构只有一层。数据在262144之内树只有两层，数据在134217728之内，索引树都会保持在3层之内，而我们的表数据一般而言都保持在千万级以内，所以说Mysql的索引树一般都在1-3层。</p>
 <blockquote>
-<p><a href="https://xuemingde.com/JavaNotes/%E6%95%B0%E6%8D%AE%E5%BA%93/20220407-Mysql%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86">20220407-Mysql索引原理</a><br>
+<p><span class="exturl" data-url="aHR0cHM6Ly94dWVtaW5nZGUuY29tL0phdmFOb3Rlcy8lRTYlOTUlQjAlRTYlOEQlQUUlRTUlQkElOTMvMjAyMjA0MDctTXlzcWwlRTclQjQlQTIlRTUlQkMlOTUlRTUlOEUlOUYlRTclOTAlODY=">20220407-Mysql索引原理<i class="fa fa-external-link-alt"></i></span><br>
 本文转自 <span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yMTM3NzIwNDI=">https://zhuanlan.zhihu.com/p/213772042<i class="fa fa-external-link-alt"></i></span>，如有侵权，请联系删除。</p>
 </blockquote>
 
@@ -427,7 +427,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://xuemingde.com/posts/VB6XWR.html" title="Mysql索引原理">https://xuemingde.com/posts/VB6XWR.html</a>
+    <a href="https://blog.xuemingde.com/posts/VB6XWR.html" title="Mysql索引原理">https://blog.xuemingde.com/posts/VB6XWR.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
