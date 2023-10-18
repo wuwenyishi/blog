@@ -24,22 +24,30 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="原型模式">
-<meta property="og:url" content="https://blog.xuemingde.com/posts/28TV773.html">
+<meta property="og:title" content="new Object()到底占用几个字节">
+<meta property="og:url" content="https://blog.xuemingde.com/posts/39H1R44.html">
 <meta property="og:site_name" content="东夕月少年">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xuemingde.com/pages/image/others/20210308114626.png">
-<meta property="og:image" content="https://xuemingde.com/pages/image/others/20210308114701.png">
-<meta property="og:image" content="https://xuemingde.com/pages/image/others/20210308114722.png">
-<meta property="og:image" content="https://xuemingde.com/pages/image/others/20210308114920.png">
-<meta property="article:published_time" content="2022-08-13T08:46:48.942Z">
-<meta property="article:modified_time" content="2023-09-22T00:56:45.136Z">
+<meta property="og:image" content="https://xuemingde.com/pages/image/2023/10/18/084506S4jE0c.png">
+<meta property="og:image" content="https://xuemingde.com/pages/image/2023/10/18/085037Hn1vqZ.png">
+<meta property="og:image" content="https://xuemingde.com/pages/image/2023/10/18/085355lpYvrI.png">
+<meta property="og:image" content="https://xuemingde.com/pages/image/2023/10/18/085421uRv3Tm.png">
+<meta property="og:image" content="https://xuemingde.com/pages/image/2023/10/18/0900167BAefi.png">
+<meta property="og:image" content="https://xuemingde.com/pages/image/2023/10/18/090103h7bETx.png">
+<meta property="article:published_time" content="2023-10-18T00:46:07.011Z">
+<meta property="article:modified_time" content="2023-10-18T01:02:11.996Z">
 <meta property="article:author" content="meadel">
+<meta property="article:tag" content="Java">
 <meta property="article:tag" content="C">
+<meta property="article:tag" content="内存">
+<meta property="article:tag" content="指针">
+<meta property="article:tag" content="变量">
+<meta property="article:tag" content="锁">
+<meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xuemingde.com/pages/image/others/20210308114626.png">
+<meta name="twitter:image" content="https://xuemingde.com/pages/image/2023/10/18/084506S4jE0c.png">
 
-<link rel="canonical" href="https://blog.xuemingde.com/posts/28TV773.html">
+<link rel="canonical" href="https://blog.xuemingde.com/posts/39H1R44.html">
 
 
 <script id="page-configurations">
@@ -52,7 +60,7 @@
   };
 </script>
 
-  <title>原型模式 | 东夕月少年</title>
+  <title>new Object()到底占用几个字节 | 东夕月少年</title>
   
 
 
@@ -202,7 +210,7 @@
   
   
   <article itemscope="" itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.xuemingde.com/posts/28TV773.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.xuemingde.com/posts/39H1R44.html">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/touxiang.jpeg">
@@ -215,7 +223,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          原型模式<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRlZS5jb20vLS9pZGUvcHJvamVjdC9tZWFkZXIvaGV4by1ibG9nL2VkaXQvbWFzdGVyLy0vc291cmNlL19wb3N0cy/orr7orqHmqKHlvI8v5Y6f5Z6L5qih5byPLm1k" title="编辑"><i class="fa fa-pencil-alt"></i></span>
+          new Object()到底占用几个字节<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRlZS5jb20vLS9pZGUvcHJvamVjdC9tZWFkZXIvaGV4by1ibG9nL2VkaXQvbWFzdGVyLy0vc291cmNlL19wb3N0cy9qYXZhL0pWTS9uZXcgT2JqZWN0KCnliLDlupXljaDnlKjlh6DkuKrlrZfoioIubWQ=" title="编辑"><i class="fa fa-pencil-alt"></i></span>
         </h1>
 
         <div class="post-meta">
@@ -224,28 +232,26 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-08-13 16:46:48" itemprop="dateCreated datePublished" datetime="2022-08-13T16:46:48+08:00">2022-08-13</time>
+              <time title="创建时间：2023-10-18 08:46:07 / 修改时间：09:02:11" itemprop="dateCreated datePublished" datetime="2023-10-18T08:46:07+08:00">2023-10-18</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-22 08:56:45" itemprop="dateModified" datetime="2023-09-22T08:56:45+08:00">2023-09-22</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
                 </span>
             </span>
 
           
-            <span id="/posts/28TV773.html" class="post-meta-item leancloud_visitors" data-flag-title="原型模式" title="阅读次数">
+            <span id="/posts/39H1R44.html" class="post-meta-item leancloud_visitors" data-flag-title="new Object()到底占用几个字节" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -267,8 +273,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/posts/28TV773.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/posts/28TV773.html" itemprop="commentCount"></span>
+    <a title="valine" href="/posts/39H1R44.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/39H1R44.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -278,14 +284,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>65</span>
+              <span>1.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -297,14 +303,101 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><p>设计模式：原型模式</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/20210308114626.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/others/20210308114701.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/others/20210308114722.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/others/20210308114920.png" alt=""></p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="Java内存模型"><strong>Java内存模型</strong></h2>
+<p>对象内存中可以分为三块区域：对象头(Header)，实例数据(Instance Data)和对齐填充(Padding)，以64位操作系统为例(未开启指针压缩的情况)Java对象布局</p>
+<p>如下图所示：</p>
+<p><img data-src="https://xuemingde.com/pages/image/2023/10/18/084506S4jE0c.png" alt=""></p>
+<p>其中对象头中的Mark Word中的详细信息在文章synchronized锁升级原理中有详细介绍。上图中的对齐填充不是一定有的，如果对象头和实例数据加起来刚好是8字节的倍数，那么就不需要对齐填充。</p>
+<h2 id="Object-obj-new-Object-占用字节"><strong>Object obj=new Object()占用字节</strong></h2>
+<p>这是网上很多人都会提到的一个问题，那么结合上面的Java内存布局，我们来分析下，以64位操作系统为例，new Object()占用大小分为两种情况：</p>
+<ul>
+<li>未开启指针压缩        占用大小为：8(Mark Word)+8(Class Pointer)=16字节</li>
+<li>开启了指针压缩(默认是开启的)        开启指针压缩后，Class Pointer会被压缩为4字节，最终大小为：8(Mark Word)+4(Class Pointer)+4(对齐填充)=16字节</li>
+</ul>
+<p>结果到底是不是这个呢？我们来验证一下。首先引入一个pom依赖：</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.openjdk.jol<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jol-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zwx.jvm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openjdk.jol.info.ClassLayout;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapMemory</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">        System.out.println(ClassLayout.parseInstance(obj).toPrintable());</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>输出结果如下：</p>
+<p><img data-src="https://xuemingde.com/pages/image/2023/10/18/085037Hn1vqZ.png" alt=""></p>
+<p>最后的结果是16字节，没有问题，这是因为**<code>默认开启了指针压缩</code>**，那我们现在把指针压缩关闭之后再去试试。</p>
+<figure class="highlight diff"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-XX:+UseCompressedOops  开启指针压缩</span></span><br><span class="line"><span class="deletion">-XX:-UseCompressedOops  关闭指针压缩</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img data-src="https://xuemingde.com/pages/image/2023/10/18/085355lpYvrI.png" alt=""></p>
+<p>得到如下结果：</p>
+<p><img data-src="https://xuemingde.com/pages/image/2023/10/18/085421uRv3Tm.png" alt=""></p>
+<p>可以看到，这时候已经没有了对齐填充部分了，但是占用大小还是16位。</p>
 <blockquote>
-<p>关于设计模式，推荐一个网址： <span class="exturl" data-url="aHR0cHM6Ly9yZWZhY3RvcmluZ2d1cnUuY24vZGVzaWduLXBhdHRlcm5z">https://refactoringguru.cn/design-patterns<i class="fa fa-external-link-alt"></i></span></p>
+<p>以上是Object 内无任何成员变量的情况</p>
 </blockquote>
+<p>如果有成员变量，以下是成员变量数据类型占用字节大小情况</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>4byte</td>
+<td>-2^31 ~ 2^31 - 1</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2byte</td>
+<td>-2^15 ~ 2^15 - 1</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8byte</td>
+<td>(-2)^63 ~ 2^63 - 1</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>1byte</td>
+<td>-128 ~ 127</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4byte</td>
+<td></td>
+</tr>
+<tr>
+<td>double</td>
+<td>8byte</td>
+<td></td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>1byte</td>
+<td></td>
+</tr>
+<tr>
+<td>char</td>
+<td>2byte</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Hotspot实现的JVM开启内存压缩的规则（64位机器）：</p>
+</blockquote>
+<ul>
+<li>4G以下，直接砍掉高32位</li>
+<li>4G~32G，默认开启内存压缩</li>
+<li>32G以上，压缩无效，使用64位</li>
+</ul>
+<p>下面我们再来演示一下如果一个对象中带有属性之后的大小。</p>
+<p>新建一个类，内部只有一个byte属性：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zwx.jvm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyItem</span> </span>{</span><br><span class="line">    <span class="keyword">byte</span> i = <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>然后分别在开启指针压缩和关闭指针压缩的场景下分别输出这个类的大小。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zwx.jvm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openjdk.jol.info.ClassLayout;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapMemory</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        MyItem myItem = <span class="keyword">new</span> MyItem();</span><br><span class="line">        System.out.println(ClassLayout.parseInstance(myItem).toPrintable());</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>开启指针压缩,占用16字节：</p>
+<p><img data-src="https://xuemingde.com/pages/image/2023/10/18/0900167BAefi.png" alt=""></p>
+<p>关闭指针压缩，占用24字节：</p>
+<p><img data-src="https://xuemingde.com/pages/image/2023/10/18/090103h7bETx.png" alt=""></p>
+<p>这个时候就能看出来开启了指针压缩的优势了，<strong>如果不断创建大量对象，指针压缩对性能还是有一定优化的</strong>。</p>
 
     </div>
    <div>
@@ -323,19 +416,19 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/2VB0MVT.html" rel="bookmark">C++开发学习笔记1</a></div>
+      <div class="popular-posts-title"><a href="/posts/2TD7P25.html" rel="bookmark">Volatile的概念</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/QVJ0P0.html" rel="bookmark">C++开发学习笔记2</a></div>
+      <div class="popular-posts-title"><a href="/posts/266A6Z5.html" rel="bookmark">内存泄漏和内存溢出</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1CBWCJP.html" rel="bookmark">C++开发学习笔记3</a></div>
+      <div class="popular-posts-title"><a href="/posts/3Y71AXZ.html" rel="bookmark">对象在内存中的内存布局</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/3SE47KD.html" rel="bookmark">小数在计算机的存储形式</a></div>
+      <div class="popular-posts-title"><a href="/posts/WTSYSE.html" rel="bookmark">Java并发常见知识点&amp;面试题总结_进阶篇</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/NHRPJF.html" rel="bookmark">计算机中整数的加减运算</a></div>
+      <div class="popular-posts-title"><a href="/posts/3N8921N.html" rel="bookmark">彻底讲透Elasticsearch</a></div>
     </li>
   </ul>
 
@@ -368,7 +461,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://blog.xuemingde.com/posts/28TV773.html" title="原型模式">https://blog.xuemingde.com/posts/28TV773.html</a>
+    <a href="https://blog.xuemingde.com/posts/39H1R44.html" title="new Object()到底占用几个字节">https://blog.xuemingde.com/posts/39H1R44.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -380,7 +473,13 @@
       <footer class="post-footer">
           
           <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+              <a href="/tags/%E5%86%85%E5%AD%98/" rel="tag"><i class="fa fa-tag"></i> 内存</a>
+              <a href="/tags/%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
+              <a href="/tags/%E5%8F%98%E9%87%8F/" rel="tag"><i class="fa fa-tag"></i> 变量</a>
+              <a href="/tags/%E9%94%81/" rel="tag"><i class="fa fa-tag"></i> 锁</a>
+              <a href="/tags/JVM/" rel="tag"><i class="fa fa-tag"></i> JVM</a>
           </div>
 
         
@@ -394,13 +493,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/1W16KG7.html" rel="prev" title="命令模式">
-      <i class="fa fa-chevron-left"></i> 命令模式
+    <a href="/posts/3BK5YSH.html" rel="prev" title="是不是线程越多越好">
+      <i class="fa fa-chevron-left"></i> 是不是线程越多越好
     </a></div>
-      <div class="post-nav-item">
-    <a href="/posts/ZNDDGW.html" rel="next" title="HashMap集合详解">
-      HashMap集合详解 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -475,6 +571,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">Java内存模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-obj-new-Object-%E5%8D%A0%E7%94%A8%E5%AD%97%E8%8A%82"><span class="nav-number">2.</span> <span class="nav-text">Object obj=new Object()占用字节</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
