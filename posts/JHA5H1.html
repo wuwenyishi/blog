@@ -28,9 +28,10 @@
 <meta property="og:url" content="https://blog.xuemingde.com/posts/JHA5H1.html">
 <meta property="og:site_name" content="沉默的猴子">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-26T07:04:39.180Z">
-<meta property="article:modified_time" content="2023-10-20T02:17:08.610Z">
+<meta property="article:published_time" content="2023-10-30T12:52:23.277Z">
+<meta property="article:modified_time" content="2023-10-30T12:52:23.278Z">
 <meta property="article:author" content="meadel">
+<meta property="article:tag" content="bug">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="指针">
@@ -39,7 +40,6 @@
 <meta property="article:tag" content="函数">
 <meta property="article:tag" content="变量">
 <meta property="article:tag" content="Qt">
-<meta property="article:tag" content="bug">
 <meta property="article:tag" content="多线程">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="GC">
@@ -232,15 +232,8 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-09-26 15:04:39" itemprop="dateCreated datePublished" datetime="2023-09-26T15:04:39+08:00">2023-09-26</time>
+              <time title="创建时间：2023-10-30 20:52:23" itemprop="dateCreated datePublished" datetime="2023-10-30T20:52:23+08:00">2023-10-30</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-20 10:17:08" itemprop="dateModified" datetime="2023-10-20T10:17:08+08:00">2023-10-20</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -285,14 +278,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.1k</span>
+              <span>8.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>6 分钟</span>
+              <span>8 分钟</span>
             </span>
 
         </div>
@@ -363,6 +356,13 @@
 </blockquote>
 <h2 id="使用默认应用程序打开预览">使用默认应用程序打开预览</h2>
 <p>QDesktopServices::openUrl(QUrl::fromLocalFile(“4354tq2312.pdf”));</p>
+<h2 id="QToolButton-添加下拉选择的样式">QToolButton 添加下拉选择的样式</h2>
+<p>创建QToolButton，并添加QMenu</p>
+<figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">QToolButton *tBtn = <span class="keyword">new</span> <span class="constructor">QToolButton()</span>;</span><br><span class="line">tBtn-&gt;set<span class="constructor">Text(<span class="string">"QToolButton"</span>)</span>;</span><br><span class="line">tBtn-&gt;set<span class="constructor">PopupMode(QToolButton::MenuButtonPopup)</span>;</span><br><span class="line"></span><br><span class="line">QMenu *menu = <span class="keyword">new</span> <span class="constructor">QMenu()</span>;</span><br><span class="line">menu-&gt;add<span class="constructor">Action(<span class="params">tr</span>(<span class="string">"切换用户"</span>)</span>);</span><br><span class="line">menu-&gt;add<span class="constructor">Action(<span class="params">tr</span>(<span class="string">"退出登陆"</span>)</span>);</span><br><span class="line">tBtn-&gt;set<span class="constructor">Menu(<span class="params">menu</span>)</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>修改QToolButton样式如下：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">QToolButton,QToolButton:unchecked { /* ToolBar里的按钮和带下拉菜单的按钮 */</span><br><span class="line">    border: <span class="number">1px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">3px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: transparent;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1px</span>;</span><br><span class="line">}</span><br><span class="line">QToolButton<span class="selector-pseudo">:checked</span>{</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#8BF</span>;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#59F</span>;</span><br><span class="line">}</span><br><span class="line">QToolButton<span class="selector-pseudo">:hover</span>{</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#8BF</span>;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#59F</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">QToolButton:pressed,QToolButton:checked:hover{</span><br><span class="line">    background-color: <span class="number">#59F</span>;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#EA2</span>;</span><br><span class="line">}</span><br><span class="line">QToolButton<span class="selector-pseudo">:checked</span>:pressed{</span><br><span class="line">    background-color: <span class="number">#8BF</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/* only for MenuButtonPopup */</span></span><br><span class="line">QToolButton<span class="selector-attr">[popupMode=<span class="string">"1"</span>]</span>{</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">15px</span>; <span class="comment">/* make way for the popup button */</span></span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#999999</span>;</span><br><span class="line">    <span class="attribute">min-height</span>: <span class="number">15px</span>;</span><br><span class="line">    <span class="comment">/*background: qlineargradient(x1:0, y1:0 ,x2:0, y2:1</span></span><br><span class="line"><span class="comment">        stop: 0 $grad1a, stop: 0.05 $grad1b, stop: 0.5 $grad1b</span></span><br><span class="line"><span class="comment">        stop: 0.95 $grad1a stop: 1$grad1a)*/</span></span><br><span class="line">}</span><br><span class="line">QToolButton<span class="selector-attr">[popupMode=<span class="string">"1"</span>]</span><span class="selector-pseudo">:hover</span>{</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#8BF</span>;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#59F</span>;</span><br><span class="line">}</span><br><span class="line">QToolButton<span class="selector-attr">[popupMode=<span class="string">"1"</span>]</span>:pressed{</span><br><span class="line">    border-width: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#59F</span>;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#999999</span>;</span><br><span class="line">}</span><br><span class="line">QToolButton::menu-button {</span><br><span class="line">    border: <span class="number">1px</span> solid <span class="number">#999999</span>;</span><br><span class="line">    <span class="attribute">border-top-right-radius</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">border-bottom-right-radius</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">16px</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>修改QMenu样式如下：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">QMenuBar {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">    spacing: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#999999</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">QMenuBar::item{</span><br><span class="line">    background: transparent;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">1px</span> <span class="number">8px</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">QMenuBar::item:selected{</span><br><span class="line">    background: <span class="number">#8BF</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#8BF</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">QMenuBar::item:pressed{</span><br><span class="line">    background: <span class="number">#59F</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#59F</span>;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">4px</span>; <span class="comment">/*margin-bottom: -4px;*/</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">QMenu {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#FFFFFF</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#999999</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1px</span>; <span class="comment">/* some spacing around the menu */</span></span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">1px</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">QMenu::item{</span><br><span class="line">    padding: <span class="number">2px</span> <span class="number">25px</span> <span class="number">2px</span> <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid transparent;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">1px</span>;</span><br><span class="line">}</span><br><span class="line">QMenu::icon {/*菜单的图标*/</span><br><span class="line">    width: <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">border-right</span>: <span class="number">1px</span> inset <span class="number">#999999</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">QMenu::item:selected {</span><br><span class="line">    border-color: <span class="number">#999999</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#8BF</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">QMenu::separator {</span><br><span class="line">    height: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#999999</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">5px</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">QMenu::indicator {/*checked 的√*/</span><br><span class="line">    width: <span class="number">13px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">13px</span>;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">2px</span>;</span><br><span class="line">}</span><br><span class="line">QMenu::icon:checked { /* appearance of a <span class="string">'checked'</span> icon */</span><br><span class="line">    background: <span class="number">#8BF</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> inset <span class="number">#59F</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">3px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="comment">/*position: absolute;</span></span><br><span class="line"><span class="comment">    top: 0px;</span></span><br><span class="line"><span class="comment">    right: 1px;</span></span><br><span class="line"><span class="comment">    bottom: 5px;</span></span><br><span class="line"><span class="comment">    left: 2px;*/</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
     </div>
    <div>
@@ -384,13 +384,13 @@
       <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1CBWCJP.html" rel="bookmark">C++开发学习笔记3</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/QVJ0P0.html" rel="bookmark">C++开发学习笔记2</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/2VB0MVT.html" rel="bookmark">C++开发学习笔记1</a></div>
+      <div class="popular-posts-title"><a href="/posts/1CBWCJP.html" rel="bookmark">C++开发学习笔记3</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2PQ961R.html" rel="bookmark">Qt中使用ModbusTcp </a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/1QR2QPE.html" rel="bookmark">Qt基础学习笔记02</a></div>
@@ -438,6 +438,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
+              <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i> bug</a>
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
               <a href="/tags/%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
@@ -446,7 +447,6 @@
               <a href="/tags/%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
               <a href="/tags/%E5%8F%98%E9%87%8F/" rel="tag"><i class="fa fa-tag"></i> 变量</a>
               <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
-              <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i> bug</a>
               <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
               <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
               <a href="/tags/GC/" rel="tag"><i class="fa fa-tag"></i> GC</a>
@@ -464,13 +464,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/312VHNS.html" rel="prev" title="16个SpringBoot 扩展接口">
-      <i class="fa fa-chevron-left"></i> 16个SpringBoot 扩展接口
+    <a href="/posts/39H1R44.html" rel="prev" title="new Object()到底占用几个字节">
+      <i class="fa fa-chevron-left"></i> new Object()到底占用几个字节
     </a></div>
-      <div class="post-nav-item">
-    <a href="/posts/3P2X38D.html" rel="next" title="modbus协议了解">
-      modbus协议了解 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -545,7 +542,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-ping-Ip%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">Qt ping Ip端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E8%AE%BE%E7%BD%AE%E6%8C%89%E9%92%AE%E7%9A%84%E8%A2%AB%E6%8C%89%E4%B8%8B%E7%8A%B6%E6%80%81"><span class="nav-number">2.</span> <span class="nav-text">Qt 设置按钮的被按下状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA"><span class="nav-number">3.</span> <span class="nav-text">Qt 消息提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-tr%E5%90%AB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9F%A5%E5%87%BA%E6%9D%A5%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%AF%E4%BB%A5%E7%BF%BB%E8%AF%91%E5%90%97"><span class="nav-number">4.</span> <span class="nav-text">Qt tr含数据库查出来的字符串可以翻译吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E5%9C%A8%E9%80%BB%E8%BE%91%E4%B8%AD%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%BA%BF%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">Qt C++ 在逻辑中创建一个线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E5%88%9B%E5%BB%BA%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">Qt C++ 创建多线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8Fmap"><span class="nav-number">7.</span> <span class="nav-text">Qt C++  全局变量map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PDF%E5%AF%BC%E5%87%BA"><span class="nav-number">8.</span> <span class="nav-text">PDF导出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%BB%98%E8%AE%A4%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%89%93%E5%BC%80%E9%A2%84%E8%A7%88"><span class="nav-number">9.</span> <span class="nav-text">使用默认应用程序打开预览</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-ping-Ip%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">Qt ping Ip端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E8%AE%BE%E7%BD%AE%E6%8C%89%E9%92%AE%E7%9A%84%E8%A2%AB%E6%8C%89%E4%B8%8B%E7%8A%B6%E6%80%81"><span class="nav-number">2.</span> <span class="nav-text">Qt 设置按钮的被按下状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA"><span class="nav-number">3.</span> <span class="nav-text">Qt 消息提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-tr%E5%90%AB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9F%A5%E5%87%BA%E6%9D%A5%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%AF%E4%BB%A5%E7%BF%BB%E8%AF%91%E5%90%97"><span class="nav-number">4.</span> <span class="nav-text">Qt tr含数据库查出来的字符串可以翻译吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E5%9C%A8%E9%80%BB%E8%BE%91%E4%B8%AD%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%BA%BF%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">Qt C++ 在逻辑中创建一个线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E5%88%9B%E5%BB%BA%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">Qt C++ 创建多线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8Fmap"><span class="nav-number">7.</span> <span class="nav-text">Qt C++  全局变量map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PDF%E5%AF%BC%E5%87%BA"><span class="nav-number">8.</span> <span class="nav-text">PDF导出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%BB%98%E8%AE%A4%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%89%93%E5%BC%80%E9%A2%84%E8%A7%88"><span class="nav-number">9.</span> <span class="nav-text">使用默认应用程序打开预览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QToolButton-%E6%B7%BB%E5%8A%A0%E4%B8%8B%E6%8B%89%E9%80%89%E6%8B%A9%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="nav-number">10.</span> <span class="nav-text">QToolButton 添加下拉选择的样式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -628,13 +625,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">895k</span>
+    <span title="站点总字数">898k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">13:34</span>
+    <span title="站点阅读时长">13:36</span>
 </div>
   <div class="powered-by">这个世界会好吗？我是那么热爱这个世界。  </div>
 <div>
