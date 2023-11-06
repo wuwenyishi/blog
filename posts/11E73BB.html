@@ -35,12 +35,12 @@
 <meta property="article:published_time" content="2022-08-13T08:46:48.929Z">
 <meta property="article:modified_time" content="2022-12-01T03:06:05.735Z">
 <meta property="article:author" content="meadel">
+<meta property="article:tag" content="C">
 <meta property="article:tag" content="并发">
+<meta property="article:tag" content="GC">
 <meta property="article:tag" content="锁">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="数据库">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="GC">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="索引">
 <meta property="article:tag" content="Redis">
@@ -455,7 +455,7 @@
       <div class="popular-posts-title"><a href="/posts/J71QTX.html" rel="bookmark">秒杀系统设计</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1Z9HSDW.html" rel="bookmark">Kafka面试连环炮-中</a></div>
+      <div class="popular-posts-title"><a href="/posts/3N8921N.html" rel="bookmark">彻底讲透Elasticsearch</a></div>
     </li>
   </ul>
 
@@ -500,12 +500,12 @@
       <footer class="post-footer">
           
           <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
               <a href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> 并发</a>
+              <a href="/tags/GC/" rel="tag"><i class="fa fa-tag"></i> GC</a>
               <a href="/tags/%E9%94%81/" rel="tag"><i class="fa fa-tag"></i> 锁</a>
               <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
               <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
-              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
-              <a href="/tags/GC/" rel="tag"><i class="fa fa-tag"></i> GC</a>
               <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
               <a href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag"><i class="fa fa-tag"></i> 索引</a>
               <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
@@ -695,45 +695,9 @@
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
     <span title="站点阅读时长">13:36</span>
 </div>
-  <div class="powered-by">这个世界会好吗？我是那么热爱这个世界。  </div>
-<div>
-<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-<script>
-    var now = new Date(); 
-    function createtime1() { 
-        var grt= new Date("12/15/2019 00:00:00");//在此处修改你的建站时间
-        now.setTime(now.getTime()+250); 
-        var days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-        var hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-        var mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-        var seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-        var snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-        document.getElementById("timeDate").innerHTML = "与媳妇在一起 "+dnum+" 天 "; 
-        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-    } 
-setInterval("createtime1()",250);
-</script>
-</div>
-<div>
-<span id="timeDate1">载入天数...</span><span id="times1">载入时分秒...</span>
-<script>
-    var now1 = new Date(); 
-    function createtime2() { 
-        var grt= new Date("07/24/2021 00:00:00");//在此处修改你的建站时间
-        now1.setTime(now1.getTime()+250); 
-        var days = (now1 - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-        var hours = (now1 - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now1 - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-        var mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-        var seconds = (now1 - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-        var snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-        document.getElementById("timeDate1").innerHTML = "已结婚 "+dnum+" 天 "; 
-        document.getElementById("times1").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-    } 
-setInterval("createtime2()",250);
-</script>
-</div>
+  <div class="powered-by">  </div>
+
+
 <div>
 <span id="timeDate2">载入天数...</span><span id="times2">载入时分秒...</span>
 <script>
@@ -747,8 +711,7 @@ setInterval("createtime2()",250);
         var mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
         var seconds = (now2 - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
         var snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-        document.getElementById("timeDate2").innerHTML = "我已经活了 "+dnum+" 天 "; 
-        document.getElementById("times2").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+        document.getElementById("timeDate2").innerHTML = "走过了 "+dnum+" 个日夜，从嘤嘤坠地，到步履蹒跚，从年少无知，到心事重重，岁月啊，总让人平添太多无奈"; 
     } 
 setInterval("createtime3()",250);
 </script>
