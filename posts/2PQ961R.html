@@ -29,17 +29,19 @@
 <meta property="og:site_name" content="沉默的猴子">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-31T06:41:23.400Z">
-<meta property="article:modified_time" content="2023-10-27T01:23:44.602Z">
+<meta property="article:modified_time" content="2023-11-11T05:34:59.755Z">
 <meta property="article:author" content="meadel">
-<meta property="article:tag" content="bug">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="C">
-<meta property="article:tag" content="Qt">
-<meta property="article:tag" content="函数">
-<meta property="article:tag" content="并发">
 <meta property="article:tag" content="堆">
 <meta property="article:tag" content="栈">
 <meta property="article:tag" content="const">
+<meta property="article:tag" content="函数">
+<meta property="article:tag" content="变量">
+<meta property="article:tag" content="bug">
+<meta property="article:tag" content="Qt">
+<meta property="article:tag" content="并发">
+<meta property="article:tag" content="索引">
 <meta property="article:tag" content="GC">
 <meta name="twitter:card" content="summary">
 
@@ -236,7 +238,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-27 09:23:44" itemprop="dateModified" datetime="2023-10-27T09:23:44+08:00">2023-10-27</time>
+                <time title="修改时间：2023-11-11 13:34:59" itemprop="dateModified" datetime="2023-11-11T13:34:59+08:00">2023-11-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -282,14 +284,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>7.7k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>7 分钟</span>
+              <span>10 分钟</span>
             </span>
 
         </div>
@@ -385,6 +387,21 @@ D是指长度占一个双字（四个字节）</p>
 <p>可将anInt 直接写入</p>
 <p>果需要在第二位写入0，可用下面方式：</p>
 <figure class="highlight 1c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将第3位写为0</span></span><br><span class="line">anInt <span class="meta">&amp;= ~(1 &lt;&lt; 3);</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Qt中ModbusTcp实时获取1000多个不连续点位数据如何实现">Qt中ModbusTcp实时获取1000多个不连续点位数据如何实现</h2>
+<p>在 Qt 中实时获取1000多个不连续点位数据的实现方式与之前的示例类似，只需在读取请求中指定不连续的点位地址即可。以下是一个示例代码，演示如何实现此功能：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">QModbusTcpClient* client = <span class="keyword">new</span> <span class="built_in">QModbusTcpClient</span>(<span class="keyword">this</span>);</span><br><span class="line">QTimer* timer = <span class="keyword">new</span> <span class="built_in">QTimer</span>(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接设备</span></span><br><span class="line">client-&gt;<span class="built_in">connectDevice</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不连续的点位地址列表</span></span><br><span class="line">QVector&lt;quint16&gt; addresses;</span><br><span class="line">addresses &lt;&lt; <span class="number">100</span> &lt;&lt; <span class="number">200</span> &lt;&lt; <span class="number">500</span> &lt;&lt; <span class="number">1000</span>; <span class="comment">// 示例，根据实际需求添加需要读取的点位地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定时器超时时执行的槽函数</span></span><br><span class="line"><span class="built_in">connect</span>(timer, &amp;QTimer::timeout, <span class="keyword">this</span>, [client, addresses]() {</span><br><span class="line">    <span class="comment">// 构建读取请求</span></span><br><span class="line">    QModbusDataUnit <span class="built_in">readUnit</span>(QModbusDataUnit::HoldingRegisters, addresses.<span class="built_in">first</span>(), addresses.<span class="built_in">size</span>());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加不连续的点位地址</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; addresses.<span class="built_in">size</span>(); ++i) {</span><br><span class="line">        readUnit.<span class="built_in">setValue</span>(i, addresses.<span class="built_in">at</span>(i));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发送读取请求</span></span><br><span class="line">    QModbusReply* reply = client-&gt;<span class="built_in">sendReadRequest</span>(readUnit, slaveAddress);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 连接响应信号</span></span><br><span class="line">    <span class="built_in">connect</span>(reply, &amp;QModbusReply::finished, <span class="keyword">this</span>, [reply]() {</span><br><span class="line">        <span class="keyword">if</span> (reply-&gt;<span class="built_in">error</span>() == QModbusDevice::NoError) {</span><br><span class="line">            <span class="keyword">const</span> QModbusDataUnit unit = reply-&gt;<span class="built_in">result</span>();</span><br><span class="line">            <span class="comment">// 处理读取到的数据 unit</span></span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"Read error:"</span> &lt;&lt; reply-&gt;<span class="built_in">errorString</span>();</span><br><span class="line">        }</span><br><span class="line">        reply-&gt;<span class="built_in">deleteLater</span>();</span><br><span class="line">    });</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置定时器间隔时间（单位：毫秒）</span></span><br><span class="line">timer-&gt;<span class="built_in">setInterval</span>(<span class="number">1000</span>); <span class="comment">// 每秒读取一次数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 启动定时器</span></span><br><span class="line">timer-&gt;<span class="built_in">start</span>();</span><br></pre></td></tr></tbody></table></figure>
+<p>在上述示例中，我们创建了一个 <code>QModbusTcpClient</code> 对象和一个 <code>QTimer</code> 对象，并使用 <code>connectDevice()</code> 方法连接设备。</p>
+<p>我们定义了一个 <code>QVector&lt;quint16&gt;</code> 类型的变量 <code>addresses</code>，用于存储不连续的点位地址。根据实际需求，你可以添加需要读取的点位地址到 <code>addresses</code> 中。</p>
+<p>在定时器的超时槽函数中，我们首先构建了一个读取请求 <code>readUnit</code>，并设置其起始地址为 <code>addresses</code> 中的第一个地址，长度为 <code>addresses</code> 的大小。</p>
+<p>接下来，我们使用一个循环将不连续的点位地址逐个添加到 <code>readUnit</code> 中，通过 <code>setValue()</code> 方法设置每个地址的索引和值。</p>
+<p>最后，我们发送读取请求，并连接 <code>QModbusReply</code> 的 <code>finished</code> 信号来处理读取结果。在回调函数中，我们处理读取到的数据。</p>
+<p>定时器的间隔时间通过 <code>setInterval()</code> 方法设置。在示例中，我们将定时器间隔设置为 1000 毫秒（即每秒读取一次数据）。</p>
+<p>通过这种方式，你可以实时获取1000多个不连续点位的数据，并在每次读取完成后进行相应的数据处理。确保根据实际需求设置正确的点位地址列表，并根据需要调整定时器的间隔时间和读取请求的长度。</p>
+<p>如果你想实时获取1000多个不连续点位的数据，并且希望在每个数据更新时立即获得通知，你可以使用Qt的信号槽机制来实现。</p>
+<p>以下是一个示例代码，演示如何使用Qt的信号槽机制实时获取Modbus TCP中的数据：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入必要的头文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QModbusTcpClient&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QModbusDataUnit&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建Modbus客户端实例</span></span><br><span class="line">QModbusTcpClient *modbusClient = <span class="keyword">new</span> <span class="built_in">QModbusTcpClient</span>(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接到Modbus服务器</span></span><br><span class="line">modbusClient-&gt;<span class="built_in">setConnectionParameter</span>(QModbusDevice::NetworkAddressParameter, <span class="string">"192.168.1.100"</span>);</span><br><span class="line">modbusClient-&gt;<span class="built_in">setConnectionParameter</span>(QModbusDevice::NetworkPortParameter, <span class="number">502</span>);</span><br><span class="line">modbusClient-&gt;<span class="built_in">connectDevice</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义开始和结束的点位地址</span></span><br><span class="line">quint16 startAddress = <span class="number">0</span>; <span class="comment">// 起始点位地址</span></span><br><span class="line">quint16 numberOfPoints = <span class="number">1000</span>; <span class="comment">// 总共要读取的点位数量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建Modbus数据单元列表</span></span><br><span class="line">QList&lt;QModbusDataUnit&gt; readUnits;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构建需要读取的点位地址列表</span></span><br><span class="line"><span class="keyword">for</span> (quint16 i = <span class="number">0</span>; i &lt; numberOfPoints; ++i) {</span><br><span class="line">    quint16 address = startAddress + i;</span><br><span class="line">    <span class="function">QModbusDataUnit <span class="title">unit</span><span class="params">(QModbusDataUnit::InputRegisters, address, <span class="number">1</span>)</span></span>;</span><br><span class="line">    readUnits.<span class="built_in">append</span>(unit);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取数据的函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">readData</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">// 发送读取请求</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">auto</span> *reply = modbusClient-&gt;<span class="built_in">sendReadRequest</span>(readUnits, unitId))</span><br><span class="line">    {</span><br><span class="line">        <span class="keyword">if</span> (!reply-&gt;<span class="built_in">isFinished</span>())</span><br><span class="line">        {</span><br><span class="line">            <span class="built_in">connect</span>(reply, &amp;QModbusReply::finished, <span class="keyword">this</span>, [<span class="keyword">this</span>, reply]() {</span><br><span class="line">                <span class="keyword">if</span> (reply-&gt;<span class="built_in">error</span>() == QModbusDevice::NoError)</span><br><span class="line">                {</span><br><span class="line">                    <span class="comment">// 处理接收到的数据</span></span><br><span class="line">                    QList&lt;QModbusDataUnit&gt; units = reply-&gt;<span class="built_in">result</span>();</span><br><span class="line">                    foreach (<span class="keyword">const</span> QModbusDataUnit &amp;unit, units) {</span><br><span class="line">                        quint16 address = unit.<span class="built_in">startAddress</span>();</span><br><span class="line">                        QVector&lt;quint16&gt; data = unit.<span class="built_in">values</span>();</span><br><span class="line">                        <span class="comment">// 在这里对数据进行处理或显示</span></span><br><span class="line"></span><br><span class="line">                        <span class="comment">// 发送信号通知数据更新</span></span><br><span class="line">                        emit <span class="built_in">dataUpdated</span>(address, data);</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">                reply-&gt;<span class="built_in">deleteLater</span>();</span><br><span class="line">            });</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">            <span class="keyword">delete</span> reply;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    {</span><br><span class="line">        <span class="comment">// 发送请求失败，处理错误</span></span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明一个信号，用于通知数据更新</span></span><br><span class="line">signals:</span><br><span class="line">    <span class="keyword">void</span> <span class="built_in">dataUpdated</span>(quint16 address, <span class="keyword">const</span> QVector&lt;quint16&gt; &amp;data);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接数据更新信号的槽函数</span></span><br><span class="line"><span class="built_in">connect</span>(<span class="keyword">this</span>, &amp;MyClass::dataUpdated, <span class="keyword">this</span>, [](quint16 address, <span class="keyword">const</span> QVector&lt;quint16&gt; &amp;data) {</span><br><span class="line">    <span class="comment">// 在这里处理接收到的数据更新事件</span></span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用读取数据函数开始获取实时数据</span></span><br><span class="line"><span class="built_in">readData</span>();</span><br></pre></td></tr></tbody></table></figure>
+<p>在上述代码中，我们首先创建了一个Modbus TCP客户端实例，并连接到Modbus服务器。然后，定义了要读取的起始点位地址和数量，并构建了多个Modbus数据单元来进行读取操作。接着，通过调用<code>sendReadRequest</code>方法向Modbus服务器发送读取请求，并在请求完成时发出信号<code>dataUpdated</code>以通知数据更新。最后，我们可以连接该信号到一个自定义的槽函数，用于处理接收到的数据更新事件。</p>
+<p>请注意，在实际使用中，你需要根据你的需求和具体情况进行适当的修改和扩展，以确保程序的正确性和稳定性。</p>
 
     </div>
    <div>
@@ -406,16 +423,16 @@ D是指长度占一个双字（四个字节）</p>
       <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/3H2SSQM.html" rel="bookmark">Qt开发学习笔记03</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/QVJ0P0.html" rel="bookmark">C++开发学习笔记2</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1QR2QPE.html" rel="bookmark">Qt基础学习笔记02</a></div>
+      <div class="popular-posts-title"><a href="/posts/3H2SSQM.html" rel="bookmark">Qt开发学习笔记03</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/6251YR.html" rel="bookmark">Qt开发学习笔记01</a></div>
+      <div class="popular-posts-title"><a href="/posts/2VB0MVT.html" rel="bookmark">C++开发学习笔记1</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/1QR2QPE.html" rel="bookmark">Qt基础学习笔记02</a></div>
     </li>
   </ul>
 
@@ -460,15 +477,17 @@ D是指长度占一个双字（四个字节）</p>
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i> bug</a>
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
-              <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
-              <a href="/tags/%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
-              <a href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> 并发</a>
               <a href="/tags/%E5%A0%86/" rel="tag"><i class="fa fa-tag"></i> 堆</a>
               <a href="/tags/%E6%A0%88/" rel="tag"><i class="fa fa-tag"></i> 栈</a>
               <a href="/tags/const/" rel="tag"><i class="fa fa-tag"></i> const</a>
+              <a href="/tags/%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
+              <a href="/tags/%E5%8F%98%E9%87%8F/" rel="tag"><i class="fa fa-tag"></i> 变量</a>
+              <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i> bug</a>
+              <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
+              <a href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> 并发</a>
+              <a href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag"><i class="fa fa-tag"></i> 索引</a>
               <a href="/tags/GC/" rel="tag"><i class="fa fa-tag"></i> GC</a>
           </div>
 
@@ -564,7 +583,7 @@ D是指长度占一个双字（四个字节）</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#QModbusTcpClient-%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">QModbusTcpClient 是否支持长连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Qt%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0ModbusTcp-%E8%AF%BB%E5%86%99"><span class="nav-number">2.</span> <span class="nav-text">C++ Qt如何实现ModbusTcp 读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-QTcpSocket-%E6%9B%BF%E4%BB%A3-QModbusTcpClient-%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">Qt C++ QTcpSocket 替代 QModbusTcpClient 读写操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ModBus-%E8%AF%BB%E5%86%99MX%E7%9A%84%E7%82%B9%E4%BD%8D"><span class="nav-number">4.</span> <span class="nav-text">ModBus 读写MX的点位</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#QModbusTcpClient-%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">QModbusTcpClient 是否支持长连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Qt%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0ModbusTcp-%E8%AF%BB%E5%86%99"><span class="nav-number">2.</span> <span class="nav-text">C++ Qt如何实现ModbusTcp 读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-QTcpSocket-%E6%9B%BF%E4%BB%A3-QModbusTcpClient-%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">Qt C++ QTcpSocket 替代 QModbusTcpClient 读写操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ModBus-%E8%AF%BB%E5%86%99MX%E7%9A%84%E7%82%B9%E4%BD%8D"><span class="nav-number">4.</span> <span class="nav-text">ModBus 读写MX的点位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E4%B8%ADModbusTcp%E5%AE%9E%E6%97%B6%E8%8E%B7%E5%8F%961000%E5%A4%9A%E4%B8%AA%E4%B8%8D%E8%BF%9E%E7%BB%AD%E7%82%B9%E4%BD%8D%E6%95%B0%E6%8D%AE%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.</span> <span class="nav-text">Qt中ModbusTcp实时获取1000多个不连续点位数据如何实现</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -647,13 +666,13 @@ D是指长度占一个双字（四个字节）</p>
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">901k</span>
+    <span title="站点总字数">903k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">13:39</span>
+    <span title="站点阅读时长">13:41</span>
 </div>
 
 <div>
