@@ -28,15 +28,18 @@
 <meta property="og:url" content="https://blog.xuemingde.com/posts/1CBWCJP.html">
 <meta property="og:site_name" content="沉默的猴子">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-15T00:20:05.691Z">
-<meta property="article:modified_time" content="2023-10-17T05:27:22.361Z">
+<meta property="article:published_time" content="2023-11-23T02:18:23.602Z">
+<meta property="article:modified_time" content="2023-11-23T02:18:23.602Z">
 <meta property="article:author" content="meadel">
 <meta property="article:tag" content="数组">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="内存">
 <meta property="article:tag" content="指针">
+<meta property="article:tag" content="堆">
+<meta property="article:tag" content="栈">
 <meta property="article:tag" content="全局">
+<meta property="article:tag" content="局部">
 <meta property="article:tag" content="const">
 <meta property="article:tag" content="函数">
 <meta property="article:tag" content="变量">
@@ -229,15 +232,8 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-09-15 08:20:05" itemprop="dateCreated datePublished" datetime="2023-09-15T08:20:05+08:00">2023-09-15</time>
+              <time title="创建时间：2023-11-23 10:18:23" itemprop="dateCreated datePublished" datetime="2023-11-23T10:18:23+08:00">2023-11-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-17 13:27:22" itemprop="dateModified" datetime="2023-10-17T13:27:22+08:00">2023-10-17</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -282,14 +278,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.6k</span>
+              <span>6.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>4 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -413,6 +409,68 @@
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> arr[] = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>};</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> length = <span class="built_in"><span class="keyword">sizeof</span></span>(arr) / <span class="built_in"><span class="keyword">sizeof</span></span>(arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">// 在此处可以使用 length 进行后续操作</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>在上述示例中，<code>length</code> 变量将保存数组 <code>arr</code> 的长度，即5。通过 <code>sizeof(arr)</code> 获取整个数组的字节大小，再除以 <code>sizeof(arr[0])</code> 获取单个元素的字节大小，从而计算出数组的长度。</p>
 <p>请注意，这种方法仅适用于静态数组，对于动态分配的数组或指针，你需要另外维护一个变量来记录其长度。</p>
+<h2 id="C-哪些参数需要释放内存">C++ 哪些参数需要释放内存</h2>
+<p>在C++中，需要手动释放内存的参数主要包括以下几种情况：</p>
+<ol>
+<li>动态分配的内存：当你使用<code>new</code>关键字分配内存时，需要使用<code>delete</code>关键字手动释放内存。例如：</li>
+</ol>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>* p = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line"><span class="comment">// 使用指针p指向的内存</span></span><br><span class="line"><span class="keyword">delete</span> p; <span class="comment">// 释放内存</span></span><br></pre></td></tr></tbody></table></figure>
+<ol start="2">
+<li>动态分配的数组：当你使用<code>new[]</code>关键字分配数组内存时，需要使用<code>delete[]</code>关键字手动释放内存。例如：</li>
+</ol>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>* arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line"><span class="comment">// 使用数组arr中的元素</span></span><br><span class="line"><span class="keyword">delete</span>[] arr; <span class="comment">// 释放内存</span></span><br></pre></td></tr></tbody></table></figure>
+<ol start="3">
+<li>文件指针：当你使用<code>fopen</code>函数打开文件并返回一个<code>FILE*</code>指针时，需要使用<code>fclose</code>函数关闭文件并释放相关资源。例如：</li>
+</ol>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FILE* file = <span class="built_in">fopen</span>(<span class="string">"example.txt"</span>, <span class="string">"r"</span>);</span><br><span class="line"><span class="comment">// 使用文件指针file进行文件操作</span></span><br><span class="line"><span class="built_in">fclose</span>(file); <span class="comment">// 关闭文件并释放资源</span></span><br></pre></td></tr></tbody></table></figure>
+<ol start="4">
+<li>动态分配的对象：当你使用<code>new</code>关键字动态分配一个对象时，需要使用<code>delete</code>关键字手动释放对象的内存。例如：</li>
+</ol>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> {</span></span><br><span class="line">    <span class="comment">// 类定义</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">MyClass* obj = <span class="keyword">new</span> MyClass;</span><br><span class="line"><span class="comment">// 使用对象obj</span></span><br><span class="line"><span class="keyword">delete</span> obj; <span class="comment">// 释放对象内存</span></span><br></pre></td></tr></tbody></table></figure>
+<p>需要注意的是，在C++中，只有手动分配的内存需要手动释放。对于自动分配的内存，例如局部变量或静态变量，不需要手动释放，因为它们的内存管理由系统自动处理。</p>
+<p>同时，还有一些情况下需要注意内存的释放，例如在使用第三方库或操作系统提供的资源时，可能需要按照相应的规则进行内存的释放。具体的释放方式取决于所使用的库或资源的要求和文档。</p>
+<p>总之，对于通过<code>new</code>、<code>new[]</code>或特定函数分配的内存，需要在使用完毕后手动释放对应的资源，以避免内存泄漏和资源浪费。</p>
+<h2 id="BaseServer-server-这种需要delete-server-吗">BaseServer server(); 这种需要delete server 吗</h2>
+<p>在C++中，当你使用 <code>new</code> 关键字创建对象时，你需要使用 <code>delete</code> 关键字手动释放内存。但是，在你提供的代码片段 <code>BaseServer server();</code> 中，并没有使用 <code>new</code> 关键字来创建对象，而是直接调用了 <code>BaseServer</code> 的默认构造函数来创建对象。</p>
+<p>在这种情况下，对象 <code>server</code> 是在栈上自动分配的，它的内存会在它超出作用域时自动释放。因此，你不需要使用 <code>delete</code> 关键字来手动释放这个对象的内存。</p>
+<p>简而言之，当你使用默认构造函数创建对象，并且在栈上自动分配内存时，不需要手动释放内存。内存的释放将由系统自动处理。</p>
+<p>但是，如果你在使用 <code>new</code> 关键字创建对象时，例如 <code>BaseServer* server = new BaseServer();</code>，这时你需要使用 <code>delete</code> 关键字手动释放内存，例如 <code>delete server;</code>。这是因为使用 <code>new</code> 关键字在堆上分配的内存需要手动释放，否则会发生内存泄漏。</p>
+<p>总结来说，根据你提供的代码片段 <code>BaseServer server();</code>，你不需要手动释放内存。内存的释放将由系统自动处理。</p>
+<h2 id="C-中对于指针应该注意哪些问题">C++中对于指针应该注意哪些问题</h2>
+<p>在C++中，使用指针是一项强大而灵活的特性，但也需要特别注意一些问题。下面是一些指针使用中需要注意的问题：</p>
+<ol>
+<li>
+<p>野指针：指针未经初始化或已释放的指针称为野指针。使用野指针可能导致访问非法内存，引发程序崩溃或产生不可预测的结果。确保在使用指针之前，将其初始化为有效的内存地址，或者将其设置为nullptr。</p>
+</li>
+<li>
+<p>空指针：空指针是指不指向任何有效对象或函数的指针。使用空指针可能导致解引用错误，因此在使用指针之前，要确保它不为空。</p>
+</li>
+<li>
+<p>内存泄漏：内存泄漏是指在程序中分配了内存但没有释放，导致无法再次使用该内存。为避免内存泄漏，确保在不再需要使用指针指向的内存时，使用delete或delete[]释放相应的内存。</p>
+</li>
+<li>
+<p>重复释放：**重复释放同一块内存可能导致程序崩溃或不可预测的行为。**确保每个new或new[]操作都有相应的delete或delete[]操作，并且只释放一次。</p>
+</li>
+<li>
+<p>悬空指针：悬空指针是指指向已释放内存的指针。在释放内存后，要避免继续使用指向该内存的指针。可以通过将指针设置为nullptr来避免悬空指针。</p>
+</li>
+<li>
+<p>指针算术：指针算术允许对指针进行加法、减法等操作。但要谨慎使用指针算术，确保不会越界访问或操作无效的内存地址。</p>
+</li>
+<li>
+<p>引用悬挂：当指针指向的对象在使用之前被释放时，指针将变为悬挂指针。避免在指针仍然有效的情况下使用已释放的对象。</p>
+</li>
+<li>
+<p>野指针和空指针的检查：在使用指针之前，始终对指针进行有效性检查，以避免野指针和空指针引发的错误。</p>
+</li>
+<li>
+<p>堆栈和堆内存：**在C++中，栈上分配的变量将在其作用域结束时自动释放，而堆上使用new操作符分配的内存需要手动释放。**确保在不再需要使用堆上分配的内存时，使用delete或delete[]释放相应的内存。</p>
+</li>
+<li>
+<p>使用智能指针：C++11引入了智能指针，如std::shared_ptr和std::unique_ptr，它们可以更安全地管理动态内存，减少人工释放内存的错误。</p>
+</li>
+</ol>
+<p>以上是使用指针时需要注意的一些常见问题。遵循良好的指针使用习惯，可以减少内存错误和程序崩溃的风险。</p>
 
     </div>
    <div>
@@ -437,13 +495,13 @@
       <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/C8CVJR.html" rel="bookmark">Qt基础学习笔记03</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/QVJ0P0.html" rel="bookmark">C++开发学习笔记2</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/3H2SSQM.html" rel="bookmark">Qt开发学习笔记03</a></div>
+      <div class="popular-posts-title"><a href="/posts/C8CVJR.html" rel="bookmark">Qt基础学习笔记03</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/WTSYSE.html" rel="bookmark">Java并发常见知识点&amp;面试题总结_进阶篇</a></div>
     </li>
   </ul>
 
@@ -493,7 +551,10 @@
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
               <a href="/tags/%E5%86%85%E5%AD%98/" rel="tag"><i class="fa fa-tag"></i> 内存</a>
               <a href="/tags/%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
+              <a href="/tags/%E5%A0%86/" rel="tag"><i class="fa fa-tag"></i> 堆</a>
+              <a href="/tags/%E6%A0%88/" rel="tag"><i class="fa fa-tag"></i> 栈</a>
               <a href="/tags/%E5%85%A8%E5%B1%80/" rel="tag"><i class="fa fa-tag"></i> 全局</a>
+              <a href="/tags/%E5%B1%80%E9%83%A8/" rel="tag"><i class="fa fa-tag"></i> 局部</a>
               <a href="/tags/const/" rel="tag"><i class="fa fa-tag"></i> const</a>
               <a href="/tags/%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
               <a href="/tags/%E5%8F%98%E9%87%8F/" rel="tag"><i class="fa fa-tag"></i> 变量</a>
@@ -511,13 +572,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/8B53TM.html" rel="prev" title="Qt modbus数据转换">
-      <i class="fa fa-chevron-left"></i> Qt modbus数据转换
+    <a href="/posts/2PQ961R.html" rel="prev" title="Qt中使用ModbusTcp ">
+      <i class="fa fa-chevron-left"></i> Qt中使用ModbusTcp 
     </a></div>
-      <div class="post-nav-item">
-    <a href="/posts/ZPHKXJ.html" rel="next" title="Stream流处理快速上手最佳实践">
-      Stream流处理快速上手最佳实践 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -592,7 +650,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E4%B8%AD%E6%9E%9A%E4%B8%BE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">C++ 中枚举的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E4%B8%AD%E7%A8%8B%E5%BA%8F%E7%9D%A1%E7%9C%A0"><span class="nav-number">2.</span> <span class="nav-text">C++ 中程序睡眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%A6%82%E4%BD%95%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98"><span class="nav-number">3.</span> <span class="nav-text">C++ 如何释放内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">C++ 参数传递方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">关于析构函数的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="nav-number">6.</span> <span class="nav-text">C++ 全局变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E6%95%B0%E7%BB%84%E7%9A%84%E9%95%BF%E5%BA%A6"><span class="nav-number">7.</span> <span class="nav-text">C++ 数组的长度</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E4%B8%AD%E6%9E%9A%E4%B8%BE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">C++ 中枚举的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E4%B8%AD%E7%A8%8B%E5%BA%8F%E7%9D%A1%E7%9C%A0"><span class="nav-number">2.</span> <span class="nav-text">C++ 中程序睡眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%A6%82%E4%BD%95%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98"><span class="nav-number">3.</span> <span class="nav-text">C++ 如何释放内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">C++ 参数传递方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">5.</span> <span class="nav-text">关于析构函数的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="nav-number">6.</span> <span class="nav-text">C++ 全局变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E6%95%B0%E7%BB%84%E7%9A%84%E9%95%BF%E5%BA%A6"><span class="nav-number">7.</span> <span class="nav-text">C++ 数组的长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E5%93%AA%E4%BA%9B%E5%8F%82%E6%95%B0%E9%9C%80%E8%A6%81%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98"><span class="nav-number">8.</span> <span class="nav-text">C++ 哪些参数需要释放内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BaseServer-server-%E8%BF%99%E7%A7%8D%E9%9C%80%E8%A6%81delete-server-%E5%90%97"><span class="nav-number">9.</span> <span class="nav-text">BaseServer server(); 这种需要delete server 吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E4%B8%AD%E5%AF%B9%E4%BA%8E%E6%8C%87%E9%92%88%E5%BA%94%E8%AF%A5%E6%B3%A8%E6%84%8F%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-number">10.</span> <span class="nav-text">C++中对于指针应该注意哪些问题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -675,13 +733,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">918k</span>
+    <span title="站点总字数">920k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">13:54</span>
+    <span title="站点阅读时长">13:56</span>
 </div>
 
 <div>
