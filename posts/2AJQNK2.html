@@ -36,20 +36,25 @@
 <meta property="og:image" content="https://xuemingde.com/pages/image/2023/07/05/092137TfNROZ.png">
 <meta property="og:image" content="https://xuemingde.com/pages/image/2023/07/05/092157mpXsLy.png">
 <meta property="og:image" content="https://xuemingde.com/pages/image/2023/07/05/0922140FqBMU.png">
-<meta property="article:published_time" content="2023-12-06T08:41:25.021Z">
-<meta property="article:modified_time" content="2023-12-06T08:41:25.021Z">
+<meta property="og:image" content="https://xuemingde.com/pages/image/others/202312070937871.png">
+<meta property="og:image" content="https://xuemingde.com/pages/image/others/202312070940949.png">
+<meta property="og:image" content="https://xuemingde.com/pages/image/others/202312070943156.png">
+<meta property="article:published_time" content="2023-12-07T02:42:49.672Z">
+<meta property="article:modified_time" content="2023-12-07T02:42:49.672Z">
 <meta property="article:author" content="meadel">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="const">
 <meta property="article:tag" content="函数">
+<meta property="article:tag" content="变量">
 <meta property="article:tag" content="bug">
 <meta property="article:tag" content="Qt">
 <meta property="article:tag" content="sql">
-<meta property="article:tag" content="数据库">
 <meta property="article:tag" content="容器">
 <meta property="article:tag" content="Widget">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="索引">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://xuemingde.com/pages/image/2023/07/04/170146IsKwJz.png">
 
@@ -146,7 +151,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">145</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">146</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -239,7 +244,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-12-06 16:41:25" itemprop="dateCreated datePublished" datetime="2023-12-06T16:41:25+08:00">2023-12-06</time>
+              <time title="创建时间：2023-12-07 10:42:49" itemprop="dateCreated datePublished" datetime="2023-12-07T10:42:49+08:00">2023-12-07</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -285,14 +290,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>9.7k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>9 分钟</span>
+              <span>10 分钟</span>
             </span>
 
         </div>
@@ -448,7 +453,24 @@ t xx是关机延时时间 /秒；xx可以是00，直接关机。<br>
 </li>
 </ol>
 <p>总的来说，QWidget 是一个基本的窗口类，而 QFrame 是 QWidget 的子类，提供了一些额外的外观特性。如果您需要一个简单的容器来放置其他控件，并且不需要特殊的外观效果，那么使用 QWidget 是合适的选择。如果您需要一个带有边框、背景等外观特性的小部件，那么可以选择使用 QFrame。</p>
-<h2 id="获取窗口-x-y-坐标位置">获取窗口 x y 坐标位置</h2>
+<h2 id="Qt-全屏-退出全屏">Qt 全屏/退出全屏</h2>
+<p>在 Qt 中，要退出全屏模式，可以使用 <code>QWidget</code> 的 <code>showNormal()</code> 方法。该方法会将窗口恢复为正常大小，并显示在桌面上。</p>
+<p>以下是退出全屏模式的示例代码：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">QWidget* window = <span class="keyword">new</span> <span class="built_in">QWidget</span>();</span><br><span class="line"><span class="comment">// 将窗口设置为全屏</span></span><br><span class="line">window-&gt;<span class="built_in">showFullScreen</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 退出全屏模式</span></span><br><span class="line">window-&gt;<span class="built_in">showNormal</span>();</span><br></pre></td></tr></tbody></table></figure>
+<p>在上述代码中，我们首先将窗口设置为全屏显示，使用 <code>showFullScreen()</code> 方法。然后，通过调用 <code>showNormal()</code> 方法，窗口将退出全屏模式并恢复为正常大小。</p>
+<p>请注意，<code>showNormal()</code> 方法会将窗口恢复到最初的大小和位置，因此如果在全屏模式之前窗口已被最大化或调整过大小，它将恢复到最初的状态。</p>
+<h2 id="TabWidget-根据QWidget-获取index">TabWidget 根据QWidget 获取index</h2>
+<p>是的，在 <code>QTabWidget</code> 中可以根据 <code>QWidget</code> 获取其在 <code>QTabWidget</code> 中的索引（index）。您可以使用 <code>QTabWidget</code> 的 <code>indexOf()</code> 方法来实现这一功能。</p>
+<p>以下是根据 <code>QWidget</code> 获取索引的示例代码：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">QTabWidget* tabWidget = <span class="keyword">new</span> <span class="built_in">QTabWidget</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建几个 QWidget</span></span><br><span class="line">QWidget* widget1 = <span class="keyword">new</span> <span class="built_in">QWidget</span>();</span><br><span class="line">QWidget* widget2 = <span class="keyword">new</span> <span class="built_in">QWidget</span>();</span><br><span class="line">QWidget* widget3 = <span class="keyword">new</span> <span class="built_in">QWidget</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将这些 QWidget 添加到 QTabWidget 中的不同选项卡中</span></span><br><span class="line">tabWidget-&gt;<span class="built_in">addTab</span>(widget1, <span class="string">"Tab 1"</span>);</span><br><span class="line">tabWidget-&gt;<span class="built_in">addTab</span>(widget2, <span class="string">"Tab 2"</span>);</span><br><span class="line">tabWidget-&gt;<span class="built_in">addTab</span>(widget3, <span class="string">"Tab 3"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取 widget2 在 QTabWidget 中的索引</span></span><br><span class="line"><span class="keyword">int</span> index = tabWidget-&gt;<span class="built_in">indexOf</span>(widget2);</span><br></pre></td></tr></tbody></table></figure>
+<p>在上述代码中，我们首先创建了几个 <code>QWidget</code>，然后将它们添加到 <code>QTabWidget</code> 中的不同选项卡中。接下来，我们使用 <code>indexOf()</code> 方法来获取 <code>widget2</code> 在 <code>QTabWidget</code> 中的索引，并将其存储在 <code>index</code> 变量中。</p>
+<p>请注意，索引是从 0 开始的，表示 <code>QTabWidget</code> 中选项卡的顺序。如果 <code>widget2</code> 不存在于 <code>QTabWidget</code> 中，<code>indexOf()</code> 方法将返回 -1。</p>
+<h2 id="QTreeWidget-如何设置复选框">QTreeWidget 如何设置复选框</h2>
+<p><img data-src="https://xuemingde.com/pages/image/others/202312070937871.png" alt=""></p>
+<p>在项目中添加项目后默认是没有复选框的，需要在属性中设置，找到 <code>chackState</code> 属性，修改为 checked 后复选框后出现</p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202312070940949.png" alt=""></p>
+<p>如果一个父级项目下有多个子项目，选中一个子项目，父项目自动设置为半选（父项目与子项目联动），需要在父项目设置Tristate 属性</p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202312070943156.png" alt=""></p>
 
     </div>
    <div>
@@ -470,16 +492,16 @@ t xx是关机延时时间 /秒；xx可以是00，直接关机。<br>
       <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/6251YR.html" rel="bookmark">Qt开发学习笔记01</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/C8CVJR.html" rel="bookmark">Qt基础学习笔记03</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/2PQ961R.html" rel="bookmark">Qt中使用ModbusTcp </a></div>
+      <div class="popular-posts-title"><a href="/posts/6251YR.html" rel="bookmark">Qt开发学习笔记01</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/1QR2QPE.html" rel="bookmark">Qt基础学习笔记02</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/3H2SSQM.html" rel="bookmark">Qt开发学习笔记03</a></div>
     </li>
   </ul>
 
@@ -529,12 +551,14 @@ t xx是关机延时时间 /秒；xx可以是00，直接关机。<br>
               <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
               <a href="/tags/const/" rel="tag"><i class="fa fa-tag"></i> const</a>
               <a href="/tags/%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
+              <a href="/tags/%E5%8F%98%E9%87%8F/" rel="tag"><i class="fa fa-tag"></i> 变量</a>
               <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i> bug</a>
               <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
               <a href="/tags/sql/" rel="tag"><i class="fa fa-tag"></i> sql</a>
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
               <a href="/tags/%E5%AE%B9%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> 容器</a>
               <a href="/tags/Widget/" rel="tag"><i class="fa fa-tag"></i> Widget</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+              <a href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag"><i class="fa fa-tag"></i> 索引</a>
           </div>
 
         
@@ -548,10 +572,13 @@ t xx是关机延时时间 /秒；xx可以是00，直接关机。<br>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/2PQ961R.html" rel="prev" title="Qt中使用ModbusTcp ">
-      <i class="fa fa-chevron-left"></i> Qt中使用ModbusTcp 
+    <a href="/posts/1Y4GWTQ.html" rel="prev" title="Qt开发学习笔记04">
+      <i class="fa fa-chevron-left"></i> Qt开发学习笔记04
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/posts/23E5YZV.html" rel="next" title="Qt基础学习笔记04">
+      Qt基础学习笔记04 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -626,7 +653,7 @@ t xx是关机延时时间 /秒；xx可以是00，直接关机。<br>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E7%AA%97%E5%8F%A3%E8%AE%BE%E4%B8%BA%E6%8F%90%E7%A4%BA%E6%A1%86"><span class="nav-number">1.</span> <span class="nav-text">将窗口设为提示框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="nav-number">2.</span> <span class="nav-text">Qt 数据库连接池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">Qt随机数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E7%9B%91%E5%90%AC%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">Qt 监听鼠标点击事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E5%85%B3%E9%97%AD%E6%89%80%E6%9C%89%E9%A1%B5%E9%9D%A2"><span class="nav-number">5.</span> <span class="nav-text">Qt关闭所有页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QT%E5%AE%9E%E7%8E%B0%E5%85%B3%E6%9C%BA"><span class="nav-number">6.</span> <span class="nav-text">QT实现关机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qt-5-stylesheet-reference%E4%B8%AD%E7%BF%BB%E8%AF%91%E8%BF%87%E6%9D%A5%E7%9A%84%E6%89%80%E6%9C%89%E4%BC%AA%E7%8A%B6%E6%80%81"><span class="nav-number">7.</span> <span class="nav-text">qt-5/stylesheet-reference中翻译过来的所有伪状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%94%A8%E7%9A%84%E9%80%89%E6%8B%A9%E5%99%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">8.</span> <span class="nav-text">有用的选择器类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QTableView%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7"><span class="nav-number">9.</span> <span class="nav-text">QTableView的基本属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TableView-%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">10.</span> <span class="nav-text">TableView 的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-Qss%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">11.</span> <span class="nav-text">Qt Qss的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-QscrollArea%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F%E4%BF%AE%E6%94%B9"><span class="nav-number">12.</span> <span class="nav-text">Qt QscrollArea滚动条样式修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QString-%E5%88%A0%E9%99%A4%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%AD%97%E8%8A%82"><span class="nav-number">13.</span> <span class="nav-text">QString 删除最后一个字节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%96%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">14.</span> <span class="nav-text">拖动窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E5%BC%B9%E7%AA%97%E9%A1%B5%E4%B8%8B%E7%9A%84%E9%A1%B5%E9%9D%A2%E7%A6%81%E6%AD%A2%E6%93%8D%E4%BD%9C"><span class="nav-number">15.</span> <span class="nav-text">Qt 弹窗页下的页面禁止操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QString-%E6%9B%BF%E6%8D%A2"><span class="nav-number">16.</span> <span class="nav-text">QString 替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E4%B8%AD%E7%A8%8B%E5%BA%8F%E7%9D%A1%E7%9C%A0"><span class="nav-number">17.</span> <span class="nav-text">Qt 中程序睡眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QTcpSocket-%E4%B8%8D%E6%94%AF%E6%8C%81%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="nav-number">18.</span> <span class="nav-text">QTcpSocket 不支持长连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QFrame-%E4%BA%8E-QWidget-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">19.</span> <span class="nav-text">QFrame 于 QWidget 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%AA%97%E5%8F%A3-x-y-%E5%9D%90%E6%A0%87%E4%BD%8D%E7%BD%AE"><span class="nav-number">20.</span> <span class="nav-text">获取窗口 x y 坐标位置</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E7%AA%97%E5%8F%A3%E8%AE%BE%E4%B8%BA%E6%8F%90%E7%A4%BA%E6%A1%86"><span class="nav-number">1.</span> <span class="nav-text">将窗口设为提示框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="nav-number">2.</span> <span class="nav-text">Qt 数据库连接池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">Qt随机数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E7%9B%91%E5%90%AC%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">Qt 监听鼠标点击事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E5%85%B3%E9%97%AD%E6%89%80%E6%9C%89%E9%A1%B5%E9%9D%A2"><span class="nav-number">5.</span> <span class="nav-text">Qt关闭所有页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QT%E5%AE%9E%E7%8E%B0%E5%85%B3%E6%9C%BA"><span class="nav-number">6.</span> <span class="nav-text">QT实现关机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qt-5-stylesheet-reference%E4%B8%AD%E7%BF%BB%E8%AF%91%E8%BF%87%E6%9D%A5%E7%9A%84%E6%89%80%E6%9C%89%E4%BC%AA%E7%8A%B6%E6%80%81"><span class="nav-number">7.</span> <span class="nav-text">qt-5/stylesheet-reference中翻译过来的所有伪状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E7%94%A8%E7%9A%84%E9%80%89%E6%8B%A9%E5%99%A8%E7%B1%BB%E5%9E%8B"><span class="nav-number">8.</span> <span class="nav-text">有用的选择器类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QTableView%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7"><span class="nav-number">9.</span> <span class="nav-text">QTableView的基本属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TableView-%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">10.</span> <span class="nav-text">TableView 的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-Qss%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">11.</span> <span class="nav-text">Qt Qss的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-QscrollArea%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F%E4%BF%AE%E6%94%B9"><span class="nav-number">12.</span> <span class="nav-text">Qt QscrollArea滚动条样式修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QString-%E5%88%A0%E9%99%A4%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%AD%97%E8%8A%82"><span class="nav-number">13.</span> <span class="nav-text">QString 删除最后一个字节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%96%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">14.</span> <span class="nav-text">拖动窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E5%BC%B9%E7%AA%97%E9%A1%B5%E4%B8%8B%E7%9A%84%E9%A1%B5%E9%9D%A2%E7%A6%81%E6%AD%A2%E6%93%8D%E4%BD%9C"><span class="nav-number">15.</span> <span class="nav-text">Qt 弹窗页下的页面禁止操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QString-%E6%9B%BF%E6%8D%A2"><span class="nav-number">16.</span> <span class="nav-text">QString 替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E4%B8%AD%E7%A8%8B%E5%BA%8F%E7%9D%A1%E7%9C%A0"><span class="nav-number">17.</span> <span class="nav-text">Qt 中程序睡眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QTcpSocket-%E4%B8%8D%E6%94%AF%E6%8C%81%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="nav-number">18.</span> <span class="nav-text">QTcpSocket 不支持长连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QFrame-%E4%BA%8E-QWidget-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">19.</span> <span class="nav-text">QFrame 于 QWidget 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E5%85%A8%E5%B1%8F-%E9%80%80%E5%87%BA%E5%85%A8%E5%B1%8F"><span class="nav-number">20.</span> <span class="nav-text">Qt 全屏/退出全屏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TabWidget-%E6%A0%B9%E6%8D%AEQWidget-%E8%8E%B7%E5%8F%96index"><span class="nav-number">21.</span> <span class="nav-text">TabWidget 根据QWidget 获取index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QTreeWidget-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%A4%8D%E9%80%89%E6%A1%86"><span class="nav-number">22.</span> <span class="nav-text">QTreeWidget 如何设置复选框</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -641,7 +668,7 @@ t xx是关机延时时间 /秒；xx可以是00，直接关机。<br>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">145</span>
+          <span class="site-state-item-count">146</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -709,13 +736,13 @@ t xx是关机延时时间 /秒；xx可以是00，直接关机。<br>
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">934k</span>
+    <span title="站点总字数">935k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">14:09</span>
+    <span title="站点阅读时长">14:10</span>
 </div>
 
 <div>
