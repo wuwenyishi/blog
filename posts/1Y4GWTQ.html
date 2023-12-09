@@ -28,8 +28,8 @@
 <meta property="og:url" content="https://blog.xuemingde.com/posts/1Y4GWTQ.html">
 <meta property="og:site_name" content="沉默的猴子">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-07T14:43:48.632Z">
-<meta property="article:modified_time" content="2023-12-07T14:43:48.632Z">
+<meta property="article:published_time" content="2023-12-09T08:46:58.548Z">
+<meta property="article:modified_time" content="2023-12-09T08:46:58.548Z">
 <meta property="article:author" content="meadel">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="C">
@@ -37,6 +37,7 @@
 <meta property="article:tag" content="堆">
 <meta property="article:tag" content="栈">
 <meta property="article:tag" content="全局">
+<meta property="article:tag" content="const">
 <meta property="article:tag" content="函数">
 <meta property="article:tag" content="变量">
 <meta property="article:tag" content="bug">
@@ -231,7 +232,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-12-07 22:43:48" itemprop="dateCreated datePublished" datetime="2023-12-07T22:43:48+08:00">2023-12-07</time>
+              <time title="创建时间：2023-12-09 16:46:58" itemprop="dateCreated datePublished" datetime="2023-12-09T16:46:58+08:00">2023-12-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -277,14 +278,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>7.8k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>7 分钟</span>
+              <span>10 分钟</span>
             </span>
 
         </div>
@@ -498,6 +499,84 @@
 <p>运行上述代码，将会输出类似以下内容：</p>
 <figure class="highlight actionscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">isPrint():</span><br><span class="line"><span class="string">'A'</span> <span class="keyword">is</span> printable: <span class="literal">true</span></span><br><span class="line"><span class="string">'5'</span> <span class="keyword">is</span> printable: <span class="literal">true</span></span><br><span class="line"><span class="string">' '</span> <span class="keyword">is</span> printable: <span class="literal">true</span></span><br><span class="line"><span class="string">'@'</span> <span class="keyword">is</span> printable: <span class="literal">true</span></span><br><span class="line"><span class="string">'⁰'</span> <span class="keyword">is</span> printable: <span class="literal">true</span></span><br><span class="line"><span class="string">'￾'</span> <span class="keyword">is</span> printable: <span class="literal">false</span></span><br><span class="line">isSpace():</span><br><span class="line"><span class="string">'A'</span> <span class="keyword">is</span> space: <span class="literal">false</span></span><br><span class="line"><span class="string">'5'</span> <span class="keyword">is</span> space: <span class="literal">false</span></span><br><span class="line"><span class="string">' '</span> <span class="keyword">is</span> space: <span class="literal">true</span></span><br><span class="line"><span class="string">'@'</span> <span class="keyword">is</span> space: <span class="literal">false</span></span><br><span class="line"><span class="string">'⁰'</span> <span class="keyword">is</span> space: <span class="literal">false</span></span><br><span class="line"><span class="string">'￾'</span> <span class="keyword">is</span> space: <span class="literal">false</span></span><br></pre></td></tr></tbody></table></figure>
 <p>从输出结果可以看出，根据字符的不同属性，这些函数返回了相应的结果。您可以根据需要使用这些函数来处理字符。</p>
+<h2 id="QString-常用函数">QString 常用函数</h2>
+<p>QString 类提供了许多函数来进行字符串操作。以下是 QString 类中的一些常用函数（这里列出的函数不包括静态函数和重载函数）：</p>
+<ol>
+<li>
+<p>构造函数和析构函数：</p>
+<ul>
+<li><code>QString()</code>: 默认构造函数，创建一个空字符串。</li>
+<li><code>QString(const char *str)</code>: 使用 C 风格的字符串构造 QString 对象。</li>
+<li><code>QString(const QString &amp;other)</code>: 拷贝构造函数。</li>
+<li><code>~QString()</code>: 析构函数。</li>
+</ul>
+</li>
+<li>
+<p>字符串操作：</p>
+<ul>
+<li><code>append(const QString &amp;str)</code>: 在字符串末尾追加另一个字符串。</li>
+<li><code>prepend(const QString &amp;str)</code>: 在字符串开头插入另一个字符串。</li>
+<li><code>insert(int position, const QString &amp;str)</code>: 在指定位置插入另一个字符串。</li>
+<li><code>remove(int position, int n)</code>: 从指定位置开始删除指定数量的字符。</li>
+<li><code>replace(int position, int n, const QString &amp;after)</code>: 替换指定位置的字符。</li>
+<li><code>chop(int n)</code>: 删除字符串末尾的指定数量的字符。</li>
+<li><code>clear()</code>: 清空字符串。</li>
+<li><code>toUpper()</code>: 将字符串转换为大写。</li>
+<li><code>toLower()</code>: 将字符串转换为小写。</li>
+<li><code>trimmed()</code>: 去除字符串两端的空白字符。</li>
+<li><code>simplified()</code>: 去除字符串中多余的空白字符，并将连续的空白字符替换为单个空格。</li>
+<li><code>section(const QString &amp;separator, int start, int end)</code>: 提取字符串中位于两个分隔符之间的部分。</li>
+<li><code>split(const QString &amp;separator, Qt::SplitBehavior behavior, Qt::CaseSensitivity cs)</code>: 将字符串拆分为一个字符串列表，根据指定的分隔符进行分割。</li>
+<li><code>indexOf(const QString &amp;str, int from = 0, Qt::CaseSensitivity cs = Qt::CaseSensitive)</code>: 查找指定子字符串在字符串中的第一次出现的位置。</li>
+<li><code>lastIndexOf(const QString &amp;str, int from = -1, Qt::CaseSensitivity cs = Qt::CaseSensitive)</code>: 查找指定子字符串在字符串中的最后一次出现的位置。</li>
+</ul>
+</li>
+<li>
+<p>字符串查询和比较：</p>
+<ul>
+<li><code>contains(const QString &amp;str, Qt::CaseSensitivity cs = Qt::CaseSensitive)</code>: 检查字符串是否包含指定的子字符串。</li>
+<li><code>startsWith(const QString &amp;str, Qt::CaseSensitivity cs = Qt::CaseSensitive)</code>: 检查字符串是否以指定的前缀开始。</li>
+<li><code>endsWith(const QString &amp;str, Qt::CaseSensitivity cs = Qt::CaseSensitive)</code>: 检查字符串是否以指定的后缀结束。</li>
+<li><code>isEmpty()</code>: 检查字符串是否为空。</li>
+<li><code>isNull()</code>: 检查字符串是否为 null。</li>
+<li><code>length()</code>: 返回字符串的长度。</li>
+<li><code>size()</code>: 返回字符串的大小。</li>
+</ul>
+</li>
+<li>
+<p>类型转换：</p>
+<ul>
+<li><code>toInt(bool *ok = nullptr, int base = 10)</code>: 将字符串转换为整数。</li>
+<li><code>toDouble(bool *ok = nullptr)</code>: 将字符串转换为双精度浮点数。</li>
+<li><code>toFloat(bool *ok = nullptr)</code>: 将字符串转换为单精度浮点数。</li>
+<li><code>toLatin1()</code>: 将字符串转换为 Latin-1 编码。</li>
+<li><code>toUtf8()</code>: 将字符串转换为 UTF-8 编码。</li>
+</ul>
+</li>
+<li>
+<p>其他：</p>
+<ul>
+<li><code>arg(...)</code>: 格式化字符串，将占位符替换为指定的参数。</li>
+<li><code>mid(int position, int n = -1)</code>: 返回从指定位置开始的子字符串。</li>
+<li><code>left(int n)</code>: 返回字符串的左边 n 个字符。</li>
+<li><code>right(int n)</code>: 返回字符串的右边 n 个字符。</li>
+<li><code>operator=()</code>: 赋值运算符，用于将一个 QString 对象的值赋给另一个 QString 对象。</li>
+</ul>
+</li>
+</ol>
+<p>这只是 QString 类中的一部分常用函数，还有许多其他函数可用于字符串操作。您可以查阅 Qt 文档以获取更详细的信息和更多函数的使用示例。</p>
+<h2 id="QLineEdit-去掉鼠标焦点">QLineEdit 去掉鼠标焦点</h2>
+<p>要在 QLineEdit 中去掉鼠标焦点，您可以调用 <code>clearFocus()</code> 方法来清除当前的焦点。这将导致 QLineEdit 失去焦点，鼠标焦点将转移到其他控件上。</p>
+<p>以下是一个示例：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLineEdit&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建 QLineEdit 控件</span></span><br><span class="line">    QLineEdit lineEdit;</span><br><span class="line">    lineEdit.<span class="built_in">setText</span>(<span class="string">"Click to focus"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置控件的大小和位置</span></span><br><span class="line">    lineEdit.<span class="built_in">setGeometry</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 显示控件</span></span><br><span class="line">    lineEdit.<span class="built_in">show</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 清除焦点</span></span><br><span class="line">    lineEdit.<span class="built_in">clearFocus</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>在上述示例中，我们创建了一个 QLineEdit 控件，并使用 <code>clearFocus()</code> 方法清除了焦点。这将导致 QLineEdit 失去焦点，从而去掉鼠标焦点。请注意，在调用 <code>clearFocus()</code> 方法之后，QLineEdit 不会自动获取焦点，鼠标焦点将保持在其他控件上。</p>
+<h2 id="添加阴影效果">添加阴影效果</h2>
+<p><strong>以QDialog  为例</strong></p>
+<p>要为 QDialog 添加阴影效果，可以使用 QGraphicsDropShadowEffect 类来实现。以下是一个示例，演示如何使用 QGraphicsDropShadowEffect 为 QDialog 添加阴影效果：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDialog&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QGraphicsDropShadowEffect&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建 QDialog 对象</span></span><br><span class="line">    QDialog dialog;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建 QGraphicsDropShadowEffect 对象</span></span><br><span class="line">    QGraphicsDropShadowEffect *shadowEffect = <span class="keyword">new</span> QGraphicsDropShadowEffect;</span><br><span class="line">    shadowEffect-&gt;<span class="built_in">setBlurRadius</span>(<span class="number">10</span>); <span class="comment">// 设置阴影模糊半径</span></span><br><span class="line">    shadowEffect-&gt;<span class="built_in">setColor</span>(Qt::black); <span class="comment">// 设置阴影颜色</span></span><br><span class="line">    shadowEffect-&gt;<span class="built_in">setOffset</span>(<span class="number">0</span>); <span class="comment">// 设置阴影偏移量</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将 QGraphicsDropShadowEffect 应用于 QDialog</span></span><br><span class="line">    dialog.<span class="built_in">setGraphicsEffect</span>(shadowEffect);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置对话框的大小和位置</span></span><br><span class="line">    dialog.<span class="built_in">setGeometry</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">400</span>, <span class="number">200</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 显示对话框</span></span><br><span class="line">    dialog.<span class="built_in">show</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>在上述示例中，我们创建了一个 QDialog 对象，并创建了一个 QGraphicsDropShadowEffect 对象来定义阴影效果的属性。然后，我们使用 <code>setGraphicsEffect()</code> 方法将 QGraphicsDropShadowEffect 应用于 QDialog。通过调整 <code>setBlurRadius()</code>、<code>setColor()</code> 和 <code>setOffset()</code> 方法的参数，您可以自定义阴影的模糊半径、颜色和偏移量。</p>
+<p>请注意，在使用 QGraphicsDropShadowEffect 时，需要确保包含 QDialog 的窗口部件（例如 QWidget、QMainWindow 等）具有透明背景，以便阴影效果能够正确显示。</p>
+<p>运行上述代码将会显示一个带有阴影效果的 QDialog 对话框。您可以根据需要调整 QGraphicsDropShadowEffect 的属性，以实现所需的阴影效果。</p>
 
     </div>
    <div>
@@ -579,6 +658,7 @@
               <a href="/tags/%E5%A0%86/" rel="tag"><i class="fa fa-tag"></i> 堆</a>
               <a href="/tags/%E6%A0%88/" rel="tag"><i class="fa fa-tag"></i> 栈</a>
               <a href="/tags/%E5%85%A8%E5%B1%80/" rel="tag"><i class="fa fa-tag"></i> 全局</a>
+              <a href="/tags/const/" rel="tag"><i class="fa fa-tag"></i> const</a>
               <a href="/tags/%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
               <a href="/tags/%E5%8F%98%E9%87%8F/" rel="tag"><i class="fa fa-tag"></i> 变量</a>
               <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i> bug</a>
@@ -598,8 +678,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/3H2SSQM.html" rel="prev" title="Qt开发学习笔记03">
-      <i class="fa fa-chevron-left"></i> Qt开发学习笔记03
+    <a href="/posts/1CBWCJP.html" rel="prev" title="C++开发学习笔记3">
+      <i class="fa fa-chevron-left"></i> C++开发学习笔记3
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -676,7 +756,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E9%9D%99%E6%80%81%E5%85%A8%E5%B1%80%E5%B8%B8%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">Qt C++ 静态全局常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%AD%90%E7%AA%97%E5%8F%A3%E5%B9%B6%E5%85%B3%E9%97%AD"><span class="nav-number">2.</span> <span class="nav-text">查找子窗口并关闭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QDialog-%E7%9A%84show%E5%92%8Cexec%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">QDialog 的show和exec的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-isNumber-%E4%B8%8E-isDigit-%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">Qt isNumber 与 isDigit 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QChar-%E7%B1%BB%E4%B8%AD%E6%8F%90%E4%BE%9B%E7%94%A8%E4%BA%8E%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">QChar 类中提供用于判断字符类型的函数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E9%9D%99%E6%80%81%E5%85%A8%E5%B1%80%E5%B8%B8%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">Qt C++ 静态全局常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%AD%90%E7%AA%97%E5%8F%A3%E5%B9%B6%E5%85%B3%E9%97%AD"><span class="nav-number">2.</span> <span class="nav-text">查找子窗口并关闭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QDialog-%E7%9A%84show%E5%92%8Cexec%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">QDialog 的show和exec的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-isNumber-%E4%B8%8E-isDigit-%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">Qt isNumber 与 isDigit 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QChar-%E7%B1%BB%E4%B8%AD%E6%8F%90%E4%BE%9B%E7%94%A8%E4%BA%8E%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">QChar 类中提供用于判断字符类型的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QString-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">QString 常用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QLineEdit-%E5%8E%BB%E6%8E%89%E9%BC%A0%E6%A0%87%E7%84%A6%E7%82%B9"><span class="nav-number">7.</span> <span class="nav-text">QLineEdit 去掉鼠标焦点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C"><span class="nav-number">8.</span> <span class="nav-text">添加阴影效果</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -759,13 +839,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">943k</span>
+    <span title="站点总字数">947k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">14:17</span>
+    <span title="站点阅读时长">14:21</span>
 </div>
 
 <div>
