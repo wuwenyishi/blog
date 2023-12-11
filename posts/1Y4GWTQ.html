@@ -28,11 +28,12 @@
 <meta property="og:url" content="https://blog.xuemingde.com/posts/1Y4GWTQ.html">
 <meta property="og:site_name" content="沉默的猴子">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-11T02:50:08.083Z">
-<meta property="article:modified_time" content="2023-12-11T02:50:08.084Z">
+<meta property="article:published_time" content="2023-12-11T08:50:35.040Z">
+<meta property="article:modified_time" content="2023-12-11T08:50:35.040Z">
 <meta property="article:author" content="meadel">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="C">
+<meta property="article:tag" content="linux">
 <meta property="article:tag" content="指针">
 <meta property="article:tag" content="堆">
 <meta property="article:tag" content="栈">
@@ -233,7 +234,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-12-11 10:50:08" itemprop="dateCreated datePublished" datetime="2023-12-11T10:50:08+08:00">2023-12-11</time>
+              <time title="创建时间：2023-12-11 16:50:35" itemprop="dateCreated datePublished" datetime="2023-12-11T16:50:35+08:00">2023-12-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -279,14 +280,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>13k</span>
+              <span>15k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>12 分钟</span>
+              <span>13 分钟</span>
             </span>
 
         </div>
@@ -598,6 +599,26 @@
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">QList&lt;<span class="keyword">int</span>&gt; inputList = ...; <span class="comment">// 输入序列</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> reducedResult = QtConcurrent::<span class="built_in">mappedReduced</span>(inputList, [](<span class="keyword">int</span> value){</span><br><span class="line">    <span class="comment">// 将每个输入元素映射为结果</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">}, [](<span class="keyword">int</span> result1, <span class="keyword">int</span> result2){</span><br><span class="line">    <span class="comment">// 将两个映射结果归约为单个值</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">return</span> reducedResult;</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可选：等待映射和归约完成</span></span><br><span class="line">QtConcurrent::<span class="built_in">waitForCompletion</span>(reducedResult);</span><br></pre></td></tr></tbody></table></figure>
 <p>以上只是一些常用的异步处理方法示例，QtConcurrent还提供其他更多的方法和功能，如 <code>QtConcurrent::mappedReduced()</code>、<code>QtConcurrent::mappedReducedBatched()</code>、<code>QtConcurrent::mappedReducedIndexed()</code> 等。您可以查阅Qt的官方文档或参考最新的Qt文档，以获取更详细和全面的信息。</p>
 <p>希望以上信息能对您有所帮助。如有任何进一步的问题，请随时提问。</p>
+<h2 id="IP地址是否能ping通过">IP地址是否能ping通过</h2>
+<ul>
+<li>
+<p>Linux/macOS</p>
+<p>如果您只需要检测 IP 地址是否能够通过 Ping 命令，可以使用 Qt 的 <code>QProcess</code> 类来执行 Ping 命令并检查返回结果。以下是一个示例方法：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">QString ipAddress = <span class="string">"192.168.0.100"</span>; <span class="comment">// 设置要检测的 IP 地址</span></span><br><span class="line"></span><br><span class="line">QProcess process;</span><br><span class="line">QStringList arguments;</span><br><span class="line">arguments &lt;&lt; <span class="string">"-c"</span> &lt;&lt; <span class="string">"1"</span> &lt;&lt; ipAddress; <span class="comment">// 在 Linux/macOS 上使用 "-c" 参数，在 Windows 上使用 "-n" 参数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> Q_OS_WIN</span></span><br><span class="line">process.<span class="built_in">start</span>(<span class="string">"ping"</span>, arguments);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">process.<span class="built_in">start</span>(<span class="string">"ping"</span>, arguments, QIODevice::ReadOnly);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (process.<span class="built_in">waitForFinished</span>() &amp;&amp; process.<span class="built_in">exitCode</span>() == <span class="number">0</span>) {</span><br><span class="line">    <span class="comment">// IP 地址可以通过 Ping</span></span><br><span class="line">    <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"IP address is reachable"</span>;</span><br><span class="line">} <span class="keyword">else</span> {</span><br><span class="line">    <span class="comment">// IP 地址无法通过 Ping</span></span><br><span class="line">    <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"IP address is not reachable"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>在上述示例中，我们使用 <code>QProcess</code> 类来执行 Ping 命令。根据不同的操作系统，设置不同的 Ping 参数（“-c” 在 Linux/macOS 上，“-n” 在 Windows 上）。然后，我们使用 <code>waitForFinished()</code> 等待 Ping 命令执行完成，并通过 <code>exitCode()</code> 检查命令的返回值。如果返回值为 0，表示 IP 地址可以通过 Ping；如果返回值非零，表示 IP 地址无法通过 Ping。</p>
+<p>请注意，上述代码在 Linux 和 macOS 上使用 <code>QIODevice::ReadOnly</code> 作为 <code>start()</code> 函数的第三个参数，以便可以读取 Ping 命令的输出。在 Windows 上，不需要传递该参数。</p>
+<p>需要注意的是，Ping 命令的可用性和结果解释可能会因操作系统和网络环境的不同而有所差异。此方法仅提供了一种使用 Qt 检测 IP 地址是否能够通过 Ping 的示例。</p>
+<p>希望这次的回答能满足您的需求！如果您有任何进一步的问题，请随时提问。</p>
+</li>
+<li>
+<p>Windows</p>
+<p>如果您在 Windows 上使用 Qt，并且只需要检测 IP 地址是否能够通过 Ping 命令，可以使用 <code>QProcess</code> 类来执行 <code>ping</code> 命令并检查返回结果。以下是一个针对 Windows 平台的示例方法：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">QString ipAddress = <span class="string">"192.168.0.100"</span>; <span class="comment">// 设置要检测的 IP 地址</span></span><br><span class="line"></span><br><span class="line">QProcess process;</span><br><span class="line">QStringList arguments;</span><br><span class="line">arguments &lt;&lt; <span class="string">"-n"</span> &lt;&lt; <span class="string">"1"</span> &lt;&lt; ipAddress;</span><br><span class="line"></span><br><span class="line">process.<span class="built_in">start</span>(<span class="string">"ping"</span>, arguments);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (process.<span class="built_in">waitForFinished</span>() &amp;&amp; process.<span class="built_in">exitCode</span>() == <span class="number">0</span>) {</span><br><span class="line">    <span class="comment">// IP 地址可以通过 Ping</span></span><br><span class="line">    <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"IP address is reachable"</span>;</span><br><span class="line">} <span class="keyword">else</span> {</span><br><span class="line">    <span class="comment">// IP 地址无法通过 Ping</span></span><br><span class="line">    <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"IP address is not reachable"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>在上述示例中，我们使用 <code>QProcess</code> 类来执行 <code>ping</code> 命令。我们设置了 <code>"-n"</code> 参数来指定只发送一个 ICMP Echo 请求，并指定要检测的 IP 地址。然后，我们使用 <code>waitForFinished()</code> 函数等待 <code>ping</code> 命令执行完成，并通过 <code>exitCode()</code> 检查命令的返回值。如果返回值为 0，表示 IP 地址可以通过 Ping；如果返回值非零，表示 IP 地址无法通过 Ping。</p>
+<p>请注意，Ping 命令的可用性和结果解释可能会因操作系统和网络环境的不同而有所差异。此方法仅提供了一种使用 Qt 在 Windows 平台上检测 IP 地址是否能够通过 Ping 的示例。</p>
+<p>希望这次的回答对您有帮助！如果您有任何进一步的问题，请随时提问。</p>
+</li>
+</ul>
 
     </div>
    <div>
@@ -622,13 +643,13 @@
       <div class="popular-posts-title"><a href="/posts/3H2SSQM.html" rel="bookmark">Qt开发学习笔记03</a></div>
     </li>
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2VB0MVT.html" rel="bookmark">C++开发学习笔记1</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/QVJ0P0.html" rel="bookmark">C++开发学习笔记2</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/1CBWCJP.html" rel="bookmark">C++开发学习笔记3</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/2VB0MVT.html" rel="bookmark">C++开发学习笔记1</a></div>
     </li>
   </ul>
 
@@ -675,6 +696,7 @@
           <div class="post-tags">
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+              <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
               <a href="/tags/%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
               <a href="/tags/%E5%A0%86/" rel="tag"><i class="fa fa-tag"></i> 堆</a>
               <a href="/tags/%E6%A0%88/" rel="tag"><i class="fa fa-tag"></i> 栈</a>
@@ -700,13 +722,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/3H2SSQM.html" rel="prev" title="Qt开发学习笔记03">
-      <i class="fa fa-chevron-left"></i> Qt开发学习笔记03
+    <a href="/posts/1CBWCJP.html" rel="prev" title="C++开发学习笔记3">
+      <i class="fa fa-chevron-left"></i> C++开发学习笔记3
     </a></div>
-      <div class="post-nav-item">
-    <a href="/posts/1CBWCJP.html" rel="next" title="C++开发学习笔记3">
-      C++开发学习笔记3 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -781,7 +800,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E9%9D%99%E6%80%81%E5%85%A8%E5%B1%80%E5%B8%B8%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">Qt C++ 静态全局常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%AD%90%E7%AA%97%E5%8F%A3%E5%B9%B6%E5%85%B3%E9%97%AD"><span class="nav-number">2.</span> <span class="nav-text">查找子窗口并关闭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QDialog-%E7%9A%84show%E5%92%8Cexec%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">QDialog 的show和exec的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-isNumber-%E4%B8%8E-isDigit-%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">Qt isNumber 与 isDigit 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QChar-%E7%B1%BB%E4%B8%AD%E6%8F%90%E4%BE%9B%E7%94%A8%E4%BA%8E%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">QChar 类中提供用于判断字符类型的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QString-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">QString 常用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QLineEdit-%E5%8E%BB%E6%8E%89%E9%BC%A0%E6%A0%87%E7%84%A6%E7%82%B9"><span class="nav-number">7.</span> <span class="nav-text">QLineEdit 去掉鼠标焦点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C"><span class="nav-number">8.</span> <span class="nav-text">添加阴影效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QtConcurrent-%E7%9A%84%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">QtConcurrent 的异步处理方法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E9%9D%99%E6%80%81%E5%85%A8%E5%B1%80%E5%B8%B8%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">Qt C++ 静态全局常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%AD%90%E7%AA%97%E5%8F%A3%E5%B9%B6%E5%85%B3%E9%97%AD"><span class="nav-number">2.</span> <span class="nav-text">查找子窗口并关闭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QDialog-%E7%9A%84show%E5%92%8Cexec%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">QDialog 的show和exec的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-isNumber-%E4%B8%8E-isDigit-%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">Qt isNumber 与 isDigit 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QChar-%E7%B1%BB%E4%B8%AD%E6%8F%90%E4%BE%9B%E7%94%A8%E4%BA%8E%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">QChar 类中提供用于判断字符类型的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QString-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">QString 常用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QLineEdit-%E5%8E%BB%E6%8E%89%E9%BC%A0%E6%A0%87%E7%84%A6%E7%82%B9"><span class="nav-number">7.</span> <span class="nav-text">QLineEdit 去掉鼠标焦点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C"><span class="nav-number">8.</span> <span class="nav-text">添加阴影效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QtConcurrent-%E7%9A%84%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">QtConcurrent 的异步处理方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80%E6%98%AF%E5%90%A6%E8%83%BDping%E9%80%9A%E8%BF%87"><span class="nav-number">10.</span> <span class="nav-text">IP地址是否能ping通过</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -864,13 +883,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">949k</span>
+    <span title="站点总字数">951k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">14:23</span>
+    <span title="站点阅读时长">14:25</span>
 </div>
 
 <div>
