@@ -931,26 +931,6 @@
       </tags>
   </entry>
   <entry>
-    <title>基础知识</title>
-    <url>/posts/1G6JE6G.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><p>//</p>
-<hr>
-<p>CPU工作基本工作方式：</p>
-<p>读取指令，放在PC（程序计数器）中，读取数据，存放在寄存器中，然后开始计算，计算结果回写给内存。</p>
-<hr>
-<p>进程是资源分配的基本单元</p>
-<p>线程是进程执行的基本单元</p>
-</body></html>]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>内存</tag>
-        <tag>CPU</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Qt modbus数据转换</title>
     <url>/posts/8B53TM.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><h4 id="C-将浮点数转为modbus需要的两个无符号短整数">C++ 将浮点数转为modbus需要的两个无符号短整数</h4>
@@ -2801,6 +2781,26 @@ qRound() 函数遵循标准的四舍五入规则。当小数部分等于 0.5 时
       </tags>
   </entry>
   <entry>
+    <title>基础知识</title>
+    <url>/posts/1G6JE6G.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><p>//</p>
+<hr>
+<p>CPU工作基本工作方式：</p>
+<p>读取指令，放在PC（程序计数器）中，读取数据，存放在寄存器中，然后开始计算，计算结果回写给内存。</p>
+<hr>
+<p>进程是资源分配的基本单元</p>
+<p>线程是进程执行的基本单元</p>
+</body></html>]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>内存</tag>
+        <tag>CPU</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HashMap与HashTable的区别</title>
     <url>/posts/MVEJAK.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><h2 id="区别">区别</h2>
@@ -3997,6 +3997,31 @@ Please instal1 or use the TRE or TDK that contains these missing components</p>
       </tags>
   </entry>
   <entry>
+    <title>springBoot项目打成的jar包无法获取resources下文件</title>
+    <url>/posts/3V4Q1GY.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><p>错误：</p>
+<blockquote>
+<p>cannot be resolved to absolute file path because it does not reside in the file system: jar:file:/U</p>
+</blockquote>
+<p>spring boot项目打成的 jar包无法获取src/main/resources下文件</p>
+<p><img data-src="https://xuemingde.com/pages/image/others/bdDMAq.png" alt=""><br>
+打成Jar后<br>
+<img data-src="https://xuemingde.com/pages/image/others/yC8St7.png" alt=""></p>
+<p>获取resources下的文件<br>
+<img data-src="https://xuemingde.com/pages/image/others/et123k.png" alt=""></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">ClassPathResource classPathResource = <span class="keyword">new</span> ClassPathResource(<span class="string">"img/tofflon-logo.png"</span>);</span><br><span class="line">URL url = classPathResource.getURL();</span><br><span class="line">Image image = Image.getInstance(url);</span><br></pre></td></tr></tbody></table></figure>
+</body></html>]]></content>
+      <categories>
+        <category>java</category>
+        <category>BUG</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>C</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>easypoi导入Excel表格报错</title>
     <url>/posts/HAXCJE.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><p>错误信息</p>
@@ -4022,31 +4047,6 @@ Please instal1 or use the TRE or TDK that contains these missing components</p>
         <tag>sql</tag>
         <tag>集合</tag>
         <tag>GC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>springBoot项目打成的jar包无法获取resources下文件</title>
-    <url>/posts/3V4Q1GY.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><p>错误：</p>
-<blockquote>
-<p>cannot be resolved to absolute file path because it does not reside in the file system: jar:file:/U</p>
-</blockquote>
-<p>spring boot项目打成的 jar包无法获取src/main/resources下文件</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/bdDMAq.png" alt=""><br>
-打成Jar后<br>
-<img data-src="https://xuemingde.com/pages/image/others/yC8St7.png" alt=""></p>
-<p>获取resources下的文件<br>
-<img data-src="https://xuemingde.com/pages/image/others/et123k.png" alt=""></p>
-<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">ClassPathResource classPathResource = <span class="keyword">new</span> ClassPathResource(<span class="string">"img/tofflon-logo.png"</span>);</span><br><span class="line">URL url = classPathResource.getURL();</span><br><span class="line">Image image = Image.getInstance(url);</span><br></pre></td></tr></tbody></table></figure>
-</body></html>]]></content>
-      <categories>
-        <category>java</category>
-        <category>BUG</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>C</tag>
-        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
@@ -7217,6 +7217,54 @@ JDK8后，元空间替换了永久代，元空间使用的是本地内存，还�
       </tags>
   </entry>
   <entry>
+    <title>ThreadLocal：线程中的全局变量</title>
+    <url>/posts/35CZGTE.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><p>最近接了一个新需求，业务场景上需要在原有基础上新增2个字段，接口新增参数意味着很多类和方法的逻辑都需要改变，需要先判断是否属于该业务场景，再做对应的逻辑。原本的打算是在入口处新增变量，在操作数据的时候进行逻辑判断将变量进行存储或查询。</p>
+<p>如果全链路都变更入参和结构，很明显代码上很不优雅，后续如果还要增加业务场景，又需要再改一遍。如果有一个方法可以传递全局变量，而且仅限于当前线程就好了。</p>
+<p>到此，会想到有两种解决方案：之前用的比较少的ThreadLocal或者使用redis缓存。考虑到新增字段都是些增删改查的操作，没有必要存到redis中，故使用ThreadLocal。</p>
+<h1><strong>一、ThreadLocal定义</strong></h1>
+<p>以微服务架构为例，服务提供方在收到调用方的请求后，会把这个请求分配给一个线程进行处理。一般来说，一个请求会一直由同一个线程处理，中间不会切换线程，所以如果有一个线程中共享的变量，可以当全局变量使用。</p>
+<p>ThreadLocal实现的就是一个线程中的全局变量，与真正的全局变量的区别在于ThreadLocal的变量是每个线程中的全局变量，也就是说不同线程访问到的值是不一样的。其填充的变量属于当前线程，该变量对于其他线程是隔离的。</p>
+<p>由定义可以发现，ThreadLocal有两个特性：每个Thread的变量只能由当前Thread使用；由于其他线程不可访问，则不存在多线程间共享的问题。</p>
+<h1><strong>二、修饰</strong></h1>
+<p>ThreadLocal提供了线程本地的实例，它与普通变量的区别在于，每个使用该变量的线程都会初始化一个完全独立的实例副本。</p>
+<p>ThreadLocal变量通常被private static修饰，这样的好处是当一个线程结束时，它所使用的ThreadLocal实例副本都可被回收，避免重复创建。坏处就是这样做可能正好导致内存泄漏。</p>
+<h1><strong>三、底层实现</strong></h1>
+<p>ThreadLocal最朴素的内部实现是Map&lt;threadlocal, Object&gt;，这是一个HashMap，又称为ThreadLocalMap。但Java源码并不是Map&lt;threadlocal, Object&gt;的实现。这是因为如果多个线程访问同一个map，这个map需要是线程安全的，构造比较麻烦。Java采用了更简单粗暴的做法：每个线程都有自己的ThreadLocal专属map，里面可以存放多个ThreadLocal变量，这样就解决了多线程同时操作一个map带来的多线程并发问题。</p>
+<p>因为要把ThreadLocal的变量当做全局变量使用，需要把变量与初始化函数写在通用的类中，如DDD领域模型中写在Common模块。</p>
+<p>具体的实现如下：</p>
+<figure class="highlight csharp"><table><tbody><tr><td class="code"><pre><span class="line">csharp</span><br><span class="line">复制代码<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ThreadLocalUtil</span> {</span><br><span class="line"> </span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="title">ThreadLocal</span>&lt;<span class="title">Integer</span>&gt; THREAD_LOCAL</span> = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">getScene</span>(<span class="params"></span>)</span> {</span><br><span class="line">       <span class="keyword">return</span> THREAD_LOCAL.<span class="keyword">get</span>();</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initScene</span>(<span class="params">Integer scene</span>)</span> {</span><br><span class="line">       <span class="keyword">if</span> (THREAD_LOCAL == <span class="literal">null</span>) {</span><br><span class="line">           THREAD_LOCAL = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line">       }</span><br><span class="line">       THREAD_LOCAL.<span class="keyword">set</span>(scene);</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">remove</span>(<span class="params"></span>)</span> {</span><br><span class="line">       THREAD_LOCAL.<span class="keyword">remove</span>();</span><br><span class="line">   }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h1>四、致命点</h1>
+<p>上面提到了的ThreadLocal会带来内存泄露的问题，深入分析下：</p>
+<p>一个ThreadLocal实例对应当前线程的一个对象实例，如果把ThreadLocal声明为某个类的实例变量不是静态变量，那么每次创建一个该类的实例就会导致一个新的对象实例被创建。而这些被创建的实例是同一个类的实例，于是同一个线程可能会访问到同一个类的不同实例，这即使不会导致错误，也会导致重复创建同样的对象。如果使用static修饰后，只要相应的类没有被垃圾回收掉，那么这个类就会持有相对应的ThreadLocal实例引用。</p>
+<p><img data-src="https://xuemingde.com/pages/image/2023/09/20/095015Mbi5fY.png" alt=""></p>
+<p>ThreadLocal自身并不存储值，而是作为一个key来让线程从ThreadLocal中获取value。ThreadLocalMap中的key是弱引用，所以jvm在垃圾回收时如果外部没有强引用来引用它，ThreadLocal必然会被回收。但是，作为ThreadLocalMap中的key，ThreadLocal被回收后，ThreadLocalMap就会存在null，但value却不为null。如果当前线程一直不结束或者线程结束后不被你销毁，这会产生内存泄露（已分配空间的堆内存由于某种原因未释放或无法释放导致系统内存浪费或程序运行变慢甚至系统奔溃）。</p>
+<p>因此，<strong>key弱引用并不是导致内存泄露的原因，而是因为ThreadLocalMap的生命周期与当前线程一样长，并且没有手动删除对应的value</strong>。</p>
+<p>解决的方法也很简单，只需要打破引用路径中的ThreadLocalMap对对象实例的引用即可。也就是在使用完ThreadLocal之后，必须调用ThreadLocal.remove()。</p>
+<h1><strong>延伸：</strong></h1>
+<p>为什么要将Map中的key设置为弱引用呢？</p>
+<p>实际上，设置key为弱引用能预防大多数内存泄露的情况。如果key使用强引用，引用的ThreadLocal对象被回收，但是ThreadLocalMap还持有ThreadLocal的强引用，如果没有手动删除，ThreadLocal不会被回收，也会导致内存泄露。设置为弱引用后，引用的ThreadLocal对象被回收，由于ThreadLocalMap持有ThreadLocal的弱引用，即使没有手动删除，ThreadLocal也会被java GC回收。value在下一次ThreadLocalMap调用set、get、remove的时候会被清除。</p>
+</body></html>]]></content>
+      <categories>
+        <category>java</category>
+        <category>并发&amp;多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>C</tag>
+        <tag>内存</tag>
+        <tag>堆</tag>
+        <tag>全局</tag>
+        <tag>函数</tag>
+        <tag>变量</tag>
+        <tag>多线程</tag>
+        <tag>并发</tag>
+        <tag>Redis</tag>
+        <tag>GC</tag>
+        <tag>JVM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java并发常见知识点&amp;面试题总结_进阶篇</title>
     <url>/posts/WTSYSE.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><h2 id="synchronized-关键字">synchronized 关键字</h2>
@@ -7643,54 +7691,6 @@ JDK8后，元空间替换了永久代，元空间使用的是本地内存，还�
         <tag>GC</tag>
         <tag>面试</tag>
         <tag>Spring</tag>
-        <tag>JVM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ThreadLocal：线程中的全局变量</title>
-    <url>/posts/35CZGTE.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><p>最近接了一个新需求，业务场景上需要在原有基础上新增2个字段，接口新增参数意味着很多类和方法的逻辑都需要改变，需要先判断是否属于该业务场景，再做对应的逻辑。原本的打算是在入口处新增变量，在操作数据的时候进行逻辑判断将变量进行存储或查询。</p>
-<p>如果全链路都变更入参和结构，很明显代码上很不优雅，后续如果还要增加业务场景，又需要再改一遍。如果有一个方法可以传递全局变量，而且仅限于当前线程就好了。</p>
-<p>到此，会想到有两种解决方案：之前用的比较少的ThreadLocal或者使用redis缓存。考虑到新增字段都是些增删改查的操作，没有必要存到redis中，故使用ThreadLocal。</p>
-<h1><strong>一、ThreadLocal定义</strong></h1>
-<p>以微服务架构为例，服务提供方在收到调用方的请求后，会把这个请求分配给一个线程进行处理。一般来说，一个请求会一直由同一个线程处理，中间不会切换线程，所以如果有一个线程中共享的变量，可以当全局变量使用。</p>
-<p>ThreadLocal实现的就是一个线程中的全局变量，与真正的全局变量的区别在于ThreadLocal的变量是每个线程中的全局变量，也就是说不同线程访问到的值是不一样的。其填充的变量属于当前线程，该变量对于其他线程是隔离的。</p>
-<p>由定义可以发现，ThreadLocal有两个特性：每个Thread的变量只能由当前Thread使用；由于其他线程不可访问，则不存在多线程间共享的问题。</p>
-<h1><strong>二、修饰</strong></h1>
-<p>ThreadLocal提供了线程本地的实例，它与普通变量的区别在于，每个使用该变量的线程都会初始化一个完全独立的实例副本。</p>
-<p>ThreadLocal变量通常被private static修饰，这样的好处是当一个线程结束时，它所使用的ThreadLocal实例副本都可被回收，避免重复创建。坏处就是这样做可能正好导致内存泄漏。</p>
-<h1><strong>三、底层实现</strong></h1>
-<p>ThreadLocal最朴素的内部实现是Map&lt;threadlocal, Object&gt;，这是一个HashMap，又称为ThreadLocalMap。但Java源码并不是Map&lt;threadlocal, Object&gt;的实现。这是因为如果多个线程访问同一个map，这个map需要是线程安全的，构造比较麻烦。Java采用了更简单粗暴的做法：每个线程都有自己的ThreadLocal专属map，里面可以存放多个ThreadLocal变量，这样就解决了多线程同时操作一个map带来的多线程并发问题。</p>
-<p>因为要把ThreadLocal的变量当做全局变量使用，需要把变量与初始化函数写在通用的类中，如DDD领域模型中写在Common模块。</p>
-<p>具体的实现如下：</p>
-<figure class="highlight csharp"><table><tbody><tr><td class="code"><pre><span class="line">csharp</span><br><span class="line">复制代码<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ThreadLocalUtil</span> {</span><br><span class="line"> </span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="title">ThreadLocal</span>&lt;<span class="title">Integer</span>&gt; THREAD_LOCAL</span> = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">getScene</span>(<span class="params"></span>)</span> {</span><br><span class="line">       <span class="keyword">return</span> THREAD_LOCAL.<span class="keyword">get</span>();</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initScene</span>(<span class="params">Integer scene</span>)</span> {</span><br><span class="line">       <span class="keyword">if</span> (THREAD_LOCAL == <span class="literal">null</span>) {</span><br><span class="line">           THREAD_LOCAL = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line">       }</span><br><span class="line">       THREAD_LOCAL.<span class="keyword">set</span>(scene);</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">remove</span>(<span class="params"></span>)</span> {</span><br><span class="line">       THREAD_LOCAL.<span class="keyword">remove</span>();</span><br><span class="line">   }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<h1>四、致命点</h1>
-<p>上面提到了的ThreadLocal会带来内存泄露的问题，深入分析下：</p>
-<p>一个ThreadLocal实例对应当前线程的一个对象实例，如果把ThreadLocal声明为某个类的实例变量不是静态变量，那么每次创建一个该类的实例就会导致一个新的对象实例被创建。而这些被创建的实例是同一个类的实例，于是同一个线程可能会访问到同一个类的不同实例，这即使不会导致错误，也会导致重复创建同样的对象。如果使用static修饰后，只要相应的类没有被垃圾回收掉，那么这个类就会持有相对应的ThreadLocal实例引用。</p>
-<p><img data-src="https://xuemingde.com/pages/image/2023/09/20/095015Mbi5fY.png" alt=""></p>
-<p>ThreadLocal自身并不存储值，而是作为一个key来让线程从ThreadLocal中获取value。ThreadLocalMap中的key是弱引用，所以jvm在垃圾回收时如果外部没有强引用来引用它，ThreadLocal必然会被回收。但是，作为ThreadLocalMap中的key，ThreadLocal被回收后，ThreadLocalMap就会存在null，但value却不为null。如果当前线程一直不结束或者线程结束后不被你销毁，这会产生内存泄露（已分配空间的堆内存由于某种原因未释放或无法释放导致系统内存浪费或程序运行变慢甚至系统奔溃）。</p>
-<p>因此，<strong>key弱引用并不是导致内存泄露的原因，而是因为ThreadLocalMap的生命周期与当前线程一样长，并且没有手动删除对应的value</strong>。</p>
-<p>解决的方法也很简单，只需要打破引用路径中的ThreadLocalMap对对象实例的引用即可。也就是在使用完ThreadLocal之后，必须调用ThreadLocal.remove()。</p>
-<h1><strong>延伸：</strong></h1>
-<p>为什么要将Map中的key设置为弱引用呢？</p>
-<p>实际上，设置key为弱引用能预防大多数内存泄露的情况。如果key使用强引用，引用的ThreadLocal对象被回收，但是ThreadLocalMap还持有ThreadLocal的强引用，如果没有手动删除，ThreadLocal不会被回收，也会导致内存泄露。设置为弱引用后，引用的ThreadLocal对象被回收，由于ThreadLocalMap持有ThreadLocal的弱引用，即使没有手动删除，ThreadLocal也会被java GC回收。value在下一次ThreadLocalMap调用set、get、remove的时候会被清除。</p>
-</body></html>]]></content>
-      <categories>
-        <category>java</category>
-        <category>并发&amp;多线程</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>C</tag>
-        <tag>内存</tag>
-        <tag>堆</tag>
-        <tag>全局</tag>
-        <tag>函数</tag>
-        <tag>变量</tag>
-        <tag>多线程</tag>
-        <tag>并发</tag>
-        <tag>Redis</tag>
-        <tag>GC</tag>
         <tag>JVM</tag>
       </tags>
   </entry>
@@ -12052,37 +12052,6 @@ JDK8后，元空间替换了永久代，元空间使用的是本地内存，还�
       </tags>
   </entry>
   <entry>
-    <title>Mysql复制插入数据</title>
-    <url>/posts/1H0J6ZZ.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><h2 id="新建表">新建表</h2>
-<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `t` (</span><br><span class="line">  `id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `age` <span class="type">int</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></tbody></table></figure>
-<blockquote>
-<p>主键设为自增</p>
-</blockquote>
-<h2 id="创建两条数据">创建两条数据</h2>
-<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t <span class="keyword">VALUES</span> (<span class="keyword">null</span>,<span class="number">30</span>, <span class="string">'c'</span>),(<span class="keyword">null</span>,<span class="number">22</span>, <span class="string">'d'</span>); </span><br></pre></td></tr></tbody></table></figure>
-<h2 id="复制插入">复制插入</h2>
-<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t </span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">null</span>,age,name</span><br><span class="line"><span class="keyword">FROM</span> t</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	age <span class="operator">&gt;</span> <span class="number">1</span>;</span><br></pre></td></tr></tbody></table></figure>
-<p><img data-src="https://xuemingde.com/pages/image/others/pIBzxW.png" alt=""></p>
-<h2 id="ID为UUID时。">ID为UUID时。</h2>
-<p>可用 REPLACE 函数将字符串中的某个字符替换即可。</p>
-<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t </span><br><span class="line"><span class="keyword">SELECT</span> REPLACE(id,<span class="string">'a'</span>,<span class="string">'b'</span>),age,name</span><br><span class="line"><span class="keyword">FROM</span> t</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	age <span class="operator">&gt;</span> <span class="number">1</span>;  </span><br></pre></td></tr></tbody></table></figure>
-<p>将ID中的a替换成b</p>
-<h2 id="返回值时间加1个月">返回值时间加1个月</h2>
-<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line">DATE_ADD( create_time, <span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MONTH</span> ) </span><br></pre></td></tr></tbody></table></figure>
-<p>create_time 为返回值，在原来的时间上加一个月。</p>
-</body></html>]]></content>
-      <categories>
-        <category>数据库</category>
-        <category>Mysql</category>
-      </categories>
-      <tags>
-        <tag>C</tag>
-        <tag>函数</tag>
-        <tag>sql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL的事务隔离级别有哪些</title>
     <url>/posts/Y4WPCX.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><p>MYSQL有四大隔离级别，分别是：读未提交，读已提交，可重复读，串行化。</p>
@@ -12131,6 +12100,37 @@ JDK8后，元空间替换了永久代，元空间使用的是本地内存，还�
         <tag>锁</tag>
         <tag>算法</tag>
         <tag>事务</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mysql复制插入数据</title>
+    <url>/posts/1H0J6ZZ.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><h2 id="新建表">新建表</h2>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `t` (</span><br><span class="line">  `id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `age` <span class="type">int</span> <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>主键设为自增</p>
+</blockquote>
+<h2 id="创建两条数据">创建两条数据</h2>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t <span class="keyword">VALUES</span> (<span class="keyword">null</span>,<span class="number">30</span>, <span class="string">'c'</span>),(<span class="keyword">null</span>,<span class="number">22</span>, <span class="string">'d'</span>); </span><br></pre></td></tr></tbody></table></figure>
+<h2 id="复制插入">复制插入</h2>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t </span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">null</span>,age,name</span><br><span class="line"><span class="keyword">FROM</span> t</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	age <span class="operator">&gt;</span> <span class="number">1</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p><img data-src="https://xuemingde.com/pages/image/others/pIBzxW.png" alt=""></p>
+<h2 id="ID为UUID时。">ID为UUID时。</h2>
+<p>可用 REPLACE 函数将字符串中的某个字符替换即可。</p>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> t </span><br><span class="line"><span class="keyword">SELECT</span> REPLACE(id,<span class="string">'a'</span>,<span class="string">'b'</span>),age,name</span><br><span class="line"><span class="keyword">FROM</span> t</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	age <span class="operator">&gt;</span> <span class="number">1</span>;  </span><br></pre></td></tr></tbody></table></figure>
+<p>将ID中的a替换成b</p>
+<h2 id="返回值时间加1个月">返回值时间加1个月</h2>
+<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line">DATE_ADD( create_time, <span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MONTH</span> ) </span><br></pre></td></tr></tbody></table></figure>
+<p>create_time 为返回值，在原来的时间上加一个月。</p>
+</body></html>]]></content>
+      <categories>
+        <category>数据库</category>
+        <category>Mysql</category>
+      </categories>
+      <tags>
+        <tag>C</tag>
+        <tag>函数</tag>
+        <tag>sql</tag>
       </tags>
   </entry>
   <entry>
@@ -14176,40 +14176,6 @@ fromIndex–开始搜索的索引。</p>
       </tags>
   </entry>
   <entry>
-    <title>算法习题02：选择排序</title>
-    <url>/posts/13M04H2.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><p>算法图解：选择排序</p>
-<blockquote>
-<p>截图来自《算法图解》这本书</p>
-</blockquote>
-<p>它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20031658147403.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20241658147424.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20441658147444.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20001658147460.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20221658147482.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20471658147507.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20071658147527.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20241658147544.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20401658147560.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20531658147573.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20061658145726.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20011658145781.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20181658145798.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20421658145822.png" alt=""></p>
-<p>代码实现：</p>
-<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 从小到大排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ints</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] test(<span class="keyword">int</span>[] ints){</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ints.length -<span class="number">1</span>; i++) {</span><br><span class="line">        <span class="keyword">int</span> floor =  ints[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; ints.length - <span class="number">1</span>; j++) {</span><br><span class="line">            <span class="keyword">if</span> (ints[j] &lt; floor){</span><br><span class="line">                floor = ints[j];</span><br><span class="line">                ints[j] = ints[i];</span><br><span class="line">                ints[i] = floor;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> ints;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-</body></html>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>基础</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>C</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>算法习题01：二分查找</title>
     <url>/posts/32V7A68.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><p>算法图解：二分查找</p>
@@ -14245,6 +14211,40 @@ fromIndex–开始搜索的索引。</p>
         <tag>数组</tag>
         <tag>C</tag>
         <tag>集合</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法习题02：选择排序</title>
+    <url>/posts/13M04H2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><html><head></head><body><p>算法图解：选择排序</p>
+<blockquote>
+<p>截图来自《算法图解》这本书</p>
+</blockquote>
+<p>它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20031658147403.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20241658147424.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20441658147444.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20001658147460.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20221658147482.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20471658147507.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20071658147527.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20241658147544.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20401658147560.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20531658147573.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20061658145726.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20011658145781.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20181658145798.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/2022/07/18/20421658145822.png" alt=""></p>
+<p>代码实现：</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 从小到大排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ints</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] test(<span class="keyword">int</span>[] ints){</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ints.length -<span class="number">1</span>; i++) {</span><br><span class="line">        <span class="keyword">int</span> floor =  ints[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; ints.length - <span class="number">1</span>; j++) {</span><br><span class="line">            <span class="keyword">if</span> (ints[j] &lt; floor){</span><br><span class="line">                floor = ints[j];</span><br><span class="line">                ints[j] = ints[i];</span><br><span class="line">                ints[i] = floor;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> ints;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</body></html>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>基础</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>C</tag>
       </tags>
   </entry>
   <entry>
