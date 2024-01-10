@@ -28,8 +28,8 @@
 <meta property="og:url" content="https://blog.xuemingde.com/posts/1Y4GWTQ.html">
 <meta property="og:site_name" content="沉默的猴子">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-10T01:54:42.215Z">
-<meta property="article:modified_time" content="2024-01-10T01:54:42.215Z">
+<meta property="article:published_time" content="2024-01-10T13:55:35.221Z">
+<meta property="article:modified_time" content="2024-01-10T13:55:35.222Z">
 <meta property="article:author" content="meadel">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="C">
@@ -43,11 +43,13 @@
 <meta property="article:tag" content="变量">
 <meta property="article:tag" content="bug">
 <meta property="article:tag" content="Qt">
+<meta property="article:tag" content="sql">
 <meta property="article:tag" content="多线程">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="Widget">
 <meta property="article:tag" content="GC">
 <meta property="article:tag" content="索引">
+<meta property="article:tag" content="pdf">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.xuemingde.com/posts/1Y4GWTQ.html">
@@ -236,7 +238,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2024-01-10 09:54:42" itemprop="dateCreated datePublished" datetime="2024-01-10T09:54:42+08:00">2024-01-10</time>
+              <time title="创建时间：2024-01-10 21:55:35" itemprop="dateCreated datePublished" datetime="2024-01-10T21:55:35+08:00">2024-01-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -289,7 +291,7 @@
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>20 分钟</span>
+              <span>21 分钟</span>
             </span>
 
         </div>
@@ -704,6 +706,11 @@
 <p>Widgets must be created in the GUI thread.", file kernel\qwidget.cpp, line 1145</p>
 </blockquote>
 <p>在Qt中，QWidget及其派生类的对象必须在GUI线程中进行创建和操作。</p>
+<h2 id="向PDF中插入图片并旋转90度">向PDF中插入图片并旋转90度</h2>
+<p>要在<code>SqlThread::add_widget</code>函数中将绘制的<code>curve_pix</code>旋转90度，你可以使用<code>QTransform</code>类来实现。以下是修改后的代码示例：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SqlThread::add_widget</span><span class="params">(QPixmap curve_pix)</span> </span>{</span><br><span class="line">    curve_pix = curve_pix.<span class="built_in">scaled</span>(PDFPAGE_WIDTH, curve_pix.<span class="built_in">height</span>() * PAGE_SCALE_WIDTH,</span><br><span class="line">                                 Qt::IgnoreAspectRatio);</span><br><span class="line"></span><br><span class="line">    QPixmap rotatedPixmap = curve_pix.<span class="built_in">transformed</span>(<span class="built_in">QTransform</span>().<span class="built_in">rotate</span>(<span class="number">90</span>));</span><br><span class="line"></span><br><span class="line">    pPainter-&gt;<span class="built_in">drawPixmap</span>(<span class="number">0</span>, TEXT_HEIGHT, rotatedPixmap);</span><br><span class="line">    TEXT_HEIGHT += rotatedPixmap.<span class="built_in">height</span>();</span><br><span class="line">    GENERAL_HEIGHT += rotatedPixmap.<span class="built_in">height</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>在这个示例中，我们首先对<code>curve_pix</code>进行缩放以适应绘制区域。然后，使用<code>curve_pix.transformed(QTransform().rotate(90))</code>将<code>curve_pix</code>旋转90度得到<code>rotatedPixmap</code>。最后，使用<code>pPainter-&gt;drawPixmap</code>绘制旋转后的<code>rotatedPixmap</code>。</p>
+<p>通过这种方式，你可以在<code>SqlThread::add_widget</code>函数中将绘制的<code>curve_pix</code>旋转90度后进行绘制。<strong>请注意，在非GUI线程中进行绘制操作时，确保已正确设置绘图设备和绘图上下文。</strong></p>
 
     </div>
    <div>
@@ -728,13 +735,13 @@
       <div class="popular-posts-title"><a href="/posts/3H2SSQM.html" rel="bookmark">Qt开发学习笔记03</a></div>
     </li>
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2AJQNK2.html" rel="bookmark">Qt开发学习笔记02</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/2VB0MVT.html" rel="bookmark">C++开发学习笔记1</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/QVJ0P0.html" rel="bookmark">C++开发学习笔记2</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1CBWCJP.html" rel="bookmark">C++开发学习笔记3</a></div>
     </li>
   </ul>
 
@@ -791,11 +798,13 @@
               <a href="/tags/%E5%8F%98%E9%87%8F/" rel="tag"><i class="fa fa-tag"></i> 变量</a>
               <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i> bug</a>
               <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
+              <a href="/tags/sql/" rel="tag"><i class="fa fa-tag"></i> sql</a>
               <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
               <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
               <a href="/tags/Widget/" rel="tag"><i class="fa fa-tag"></i> Widget</a>
               <a href="/tags/GC/" rel="tag"><i class="fa fa-tag"></i> GC</a>
               <a href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag"><i class="fa fa-tag"></i> 索引</a>
+              <a href="/tags/pdf/" rel="tag"><i class="fa fa-tag"></i> pdf</a>
           </div>
 
         
@@ -887,7 +896,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E9%9D%99%E6%80%81%E5%85%A8%E5%B1%80%E5%B8%B8%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">Qt C++ 静态全局常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%AD%90%E7%AA%97%E5%8F%A3%E5%B9%B6%E5%85%B3%E9%97%AD"><span class="nav-number">2.</span> <span class="nav-text">查找子窗口并关闭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QDialog-%E7%9A%84show%E5%92%8Cexec%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">QDialog 的show和exec的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-isNumber-%E4%B8%8E-isDigit-%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">Qt isNumber 与 isDigit 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QChar-%E7%B1%BB%E4%B8%AD%E6%8F%90%E4%BE%9B%E7%94%A8%E4%BA%8E%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">QChar 类中提供用于判断字符类型的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QString-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">QString 常用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QLineEdit-%E5%8E%BB%E6%8E%89%E9%BC%A0%E6%A0%87%E7%84%A6%E7%82%B9"><span class="nav-number">7.</span> <span class="nav-text">QLineEdit 去掉鼠标焦点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C"><span class="nav-number">8.</span> <span class="nav-text">添加阴影效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QtConcurrent-%E7%9A%84%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">QtConcurrent 的异步处理方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80%E6%98%AF%E5%90%A6%E8%83%BDping%E9%80%9A%E8%BF%87"><span class="nav-number">10.</span> <span class="nav-text">IP地址是否能ping通过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QTimer-%E7%9A%84setSingleShot-%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">11.</span> <span class="nav-text">QTimer 的setSingleShot 作用是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E5%9C%A8Windows%E4%B8%8B%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4"><span class="nav-number">12.</span> <span class="nav-text">Qt在Windows下部署步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E4%BD%BF%E7%94%A8%E9%BC%A0%E6%A0%87%E6%88%96%E8%80%85%E8%A7%A6%E6%91%B8%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">13.</span> <span class="nav-text">Qt 使用鼠标或者触摸滑动窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E8%BE%93%E5%85%A5%E6%A1%86-Debug%E5%8F%AF%E4%BB%A5%E6%98%BE%E7%A4%BA-Release%E4%B8%8D%E6%98%BE%E7%A4%BA"><span class="nav-number">14.</span> <span class="nav-text">Qt输入框 Debug可以显示 Release不显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E7%AE%80%E5%8D%95%E7%9A%84%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86"><span class="nav-number">15.</span> <span class="nav-text">Qt C++ 简单的加密解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#progressBar-%E4%BF%AE%E6%94%B9%E8%BF%9B%E5%BA%A6%E9%A2%9C%E8%89%B2"><span class="nav-number">16.</span> <span class="nav-text">progressBar 修改进度颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QString-number-%E6%96%B9%E6%B3%95"><span class="nav-number">17.</span> <span class="nav-text">QString number 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E5%A6%82%E4%BD%95%E8%BE%93%E5%87%BA%E5%88%B0%E6%96%87%E4%BB%B6"><span class="nav-number">18.</span> <span class="nav-text">日志如何输出到文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E9%9D%9EGUI%E7%BA%BF%E7%A8%8B%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%88%96%E6%93%8D%E4%BD%9C%E4%BA%86QWidge-%E5%BC%95%E5%8F%91%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-number">19.</span> <span class="nav-text">在非GUI线程中创建或操作了QWidge 引发的错误</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E9%9D%99%E6%80%81%E5%85%A8%E5%B1%80%E5%B8%B8%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">Qt C++ 静态全局常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%AD%90%E7%AA%97%E5%8F%A3%E5%B9%B6%E5%85%B3%E9%97%AD"><span class="nav-number">2.</span> <span class="nav-text">查找子窗口并关闭</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QDialog-%E7%9A%84show%E5%92%8Cexec%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">QDialog 的show和exec的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-isNumber-%E4%B8%8E-isDigit-%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">Qt isNumber 与 isDigit 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QChar-%E7%B1%BB%E4%B8%AD%E6%8F%90%E4%BE%9B%E7%94%A8%E4%BA%8E%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">QChar 类中提供用于判断字符类型的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QString-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">QString 常用函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QLineEdit-%E5%8E%BB%E6%8E%89%E9%BC%A0%E6%A0%87%E7%84%A6%E7%82%B9"><span class="nav-number">7.</span> <span class="nav-text">QLineEdit 去掉鼠标焦点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C"><span class="nav-number">8.</span> <span class="nav-text">添加阴影效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QtConcurrent-%E7%9A%84%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">QtConcurrent 的异步处理方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80%E6%98%AF%E5%90%A6%E8%83%BDping%E9%80%9A%E8%BF%87"><span class="nav-number">10.</span> <span class="nav-text">IP地址是否能ping通过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QTimer-%E7%9A%84setSingleShot-%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">11.</span> <span class="nav-text">QTimer 的setSingleShot 作用是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E5%9C%A8Windows%E4%B8%8B%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4"><span class="nav-number">12.</span> <span class="nav-text">Qt在Windows下部署步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-%E4%BD%BF%E7%94%A8%E9%BC%A0%E6%A0%87%E6%88%96%E8%80%85%E8%A7%A6%E6%91%B8%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">13.</span> <span class="nav-text">Qt 使用鼠标或者触摸滑动窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E8%BE%93%E5%85%A5%E6%A1%86-Debug%E5%8F%AF%E4%BB%A5%E6%98%BE%E7%A4%BA-Release%E4%B8%8D%E6%98%BE%E7%A4%BA"><span class="nav-number">14.</span> <span class="nav-text">Qt输入框 Debug可以显示 Release不显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt-C-%E7%AE%80%E5%8D%95%E7%9A%84%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86"><span class="nav-number">15.</span> <span class="nav-text">Qt C++ 简单的加密解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#progressBar-%E4%BF%AE%E6%94%B9%E8%BF%9B%E5%BA%A6%E9%A2%9C%E8%89%B2"><span class="nav-number">16.</span> <span class="nav-text">progressBar 修改进度颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QString-number-%E6%96%B9%E6%B3%95"><span class="nav-number">17.</span> <span class="nav-text">QString number 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E5%A6%82%E4%BD%95%E8%BE%93%E5%87%BA%E5%88%B0%E6%96%87%E4%BB%B6"><span class="nav-number">18.</span> <span class="nav-text">日志如何输出到文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E9%9D%9EGUI%E7%BA%BF%E7%A8%8B%E4%B8%AD%E5%88%9B%E5%BB%BA%E6%88%96%E6%93%8D%E4%BD%9C%E4%BA%86QWidge-%E5%BC%95%E5%8F%91%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-number">19.</span> <span class="nav-text">在非GUI线程中创建或操作了QWidge 引发的错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91PDF%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E5%B9%B6%E6%97%8B%E8%BD%AC90%E5%BA%A6"><span class="nav-number">20.</span> <span class="nav-text">向PDF中插入图片并旋转90度</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -970,7 +979,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">961k</span>
+    <span title="站点总字数">962k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
