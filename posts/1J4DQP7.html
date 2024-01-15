@@ -33,12 +33,12 @@
 <meta property="article:published_time" content="2022-08-13T08:46:48.933Z">
 <meta property="article:modified_time" content="2023-10-19T00:27:05.440Z">
 <meta property="article:author" content="meadel">
+<meta property="article:tag" content="Java">
 <meta property="article:tag" content="C">
+<meta property="article:tag" content="指针">
 <meta property="article:tag" content="多线程">
 <meta property="article:tag" content="并发">
 <meta property="article:tag" content="锁">
-<meta property="article:tag" content="指针">
-<meta property="article:tag" content="Java">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://xuemingde.com/pages/image/others/L03Qu6.png">
@@ -289,53 +289,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h1>锁的四种状态</h1>
-<p><strong>Java锁的四种状态就是Synchronized的升级过程</strong></p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h1 id="锁的四种状态"><a href="#锁的四种状态" class="headerlink" title="锁的四种状态"></a>锁的四种状态</h1><p><strong>Java锁的四种状态就是Synchronized的升级过程</strong></p>
 <ol>
 <li>刚new出来没有锁的状态</li>
-<li>偏向锁</li>
+<li>偏向锁 </li>
 <li>轻量级锁</li>
 <li>重量级锁</li>
 </ol>
-<h2 id="刚new出来没有锁的状态">刚new出来没有锁的状态</h2>
-<p>也有人称为无锁状态，但是要慎用。</p>
+<h2 id="刚new出来没有锁的状态"><a href="#刚new出来没有锁的状态" class="headerlink" title="刚new出来没有锁的状态"></a>刚new出来没有锁的状态</h2><p>也有人称为无锁状态，但是要慎用。</p>
 <p>无锁原来的意思是没有重量级锁，偏向锁，CAS都被称为无锁。其实都是概念上的问题，没必要纠结。</p>
 <blockquote>
 <p>新new出来的对象布局，可看 <strong>Java对象布局</strong> 这篇文章</p>
 </blockquote>
-<h2 id="偏向锁">偏向锁</h2>
-<p>偏向锁严格来说不是一种锁。</p>
+<h2 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h2><p>偏向锁严格来说不是一种锁。</p>
 <p>不存在所竞争的过程，当第一个线程来了，这把锁就属于这个线程的，在这个线程持有这把锁的时候，有另一个线程来了，就会产生锁竞争的关系，于是就是进行锁升级，升级为轻量级锁，CAS。</p>
 <p><strong>为什么要有偏向锁？</strong></p>
 <p>如果一段代码百分七八十的时间都是一个线程在请求，每一次请求都会经过锁竞争的过程，这样会降低效率。如果有了偏向锁，就会减少锁竞争，可以提高效率。如果一旦出现了锁竞争，就会进行锁升级。</p>
-<h2 id="轻量级锁">轻量级锁</h2>
-<p>偏向锁考虑的是有同步无竞争时程序的效率，而轻量级锁考虑的是竞争锁对象的线程不多，而且线程持有锁的时间也不长的情景。</p>
+<h2 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h2><p>偏向锁考虑的是有同步无竞争时程序的效率，而轻量级锁考虑的是竞争锁对象的线程不多，而且线程持有锁的时间也不长的情景。</p>
 <p><strong>什么时候偏向锁升级为轻量级锁？</strong></p>
 <p>当发生了锁竞争的时候，偏向锁就会升级为轻量级锁。</p>
-<h2 id="重量级锁">重量级锁</h2>
-<p>竞争锁的线程太多，就会被进入队列里，升级为重量级锁。</p>
+<h2 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h2><p>竞争锁的线程太多，就会被进入队列里，升级为重量级锁。</p>
 <p><strong>什么时候轻量级锁升级为重量级锁？</strong></p>
 <ol>
 <li>判断循环次数。</li>
 <li>判断竞争锁的线程数。</li>
 </ol>
-<h2 id="锁对比">锁对比</h2>
-<p><img data-src="https://xuemingde.com/pages/image/others/L03Qu6.png" alt=""></p>
-<h1>锁升级过程</h1>
-<p><img data-src="https://xuemingde.com/pages/image/others/EYimRi.png" alt=""></p>
+<h2 id="锁对比"><a href="#锁对比" class="headerlink" title="锁对比"></a>锁对比</h2><p> <img data-src="https://xuemingde.com/pages/image/others/L03Qu6.png" alt="L03Qu6"></p>
+<h1 id="锁升级过程"><a href="#锁升级过程" class="headerlink" title="锁升级过程"></a>锁升级过程</h1><p><img data-src="https://xuemingde.com/pages/image/others/EYimRi.png" alt="EYimRi"></p>
 <p>Java中的锁有多种类型，主要包括无锁、偏向锁、轻量级锁和重量级锁。这些锁的升级过程如下：</p>
 <ol>
-<li>
-<p>无锁状态（Unlocked）：当一个线程访问一个没有被锁定的对象时，它处于无锁状态。</p>
+<li><p>无锁状态（Unlocked）：当一个线程访问一个没有被锁定的对象时，它处于无锁状态。</p>
 </li>
-<li>
-<p>偏向锁状态（Biased Locking）：当一个线程获得了一个对象的锁，并且在后续的执行过程中没有其他线程竞争这个锁时，该锁会升级为偏向锁。偏向锁的目的是消除无竞争情况下的同步操作，提高性能。</p>
+<li><p>偏向锁状态（Biased Locking）：当一个线程获得了一个对象的锁，并且在后续的执行过程中没有其他线程竞争这个锁时，该锁会升级为偏向锁。偏向锁的目的是消除无竞争情况下的同步操作，提高性能。</p>
 </li>
-<li>
-<p>轻量级锁状态（Lightweight Locking）：如果一个线程尝试获取一个偏向锁失败，那么它会通过CAS（Compare and Swap）操作将对象头中的Mark Word 字段替换为指向锁记录的指针，并将锁记录的Owner字段设为当前线程ID。此时，该锁就升级为轻量级锁。轻量级锁使用自旋锁的形式，避免线程的上下文切换，提高性能。</p>
+<li><p>轻量级锁状态（Lightweight Locking）：如果一个线程尝试获取一个偏向锁失败，那么它会通过CAS（Compare and Swap）操作将对象头中的Mark Word 字段替换为指向锁记录的指针，并将锁记录的Owner字段设为当前线程ID。此时，该锁就升级为轻量级锁。轻量级锁使用自旋锁的形式，避免线程的上下文切换，提高性能。</p>
 </li>
-<li>
-<p>重量级锁状态（Heavyweight Locking）：轻量级锁升级为重量级锁是因为自旋操作未能成功。在多线程竞争激烈的情况下，为了保证数据的一致性和避免资源的浪费，JVM会将轻量级锁升级为重量级锁。重量级锁会让其他线程进入阻塞状态，并且使用操作系统的信号量机制来实现锁的互斥。</p>
+<li><p>重量级锁状态（Heavyweight Locking）：轻量级锁升级为重量级锁是因为自旋操作未能成功。在多线程竞争激烈的情况下，为了保证数据的一致性和避免资源的浪费，JVM会将轻量级锁升级为重量级锁。重量级锁会让其他线程进入阻塞状态，并且使用操作系统的信号量机制来实现锁的互斥。</p>
 </li>
 </ol>
 <p>需要注意的是，锁的升级过程是动态的，根据竞争情况和线程执行的状态进行相应的调整。这种锁的升级过程可以提高并发性能，在无竞争情况下减少不必要的同步开销，但在竞争激烈的情况下可能会影响性能。因此，在使用锁时需要根据具体场景和需求合理选择适当的锁类型。</p>
@@ -373,10 +362,10 @@
       <div class="popular-posts-title"><a href="/posts/3N8921N.html" rel="bookmark">彻底讲透Elasticsearch</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
+      <div class="popular-posts-title"><a href="/posts/2TD7P25.html" rel="bookmark">Volatile的概念</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/3WWPT6W.html" rel="bookmark">聊聊ConcurrentHashMap</a></div>
+      <div class="popular-posts-title"><a href="/posts/39H1R44.html" rel="bookmark">new Object()到底占用几个字节</a></div>
     </li>
   </ul>
 
@@ -421,12 +410,12 @@
       <footer class="post-footer">
           
           <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+              <a href="/tags/%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
               <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
               <a href="/tags/%E5%B9%B6%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> 并发</a>
               <a href="/tags/%E9%94%81/" rel="tag"><i class="fa fa-tag"></i> 锁</a>
-              <a href="/tags/%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
-              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
               <a href="/tags/JVM/" rel="tag"><i class="fa fa-tag"></i> JVM</a>
           </div>
 
@@ -522,7 +511,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">锁的四种状态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9Anew%E5%87%BA%E6%9D%A5%E6%B2%A1%E6%9C%89%E9%94%81%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">1.1.</span> <span class="nav-text">刚new出来没有锁的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%8F%E5%90%91%E9%94%81"><span class="nav-number">1.2.</span> <span class="nav-text">偏向锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">1.3.</span> <span class="nav-text">轻量级锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">1.4.</span> <span class="nav-text">重量级锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%81%E5%AF%B9%E6%AF%94"><span class="nav-number">1.5.</span> <span class="nav-text">锁对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">锁升级过程</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%81%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%8A%B6%E6%80%81"><span class="nav-number">1.</span> <span class="nav-text">锁的四种状态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9Anew%E5%87%BA%E6%9D%A5%E6%B2%A1%E6%9C%89%E9%94%81%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">1.1.</span> <span class="nav-text">刚new出来没有锁的状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%8F%E5%90%91%E9%94%81"><span class="nav-number">1.2.</span> <span class="nav-text">偏向锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">1.3.</span> <span class="nav-text">轻量级锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">1.4.</span> <span class="nav-text">重量级锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%81%E5%AF%B9%E6%AF%94"><span class="nav-number">1.5.</span> <span class="nav-text">锁对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%81%E5%8D%87%E7%BA%A7%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">锁升级过程</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -605,13 +594,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">963k</span>
+    <span title="站点总字数">954k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">14:36</span>
+    <span title="站点阅读时长">14:28</span>
 </div>
 
 <div>
