@@ -1073,7 +1073,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/index.html</loc>
+    <loc>https://blog.xuemingde.com/tags/index.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1082,7 +1082,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/index.html</loc>
+    <loc>https://blog.xuemingde.com/categories/index.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1543,7 +1543,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/pdf/</loc>
+    <loc>https://blog.xuemingde.com/tags/Mysql/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1564,41 +1564,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/%E7%B4%A2%E5%BC%95/</loc>
-    <lastmod>2024-01-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2024-01-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/tags/GC/</loc>
-    <lastmod>2024-01-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/tags/Widget/</loc>
-    <lastmod>2024-01-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/tags/Redis/</loc>
-    <lastmod>2024-01-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/tags/%E5%B9%B6%E5%8F%91/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -1606,14 +1571,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/Mysql/</loc>
+    <loc>https://blog.xuemingde.com/tags/%E9%94%81/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/%E9%94%81/</loc>
+    <loc>https://blog.xuemingde.com/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1649,6 +1614,41 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/%E5%AE%B9%E5%99%A8/</loc>
+    <lastmod>2024-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/Widget/</loc>
+    <lastmod>2024-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/Redis/</loc>
+    <lastmod>2024-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/GC/</loc>
+    <lastmod>2024-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/pdf/</loc>
+    <lastmod>2024-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/%E7%B4%A2%E5%BC%95/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1734,14 +1734,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/</loc>
+    <loc>https://blog.xuemingde.com/categories/Qt/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/Qt/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1790,13 +1790,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/JVM/</loc>
-    <lastmod>2024-01-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -1804,7 +1797,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/SpringBoot/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/JVM/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1818,7 +1811,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/SpringBoot/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1832,6 +1825,13 @@
   </url>
   
   <url>
+    <loc>https://blog.xuemingde.com/categories/java/%E6%90%9C%E7%B4%A2/</loc>
+    <lastmod>2024-01-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xuemingde.com/categories/java/%E5%BC%80%E5%8F%91%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -1839,7 +1839,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/%E6%90%9C%E7%B4%A2/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2024-01-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
