@@ -287,13 +287,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="Java内存模型"><strong>Java内存模型</strong></h2>
-<p>对象内存中可以分为三块区域：对象头(Header)，实例数据(Instance Data)和对齐填充(Padding)，以64位操作系统为例(未开启指针压缩的情况)Java对象布局</p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a><strong>Java内存模型</strong></h2><p>对象内存中可以分为三块区域：对象头(Header)，实例数据(Instance Data)和对齐填充(Padding)，以64位操作系统为例(未开启指针压缩的情况)Java对象布局</p>
 <p>如下图所示：</p>
 <p><img data-src="https://xuemingde.com/pages/image/2023/10/18/084506S4jE0c.png" alt=""></p>
 <p>其中对象头中的Mark Word中的详细信息在文章synchronized锁升级原理中有详细介绍。上图中的对齐填充不是一定有的，如果对象头和实例数据加起来刚好是8字节的倍数，那么就不需要对齐填充。</p>
-<h2 id="Object-obj-new-Object-占用字节"><strong>Object obj=new Object()占用字节</strong></h2>
-<p>这是网上很多人都会提到的一个问题，那么结合上面的Java内存布局，我们来分析下，以64位操作系统为例，new Object()占用大小分为两种情况：</p>
+<h2 id="Object-obj-new-Object-占用字节"><a href="#Object-obj-new-Object-占用字节" class="headerlink" title="Object obj=new Object()占用字节"></a><strong>Object obj=new Object()占用字节</strong></h2><p>这是网上很多人都会提到的一个问题，那么结合上面的Java内存布局，我们来分析下，以64位操作系统为例，new Object()占用大小分为两种情况：</p>
 <ul>
 <li>未开启指针压缩        占用大小为：8(Mark Word)+8(Class Pointer)=16字节</li>
 <li>开启了指针压缩(默认是开启的)        开启指针压缩后，Class Pointer会被压缩为4字节，最终大小为：8(Mark Word)+4(Class Pointer)+4(对齐填充)=16字节</li>
@@ -303,7 +301,7 @@
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zwx.jvm;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.openjdk.jol.info.ClassLayout;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapMemory</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">        System.out.println(ClassLayout.parseInstance(obj).toPrintable());</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>输出结果如下：</p>
 <p><img data-src="https://xuemingde.com/pages/image/2023/10/18/085037Hn1vqZ.png" alt=""></p>
-<p>最后的结果是16字节，没有问题，这是因为**<code>默认开启了指针压缩</code>**，那我们现在把指针压缩关闭之后再去试试。</p>
+<p>最后的结果是16字节，没有问题，这是因为<strong><code>默认开启了指针压缩</code></strong>，那我们现在把指针压缩关闭之后再去试试。</p>
 <figure class="highlight diff"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-XX:+UseCompressedOops  开启指针压缩</span></span><br><span class="line"><span class="deletion">-XX:-UseCompressedOops  关闭指针压缩</span></span><br></pre></td></tr></tbody></table></figure>
 <p><img data-src="https://xuemingde.com/pages/image/2023/10/18/085355lpYvrI.png" alt=""></p>
 <p>得到如下结果：</p>
@@ -313,6 +311,7 @@
 <p>以上是Object 内无任何成员变量的情况</p>
 </blockquote>
 <p>如果有成员变量，以下是成员变量数据类型占用字节大小情况</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -360,10 +359,10 @@
 <tr>
 <td>char</td>
 <td>2byte</td>
-<td></td>
 </tr>
 </tbody>
 </table>
+</div>
 <blockquote>
 <p>Hotspot实现的JVM开启内存压缩的规则（64位机器）：</p>
 </blockquote>
@@ -409,10 +408,10 @@
       <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1F4JVMQ.html" rel="bookmark">一文搞懂redis</a></div>
+      <div class="popular-posts-title"><a href="/posts/266A6Z5.html" rel="bookmark">内存泄漏和内存溢出</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/266A6Z5.html" rel="bookmark">内存泄漏和内存溢出</a></div>
+      <div class="popular-posts-title"><a href="/posts/3Y71AXZ.html" rel="bookmark">对象在内存中的内存布局</a></div>
     </li>
   </ul>
 
@@ -641,13 +640,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">1m</span>
+    <span title="站点总字数">995k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">15:12</span>
+    <span title="站点阅读时长">15:04</span>
 </div>
 
 <div>
