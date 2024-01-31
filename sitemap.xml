@@ -1145,7 +1145,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2N1HMJH.html</loc>
+    <loc>https://blog.xuemingde.com/posts/1KK9G1G.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1154,7 +1154,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1KK9G1G.html</loc>
+    <loc>https://blog.xuemingde.com/posts/2N1HMJH.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1715,14 +1715,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/Mybatis/</loc>
+    <loc>https://blog.xuemingde.com/tags/%E4%BA%8B%E5%8A%A1/</loc>
     <lastmod>2024-01-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/%E4%BA%8B%E5%8A%A1/</loc>
+    <loc>https://blog.xuemingde.com/tags/Mybatis/</loc>
     <lastmod>2024-01-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1808,20 +1808,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/MyBatis/</loc>
-    <lastmod>2024-01-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
-    <lastmod>2024-01-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/categories/java/BUG/</loc>
     <lastmod>2024-01-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -1830,6 +1816,20 @@
   
   <url>
     <loc>https://blog.xuemingde.com/categories/java/JVM/</loc>
+    <lastmod>2024-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/categories/java/MyBatis/</loc>
+    <lastmod>2024-01-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
     <lastmod>2024-01-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
