@@ -276,17 +276,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h1>MyBatis Plus 中的saveOrUpdate 会返回id吗</h1>
-<p>在 MyBatis Plus 中，<code>saveOrUpdate</code> 方法用于保存或更新实体对象。根据实体对象的状态，它将执行插入或更新操作。但是，<code>saveOrUpdate</code> 方法不会返回生成的主键 ID。</p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h1 id="MyBatis-Plus-中的saveOrUpdate-会返回id吗"><a href="#MyBatis-Plus-中的saveOrUpdate-会返回id吗" class="headerlink" title="MyBatis Plus 中的saveOrUpdate 会返回id吗"></a>MyBatis Plus 中的saveOrUpdate 会返回id吗</h1><p>在 MyBatis Plus 中，<code>saveOrUpdate</code> 方法用于保存或更新实体对象。根据实体对象的状态，它将执行插入或更新操作。但是，<code>saveOrUpdate</code> 方法不会返回生成的主键 ID。</p>
 <p>如果您需要获取插入后的主键 ID，可以使用以下方法之一：</p>
 <ol>
-<li>
-<p>使用 <code>insert</code> 方法：如果您想要明确地执行插入操作并获取生成的主键 ID，可以使用 <code>insert</code> 方法。示例如下：</p>
+<li><p>使用 <code>insert</code> 方法：如果您想要明确地执行插入操作并获取生成的主键 ID，可以使用 <code>insert</code> 方法。示例如下：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">YourEntity entity = <span class="keyword">new</span> YourEntity();</span><br><span class="line"><span class="comment">// 设置实体对象的属性</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">yourMapper.insert(entity);</span><br><span class="line">Long id = entity.getId(); <span class="comment">// 获取插入后的主键 ID</span></span><br></pre></td></tr></tbody></table></figure>
 <p>在这种情况下，您需要确保实体对象的 <code>id</code> 属性是正确映射到数据库表的主键字段。</p>
 </li>
-<li>
-<p>使用数据库的自增主键：如果您在数据库表中使用了自增主键，并且将其正确映射到实体对象的属性上，MyBatis Plus 在插入后会自动将生成的主键 ID 设置到实体对象中。示例如下：</p>
+<li><p>使用数据库的自增主键：如果您在数据库表中使用了自增主键，并且将其正确映射到实体对象的属性上，MyBatis Plus 在插入后会自动将生成的主键 ID 设置到实体对象中。示例如下：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">YourEntity entity = <span class="keyword">new</span> YourEntity();</span><br><span class="line"><span class="comment">// 设置实体对象的属性</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">yourMapper.save(entity); <span class="comment">// 使用 save 方法执行插入操作</span></span><br><span class="line">Long id = entity.getId(); <span class="comment">// 获取插入后的主键 ID</span></span><br></pre></td></tr></tbody></table></figure>
 <p>在这种情况下，您需要确保实体对象的主键属性与数据库表的自增主键字段正确映射。</p>
 </li>
@@ -464,7 +461,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">MyBatis Plus 中的saveOrUpdate 会返回id吗</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MyBatis-Plus-%E4%B8%AD%E7%9A%84saveOrUpdate-%E4%BC%9A%E8%BF%94%E5%9B%9Eid%E5%90%97"><span class="nav-number">1.</span> <span class="nav-text">MyBatis Plus 中的saveOrUpdate 会返回id吗</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -547,13 +544,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">974k</span>
+    <span title="站点总字数">965k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">14:46</span>
+    <span title="站点阅读时长">14:38</span>
 </div>
 
 <div>
