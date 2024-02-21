@@ -279,11 +279,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h1 id="Lamda表达式"><a href="#Lamda表达式" class="headerlink" title="Lamda表达式"></a>Lamda表达式</h1><p>要将 <code>List&lt;CbSampleInBoxDTO&gt;</code> 中的多个 <code>sampleInDetailDTOList</code> 合并为一个 <code>List&lt;CbSampleInDetailDTO&gt;</code>，您可以使用 Java 8 的 Lambda 表达式和流操作来实现。以下是一种可能的实现方式：</p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h1>Lamda表达式</h1>
+<p>要将 <code>List&lt;CbSampleInBoxDTO&gt;</code> 中的多个 <code>sampleInDetailDTOList</code> 合并为一个 <code>List&lt;CbSampleInDetailDTO&gt;</code>，您可以使用 Java 8 的 Lambda 表达式和流操作来实现。以下是一种可能的实现方式：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;CbSampleInBoxDTO&gt; cbSampleInBoxDTOList = ...; <span class="comment">// 原始的 List&lt;CbSampleInBoxDTO&gt;</span></span><br><span class="line">List&lt;CbSampleInDetailDTO&gt; mergedList = cbSampleInBoxDTOList.stream()</span><br><span class="line">    .flatMap(box -&gt; box.getSampleInDetailDTOList().stream()) <span class="comment">// 将每个 CbSampleInBoxDTO 中的 sampleInDetailDTOList 转换为流</span></span><br><span class="line">    .collect(Collectors.toList()); <span class="comment">// 将所有的 CbSampleInDetailDTO 收集到一个新的 List 中</span></span><br></pre></td></tr></tbody></table></figure>
 <p>在上面的代码中，我们使用 <code>stream()</code> 方法将 <code>cbSampleInBoxDTOList</code> 转换为流，然后使用 <code>flatMap()</code> 方法将每个 <code>CbSampleInBoxDTO</code> 中的 <code>sampleInDetailDTOList</code> 转换为一个流。最后，使用 <code>collect()</code> 方法将所有的 <code>CbSampleInDetailDTO</code> 收集到一个新的 <code>List</code> 中。</p>
 <p>请确保 <code>CbSampleInBoxDTO</code> 和 <code>CbSampleInDetailDTO</code> 类型的定义与您的实际情况相匹配。</p>
-<h1 id="Optional-ofNullable"><a href="#Optional-ofNullable" class="headerlink" title="Optional.ofNullable"></a>Optional.ofNullable</h1><p><code>Optional.ofNullable</code> 是 Java 中 <code>Optional</code> 类的一个静态方法。它的作用是将一个可能为 null 的对象包装成一个 <code>Optional</code> 对象。</p>
+<h1>Optional.ofNullable</h1>
+<p><code>Optional.ofNullable</code> 是 Java 中 <code>Optional</code> 类的一个静态方法。它的作用是将一个可能为 null 的对象包装成一个 <code>Optional</code> 对象。</p>
 <p><code>Optional</code> 类是 Java 8 引入的一个用于处理可能为空的值的容器类。它的设计目的是为了避免空指针异常，并提供一种更优雅的方式来处理可能为空的情况。</p>
 <p><code>Optional.ofNullable</code> 方法接受一个参数，该参数可以是任意类型的对象，包括 null。如果传入的参数为非 null 值，则会将该值包装在一个 <code>Optional</code> 对象中；如果传入的参数为 null，则会返回一个空的 <code>Optional</code> 对象。</p>
 <p>下面是一个示例，演示如何使用 <code>Optional.ofNullable</code> 方法：</p>
@@ -460,7 +462,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lamda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">Lamda表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Optional-ofNullable"><span class="nav-number">2.</span> <span class="nav-text">Optional.ofNullable</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Lamda表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Optional.ofNullable</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -543,13 +545,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">965k</span>
+    <span title="站点总字数">974k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">14:38</span>
+    <span title="站点阅读时长">14:46</span>
 </div>
 
 <div>
