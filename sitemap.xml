@@ -1797,13 +1797,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/MyBatis/</loc>
-    <lastmod>2024-03-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/categories/java/JVM/</loc>
     <lastmod>2024-03-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -1811,14 +1804,21 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/SpringBoot/</loc>
     <lastmod>2024-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/SpringBoot/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/MyBatis/</loc>
+    <lastmod>2024-03-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
     <lastmod>2024-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1846,14 +1846,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/%E5%BC%80%E5%8F%91%E8%AE%BE%E8%AE%A1/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/%E5%B9%B6%E5%8F%91-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2024-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/%E5%B9%B6%E5%8F%91-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/%E5%BC%80%E5%8F%91%E8%AE%BE%E8%AE%A1/</loc>
     <lastmod>2024-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
