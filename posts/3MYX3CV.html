@@ -276,14 +276,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="脚本">脚本</h2>
-<p>startup.bat</p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><p>startup.bat</p>
 <figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line"><span class="comment">REM 设置 sur.exe 的路径</span></span><br><span class="line">set APP_PATH=D:\ASD\ASD-Server\sur.exe</span><br><span class="line"></span><br><span class="line"><span class="comment">REM 检查 sur.exe 是否在运行</span></span><br><span class="line">tasklist /FI "IMAGENAME eq sur.exe" 2&gt;NUL | find /I /N "sur.exe"&gt;NUL</span><br><span class="line">if "%ERRORLEVEL%"=="0" (</span><br><span class="line">    echo sur.exe is already running.</span><br><span class="line">    exit</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">REM 启动 sur.exe</span></span><br><span class="line">start "" "%APP_PATH%"</span><br><span class="line"></span><br><span class="line"><span class="comment">REM 退出脚本</span></span><br><span class="line">exit</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>假设 sur.exe 文件在D:\ASD\ASD-Server路径下</p>
 </blockquote>
-<h2 id="设置任务计划程序">设置任务计划程序</h2>
-<ol>
+<h2 id="设置任务计划程序"><a href="#设置任务计划程序" class="headerlink" title="设置任务计划程序"></a>设置任务计划程序</h2><ol>
 <li>打开任务计划程序（在Windows搜索栏中输入 “任务计划程序”）。</li>
 <li>在任务计划程序中，点击 “创建基本任务”。</li>
 <li>输入任务的名称，例如 “RestartSur”，然后点击 “下一步”。</li>
@@ -314,13 +312,13 @@
       <div class="popular-posts-title"><a href="/posts/R4F6YF.html" rel="bookmark">Effective C++</a></div>
     </li>
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2VB0MVT.html" rel="bookmark">C++开发学习笔记1</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/1CBWCJP.html" rel="bookmark">C++开发学习笔记3</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/QVJ0P0.html" rel="bookmark">C++开发学习笔记2</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/2VB0MVT.html" rel="bookmark">C++开发学习笔记1</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/2BJBJS3.html" rel="bookmark">C++设计模式</a></div>
@@ -546,13 +544,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">985k</span>
+    <span title="站点总字数">976k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">14:55</span>
+    <span title="站点阅读时长">14:47</span>
 </div>
 
 <div>

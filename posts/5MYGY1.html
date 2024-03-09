@@ -35,12 +35,12 @@
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="const">
-<meta property="article:tag" content="Qt">
 <meta property="article:tag" content="内存">
 <meta property="article:tag" content="指针">
 <meta property="article:tag" content="函数">
-<meta property="article:tag" content="GC">
+<meta property="article:tag" content="Qt">
 <meta property="article:tag" content="索引">
+<meta property="article:tag" content="GC">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.xuemingde.com/posts/5MYGY1.html">
@@ -285,11 +285,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="QLineEdit不显示和输入的数据">QLineEdit不显示和输入的数据</h2>
-<p>QLineEdit 设置了 installEventFilter 后，不显示QLineEdit 和输入的数据：</p>
-<p>是因为 bool eventFilter(QObject *watched, QEvent *event); 方法没有设置返回值导致；</p>
-<h2 id="PBS中启动ArcAir校准软件逻辑">PBS中启动ArcAir校准软件逻辑</h2>
-<blockquote>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="QLineEdit不显示和输入的数据"><a href="#QLineEdit不显示和输入的数据" class="headerlink" title="QLineEdit不显示和输入的数据"></a>QLineEdit不显示和输入的数据</h2><p>QLineEdit 设置了 installEventFilter 后，不显示QLineEdit 和输入的数据：</p>
+<p>是因为 bool eventFilter(QObject <em>watched, QEvent </em>event); 方法没有设置返回值导致；</p>
+<h2 id="PBS中启动ArcAir校准软件逻辑"><a href="#PBS中启动ArcAir校准软件逻辑" class="headerlink" title="PBS中启动ArcAir校准软件逻辑"></a>PBS中启动ArcAir校准软件逻辑</h2><blockquote>
 <p>是通过执行一个bat脚本文件</p>
 </blockquote>
 <p>脚本中原来的命令是：</p>
@@ -330,8 +328,7 @@
 <p>假设你有一个名为 <code>ArcAir.exe</code> 的可执行文件位于 <code>C:\ArcAir</code> 目录中。要从命令提示符启动此可执行文件并在其退出后关闭命令提示符窗口，你可以运行以下命令：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start <span class="string">"ArcAir"</span> /d <span class="string">"C:\ArcAir"</span> <span class="string">"ArcAir.exe"</span></span><br></pre></td></tr></tbody></table></figure>
 <p>这将打开一个新的命令提示符窗口，将当前目录更改为 <code>C:\ArcAir</code>，并运行 <code>ArcAir.exe</code> 可执行文件。在 <code>ArcAir.exe</code> 退出后，命令提示符窗口将自动关闭。</p>
-<h2 id="如何捕捉异常信息">如何捕捉异常信息</h2>
-<p>在Qt中，你可以使用C++的异常处理机制来捕获异常信息。Qt本身并没有提供自己的异常处理机制，而是依赖于C++的<code>try</code>、<code>catch</code>和<code>throw</code>来处理异常。</p>
+<h2 id="如何捕捉异常信息"><a href="#如何捕捉异常信息" class="headerlink" title="如何捕捉异常信息"></a>如何捕捉异常信息</h2><p>在Qt中，你可以使用C++的异常处理机制来捕获异常信息。Qt本身并没有提供自己的异常处理机制，而是依赖于C++的<code>try</code>、<code>catch</code>和<code>throw</code>来处理异常。</p>
 <p>下面是一个简单的示例，展示了如何在Qt中捕获异常信息：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QCoreApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="comment">// 可能会抛出异常的代码</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">QString</span>(<span class="string">"An exception occurred!"</span>);</span><br><span class="line">    } <span class="built_in"><span class="keyword">catch</span></span> (<span class="keyword">const</span> QString&amp; e) {</span><br><span class="line">        <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"Caught exception: "</span> &lt;&lt; e;</span><br><span class="line">    } <span class="built_in"><span class="keyword">catch</span></span> (...) {</span><br><span class="line">        <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"Caught unknown exception"</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>{</span><br><span class="line">    <span class="function">QCoreApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="built_in">process</span>();</span><br><span class="line">    } <span class="built_in"><span class="keyword">catch</span></span> (...) {</span><br><span class="line">        <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"Caught exception in main"</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>在上面的示例中，<code>process()</code>函数中包含可能会抛出异常的代码，当抛出异常时，它会被<code>catch</code>块捕获并处理。在<code>main()</code>函数中，我们调用<code>process()</code>函数，并在外部的<code>try</code>块中捕获可能抛出的异常。如果异常未被内部的<code>catch</code>块捕获，外部的<code>catch</code>块会捕获未处理的异常。</p>
@@ -343,22 +340,18 @@
 <p>然后，你可以在 <code>try</code> 块中使用 <code>Finally</code> 对象来执行清理操作：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> {</span><br><span class="line">    <span class="comment">// 可能引发异常的代码</span></span><br><span class="line">} <span class="built_in"><span class="keyword">catch</span></span> (...) {</span><br><span class="line">    <span class="comment">// 处理任何类型的异常</span></span><br><span class="line">}</span><br><span class="line"><span class="function">Finally <span class="title">finally</span><span class="params">([] {</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="comment">// 无论是否发生异常，始终执行的代码</span></span></span></span><br><span class="line"><span class="function"><span class="params">})</span></span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>这将确保在 <code>try</code> 块或 <code>catch</code> 块中发生异常时始终执行清理操作。</p>
-<p><code>ASSERT failure in QList&lt;T&gt;::take: "index out of range", file D:/install/Qt/Qt5.12.2/5.12.2/mingw73_64/include/QtCore/qli</code><br>
-<code>st.h, line 56</code></p>
+<p><code>ASSERT failure in QList&lt;T&gt;::take: "index out of range", file D:/install/Qt/Qt5.12.2/5.12.2/mingw73_64/include/QtCore/qli</code><br><code>st.h, line 56</code></p>
 <p>上述异常try-catch无法捕捉</p>
 <p>ASSERT 失败并不是通过抛出标准异常来处理的，而是通过断言机制来实现的。当 QList<t>::take 函数发现索引超出范围时，它会触发一个断言失败，而不是抛出一个标准的异常。断言失败会导致程序立即终止，而不会被捕获到 try-catch 块中。要避免断言失败，你应该在调用 QList 的相关函数之前，确保索引值在有效范围内，而不是依赖于 try-catch 块来捕获断言失败。在 Qt 中，断言通常用于开发和调试阶段，用于捕获逻辑错误和不一致之处，而不是作为异常处理的一部分。</t></p>
 <p><u><em>在发布版本中，通常会禁用断言以提高性能</em></u></p>
 <p><strong>什么样的异常会被try-catch捕捉</strong></p>
 <p>在 C++ 中，<code>try-catch</code> 块用于捕获和处理异常。在 Qt 中，与标准 C++ 异常处理机制相同，你可以使用 <code>try-catch</code> 块来捕获和处理任何抛出的异常，包括但不限于以下情况：</p>
 <ol>
-<li>
-<p><strong>标准 C++ 异常</strong>：你可以抛出标准 C++ 异常，如 <code>std::exception</code> 及其派生类。这些异常可以通过 <code>try-catch</code> 块捕获和处理。</p>
+<li><p><strong>标准 C++ 异常</strong>：你可以抛出标准 C++ 异常，如 <code>std::exception</code> 及其派生类。这些异常可以通过 <code>try-catch</code> 块捕获和处理。</p>
 </li>
-<li>
-<p><strong>自定义异常</strong>：你也可以定义自己的异常类，并在需要时抛出并在 <code>try-catch</code> 块中捕获。</p>
+<li><p><strong>自定义异常</strong>：你也可以定义自己的异常类，并在需要时抛出并在 <code>try-catch</code> 块中捕获。</p>
 </li>
-<li>
-<p><strong>Qt 中的异常</strong>：虽然 Qt 不鼓励在其库中使用异常，但有些情况下仍会抛出异常，如在一些文件操作或内存分配失败时。这些异常也可以被 <code>try-catch</code> 块捕获。</p>
+<li><p><strong>Qt 中的异常</strong>：虽然 Qt 不鼓励在其库中使用异常，但有些情况下仍会抛出异常，如在一些文件操作或内存分配失败时。这些异常也可以被 <code>try-catch</code> 块捕获。</p>
 </li>
 </ol>
 <p>在使用 <code>try-catch</code> 块时，可以按照以下语法结构来捕获异常：</p>
@@ -369,25 +362,19 @@
 <p>在Qt中，通常不直接抛出标准C++异常来处理错误。相反，Qt倾向于使用错误码和信号槽来处理错误情况。这是因为Qt的信号槽机制提供了一种更灵活、更适合异步事件处理的方式，可以跨线程传递信号，而标准的异常机制在跨线程时会遇到一些问题。</p>
 <p>Qt提供了一些用于处理错误和异常情况的机制，例如：</p>
 <ol>
-<li>
-<p><strong>Q_ASSERT</strong>：用于在调试模式下检查条件是否为真，如果条件为假，则会输出错误信息并终止程序。在发布版本中，默认会被忽略。可以通过定义<code>QT_NO_DEBUG</code>来禁用这些断言。</p>
+<li><p><strong>Q_ASSERT</strong>：用于在调试模式下检查条件是否为真，如果条件为假，则会输出错误信息并终止程序。在发布版本中，默认会被忽略。可以通过定义<code>QT_NO_DEBUG</code>来禁用这些断言。</p>
 </li>
-<li>
-<p><strong>Q_CHECK_PTR</strong>：类似于<code>Q_ASSERT</code>，用于检查指针是否为<code>nullptr</code>。</p>
+<li><p><strong>Q_CHECK_PTR</strong>：类似于<code>Q_ASSERT</code>，用于检查指针是否为<code>nullptr</code>。</p>
 </li>
-<li>
-<p><strong>Q_UNREACHABLE</strong>：用于标记代码中不应该被执行到的位置，如果执行到了，会输出错误信息并终止程序。</p>
+<li><p><strong>Q_UNREACHABLE</strong>：用于标记代码中不应该被执行到的位置，如果执行到了，会输出错误信息并终止程序。</p>
 </li>
-<li>
-<p><strong>Q_EMIT</strong>：用于发射信号，可以被用来通知错误或异常情况。</p>
+<li><p><strong>Q_EMIT</strong>：用于发射信号，可以被用来通知错误或异常情况。</p>
 </li>
-<li>
-<p><strong>QMessageLogger</strong>：用于记录消息，可以输出调试、警告、严重和致命错误信息。</p>
+<li><p><strong>QMessageLogger</strong>：用于记录消息，可以输出调试、警告、严重和致命错误信息。</p>
 </li>
 </ol>
 <p>虽然Qt本身提供了一些处理错误和异常情况的机制，但在Qt中捕获导致程序崩溃的异常并不是推荐做法。Qt更注重稳定性和健壮性，建议在编写代码时尽量避免出现导致程序崩溃的情况，而是通过良好的设计和错误处理机制来保证程序的稳定性。</p>
-<h2 id="enabled-和disabled-的区别">enabled 和disabled 的区别</h2>
-<p>在Qt中，“enabled” 和 “disabled” 分别表示控件（如按钮、文本框等）的状态。当一个控件是 “enabled” 状态时，意味着它是可用的，用户可以与之交互并进行操作。相反，当一个控件是 “disabled” 状态时，它是不可用的，用户无法与之交互或进行操作。</p>
+<h2 id="enabled-和disabled-的区别"><a href="#enabled-和disabled-的区别" class="headerlink" title="enabled 和disabled 的区别"></a>enabled 和disabled 的区别</h2><p>在Qt中，”enabled” 和 “disabled” 分别表示控件（如按钮、文本框等）的状态。当一个控件是 “enabled” 状态时，意味着它是可用的，用户可以与之交互并进行操作。相反，当一个控件是 “disabled” 状态时，它是不可用的，用户无法与之交互或进行操作。</p>
 <p>通过设置控件的 “enabled” 属性，你可以控制用户是否可以与该控件进行交互。当一个控件被禁用时，通常会显示为灰色，以示区别于可用的控件。这种状态管理可以帮助你在界面中动态控制用户可以与哪些控件进行交互，从而提供更好的用户体验。</p>
 
     </div>
@@ -468,12 +455,12 @@
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
               <a href="/tags/const/" rel="tag"><i class="fa fa-tag"></i> const</a>
-              <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
               <a href="/tags/%E5%86%85%E5%AD%98/" rel="tag"><i class="fa fa-tag"></i> 内存</a>
               <a href="/tags/%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
               <a href="/tags/%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
-              <a href="/tags/GC/" rel="tag"><i class="fa fa-tag"></i> GC</a>
+              <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
               <a href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag"><i class="fa fa-tag"></i> 索引</a>
+              <a href="/tags/GC/" rel="tag"><i class="fa fa-tag"></i> GC</a>
           </div>
 
         
@@ -648,13 +635,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">985k</span>
+    <span title="站点总字数">976k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">14:55</span>
+    <span title="站点阅读时长">14:47</span>
 </div>
 
 <div>

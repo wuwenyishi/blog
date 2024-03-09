@@ -32,11 +32,11 @@
 <meta property="article:modified_time" content="2024-03-05T01:25:37.823Z">
 <meta property="article:author" content="meadel">
 <meta property="article:tag" content="C">
+<meta property="article:tag" content="Java">
 <meta property="article:tag" content="指针">
 <meta property="article:tag" content="函数">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="设计模式">
 <meta property="article:tag" content="数据库">
+<meta property="article:tag" content="设计模式">
 <meta property="article:tag" content="容器">
 <meta property="article:tag" content="Mybatis">
 <meta name="twitter:card" content="summary">
@@ -287,8 +287,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="Java-函数式接口">Java 函数式接口</h2>
-<p>Java 函数式接口是指只包含一个抽象方法的接口。Java 8 引入了函数式接口的概念，以支持函数式编程风格和Lambda 表达式的使用。</p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="Java-函数式接口"><a href="#Java-函数式接口" class="headerlink" title="Java 函数式接口"></a>Java 函数式接口</h2><p>Java 函数式接口是指只包含一个抽象方法的接口。Java 8 引入了函数式接口的概念，以支持函数式编程风格和Lambda 表达式的使用。</p>
 <p>函数式接口可以用作 Lambda 表达式的目标类型，也可以通过匿名类或方法引用来实现。</p>
 <p>Java 提供了 <code>java.util.function</code> 包，其中包含了一些常用的函数式接口，例如：</p>
 <ol>
@@ -302,47 +301,38 @@
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.function.Function;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FunctionalInterfaceExample</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        <span class="comment">// 使用 Function 接口和 Lambda 表达式</span></span><br><span class="line">        Function&lt;Integer, Integer&gt; square = x -&gt; x * x;</span><br><span class="line">        System.out.println(square.apply(<span class="number">5</span>)); <span class="comment">// 输出 25</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>在上面的示例中，我们使用 <code>Function&lt;Integer, Integer&gt;</code> 接口来定义一个函数，该函数接受一个整数参数并返回其平方。通过 Lambda 表达式实现了函数的具体逻辑。</p>
 <p>请注意，函数式接口只能包含一个抽象方法，但可以包含默认方法和静态方法。</p>
-<h2 id="Lamda表达式">Lamda表达式</h2>
-<p>要将 <code>List&lt;CbSampleInBoxDTO&gt;</code> 中的多个 <code>sampleInDetailDTOList</code> 合并为一个 <code>List&lt;CbSampleInDetailDTO&gt;</code>，您可以使用 Java 8 的 Lambda 表达式和流操作来实现。以下是一种可能的实现方式：</p>
+<h2 id="Lamda表达式"><a href="#Lamda表达式" class="headerlink" title="Lamda表达式"></a>Lamda表达式</h2><p>要将 <code>List&lt;CbSampleInBoxDTO&gt;</code> 中的多个 <code>sampleInDetailDTOList</code> 合并为一个 <code>List&lt;CbSampleInDetailDTO&gt;</code>，您可以使用 Java 8 的 Lambda 表达式和流操作来实现。以下是一种可能的实现方式：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;CbSampleInBoxDTO&gt; cbSampleInBoxDTOList = ...; <span class="comment">// 原始的 List&lt;CbSampleInBoxDTO&gt;</span></span><br><span class="line">List&lt;CbSampleInDetailDTO&gt; mergedList = cbSampleInBoxDTOList.stream()</span><br><span class="line">    .flatMap(box -&gt; box.getSampleInDetailDTOList().stream()) <span class="comment">// 将每个 CbSampleInBoxDTO 中的 sampleInDetailDTOList 转换为流</span></span><br><span class="line">    .collect(Collectors.toList()); <span class="comment">// 将所有的 CbSampleInDetailDTO 收集到一个新的 List 中</span></span><br></pre></td></tr></tbody></table></figure>
 <p>在上面的代码中，我们使用 <code>stream()</code> 方法将 <code>cbSampleInBoxDTOList</code> 转换为流，然后使用 <code>flatMap()</code> 方法将每个 <code>CbSampleInBoxDTO</code> 中的 <code>sampleInDetailDTOList</code> 转换为一个流。最后，使用 <code>collect()</code> 方法将所有的 <code>CbSampleInDetailDTO</code> 收集到一个新的 <code>List</code> 中。</p>
 <p>请确保 <code>CbSampleInBoxDTO</code> 和 <code>CbSampleInDetailDTO</code> 类型的定义与您的实际情况相匹配。</p>
-<h2 id="Optional-ofNullable">Optional.ofNullable</h2>
-<p><code>Optional.ofNullable</code> 是 Java 中 <code>Optional</code> 类的一个静态方法。它的作用是将一个可能为 null 的对象包装成一个 <code>Optional</code> 对象。</p>
+<h2 id="Optional-ofNullable"><a href="#Optional-ofNullable" class="headerlink" title="Optional.ofNullable"></a>Optional.ofNullable</h2><p><code>Optional.ofNullable</code> 是 Java 中 <code>Optional</code> 类的一个静态方法。它的作用是将一个可能为 null 的对象包装成一个 <code>Optional</code> 对象。</p>
 <p><code>Optional</code> 类是 Java 8 引入的一个用于处理可能为空的值的容器类。它的设计目的是为了避免空指针异常，并提供一种更优雅的方式来处理可能为空的情况。</p>
 <p><code>Optional.ofNullable</code> 方法接受一个参数，该参数可以是任意类型的对象，包括 null。如果传入的参数为非 null 值，则会将该值包装在一个 <code>Optional</code> 对象中；如果传入的参数为 null，则会返回一个空的 <code>Optional</code> 对象。</p>
 <p>下面是一个示例，演示如何使用 <code>Optional.ofNullable</code> 方法：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String name = <span class="string">"John"</span>;</span><br><span class="line">Optional&lt;String&gt; optionalName = Optional.ofNullable(name);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (optionalName.isPresent()) {</span><br><span class="line">    System.out.println(<span class="string">"Name: "</span> + optionalName.get());</span><br><span class="line">} <span class="keyword">else</span> {</span><br><span class="line">    System.out.println(<span class="string">"Name is null"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>在上面的示例中，我们将一个可能为 null 的字符串 <code>name</code> 使用 <code>Optional.ofNullable</code> 方法进行包装。如果 <code>name</code> 不为 null，则可以通过 <code>optionalName.get()</code> 方法获取到该值，并进行相应的操作。如果 <code>name</code> 为 null，则可以根据需要处理空值的情况。</p>
 <p>使用 <code>Optional</code> 类可以帮助我们编写更加健壮和可读性更高的代码，避免了繁琐的空值检查和空指针异常。</p>
-<h2 id="服务加载器">服务加载器</h2>
-<p>在 Java 中，服务加载器（Service Loader）是一种机制，用于动态加载和发现服务提供者（Service Provider）。服务提供者是指实现特定接口或抽象类的类，它们提供了特定功能或服务的实现。</p>
+<h2 id="服务加载器"><a href="#服务加载器" class="headerlink" title="服务加载器"></a>服务加载器</h2><p>在 Java 中，服务加载器（Service Loader）是一种机制，用于动态加载和发现服务提供者（Service Provider）。服务提供者是指实现特定接口或抽象类的类，它们提供了特定功能或服务的实现。</p>
 <p>Java 的服务加载器机制允许开发者编写服务接口，然后通过服务提供者（实现了这些接口的类）来扩展和实现这些接口。服务加载器负责在运行时动态加载这些服务提供者，使得应用程序可以在不修改代码的情况下添加或更换服务提供者。</p>
 <p>在 Java 中，服务加载器的主要类是 <code>java.util.ServiceLoader</code>。下面是使用服务加载器的基本步骤：</p>
 <ol>
-<li>
-<p><strong>定义服务接口：</strong> 首先，定义一个服务接口，描述服务提供者应该实现的方法。</p>
+<li><p><strong>定义服务接口：</strong> 首先，定义一个服务接口，描述服务提供者应该实现的方法。</p>
 </li>
-<li>
-<p><strong>实现服务提供者：</strong> 创建实现服务接口的类，这些类是服务提供者。每个服务提供者类都应该在 <code>META-INF/services</code> 目录下创建一个以服务接口全限定名命名的文件，文件内容为实现类的全限定名。</p>
+<li><p><strong>实现服务提供者：</strong> 创建实现服务接口的类，这些类是服务提供者。每个服务提供者类都应该在 <code>META-INF/services</code> 目录下创建一个以服务接口全限定名命名的文件，文件内容为实现类的全限定名。</p>
 </li>
-<li>
-<p><strong>使用服务加载器：</strong> 使用 <code>ServiceLoader</code> 类来加载服务提供者。通过 <code>ServiceLoader.load()</code> 方法加载服务接口的实现类。</p>
+<li><p><strong>使用服务加载器：</strong> 使用 <code>ServiceLoader</code> 类来加载服务提供者。通过 <code>ServiceLoader.load()</code> 方法加载服务接口的实现类。</p>
 </li>
 </ol>
 <p>下面是一个简单的示例，演示了如何使用服务加载器加载并调用服务提供者：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义服务接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">GreetingService</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">greet</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现服务提供者</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EnglishGreetingService</span> <span class="keyword">implements</span> <span class="title">GreetingService</span> </span>{</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greet</span><span class="params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="string">"Hello!"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在 META-INF/services 目录下创建文件：com.example.GreetingService</span></span><br><span class="line"><span class="comment">// 文件内容为实现类的全限定名：com.example.EnglishGreetingService</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用服务加载器加载服务提供者</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        ServiceLoader&lt;GreetingService&gt; loader = ServiceLoader.load(GreetingService.class);</span><br><span class="line">        <span class="keyword">for</span> (GreetingService service : loader) {</span><br><span class="line">            service.greet();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>在这个示例中，我们定义了一个 <code>GreetingService</code> 接口和一个 <code>EnglishGreetingService</code> 类作为服务提供者。通过服务加载器，我们可以加载并调用 <code>GreetingService</code> 接口的实现类。</p>
 <p>通过服务加载器，Java 应用程序可以更加灵活地扩展和替换功能，实现了松耦合和可插拔的设计。希望这个简单的示例能帮助你理解 Java 中的服务加载器机制。</p>
-<h2 id="代理">代理</h2>
-<p>在 Java 中，代理（Proxy）是一种设计模式，允许你提供一个替代或占位对象，以控制对另一个对象的访问。代理通常充当客户端和实际对象之间的中介，可以在访问实际对象之前或之后执行额外的操作。</p>
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>在 Java 中，代理（Proxy）是一种设计模式，允许你提供一个替代或占位对象，以控制对另一个对象的访问。代理通常充当客户端和实际对象之间的中介，可以在访问实际对象之前或之后执行额外的操作。</p>
 <p>Java 中的代理通常有以下几种类型：</p>
 <ol>
-<li>
-<p><strong>静态代理：</strong> 静态代理是在编译时就已经确定的代理类。在静态代理中，代理类需要显式地实现与目标对象相同的接口，并在代理类中调用目标对象的方法。</p>
+<li><p><strong>静态代理：</strong> 静态代理是在编译时就已经确定的代理类。在静态代理中，代理类需要显式地实现与目标对象相同的接口，并在代理类中调用目标对象的方法。</p>
 </li>
-<li>
-<p><strong>动态代理：</strong> 动态代理是在运行时创建的代理类，无需显式实现接口。Java 中的动态代理通常使用 <code>java.lang.reflect.Proxy</code> 类和 <code>java.lang.reflect.InvocationHandler</code> 接口来实现。</p>
+<li><p><strong>动态代理：</strong> 动态代理是在运行时创建的代理类，无需显式实现接口。Java 中的动态代理通常使用 <code>java.lang.reflect.Proxy</code> 类和 <code>java.lang.reflect.InvocationHandler</code> 接口来实现。</p>
 </li>
 </ol>
 <p>下面是一个简单的动态代理示例，演示了如何使用 Java 的动态代理：</p>
@@ -350,24 +340,20 @@
 <p>在这个示例中，我们定义了一个 <code>Hello</code> 接口和一个 <code>HelloImpl</code> 类作为实现类。然后，我们创建了一个 <code>DynamicProxy</code> 类来实现 <code>InvocationHandler</code> 接口，用于在方法调用前后执行额外的操作。</p>
 <p>在 <code>Main</code> 类中，我们使用 <code>Proxy.newProxyInstance()</code> 方法创建了一个动态代理对象，并在代理对象的方法调用前后输出了额外的信息。</p>
 <p>通过代理模式，你可以在不修改原始类的情况下对其进行控制和扩展，实现了更加灵活的代码结构。希望这个示例能帮助你理解 Java 中的动态代理机制。</p>
-<h2 id="MyBatis-Plus-中的saveOrUpdate-会返回id吗">MyBatis Plus 中的saveOrUpdate 会返回id吗</h2>
-<p>在 MyBatis Plus 中，<code>saveOrUpdate</code> 方法用于保存或更新实体对象。根据实体对象的状态，它将执行插入或更新操作。但是，<code>saveOrUpdate</code> 方法不会返回生成的主键 ID。</p>
+<h2 id="MyBatis-Plus-中的saveOrUpdate-会返回id吗"><a href="#MyBatis-Plus-中的saveOrUpdate-会返回id吗" class="headerlink" title="MyBatis Plus 中的saveOrUpdate 会返回id吗"></a>MyBatis Plus 中的saveOrUpdate 会返回id吗</h2><p>在 MyBatis Plus 中，<code>saveOrUpdate</code> 方法用于保存或更新实体对象。根据实体对象的状态，它将执行插入或更新操作。但是，<code>saveOrUpdate</code> 方法不会返回生成的主键 ID。</p>
 <p>如果您需要获取插入后的主键 ID，可以使用以下方法之一：</p>
 <ol>
-<li>
-<p>使用 <code>insert</code> 方法：如果您想要明确地执行插入操作并获取生成的主键 ID，可以使用 <code>insert</code> 方法。示例如下：</p>
+<li><p>使用 <code>insert</code> 方法：如果您想要明确地执行插入操作并获取生成的主键 ID，可以使用 <code>insert</code> 方法。示例如下：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">YourEntity entity = <span class="keyword">new</span> YourEntity();</span><br><span class="line"><span class="comment">// 设置实体对象的属性</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">yourMapper.insert(entity);</span><br><span class="line">Long id = entity.getId(); <span class="comment">// 获取插入后的主键 ID</span></span><br></pre></td></tr></tbody></table></figure>
 <p>在这种情况下，您需要确保实体对象的 <code>id</code> 属性是正确映射到数据库表的主键字段。</p>
 </li>
-<li>
-<p>使用数据库的自增主键：如果您在数据库表中使用了自增主键，并且将其正确映射到实体对象的属性上，MyBatis Plus 在插入后会自动将生成的主键 ID 设置到实体对象中。示例如下：</p>
+<li><p>使用数据库的自增主键：如果您在数据库表中使用了自增主键，并且将其正确映射到实体对象的属性上，MyBatis Plus 在插入后会自动将生成的主键 ID 设置到实体对象中。示例如下：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">YourEntity entity = <span class="keyword">new</span> YourEntity();</span><br><span class="line"><span class="comment">// 设置实体对象的属性</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">yourMapper.save(entity); <span class="comment">// 使用 save 方法执行插入操作</span></span><br><span class="line">Long id = entity.getId(); <span class="comment">// 获取插入后的主键 ID</span></span><br></pre></td></tr></tbody></table></figure>
 <p>在这种情况下，您需要确保实体对象的主键属性与数据库表的自增主键字段正确映射。</p>
 </li>
 </ol>
 <p>请注意，<code>saveOrUpdate</code> 方法的返回值是一个布尔类型，表示操作是否成功。如果插入或更新成功，它将返回 <code>true</code>，否则返回 <code>false</code>。要获取主键 ID，您需要使用上述方法之一。</p>
-<h2 id="AutoCloseable-的使用">AutoCloseable 的使用</h2>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyFileWriter</span> <span class="keyword">implements</span> <span class="title">AutoCloseable</span> </span>{</span><br><span class="line">    <span class="keyword">private</span> FileWriter fileWriter;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyFileWriter</span><span class="params">(String fileName)</span> <span class="keyword">throws</span> IOException </span>{</span><br><span class="line">        fileWriter = <span class="keyword">new</span> FileWriter(fileName);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(String content)</span> <span class="keyword">throws</span> IOException </span>{</span><br><span class="line">        fileWriter.write(content);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>{</span><br><span class="line">        fileWriter.close();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AutoCloseableExample</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        String fileName = <span class="string">"example.txt"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> (MyFileWriter writer = <span class="keyword">new</span> MyFileWriter(fileName)) {</span><br><span class="line">            writer.write(<span class="string">"Hello, this is an example of using AutoCloseable in Java."</span>);</span><br><span class="line">        } <span class="keyword">catch</span> (IOException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="AutoCloseable-的使用"><a href="#AutoCloseable-的使用" class="headerlink" title="AutoCloseable 的使用"></a>AutoCloseable 的使用</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyFileWriter</span> <span class="keyword">implements</span> <span class="title">AutoCloseable</span> </span>{</span><br><span class="line">    <span class="keyword">private</span> FileWriter fileWriter;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyFileWriter</span><span class="params">(String fileName)</span> <span class="keyword">throws</span> IOException </span>{</span><br><span class="line">        fileWriter = <span class="keyword">new</span> FileWriter(fileName);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(String content)</span> <span class="keyword">throws</span> IOException </span>{</span><br><span class="line">        fileWriter.write(content);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>{</span><br><span class="line">        fileWriter.close();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AutoCloseableExample</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        String fileName = <span class="string">"example.txt"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> (MyFileWriter writer = <span class="keyword">new</span> MyFileWriter(fileName)) {</span><br><span class="line">            writer.write(<span class="string">"Hello, this is an example of using AutoCloseable in Java."</span>);</span><br><span class="line">        } <span class="keyword">catch</span> (IOException e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>在这个示例中，我们创建了一个 <code>MyFileWriter</code> 类，实现了 <code>AutoCloseable</code> 接口。它包含了一个 <code>FileWriter</code> 实例来写入文件。在 <code>close()</code> 方法中，我们关闭了 <code>FileWriter</code>。</p>
 <p>在 <code>main</code> 方法中，我们使用 <code>try-with-resources</code> 语句来实例化 <code>MyFileWriter</code> 类并写入内容到文件。当 <code>try</code> 块结束时，无论是否发生异常，<code>MyFileWriter</code> 类的 <code>close()</code> 方法都会被调用来关闭文件。</p>
 
@@ -400,7 +386,7 @@
       <div class="popular-posts-title"><a href="/posts/WTSYSE.html" rel="bookmark">Java并发常见知识点&amp;面试题总结_进阶篇</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/2E8KBMS.html" rel="bookmark">Stream 流式编程</a></div>
+      <div class="popular-posts-title"><a href="/posts/3N8921N.html" rel="bookmark">彻底讲透Elasticsearch</a></div>
     </li>
   </ul>
 
@@ -446,11 +432,11 @@
           
           <div class="post-tags">
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
               <a href="/tags/%E6%8C%87%E9%92%88/" rel="tag"><i class="fa fa-tag"></i> 指针</a>
               <a href="/tags/%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
-              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
-              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"><i class="fa fa-tag"></i> 设计模式</a>
               <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"><i class="fa fa-tag"></i> 设计模式</a>
               <a href="/tags/%E5%AE%B9%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> 容器</a>
               <a href="/tags/Mybatis/" rel="tag"><i class="fa fa-tag"></i> Mybatis</a>
           </div>
@@ -630,13 +616,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">985k</span>
+    <span title="站点总字数">976k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">14:55</span>
+    <span title="站点阅读时长">14:47</span>
 </div>
 
 <div>
