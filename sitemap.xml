@@ -1199,15 +1199,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/39ZYWX3.html</loc>
-    
-    <lastmod>2022-08-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/posts/1BED9D0.html</loc>
     
     <lastmod>2022-08-13</lastmod>
@@ -1227,6 +1218,15 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/33P1FY8.html</loc>
+    
+    <lastmod>2022-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/posts/39ZYWX3.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1506,13 +1506,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/bug/</loc>
-    <lastmod>2024-03-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/tags/Java/</loc>
     <lastmod>2024-03-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -1528,6 +1521,13 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/CPU/</loc>
+    <lastmod>2024-03-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/bug/</loc>
     <lastmod>2024-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1653,14 +1653,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/Nginx/</loc>
+    <loc>https://blog.xuemingde.com/tags/Spring/</loc>
     <lastmod>2024-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/Spring/</loc>
+    <loc>https://blog.xuemingde.com/tags/Nginx/</loc>
     <lastmod>2024-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1795,14 +1795,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/SpringBoot/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
     <lastmod>2024-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/SpringBoot/</loc>
     <lastmod>2024-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1865,14 +1865,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/</loc>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL/</loc>
     <lastmod>2024-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL/</loc>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/</loc>
     <lastmod>2024-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
