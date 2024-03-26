@@ -67,8 +67,8 @@
 <meta property="article:tag" content="函数">
 <meta property="article:tag" content="bug">
 <meta property="article:tag" content="linux">
-<meta property="article:tag" content="多线程">
 <meta property="article:tag" content="GC">
+<meta property="article:tag" content="多线程">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://xuemingde.com/pages/image/others/202403251329010.jpeg">
 
@@ -308,25 +308,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h1>Windows下Qt生成dump文件并定位bug（基于qBreakpad）</h1>
-<ul>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h1 id="Windows下Qt生成dump文件并定位bug（基于qBreakpad）"><a href="#Windows下Qt生成dump文件并定位bug（基于qBreakpad）" class="headerlink" title="Windows下Qt生成dump文件并定位bug（基于qBreakpad）"></a>Windows下Qt生成dump文件并定位bug（基于qBreakpad）</h1><ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjZHVtcHBkYl8y">一、dump和pdb是什么<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjZHVtcF8xNQ==">二、搜集跨平台生成dump的方案<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjcUJyZWFrcGFkZHVtcF8zMw==">三、基于qBreakpad生成dump文件<i class="fa fa-external-link-alt"></i></span></li>
-<li>
-<ul>
+<li><ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjMUJyZWFrcGFkXzM3">1、Breakpad介绍<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjMl82NQ==">2、源码准备<i class="fa fa-external-link-alt"></i></span></li>
-<li>
-<ul>
+<li><ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjMUJyZWFrcGFkXzY5">（1）下载Breakpad源码<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjMkxTU183NQ==">（2）下载LSS源码<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjM3FCcmVha3BhZF84MQ==">（3）下载qBreakpad源码<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
 </li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjM3FCcmVha3BhZF84Nw==">3、编译qBreakpad<i class="fa fa-external-link-alt"></i></span></li>
-<li>
-<ul>
+<li><ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjMUJyZWFrcGFkTFNTdGhpcmRfcGFydHlfOTE=">（1）将Breakpad、LSS源码放入third_party目录<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjMnFCcmVha3BhZF8xMDM=">（2）qBreakpad工程介绍<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjM2J1Z18xMTc=">（3）源码bug修正<i class="fa fa-external-link-alt"></i></span></li>
@@ -343,8 +339,7 @@
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjZHVtcF8zNTg=">七、dump文件上报<i class="fa fa-external-link-alt"></i></span></li>
 <li><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5aHNlL2FydGljbGUvZGV0YWlscy8xMTI1MzMzMzMjXzQwMQ==">八、总结<i class="fa fa-external-link-alt"></i></span></li>
 </ul>
-<h2 id="一、dump和pdb是什么">一、dump和pdb是什么</h2>
-<p>当我们写的程序跑在客户的机器上，因为一个bug，导致程序崩溃，你会有些什么办法来，定位并修复这个bug呢？</p>
+<h2 id="一、dump和pdb是什么"><a href="#一、dump和pdb是什么" class="headerlink" title="一、dump和pdb是什么"></a>一、dump和pdb是什么</h2><p>当我们写的程序跑在客户的机器上，因为一个bug，导致程序崩溃，你会有些什么办法来，定位并修复这个bug呢？</p>
 <p>有人会说记录日志，即便有日志，也是不好定位的，因为你只能推测出大概的模块或者位置，无法定位到具体出错的代码行。</p>
 <p>此时，我们可以让程序崩溃后，自动生成一个*.dmp文件，并配合在编译该程序时生成的pdb文件，来准确定位到调用堆栈、代码行上。这样很轻易就可以找到该bug。</p>
 <ul>
@@ -352,8 +347,7 @@
 <li>pdb文件，后缀*.pdb，是程序的符号文件。</li>
 </ul>
 <p>微软有成熟的工具可以分析，比如VS和windbg。所以我们当务之急，就是准备好这2个文件，后面再说如何分析，其实比较简单，耐心就好。</p>
-<h2 id="二、搜集跨平台生成dump的方案">二、搜集跨平台生成dump的方案</h2>
-<p>在不同的平台下，生成dump文件的方式都不同。既然用上Qt了，自然是想要任何东西都最好跨平台。</p>
+<h2 id="二、搜集跨平台生成dump的方案"><a href="#二、搜集跨平台生成dump的方案" class="headerlink" title="二、搜集跨平台生成dump的方案"></a>二、搜集跨平台生成dump的方案</h2><p>在不同的平台下，生成dump文件的方式都不同。既然用上Qt了，自然是想要任何东西都最好跨平台。</p>
 <p>经过一番调查，发现有一个来自谷歌的开源项目叫<strong>Breakpad</strong>，统一了这三平台win、linux、mac生成dump的方式，通过它就可以跨平台。</p>
 <p>Github地址：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZS9icmVha3BhZA==">https://github.com/google/breakpad<i class="fa fa-external-link-alt"></i></span></p>
 <p>使用也是相对简单的，大概就是下载源码，编译生成lib和dll，然后在你自己的程序中include头文件，就可以在你的程序中集成，在崩溃时生成dump文件。</p>
@@ -361,10 +355,8 @@
 <p>Github地址：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2J1enp5U21pbGUvcUJyZWFrcGFk">https://github.com/buzzySmile/qBreakpad<i class="fa fa-external-link-alt"></i></span></p>
 <p>大致了解了下qBreakpad，该源码简单到无以复加，虽github上文档有些年久失修，但是考虑到如此简单，也就无关痛痒了。</p>
 <p>俗话说，站在巨人的肩上看得更远。接下来，我们就<strong>选择qBreakpad来生成dump文件</strong>吧。</p>
-<h2 id="三、基于qBreakpad生成dump文件">三、基于qBreakpad生成dump文件</h2>
-<p>我们大概先了解下Breakpad的一些常识。</p>
-<h3 id="1、Breakpad介绍">1、Breakpad介绍</h3>
-<p>Breakpad是Google公司开发的开源多平台C++崩溃检测库。Breakpad可以捕获发布给用户的应用程序的崩溃，并记录软件崩溃的调试信息到“minidump”文件中，即*.dmp。</p>
+<h2 id="三、基于qBreakpad生成dump文件"><a href="#三、基于qBreakpad生成dump文件" class="headerlink" title="三、基于qBreakpad生成dump文件"></a>三、基于qBreakpad生成dump文件</h2><p>我们大概先了解下Breakpad的一些常识。</p>
+<h3 id="1、Breakpad介绍"><a href="#1、Breakpad介绍" class="headerlink" title="1、Breakpad介绍"></a>1、Breakpad介绍</h3><p>Breakpad是Google公司开发的开源多平台C++崩溃检测库。Breakpad可以捕获发布给用户的应用程序的崩溃，并记录软件崩溃的调试信息到“minidump”文件中，即*.dmp。</p>
 <blockquote>
 <p>minidump是由微软开发的崩溃记录文件格式。minidump为二进制文件，体积小。为了保持统一，Breakpad在其他系统下也选择生成minidump文件。</p>
 </blockquote>
@@ -377,7 +369,7 @@
 <li>Linux：监听 SIGILL SIGSEGV 等异常信号 获取崩溃事件</li>
 </ul>
 <p>BreakPad工作原理示意图：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251329010.jpeg" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251329010.jpeg" alt="在这里插入图片描述"></p>
 <p>表达的意思就是：</p>
 <ul>
 <li>我们在编译的时候，需要在Release版程序中<strong>生成调试信息</strong>。</li>
@@ -386,42 +378,31 @@
 <li>dump文件可以直接发送到指定服务器，或者由用户手动<strong>发给开发者</strong>。</li>
 <li>收到dump文件后，结合符号文件，可通过minidump_stackwalk工具<strong>生成堆栈调用信息</strong>文件，这个文件可以直接阅读，定位bug。</li>
 </ul>
-<h3 id="2、源码准备">2、源码准备</h3>
-<p>我们知道qBreakpad是对Breakpad的封装，所以qBreakpad的编译，还依赖2套源码Breakpad、LSS。</p>
-<h4 id="（1）下载Breakpad源码">（1）下载Breakpad源码</h4>
-<p>下载地址：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZS9icmVha3BhZA==">https://github.com/google/breakpad<i class="fa fa-external-link-alt"></i></span></p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251330011.png" alt=""></p>
-<h4 id="（2）下载LSS源码">（2）下载LSS源码</h4>
-<p>下载地址：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2l0aGFpYm8vbGludXgtc3lzY2FsbC1zdXBwb3J0">https://github.com/ithaibo/linux-syscall-support<i class="fa fa-external-link-alt"></i></span></p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251330752.png" alt=""></p>
-<h4 id="（3）下载qBreakpad源码">（3）下载qBreakpad源码</h4>
-<p>下载地址：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2J1enp5U21pbGUvcUJyZWFrcGFk">https://github.com/buzzySmile/qBreakpad<i class="fa fa-external-link-alt"></i></span></p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251330023.png" alt=""></p>
-<h3 id="3、编译qBreakpad">3、编译qBreakpad</h3>
-<p>以下开发环境：Win10下，Qt Creator + MSVC编译器。</p>
-<h4 id="（1）将Breakpad、LSS源码放入third-party目录">（1）将Breakpad、LSS源码放入third_party目录</h4>
-<p>解压qBreakpad源码后，在qBreakpad-master\third_party目录下，有如下2个目录，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251330181.png" alt=""></p>
+<h3 id="2、源码准备"><a href="#2、源码准备" class="headerlink" title="2、源码准备"></a>2、源码准备</h3><p>我们知道qBreakpad是对Breakpad的封装，所以qBreakpad的编译，还依赖2套源码Breakpad、LSS。</p>
+<h4 id="（1）下载Breakpad源码"><a href="#（1）下载Breakpad源码" class="headerlink" title="（1）下载Breakpad源码"></a>（1）下载Breakpad源码</h4><p>下载地址：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2dvb2dsZS9icmVha3BhZA==">https://github.com/google/breakpad<i class="fa fa-external-link-alt"></i></span></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251330011.png" alt="在这里插入图片描述"></p>
+<h4 id="（2）下载LSS源码"><a href="#（2）下载LSS源码" class="headerlink" title="（2）下载LSS源码"></a>（2）下载LSS源码</h4><p>下载地址：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2l0aGFpYm8vbGludXgtc3lzY2FsbC1zdXBwb3J0">https://github.com/ithaibo/linux-syscall-support<i class="fa fa-external-link-alt"></i></span></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251330752.png" alt="在这里插入图片描述"></p>
+<h4 id="（3）下载qBreakpad源码"><a href="#（3）下载qBreakpad源码" class="headerlink" title="（3）下载qBreakpad源码"></a>（3）下载qBreakpad源码</h4><p>下载地址：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2J1enp5U21pbGUvcUJyZWFrcGFk">https://github.com/buzzySmile/qBreakpad<i class="fa fa-external-link-alt"></i></span></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251330023.png" alt="在这里插入图片描述"></p>
+<h3 id="3、编译qBreakpad"><a href="#3、编译qBreakpad" class="headerlink" title="3、编译qBreakpad"></a>3、编译qBreakpad</h3><p>以下开发环境：Win10下，Qt Creator + MSVC编译器。</p>
+<h4 id="（1）将Breakpad、LSS源码放入third-party目录"><a href="#（1）将Breakpad、LSS源码放入third-party目录" class="headerlink" title="（1）将Breakpad、LSS源码放入third_party目录"></a>（1）将Breakpad、LSS源码放入third_party目录</h4><p>解压qBreakpad源码后，在qBreakpad-master\third_party目录下，有如下2个目录，如下：</p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251330181.png" alt="在这里插入图片描述"></p>
 <p>分别解压Breakpad、LSS源码至breakpad和lss目录，此2个目录下源码需要参与qBreakpad的编译。放置好后，如下所示：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251330201.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251331525.png" alt=""></p>
-<h4 id="（2）qBreakpad工程介绍">（2）qBreakpad工程介绍</h4>
-<p>在qBreakpad源码目录下，使用QtCreator打开qBreakpad.pro工程，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251331011.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251330201.png" alt="在这里插入图片描述"></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251331525.png" alt="在这里插入图片描述"></p>
+<h4 id="（2）qBreakpad工程介绍"><a href="#（2）qBreakpad工程介绍" class="headerlink" title="（2）qBreakpad工程介绍"></a>（2）qBreakpad工程介绍</h4><p>在qBreakpad源码目录下，使用QtCreator打开qBreakpad.pro工程，如下：</p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251331011.png" alt="在这里插入图片描述"></p>
 <ul>
-<li>
-<p>demo工程下，有2个演示程序program和reporter，分别实现了演示生成dump文件，上报dump文件的功能。</p>
+<li><p>demo工程下，有2个演示程序program和reporter，分别实现了演示生成dump文件，上报dump文件的功能。</p>
 </li>
-<li>
-<p>handler为静态库工程，该工程封装了Breakpad，直接编译此工程，可生成qBreakpad.lib。</p>
+<li><p>handler为静态库工程，该工程封装了Breakpad，直接编译此工程，可生成qBreakpad.lib。</p>
 </li>
-<li>
-<p>tests为一个简单的测试工程。</p>
+<li><p>tests为一个简单的测试工程。</p>
 </li>
 </ul>
 <p>但是在源码中有3个bug，在编译前，我们需要先修正。</p>
-<h4 id="（3）源码bug修正">（3）源码bug修正</h4>
-<p><strong>I、在Debug模式下编译demo工程时，报错</strong></p>
+<h4 id="（3）源码bug修正"><a href="#（3）源码bug修正" class="headerlink" title="（3）源码bug修正"></a>（3）源码bug修正</h4><p><strong>I、在Debug模式下编译demo工程时，报错</strong></p>
 <p>报错如下：检测到“RuntimeLibrary”的不匹配项:值“MD_DynamicRelease”不匹配值“MDd_DynamicDebug”(TestThread.obj 中)</p>
 <p>解决办法： 在qBreakpad-master/config.pri文件中，删除<code>CONFIG += release</code>此行，重新编译handler工程，再编译demo工程，错误消失。</p>
 <p><strong>II、编译demo工程时，报错</strong></p>
@@ -430,46 +411,38 @@
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_LIBDIR += $$OUT_PWD/../../handler</span><br></pre></td></tr></tbody></table></figure>
 <p>再次编译demo工程，错误消失。</p>
 <p><strong>III、编译tests工程时，函数返回值报错</strong></p>
-<p>报错如下：<br>
-<img data-src="https://xuemingde.com/pages/image/others/202403251331175.png" alt=""></p>
+<p>报错如下：<br><img data-src="https://xuemingde.com/pages/image/others/202403251331175.png" alt=""></p>
 <p>解决办法：在qBreakpad-master\tests\duplicates\main.cpp文件中，为各个函数添加返回值即可。</p>
 <p>这3个报错，其实都比较简单，但是为了方便，我这里提供一个集成了Breakpad、LSS、qBreakpad源码，并修正了bug的压缩包，供大家下载，可以直接在win、linux下编译通过。</p>
-<p>链接: <span class="exturl" data-url="aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMVVIZ2lreWlwVVp5RXlnSjdBS1RCemc=">https://pan.baidu.com/s/1UHgikyipUZyEygJ7AKTBzg<i class="fa fa-external-link-alt"></i></span><br>
-提取码: 6jki</p>
-<h4 id="（4）编译生成qBreakpad-lib">（4）编译生成qBreakpad.lib</h4>
-<p>分别在Debug、Release模式下，编译handler工程，生成2个版本的<strong>qBreakpad.lib静态库</strong>。</p>
+<p>链接: <span class="exturl" data-url="aHR0cHM6Ly9wYW4uYmFpZHUuY29tL3MvMVVIZ2lreWlwVVp5RXlnSjdBS1RCemc=">https://pan.baidu.com/s/1UHgikyipUZyEygJ7AKTBzg<i class="fa fa-external-link-alt"></i></span><br>提取码: 6jki</p>
+<h4 id="（4）编译生成qBreakpad-lib"><a href="#（4）编译生成qBreakpad-lib" class="headerlink" title="（4）编译生成qBreakpad.lib"></a>（4）编译生成qBreakpad.lib</h4><p>分别在Debug、Release模式下，编译handler工程，生成2个版本的<strong>qBreakpad.lib静态库</strong>。</p>
 <p>因为程序调用qBreakpad.lib时，只能debug版程序链接debug版库，release版程序链接release版库。debug版程序链接release版库会报错。</p>
-<h3 id="4、在程序中调用qBreakpad">4、在程序中调用qBreakpad</h3>
-<p>我们建立qBreakpadTest控制台程序，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251331242.png" alt=""></p>
+<h3 id="4、在程序中调用qBreakpad"><a href="#4、在程序中调用qBreakpad" class="headerlink" title="4、在程序中调用qBreakpad"></a>4、在程序中调用qBreakpad</h3><p>我们建立qBreakpadTest控制台程序，如下：</p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251331242.png" alt="在这里插入图片描述"></p>
 <p>在工程目录下建立qBreakpad目录，用于存放lib和头文件。</p>
 <p>然后，分别将debug版、release版<strong>qBreakpad.lib</strong>拷贝至，qBreakpad\lib\debug和qBreakpad\lib\release目录下。</p>
 <p>再将调用库所需的头文件<strong>QBreakpadHandler.h、QBreakpadHttpUploader.h、call_once.h、singleton.h</strong>共4个文件拷贝至qBreakpad\include下。</p>
 <p>最后目录结构，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251331249.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251331249.png" alt="在这里插入图片描述"></p>
 <p>在qBreakpadTest.pro文件中，添加如下内容：</p>
 <figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">############ for qBreakpad ############ # qBreakpad中需要使用到network模块 QT += network # 启用多线程、异常、RTTI、STL支持 CONFIG += thread exceptions rtti stl # without c++11 &amp; AppKit library compiler can't solve address for symbols CONFIG += c++11 macx: LIBS += -framework AppKit # 配置头文件搜索路径和链接库路径 INCLUDEPATH += $$PWD/qBreakpad/include CONFIG(debug, debug|release) { LIBS += -L$$PWD/qBreakpad/lib/debug -lqBreakpad } else { LIBS += -L$$PWD/qBreakpad/lib/release -lqBreakpad } ############ for qBreakpad ############</span><br></pre></td></tr></tbody></table></figure>
 <p>然后在main.cpp中添加调用代码，如下：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QCoreApplication&gt;</span> #<span class="meta-keyword">include</span> <span class="meta-string">"QBreakpadHandler.h"</span> int main(int argc, char *argv[]) { QCoreApplication a(argc, argv); QBreakpadInstance.setDumpPath(<span class="meta-string">"crashes"</span>); <span class="comment">// 设置生成dump文件路径 // 执行此句发生异常时，会自动生成dump文件 *((int*)0) = 10; return a.exec(); }</span></span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="5、生成dump文件">5、生成dump文件</h3>
-<p>编译，运行程序，生成的dump文件，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251331426.png" alt=""></p>
+<h3 id="5、生成dump文件"><a href="#5、生成dump文件" class="headerlink" title="5、生成dump文件"></a>5、生成dump文件</h3><p>编译，运行程序，生成的dump文件，如下：</p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251331426.png" alt="在这里插入图片描述"></p>
 <p>前面我们说过需要dump和pdb文件才能进行更细致的定位bug。</p>
 <p>目前dump文件已经生成，接下来了解如何生成pdb文件。</p>
-<h2 id="四、生成pdb文件">四、生成pdb文件</h2>
-<p>在debug模式下，默认就会生成pdb，但是我们期望的是，在release下也能生成pdb。毕竟交给客户的是release版，我们大多时候，也只是需要对release版程序进行bug定位。</p>
+<h2 id="四、生成pdb文件"><a href="#四、生成pdb文件" class="headerlink" title="四、生成pdb文件"></a>四、生成pdb文件</h2><p>在debug模式下，默认就会生成pdb，但是我们期望的是，在release下也能生成pdb。毕竟交给客户的是release版，我们大多时候，也只是需要对release版程序进行bug定位。</p>
 <p>所以，需要在qBreakpadTest.pro文件中，添加如下内容，让release版程序带上调试信息：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QMAKE_CXXFLAGS_RELEASE = $$QMAKE_CFLAGS_RELEASE_WITH_DEBUGINFO QMAKE_LFLAGS_RELEASE = $$QMAKE_LFLAGS_RELEASE_WITH_DEBUGINFO</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>win系统下，程序的调试信息，是在单独的pdb文件中；在其他linux、mac等系统下，程序的调试信息就包含在程序本体内部，所以带调试信息的程序一般比不带调试信息的大。</p>
 </blockquote>
 <p>再次编译，可以看到，已经生成了qBreakpadTest.pdb。</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251332532.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251332532.png" alt="在这里插入图片描述"></p>
 <p><strong>特别注意：</strong></p>
 <blockquote>
 <p>MinGW是gcc在windows下的编译环境，GCC/MinGW以GNU GDB Debugger使用的格式生成调试信息，不支持Microsoft PDB格式。也就是说如果使用MinGW编译程序，无法生成pdb文件，这点需要注意一下。必须使用MSVC编译，方可生成pdb文件。</p>
-</blockquote>
-<blockquote>
 <p>如果是主程序+多个dll的开发方式，需要使用上述方法，将每个dll也生成pdb文件，这样，在dll中发生崩溃时，才能根据dump和pdb定位到dll的代码上。</p>
 </blockquote>
 <p>目前我们已经生成了程序的pdb调试信息文件，并且程序执行过程中发生崩溃，也可以自动记录dump文件，这2个文件已经具备，接下来，我们看看如何利用他们定位到bug所在位置。</p>
@@ -480,16 +453,15 @@
 <li>Windbg，微软提供的调试工具，使用稍麻烦，无需安装。</li>
 </ul>
 <p>在win系统下，还是使用微软的工具，来的最方便，所以就不对minidump_stackwalk进行介绍了，主要下面对后2种进行说明。</p>
-<h2 id="五、使用VS进行调试">五、使用VS进行调试</h2>
-<p>我这里使用VS 2017，来进行如下的操作。</p>
+<h2 id="五、使用VS进行调试"><a href="#五、使用VS进行调试" class="headerlink" title="五、使用VS进行调试"></a>五、使用VS进行调试</h2><p>我这里使用VS 2017，来进行如下的操作。</p>
 <p><strong>1、打开dump文件</strong></p>
 <p>文件菜单下，选择“打开”-&gt;“文件”，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251332192.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251332192.png" alt="在这里插入图片描述"></p>
 <p>找到dump文件，并打开，可以看到转储摘要和模块等，但是并不能发现问题何在。如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251332395.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251332395.png" alt="在这里插入图片描述"></p>
 <p><strong>2、设置pdb文件路径</strong></p>
 <p>接下来，点击“设置符号路径”，点击“+”号，添加pdb文件路径，之后，“确定”。如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251332332.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251332332.png" alt="在这里插入图片描述"></p>
 <p>提示：</p>
 <blockquote>
 <p>一般来说，我们只需要填写pdb所在的目录，不需要具体到pdb名称，因为根据dump文件，可以自动搜索到pdb文件。</p>
@@ -497,50 +469,48 @@
 </blockquote>
 <p><strong>3、进行调试</strong></p>
 <p>最后，点击“使用 仅限本机 进行调试”，可以很清楚的，定位到崩溃发生的代码行上。如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251332531.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251332531.png" alt="在这里插入图片描述"></p>
 <p>到此，我们顺利通过dump、pdb文件，成功定位到了bug所在。</p>
 <p>下面介绍另外一种调试方式。</p>
-<h2 id="六、使用Windbg进行调试">六、使用Windbg进行调试</h2>
-<p>下载windbg：<span class="exturl" data-url="aHR0cHM6Ly9kbC5wY29ubGluZS5jb20uY24vZG93bmxvYWQvNzcwODc2LTEuaHRtbA==">https://dl.pconline.com.cn/download/770876-1.html<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="六、使用Windbg进行调试"><a href="#六、使用Windbg进行调试" class="headerlink" title="六、使用Windbg进行调试"></a>六、使用Windbg进行调试</h2><p>下载windbg：<span class="exturl" data-url="aHR0cHM6Ly9kbC5wY29ubGluZS5jb20uY24vZG93bmxvYWQvNzcwODc2LTEuaHRtbA==">https://dl.pconline.com.cn/download/770876-1.html<i class="fa fa-external-link-alt"></i></span></p>
 <p>先解压，然后运行WinDbg(x64)\windbg.exe。</p>
 <p><strong>1、指定pdb文件路径</strong></p>
 <p>选择“File”-&gt;“Symbol File Path…”，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251332526.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251332526.png" alt="在这里插入图片描述"></p>
 <p>直接输入pdb文件所在目录即可，它会自动找到适合的pdb文件。也可以输入pdb文件路径，若多个路径，则用分号分隔。</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251332615.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251332615.png" alt="在这里插入图片描述"></p>
 <p>注意：</p>
 <blockquote>
 <p>如果程序涉及到DLL，需要将EXE、所有涉及DLL的PDB路径都包括。</p>
 </blockquote>
 <p><strong>2、指定代码路径（可选）</strong></p>
 <p>选择“File”-&gt;“Source File Path…”，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251332535.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251332535.png" alt="在这里插入图片描述"></p>
 <p>输入源文件路径。</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251333768.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251333768.png" alt="在这里插入图片描述"></p>
 <p><strong>3、打开dump文件</strong></p>
 <p>选择“File”-&gt;“Open Crash Dump…”，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251333412.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251333412.png" alt="在这里插入图片描述"></p>
 <p>选择dump文件，并打开，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251333118.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251333118.png" alt="在这里插入图片描述"></p>
 <p><strong>4、分析dump文件</strong></p>
 <p>输入“!analyze -v”，回车，开始进行分析。如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251335747.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251335747.png" alt="在这里插入图片描述"></p>
 <p>busy状态表示正在生成结果。最后生成的结果，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251335012.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251335012.png" alt="在这里插入图片描述"></p>
 <ul>
 <li>STACK_TEXT表示调用堆栈信息。</li>
 <li>FAULTING_SOURCE_CODE表示发生错误的源码，可以看到在第11行，发生的异常。</li>
 </ul>
 <p>我们把内容拉到最右边，查看完整的STACK_TEXT信息，如下：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202403251334063.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202403251334063.png" alt="在这里插入图片描述"></p>
 <p>堆栈指示异常发生于main.cpp的第11行，与FAULTING_SOURCE_CODE段内容不谋而合。</p>
 <p>注意：</p>
 <blockquote>
 <p>若前面的源文件路径不填写，则最后分析生成结果中，只会存在STACK_TEXT堆栈信息，不会存在FAULTING_SOURCE_CODE字段。但是即便如此，仅凭堆栈信息，也可以定位到bug位于main.cpp的第11行。</p>
 </blockquote>
 <p>到此，我们使用windbg，顺利通过dump、pdb文件，成功定位到了bug所在。</p>
-<h2 id="七、dump文件上报">七、dump文件上报</h2>
-<p>qBreakpad还提供了上报dump文件的方法。说白了就是，将生成的dump文件上传到指定的服务器。</p>
+<h2 id="七、dump文件上报"><a href="#七、dump文件上报" class="headerlink" title="七、dump文件上报"></a>七、dump文件上报</h2><p>qBreakpad还提供了上报dump文件的方法。说白了就是，将生成的dump文件上传到指定的服务器。</p>
 <p>上报演示程序，位于qBreakpad-master\demo\reporter下，感兴趣可以去看看。</p>
 <p>使用也是十分简单。</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QBreakpadHandler</span>:</span> <span class="keyword">public</span> QObject { Q_OBJECT <span class="keyword">public</span>: <span class="function"><span class="keyword">static</span> QString <span class="title">version</span><span class="params">()</span></span>; <span class="built_in">QBreakpadHandler</span>(); ~<span class="built_in">QBreakpadHandler</span>(); <span class="function">QString <span class="title">uploadUrl</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="function">QString <span class="title">dumpPath</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="function">QStringList <span class="title">dumpFileList</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="function"><span class="keyword">void</span> <span class="title">setDumpPath</span><span class="params">(<span class="keyword">const</span> QString&amp; path)</span></span>; <span class="function"><span class="keyword">void</span> <span class="title">setUploadUrl</span><span class="params">(<span class="keyword">const</span> QUrl&amp; url)</span></span>; <span class="keyword">public</span> slots: <span class="function"><span class="keyword">void</span> <span class="title">sendDumps</span><span class="params">()</span></span>; <span class="keyword">private</span>: QBreakpadHandlerPrivate* d; };</span><br></pre></td></tr></tbody></table></figure>
@@ -552,25 +522,20 @@
 </ul>
 <p>文件上传原理：QBreakpadHandler的sendDumps函数，使用QNetworkAccessManager的post()方法，来实现http协议方式的，文件上传。</p>
 <p>上报功能，根据自身的需求，来确定有没有必要。此处不再举例说明。</p>
-<h2 id="八、总结">八、总结</h2>
-<p>我们可以在自己的程序中，借助qBreakpad，很容易实现跨平台的，dump文件生成。</p>
+<h2 id="八、总结"><a href="#八、总结" class="headerlink" title="八、总结"></a>八、总结</h2><p>我们可以在自己的程序中，借助qBreakpad，很容易实现跨平台的，dump文件生成。</p>
 <p>对于在程序中集成qBreakpad，实际就是，在程序中调用qBreakpad的静态库而已，非常的简单。</p>
 <p>对于程序生成的dump文件，可以由用户直接发给我们，也可以由程序自动上报到我们的服务器上。</p>
 <p>然后，我们拿到dump和pdb文件，借助VS或者Windbg，就可以快速定位bug。</p>
 <p><strong>特别注意：</strong></p>
 <ul>
-<li>
-<p>欲定位bug，至少需要dump和pdb，这2个文件。</p>
+<li><p>欲定位bug，至少需要dump和pdb，这2个文件。</p>
 </li>
-<li>
-<p>pdb文件与生成dump的程序必须配套，即同一次编译生成的。即使代码没有变化，重新编译生成的pdb都是不行的。所以请妥善保管好发布程序的pdb文件。</p>
+<li><p>pdb文件与生成dump的程序必须配套，即同一次编译生成的。即使代码没有变化，重新编译生成的pdb都是不行的。所以请妥善保管好发布程序的pdb文件。</p>
 </li>
 </ul>
 <p>原因如下：</p>
 <blockquote>
-<p>调试器是如何来判别EXE、DLL等是否和一个pdb文件匹配呢？<br>
-每次我们链接EXE或者DLL的时候，链接器都将产生一个唯一的GUID，然后将其写入到PDB和可执行文件。调试器加载的时候将检查两者的GUID，如果一致就表示他们匹配。<br>
-注：如果我们需要调试，我们需要查dump文件，那么请妥善保管好自己的代码和pdb。每次重新编译，即使所有代码均没有变化，他们的GUID也不同。</p>
+<p>调试器是如何来判别EXE、DLL等是否和一个pdb文件匹配呢？<br>每次我们链接EXE或者DLL的时候，链接器都将产生一个唯一的GUID，然后将其写入到PDB和可执行文件。调试器加载的时候将检查两者的GUID，如果一致就表示他们匹配。<br>注：如果我们需要调试，我们需要查dump文件，那么请妥善保管好自己的代码和pdb。每次重新编译，即使所有代码均没有变化，他们的GUID也不同。</p>
 </blockquote>
 <p>本文涉及工程代码：</p>
 <p><span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vYmFpbGl5YW5nL2NkZW1vL3RyZWUvbWFzdGVyL1F0LzU3cUJyZWFrcGFkVGVzdC9xQnJlYWtwYWRUZXN0">https://gitee.com/bailiyang/cdemo/tree/master/Qt/57qBreakpadTest/qBreakpadTest<i class="fa fa-external-link-alt"></i></span></p>
@@ -661,8 +626,8 @@
               <a href="/tags/%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
               <a href="/tags/bug/" rel="tag"><i class="fa fa-tag"></i> bug</a>
               <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
-              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
               <a href="/tags/GC/" rel="tag"><i class="fa fa-tag"></i> GC</a>
+              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"><i class="fa fa-tag"></i> 多线程</a>
           </div>
 
         
@@ -754,7 +719,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Windows下Qt生成dump文件并定位bug（基于qBreakpad）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81dump%E5%92%8Cpdb%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.1.</span> <span class="nav-text">一、dump和pdb是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%90%9C%E9%9B%86%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%94%9F%E6%88%90dump%E7%9A%84%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.</span> <span class="nav-text">二、搜集跨平台生成dump的方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%9F%BA%E4%BA%8EqBreakpad%E7%94%9F%E6%88%90dump%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">三、基于qBreakpad生成dump文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81Breakpad%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.3.1.</span> <span class="nav-text">1、Breakpad介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%BA%90%E7%A0%81%E5%87%86%E5%A4%87"><span class="nav-number">1.3.2.</span> <span class="nav-text">2、源码准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E4%B8%8B%E8%BD%BDBreakpad%E6%BA%90%E7%A0%81"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">（1）下载Breakpad源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E4%B8%8B%E8%BD%BDLSS%E6%BA%90%E7%A0%81"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">（2）下载LSS源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E4%B8%8B%E8%BD%BDqBreakpad%E6%BA%90%E7%A0%81"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">（3）下载qBreakpad源码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E7%BC%96%E8%AF%91qBreakpad"><span class="nav-number">1.3.3.</span> <span class="nav-text">3、编译qBreakpad</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%B0%86Breakpad%E3%80%81LSS%E6%BA%90%E7%A0%81%E6%94%BE%E5%85%A5third-party%E7%9B%AE%E5%BD%95"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">（1）将Breakpad、LSS源码放入third_party目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89qBreakpad%E5%B7%A5%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">（2）qBreakpad工程介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E6%BA%90%E7%A0%81bug%E4%BF%AE%E6%AD%A3"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">（3）源码bug修正</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E7%BC%96%E8%AF%91%E7%94%9F%E6%88%90qBreakpad-lib"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">（4）编译生成qBreakpad.lib</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%9C%A8%E7%A8%8B%E5%BA%8F%E4%B8%AD%E8%B0%83%E7%94%A8qBreakpad"><span class="nav-number">1.3.4.</span> <span class="nav-text">4、在程序中调用qBreakpad</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E7%94%9F%E6%88%90dump%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.5.</span> <span class="nav-text">5、生成dump文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%94%9F%E6%88%90pdb%E6%96%87%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">四、生成pdb文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%BD%BF%E7%94%A8VS%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95"><span class="nav-number">1.5.</span> <span class="nav-text">五、使用VS进行调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%BD%BF%E7%94%A8Windbg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95"><span class="nav-number">1.6.</span> <span class="nav-text">六、使用Windbg进行调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81dump%E6%96%87%E4%BB%B6%E4%B8%8A%E6%8A%A5"><span class="nav-number">1.7.</span> <span class="nav-text">七、dump文件上报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">1.8.</span> <span class="nav-text">八、总结</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows%E4%B8%8BQt%E7%94%9F%E6%88%90dump%E6%96%87%E4%BB%B6%E5%B9%B6%E5%AE%9A%E4%BD%8Dbug%EF%BC%88%E5%9F%BA%E4%BA%8EqBreakpad%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">Windows下Qt生成dump文件并定位bug（基于qBreakpad）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81dump%E5%92%8Cpdb%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.1.</span> <span class="nav-text">一、dump和pdb是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%90%9C%E9%9B%86%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%94%9F%E6%88%90dump%E7%9A%84%E6%96%B9%E6%A1%88"><span class="nav-number">1.2.</span> <span class="nav-text">二、搜集跨平台生成dump的方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%9F%BA%E4%BA%8EqBreakpad%E7%94%9F%E6%88%90dump%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">三、基于qBreakpad生成dump文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81Breakpad%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.3.1.</span> <span class="nav-text">1、Breakpad介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%BA%90%E7%A0%81%E5%87%86%E5%A4%87"><span class="nav-number">1.3.2.</span> <span class="nav-text">2、源码准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E4%B8%8B%E8%BD%BDBreakpad%E6%BA%90%E7%A0%81"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">（1）下载Breakpad源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E4%B8%8B%E8%BD%BDLSS%E6%BA%90%E7%A0%81"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">（2）下载LSS源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E4%B8%8B%E8%BD%BDqBreakpad%E6%BA%90%E7%A0%81"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">（3）下载qBreakpad源码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E7%BC%96%E8%AF%91qBreakpad"><span class="nav-number">1.3.3.</span> <span class="nav-text">3、编译qBreakpad</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E5%B0%86Breakpad%E3%80%81LSS%E6%BA%90%E7%A0%81%E6%94%BE%E5%85%A5third-party%E7%9B%AE%E5%BD%95"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">（1）将Breakpad、LSS源码放入third_party目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%882%EF%BC%89qBreakpad%E5%B7%A5%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">（2）qBreakpad工程介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E6%BA%90%E7%A0%81bug%E4%BF%AE%E6%AD%A3"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">（3）源码bug修正</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EF%BC%884%EF%BC%89%E7%BC%96%E8%AF%91%E7%94%9F%E6%88%90qBreakpad-lib"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">（4）编译生成qBreakpad.lib</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%9C%A8%E7%A8%8B%E5%BA%8F%E4%B8%AD%E8%B0%83%E7%94%A8qBreakpad"><span class="nav-number">1.3.4.</span> <span class="nav-text">4、在程序中调用qBreakpad</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E7%94%9F%E6%88%90dump%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.5.</span> <span class="nav-text">5、生成dump文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%94%9F%E6%88%90pdb%E6%96%87%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">四、生成pdb文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%BD%BF%E7%94%A8VS%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95"><span class="nav-number">1.5.</span> <span class="nav-text">五、使用VS进行调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%BD%BF%E7%94%A8Windbg%E8%BF%9B%E8%A1%8C%E8%B0%83%E8%AF%95"><span class="nav-number">1.6.</span> <span class="nav-text">六、使用Windbg进行调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81dump%E6%96%87%E4%BB%B6%E4%B8%8A%E6%8A%A5"><span class="nav-number">1.7.</span> <span class="nav-text">七、dump文件上报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">1.8.</span> <span class="nav-text">八、总结</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -837,13 +802,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">994k</span>
+    <span title="站点总字数">986k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">15:04</span>
+    <span title="站点阅读时长">14:56</span>
 </div>
 
 <div>
