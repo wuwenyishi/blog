@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/353RNP2.html</loc>
-    
-    <lastmod>2024-04-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/posts/2D6CV2C.html</loc>
     
     <lastmod>2024-04-02</lastmod>
@@ -30,6 +21,15 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/1SGQZZV.html</loc>
+    
+    <lastmod>2024-04-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/posts/353RNP2.html</loc>
     
     <lastmod>2024-04-02</lastmod>
     
@@ -1190,15 +1190,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/32V7A68.html</loc>
-    
-    <lastmod>2022-08-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/posts/13M04H2.html</loc>
     
     <lastmod>2022-08-13</lastmod>
@@ -1209,6 +1200,15 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/1AQHRFA.html</loc>
+    
+    <lastmod>2022-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/posts/32V7A68.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1253,6 +1253,15 @@
   </url>
   
   <url>
+    <loc>https://blog.xuemingde.com/posts/39ZYWX3.html</loc>
+    
+    <lastmod>2022-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xuemingde.com/posts/1BED9D0.html</loc>
     
     <lastmod>2022-08-13</lastmod>
@@ -1272,24 +1281,6 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/33P1FY8.html</loc>
-    
-    <lastmod>2022-08-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/posts/39ZYWX3.html</loc>
-    
-    <lastmod>2022-08-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/posts/2NPWEZZ.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1335,6 +1326,15 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/1F4JVMQ.html</loc>
+    
+    <lastmod>2022-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/posts/2NPWEZZ.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1583,6 +1583,13 @@
   </url>
   
   <url>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2024-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xuemingde.com/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/</loc>
     <lastmod>2024-04-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -1604,7 +1611,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2024-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1618,14 +1625,28 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>https://blog.xuemingde.com/categories/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2024-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/</loc>
+    <lastmod>2024-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql/</loc>
+    <lastmod>2024-04-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL/</loc>
     <lastmod>2024-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1689,27 +1710,6 @@
   
   <url>
     <loc>https://blog.xuemingde.com/categories/java/%E5%AE%89%E5%85%A8%E6%A1%86%E6%9E%B6/</loc>
-    <lastmod>2024-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql/</loc>
-    <lastmod>2024-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL/</loc>
-    <lastmod>2024-04-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/</loc>
     <lastmod>2024-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
