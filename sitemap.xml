@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2D6CV2C.html</loc>
+    <loc>https://blog.xuemingde.com/posts/1SGQZZV.html</loc>
     
     <lastmod>2024-04-02</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/23YYJYJ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/2D6CV2C.html</loc>
     
     <lastmod>2024-04-02</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1SGQZZV.html</loc>
+    <loc>https://blog.xuemingde.com/posts/23YYJYJ.html</loc>
     
     <lastmod>2024-04-02</lastmod>
     
@@ -1145,7 +1145,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1V420XP.html</loc>
+    <loc>https://blog.xuemingde.com/posts/1NSAYEA.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1154,7 +1154,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1NSAYEA.html</loc>
+    <loc>https://blog.xuemingde.com/posts/1V420XP.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1172,15 +1172,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2K0EYDH.html</loc>
-    
-    <lastmod>2022-08-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/posts/2N1HMJH.html</loc>
     
     <lastmod>2022-08-13</lastmod>
@@ -1190,7 +1181,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/32V7A68.html</loc>
+    <loc>https://blog.xuemingde.com/posts/2K0EYDH.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1209,6 +1200,15 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/1AQHRFA.html</loc>
+    
+    <lastmod>2022-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/posts/32V7A68.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1253,15 +1253,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/39ZYWX3.html</loc>
-    
-    <lastmod>2022-08-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/posts/1BED9D0.html</loc>
     
     <lastmod>2022-08-13</lastmod>
@@ -1289,7 +1280,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2NPWEZZ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/39ZYWX3.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1335,6 +1326,15 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/1F4JVMQ.html</loc>
+    
+    <lastmod>2022-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/posts/2NPWEZZ.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1632,7 +1632,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql/</loc>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL/</loc>
     <lastmod>2024-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1646,7 +1646,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL/</loc>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Mysql/</loc>
     <lastmod>2024-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1667,14 +1667,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/SpringBoot/</loc>
     <lastmod>2024-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/SpringBoot/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
     <lastmod>2024-04-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
