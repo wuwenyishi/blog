@@ -191,7 +191,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/backups/index.html</loc>
+    <loc>https://blog.xuemingde.com/collect/index.html</loc>
     
     <lastmod>2024-01-12</lastmod>
     
@@ -200,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/collect/index.html</loc>
+    <loc>https://blog.xuemingde.com/backups/index.html</loc>
     
     <lastmod>2024-01-12</lastmod>
     
@@ -1217,7 +1217,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/32V7A68.html</loc>
+    <loc>https://blog.xuemingde.com/posts/13M04H2.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1226,7 +1226,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/13M04H2.html</loc>
+    <loc>https://blog.xuemingde.com/posts/32V7A68.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1280,6 +1280,15 @@
   </url>
   
   <url>
+    <loc>https://blog.xuemingde.com/posts/39ZYWX3.html</loc>
+    
+    <lastmod>2022-08-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xuemingde.com/posts/1BED9D0.html</loc>
     
     <lastmod>2022-08-13</lastmod>
@@ -1299,15 +1308,6 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/33P1FY8.html</loc>
-    
-    <lastmod>2022-08-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/posts/39ZYWX3.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1680,14 +1680,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL/</loc>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/</loc>
     <lastmod>2024-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/</loc>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL/</loc>
     <lastmod>2024-04-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
