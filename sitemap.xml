@@ -191,7 +191,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/collect/index.html</loc>
+    <loc>https://blog.xuemingde.com/backups/index.html</loc>
     
     <lastmod>2024-01-12</lastmod>
     
@@ -200,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/backups/index.html</loc>
+    <loc>https://blog.xuemingde.com/collect/index.html</loc>
     
     <lastmod>2024-01-12</lastmod>
     
@@ -1253,7 +1253,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2RH55VS.html</loc>
+    <loc>https://blog.xuemingde.com/posts/WERGR1.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1262,7 +1262,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/WERGR1.html</loc>
+    <loc>https://blog.xuemingde.com/posts/2RH55VS.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1524,7 +1524,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/cache/</loc>
+    <loc>https://blog.xuemingde.com/tags/sql/</loc>
     <lastmod>2024-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1532,13 +1532,6 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2024-05-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/tags/sql/</loc>
     <lastmod>2024-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1553,6 +1546,13 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/redis/</loc>
+    <lastmod>2024-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/cache/</loc>
     <lastmod>2024-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1617,13 +1617,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2024-05-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/categories/Qt/</loc>
     <lastmod>2024-05-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -1639,6 +1632,13 @@
   
   <url>
     <loc>https://blog.xuemingde.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2024-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2024-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
