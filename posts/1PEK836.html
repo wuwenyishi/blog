@@ -1,0 +1,1411 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&amp;display=swap&amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../js/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="../js/pace-theme-minimal.min.css">
+  <script src="../js/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.xuemingde.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","width":300,"display":"always","padding":18,"offset":10,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="WIndows中的所有copy命令">
+<meta property="og:url" content="https://blog.xuemingde.com/posts/1PEK836.html">
+<meta property="og:site_name" content="WiseWanderer">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-17T08:43:45.098Z">
+<meta property="article:author" content="meadee">
+<meta property="article:tag" content="C">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.xuemingde.com/posts/1PEK836.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>WIndows中的所有copy命令 | WiseWanderer</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WiseWanderer</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">知之为知之，不知为不知，是知也。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">167</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">27</span></a>
+
+  </li>
+        <li class="menu-item menu-item-bookmark">
+
+    <a href="/bookmark/" rel="section"><i class="fa fa-bookmark fa-fw"></i>书签</a>
+
+  </li>
+        <li class="menu-item menu-item-tieba">
+
+    <a href="/backups/" rel="section"><i class="fa fa-cloud fa-fw"></i>帖子</a>
+
+  </li>
+        <li class="menu-item menu-item-collect">
+
+    <a href="/collect/" rel="section"><i class="fa fa-star fa-fw"></i>收藏</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+           <div id="container-1">
+            <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.xuemingde.com/posts/1PEK836.html">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpeg">
+      <meta itemprop="name" content="meadee">
+      <meta itemprop="description" content="一花一世界，一念一菩提">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WiseWanderer">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WIndows中的所有copy命令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-05-17 00:00:00 / 修改时间：16:43:45" itemprop="dateCreated datePublished" datetime="2024-05-17T00:00:00+08:00">2024-05-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="copy命令用法">copy命令用法</h2>
+<blockquote>
+<p>Windows 官方文档：<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMvY29weSNzeW50YXg=">copy | Microsoft Learn<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<p><code>copy</code> 命令用于将一个或多个文件从一个位置复制到另一个位置。</p>
+<p>它的基本语法如下：</p>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">COPY</span><span class="bash"> <span class="built_in">source</span> destination</span></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><code>source</code>: 指定要复制的文件路径。可以是单个文件的路径，也可以是通配符表达式指定多个文件。</li>
+<li><code>destination</code>: 指定复制文件的目标位置。可以是一个目录，也可以是一个包含文件名的目标路径。</li>
+</ul>
+<p>以下是一些常见的 <code>copy</code> 命令选项和用法：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/d</td>
+<td>允许将复制的加密文件作为解密文件保存到目标。</td>
+</tr>
+<tr>
+<td>/v</td>
+<td>验证是否已正确写入新文件。</td>
+</tr>
+<tr>
+<td>/n</td>
+<td>在复制名称超过八个字符或文件扩展名超过三个字符的文件时使用短文件名（如果可用）。</td>
+</tr>
+<tr>
+<td>/y</td>
+<td>禁止提示你确认覆盖现有目标文件。</td>
+</tr>
+<tr>
+<td>/-y</td>
+<td>提示你确认覆盖现有目标文件。</td>
+</tr>
+<tr>
+<td>/z</td>
+<td>以可重启模式复制网络文件。</td>
+</tr>
+<tr>
+<td>/a</td>
+<td>指示 ASCII 文本文件。</td>
+</tr>
+<tr>
+<td>/b</td>
+<td>指示二进制文件。</td>
+</tr>
+<tr>
+<td><code>&lt;source&gt;</code></td>
+<td>必需。 指定要从中复制一个文件或一组文件的位置。 source 可以由驱动器号后跟分号、目录名称、文件名或是这几项的组合组成。</td>
+</tr>
+<tr>
+<td><code>&lt;destination&gt;</code></td>
+<td>必需。 指定要将一个文件或一组文件复制到的位置。 destination 可以由驱动器号后跟分号、目录名称、文件名或是这几项的组合组成。</td>
+</tr>
+<tr>
+<td>/?</td>
+<td>在命令提示符下显示帮助。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="跳过已经存在的文件">跳过已经存在的文件</h3>
+<p>使用<code>copy</code>命令并不能直接跳过已存在的文件</p>
+<p>##xcopy命令用法</p>
+<blockquote>
+<p>Windows 官方文档：<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMveGNvcHk=">xcopy | Microsoft Learn<i class="fa fa-external-link-alt"></i></span></p>
+</blockquote>
+<p>复制文件和目录，包括子目录。</p>
+<p><code>xcopy</code>命令是Windows系统中用于复制文件和目录的命令行工具，它比<code>copy</code>命令更强大，并支持更多的选项。下面是<code>xcopy</code>命令的基本用法和一些常用选项：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcopy [源文件/目录] [目标文件/目录] [/选项]</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>
+<p><code>[源文件/目录]</code>：要复制的文件或目录的路径。</p>
+</li>
+<li>
+<p><code>[目标文件/目录]</code>：复制的文件或目录的目标路径。</p>
+</li>
+<li>
+<p><code>/选项</code>：可选的命令选项，如<code>/s</code>、<code>/e</code>等。下面是一些常用的选项：</p>
+<ul>
+<li><code>/s</code>：复制目录及其子目录，但不包括空目录。</li>
+<li><code>/e</code>：复制目录及其子目录，包括空目录。</li>
+<li><code>/i</code>：如果目标是目录而不是文件，会提示是否创建目标目录。</li>
+<li><code>/y</code>：不提示是否覆盖现有目标文件。</li>
+<li><code>/d</code>：仅在源文件更新时才复制文件。</li>
+</ul>
+</li>
+</ul>
+<p>示例用法：</p>
+<ol>
+<li>
+<p>将一个文件复制到另一个目录：</p>
+ <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcopy C:\source\file.txt D:\destination\</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>将一个目录及其子目录中的所有文件复制到另一个目录：</p>
+ <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcopy C:\source\* D:\destination\ /s /i</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>将一个目录及其子目录中的所有文件和子目录复制到另一个目录：</p>
+ <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcopy C:\source\* D:\destination\ /e /i</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p>请注意，<code>xcopy</code>命令在复制文件时不会询问是否覆盖目标文件，除非使用了<code>/y</code>选项。因此，请谨慎使用<code>xcopy</code>命令以避免意外覆盖文件。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><source></td>
+<td>必需。 指定要复制的文件的位置和名称。 此参数必须包括驱动器或路径。</td>
+</tr>
+<tr>
+<td>[<destination>]</destination></td>
+<td>指定要复制的文件的目标。 此参数可以包括驱动器号后接冒号、目录名、文件名或这几项的组合。</td>
+</tr>
+<tr>
+<td>/W</td>
+<td>在开始复制文件之前显示以下消息并等待你的响应：按任意键开始复制文件****</td>
+</tr>
+<tr>
+<td>/p</td>
+<td>提示你确认是否要创建每个目标文件。</td>
+</tr>
+<tr>
+<td>/c</td>
+<td>忽略错误。</td>
+</tr>
+<tr>
+<td>/v</td>
+<td>在将每个文件写入目标文件时对其进行验证，以确保目标文件与源文件相同。</td>
+</tr>
+<tr>
+<td>/q</td>
+<td>禁止显示 <code>xcopy</code> 消息。</td>
+</tr>
+<tr>
+<td>/f</td>
+<td>复制时显示源文件名和目标文件名。</td>
+</tr>
+<tr>
+<td>/l</td>
+<td>生成要复制的文件列表，但不主动复制文件。</td>
+</tr>
+<tr>
+<td>/g</td>
+<td>当目标不支持加密时创建解密的<em>目标</em>文件。</td>
+</tr>
+<tr>
+<td>/d [:MM-DD-YYYY]</td>
+<td>仅复制在指定的日期或之后更改的源文件。 如果不包含 <em>MM-DD-YYYY</em> 值，则 <code>xcopy</code> 会复制比现有<em>目标</em>文件更新的所有<em>源</em>文件。 此命令行选项可用于更新已更改的文件。</td>
+</tr>
+<tr>
+<td>/u</td>
+<td>从仅存在于目标上的源复制文件****。</td>
+</tr>
+<tr>
+<td>/i</td>
+<td>如果<em>源</em>是目录或包含通配符，并且<em>目标</em>不存在，则 <code>xcopy</code> 会假设<em>目标</em>指定了目录名，并会创建新目录。 然后，<code>xcopy</code> 将所有指定文件复制到新目录中。 默认情况下，<code>xcopy</code> 会提示你指定目标是文件还是目录**。</td>
+</tr>
+<tr>
+<td>/s</td>
+<td>复制目录和子目录，除非它们是空的。 如果省略 /s，则 <code>xcopy</code> 在单个目录中运行****。</td>
+</tr>
+<tr>
+<td>/e</td>
+<td>复制所有子目录，即使它们是空的。 将 /e 与 /s 和 /t 命令行选项结合使用************。</td>
+</tr>
+<tr>
+<td>/t</td>
+<td>仅复制子目录结构（即树），而不复制文件。 若要复制空目录，必须包含 /e 命令行选项****。</td>
+</tr>
+<tr>
+<td>/k</td>
+<td>复制文件，并保留目标文件的只读属性（如果存在于源文件上）****。 默认情况下，<code>xcopy</code> 会删除只读属性。</td>
+</tr>
+<tr>
+<td>/r</td>
+<td>复制只读文件。</td>
+</tr>
+<tr>
+<td>/h</td>
+<td>复制具有隐藏文件和系统文件属性的文件。 默认情况下，<code>xcopy</code> 不会复制隐藏文件或系统文件</td>
+</tr>
+<tr>
+<td>/a</td>
+<td>仅复制设置了存档文件属性的源文件**。 <strong>/a</strong> 不会修改源文件的存档文件属性。 有关如何使用 attrib 设置存档文件属性的信息，请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMveGNvcHkjcmVsYXRlZC1saW5rcw==">相关链接<i class="fa fa-external-link-alt"></i></span>****。</td>
+</tr>
+<tr>
+<td>/m</td>
+<td>复制设置了存档文件属性的源文件**。 与 /a 不同，/m 会关闭源中指定的文件的存档文件属性********。 有关如何使用 attrib 设置存档文件属性的信息，请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMveGNvcHkjcmVsYXRlZC1saW5rcw==">相关链接<i class="fa fa-external-link-alt"></i></span>****。</td>
+</tr>
+<tr>
+<td>/n</td>
+<td>使用 NTFS 短文件名或目录名创建副本。 将文件或目录从 NTFS 卷复制到 FAT 卷，或者当目标上需要 FAT 文件系统命名约定（即 8.3 命名规则字符）时，/n 是必需的******。 <em>目标</em>文件系统可以是 FAT 或 NTFS。</td>
+</tr>
+<tr>
+<td>/o</td>
+<td>复制文件所有权和自由访问控制列表 (DACL) 信息。</td>
+</tr>
+<tr>
+<td>/x</td>
+<td>复制文件审核设置和系统访问控制列表 (SACL) 信息（隐含 /o）****。</td>
+</tr>
+<tr>
+<td>/exclude:FileName1[+[FileName2]][+<a href="">FileName3</a>]</td>
+<td>指定文件列表。 必须至少指定一个文件。 每个文件将包含搜索字符串，每个字符串在文件中独占一行。 当任一字符串与要复制的文件的绝对路径的任一部分匹配时，将排除该文件的复制。 例如，指定字符串 obj 将排除目录 obj 下的所有文件，或扩展名为 .obj 的所有文件************。</td>
+</tr>
+<tr>
+<td>/y</td>
+<td>禁止提示你确认覆盖现有目标文件。</td>
+</tr>
+<tr>
+<td>/-y</td>
+<td>提示你确认覆盖现有目标文件。</td>
+</tr>
+<tr>
+<td>/z</td>
+<td>以可重启模式通过网络复制。</td>
+</tr>
+<tr>
+<td>/b</td>
+<td>复制符号链接，而不复制文件。 此参数是在 Windows Vista® 中引入的。</td>
+</tr>
+<tr>
+<td>/j</td>
+<td>复制文件而不缓冲。 建议用于非常大的文件。 此参数是在 Windows Server 2008 R2 中添加的。</td>
+</tr>
+<tr>
+<td>/compress</td>
+<td>在文件传输期间请求网络压缩（如果适用）。</td>
+</tr>
+<tr>
+<td>/?</td>
+<td>在命令提示符下显示帮助。</td>
+</tr>
+<tr>
+<td>/sparse</td>
+<td>支持在复制期间保留文件的稀疏状态。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="跳过已经存在的文件-2">跳过已经存在的文件</h3>
+<p><code>xcopy</code>命令本身没有直接提供一个选项来跳过目标文件夹中已经存在的文件。但是，你可以结合使用一些其他命令和技巧来实现这个目的。</p>
+<h2 id="robocopy命令用法">robocopy命令用法</h2>
+<blockquote></blockquote>
+<p>将文件数据从一个位置复制到另一个位置。</p>
+<p><code>robocopy</code> 命令是 Windows 中一个非常强大的文件复制工具，其语法如下：</p>
+<figure class="highlight gradle"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROBOCOPY <span class="keyword">source</span> destination [<span class="keyword">file</span> [<span class="keyword">file</span>]...] [<span class="keyword">options</span>]</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><code>source</code>: 指定要复制文件或文件夹的源路径。</li>
+<li><code>destination</code>: 指定复制目标的路径。</li>
+<li><code>file</code>: 可选参数，用于指定要复制的特定文件。如果未提供文件参数，则 <code>robocopy</code> 将复制源路径中的所有文件。</li>
+<li><code>options</code>: 用于指定 <code>robocopy</code> 的行为和选项的参数。</li>
+</ul>
+<p>以下是一些常用的 <code>robocopy</code> 选项：</p>
+<ul>
+<li><code>/S</code>: 复制所有子目录，但不包括空目录。</li>
+<li><code>/E</code>: 复制所有子目录，包括空目录。</li>
+<li><code>/Z</code>: 在网络故障发生时支持断点续传。</li>
+<li><code>/COPYALL</code>: 复制所有文件信息，包括安全权限、所有者信息等。</li>
+<li><code>/R:n</code>: 设置在错误情况下重试次数为 n 次。</li>
+<li><code>/W:n</code>: 设置在错误情况下重试等待时间为 n 秒。</li>
+<li><code>/XO</code>: 只复制比目标新或不存在的文件。</li>
+<li><code>/LOG:file</code>: 将复制过程的输出记录到指定的文件中。</li>
+</ul>
+<p>以上只是 <code>robocopy</code> 命令的一些常见选项。你可以使用 <code>robocopy /?</code> 命令在命令行中查看完整的帮助文档，以了解更多选项和用法。</p>
+<p>复制文件限制选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/iomaxsize:<code>&lt;n&gt;</code>[kmg]</td>
+<td>每个读取/写入周期请求的最大 i/o 大小，以 <em>n</em><strong>千</strong>字节、<strong>兆</strong>字节或<strong>千兆</strong>字节为单位。</td>
+</tr>
+<tr>
+<td>/iorate:<code>&lt;n&gt;</code>[kmg]</td>
+<td>每秒请求的 i/o 速率，以 <em>n</em><strong>千</strong>字节、<strong>兆</strong>字节或<strong>千兆</strong>字节为单位。</td>
+</tr>
+<tr>
+<td>/threshold:<code>&lt;n&gt;</code>[kmg]</td>
+<td>限制的文件大小阈值，以 <em>n</em><strong>千</strong>字节、<strong>兆</strong>字节或<strong>千兆</strong>字节为单位（请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMvcm9ib2NvcHkjcmVtYXJrcw==">备注<i class="fa fa-external-link-alt"></i></span>）。</td>
+</tr>
+</tbody>
+</table>
+<p>这些限制选项可用于指定 Robocopy 允许使用的最大 I/O 带宽（以“字节/秒”为单位）。 如果未以“字节/秒”为单位进行指定，则可在已指定 <strong>k</strong>、<strong>m</strong> 或 <strong>g</strong> 的情况下使用整数。 即使指定了较小值，受限的最小 I/O 带宽依然为 <strong>524288</strong> 字节。</p>
+<p>文件选择选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/a</td>
+<td>仅复制设置了 <strong>Archive</strong> 属性的文件。</td>
+</tr>
+<tr>
+<td>/m</td>
+<td>仅复制设置了 <strong>Archive</strong> 属性的文件，并重置 <strong>Archive</strong> 属性。</td>
+</tr>
+<tr>
+<td>/ia:<code>[RASHCNETO]</code></td>
+<td>仅包括设置了任何指定属性的文件。 此选项的有效值为：<strong>R</strong> - 只读<strong>A</strong> - 存档<strong>S</strong> - 系统<strong>H</strong> - 隐藏<strong>C</strong> - 压缩<strong>N</strong> - 不为内容编制索引<strong>E</strong> - 加密<strong>T</strong> - 临时<strong>O</strong> - 脱机</td>
+</tr>
+<tr>
+<td>/xa:<code>[RASHCNETO]</code></td>
+<td>排除设置了任何指定属性的文件。 此选项的有效值为：<strong>R</strong> - 只读<strong>A</strong> - 存档<strong>S</strong> - 系统<strong>H</strong> - 隐藏<strong>C</strong> - 压缩<strong>N</strong> - 不为内容编制索引<strong>E</strong> - 加密<strong>T</strong> - 临时<strong>O</strong> - 脱机</td>
+</tr>
+<tr>
+<td>/xf <code>&lt;filename&gt;[ ...]</code></td>
+<td>排除与指定的名称或路径匹配的文件。 支持通配符（***** 和 <strong>?</strong>）。</td>
+</tr>
+<tr>
+<td>/xd <code>&lt;directory&gt;[ ...]</code></td>
+<td>排除与指定的名称和路径匹配的目录。</td>
+</tr>
+<tr>
+<td>/xc</td>
+<td>排除时间戳相同但文件大小不同的现有文件。</td>
+</tr>
+<tr>
+<td>/xn</td>
+<td>从复制中排除比目标更新的源目录文件。</td>
+</tr>
+<tr>
+<td>/xo</td>
+<td>从复制中排除比目标更旧的源目录文件。</td>
+</tr>
+<tr>
+<td>/xx</td>
+<td>排除目标（而不是源）中存在的额外文件和目录。 排除额外的文件不会从目标中删除这些文件。</td>
+</tr>
+<tr>
+<td>/xl</td>
+<td>排除源（而不是目标）中存在的“孤立”文件和目录。 排除孤立的文件可防止将任何新文件添加到目标。</td>
+</tr>
+<tr>
+<td>/im</td>
+<td>包括已修改的文件（更改时间不同）。</td>
+</tr>
+<tr>
+<td>/is</td>
+<td>包括相同的文件。 相同文件的名称、大小、时间和所有属性都相同。</td>
+</tr>
+<tr>
+<td>/it</td>
+<td>包括“已调整”的文件。 已调整文件的名称、大小和时间相同，但属性不同。</td>
+</tr>
+<tr>
+<td>/max:<code>&lt;n&gt;</code></td>
+<td>指定最大文件大小（以排除大于 <em>n</em> 个字节的文件）。</td>
+</tr>
+<tr>
+<td>/min:<code>&lt;n&gt;</code></td>
+<td>指定最小文件大小（以排除小于 <em>n</em> 个字节的文件）。</td>
+</tr>
+<tr>
+<td>/maxage:<code>&lt;n&gt;</code></td>
+<td>指定最大文件期限（以排除超过 <em>n</em> 天或早于特定日期的文件）。</td>
+</tr>
+<tr>
+<td>/minage:<code>&lt;n&gt;</code></td>
+<td>指定最小文件期限（排除不到 <em>n</em> 天或晚于特定日期的文件）。</td>
+</tr>
+<tr>
+<td>/maxlad:<code>&lt;n&gt;</code></td>
+<td>指定最大上次访问日期（排除有 n 天/自 <em>n</em> 日期以来未使用的文件）。</td>
+</tr>
+<tr>
+<td>/minlad:<code>&lt;n&gt;</code></td>
+<td>指定最小上次访问日期（排除有 n 天/自 <em>n</em> 日期以来已使用的文件）。如果 <em>n</em> 小于 1900，则 <em>n</em> 指定天数。 否则，<em>n</em> 指定 YYYYMMDD 格式的日期。</td>
+</tr>
+<tr>
+<td>/xj</td>
+<td>排除交接点（通常默认会包含）。</td>
+</tr>
+<tr>
+<td>/fft</td>
+<td>采用 FAT 文件时间（精度为两秒）。</td>
+</tr>
+<tr>
+<td>/dst</td>
+<td>补偿一小时 DST 时差。</td>
+</tr>
+<tr>
+<td>/xjd</td>
+<td>排除目录的交接点。</td>
+</tr>
+<tr>
+<td>/xjf</td>
+<td>排除文件的交接点。</td>
+</tr>
+</tbody>
+</table>
+<p>重试选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/r:<code>&lt;n&gt;</code></td>
+<td>指定复制失败时的重试次数。 <em>n</em> 的默认值为 1,000,000（100 万次重试）。</td>
+</tr>
+<tr>
+<td>/w:<code>&lt;n&gt;</code></td>
+<td>指定等待重试的间隔时间，以秒为单位。 <em>n</em> 的默认值为 30（等待 30 秒）。</td>
+</tr>
+<tr>
+<td>/reg</td>
+<td>将 <strong>/r</strong> 和 <strong>/w</strong> 选项中指定的值保存为注册表中的默认设置。</td>
+</tr>
+<tr>
+<td>/tbd</td>
+<td>指定系统等待定义共享名称（重试错误 67）。</td>
+</tr>
+<tr>
+<td>/lfsm</td>
+<td>在支持复制、暂停和恢复的低可用空间模式下运行（请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMvcm9ib2NvcHkjcmVtYXJrcw==">备注<i class="fa fa-external-link-alt"></i></span>）。</td>
+</tr>
+<tr>
+<td>/lfsm:<code>&lt;n&gt;</code>[kmg]</td>
+<td>指定下限值，以 <em>n</em><strong>千</strong>字节、<strong>兆</strong>字节或<strong>千兆</strong>字节为单位。</td>
+</tr>
+</tbody>
+</table>
+<p>日志记录选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/l</td>
+<td>指定仅列出文件（而不复制、删除或设置时间戳）。</td>
+</tr>
+<tr>
+<td>/x</td>
+<td>报告所有额外的文件，而不仅仅是已选择的文件。</td>
+</tr>
+<tr>
+<td>/v</td>
+<td>生成详细输出，并显示所有已跳过的文件。</td>
+</tr>
+<tr>
+<td>/ts</td>
+<td>在输出中包括源文件时间戳。</td>
+</tr>
+<tr>
+<td>/fp</td>
+<td>在输出中包括文件的完整路径名称。</td>
+</tr>
+<tr>
+<td>/bytes</td>
+<td>以字节为单位输出大小。</td>
+</tr>
+<tr>
+<td>/ns</td>
+<td>指定不记录文件大小。</td>
+</tr>
+<tr>
+<td>/nc</td>
+<td>指定不记录文件类。</td>
+</tr>
+<tr>
+<td>/nfl</td>
+<td>指定不记录文件名。</td>
+</tr>
+<tr>
+<td>/ndl</td>
+<td>指定不记录目录名称。</td>
+</tr>
+<tr>
+<td>/np</td>
+<td>指定不显示复制操作的进度（到目前为止复制的文件或目录数）。</td>
+</tr>
+<tr>
+<td>/eta</td>
+<td>显示复制的文件的估计到达时间 (ETA)。</td>
+</tr>
+<tr>
+<td>/log:<code>&lt;logfile&gt;</code></td>
+<td>将状态输出写入到日志文件（覆盖现有的日志文件）。</td>
+</tr>
+<tr>
+<td>/log+:<code>&lt;logfile&gt;</code></td>
+<td>将状态输出写入日志文件（将输出追加到现有日志文件）。</td>
+</tr>
+<tr>
+<td>/unilog:<code>&lt;logfile&gt;</code></td>
+<td>将状态输出作为 Unicode 文本写入日志文件（覆盖现有日志文件）。</td>
+</tr>
+<tr>
+<td>/unilog+:<code>&lt;logfile&gt;</code></td>
+<td>将状态输出作为 Unicode 文本写入日志文件（将输出追加到现有日志文件）。</td>
+</tr>
+<tr>
+<td>/tee</td>
+<td>将状态输出写入控制台窗口和日志文件。</td>
+</tr>
+<tr>
+<td>/njh</td>
+<td>指定没有作业标头。</td>
+</tr>
+<tr>
+<td>/njs</td>
+<td>指定没有作业摘要。</td>
+</tr>
+<tr>
+<td>/unicode</td>
+<td>将状态输出显示为 Unicode 文本。</td>
+</tr>
+</tbody>
+</table>
+<p>作业选项：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/job:<code>&lt;jobname&gt;</code></td>
+<td>指定要从命名的作业文件派生参数。 若要运行 <code>/job:jobname</code>，必须首先运行 <code>/save:jobname</code> 参数来创建作业文件。</td>
+</tr>
+<tr>
+<td>/save:<code>&lt;jobname&gt;</code></td>
+<td>指定要将参数保存到命名的作业文件。 此参数必须在运行 <code>/job:jobname</code> 之前运行。 必须在此参数之前指定所有复制、重试和日志记录选项。</td>
+</tr>
+<tr>
+<td>/quit</td>
+<td>处理命令行后退出（以查看参数）。</td>
+</tr>
+<tr>
+<td>/nosd</td>
+<td>指示未指定任何源目录。</td>
+</tr>
+<tr>
+<td>/nodd</td>
+<td>指示未指定目标目录。</td>
+</tr>
+<tr>
+<td>/if</td>
+<td>包括指定的文件。</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+   <div>
+        
+            <div style="text-align:left;font-size:14px;">
+    <p style="text-align:center;color: #ccc;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</p>
+            </div>
+        
+    </div>
+
+   
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/1CBWCJP.html" rel="bookmark">C++开发学习笔记3</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/R4F6YF.html" rel="bookmark">Effective C++</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2VB0MVT.html" rel="bookmark">C++开发学习笔记1</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/QVJ0P0.html" rel="bookmark">C++开发学习笔记2</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2BJBJS3.html" rel="bookmark">C++设计模式</a></div>
+    </li>
+  </ul>
+
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wexinPay.jpeg" alt="meadee 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubaoPay.jpeg" alt="meadee 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>meadee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.xuemingde.com/posts/1PEK836.html" title="WIndows中的所有copy命令">https://blog.xuemingde.com/posts/1PEK836.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/ZPM4EA.html" rel="prev" title="数据备份到公共网盘内的脚本">
+      <i class="fa fa-chevron-left"></i> 数据备份到公共网盘内的脚本
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+
+  </article>
+  
+  
+  
+
+
+
+           </div>
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+          
+<script src="https://readmore.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+<script>
+    const btw = new BTWPlugin();
+    btw.init({
+        id: 'container-1',
+        blogId: '29491-1649429697615-963',
+        name: '不闻一时',
+        qrcode: 'https://xuemingde.com/pages/image/2022/05/31093822.png',
+        keyword: 'meadel',
+    });
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#copy%E5%91%BD%E4%BB%A4%E7%94%A8%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">copy命令用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BF%87%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">跳过已经存在的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BF%87%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E6%96%87%E4%BB%B6-2"><span class="nav-number">1.2.</span> <span class="nav-text">跳过已经存在的文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#robocopy%E5%91%BD%E4%BB%A4%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">robocopy命令用法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="meadee" src="/images/touxiang.jpeg">
+  <p class="site-author-name" itemprop="name">meadee</p>
+  <div class="site-description" itemprop="description">一花一世界，一念一菩提</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">167</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vdXNlci80MDE5NDcwMjQ0MjU4NTUyL3Bvc3Rz" title="掘金 → https://juejin.cn/user/4019470244258552/posts"><i class="fa fa-share-alt fa-fw"></i>掘金</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h1ZV9taW5k" title="CSDN → https://blog.csdn.net/xue_mind"><i class="fa fa-th-list fa-fw"></i>CSDN</span>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90ZWNoLm1laXR1YW4uY29tLw==" title="https://tech.meituan.com/">美团团队</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLw==" title="http://www.ruanyifeng.com/blog/">阮一峰网络日志</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jbi9wcm9ibGVtc2V0L2FsbC8=" title="https://leetcode.cn/problemset/all/">LeetCode</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  © 2016 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">meadee</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">1000k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 ≈</span>
+    <span title="站点阅读时长">15:09</span>
+</div>
+
+<div>
+<span id="timeDate2">载入天数...</span><span id="times2"></span>
+<script>
+    var now2 = new Date(); 
+    function createtime3() { 
+        var grt= new Date("03/28/1992 00:00:00");//在此处修改你的建站时间
+        now2.setTime(now2.getTime()+250); 
+        var days = (now2 - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        var hours = (now2 - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now2 - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        var mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        var seconds = (now2 - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        var snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate2").innerHTML = "走过了 "+dnum+" 个日夜，从嘤嘤坠地，到步履蹒跚，从年少无知，到心事重重，岁月啊，总让人平添太多无奈"; 
+    } 
+setInterval("createtime3()",250);
+</script>
+</div>
+  <div class="powered-by">  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax="" async="" src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zindex="-1" src="../js/canvas-ribbon.js"></script>
+  <script src="../js/anime.min.js"></script>
+  <script src="../js/pjax.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery.fancybox.min.js"></script>
+  <script src="../js/medium-zoom.min.js"></script>
+  <script src="../js/lozad.min.js"></script>
+  <script src="../js/pangu.min.js"></script>
+  <script src="../js/velocity.min.js"></script>
+  <script src="../js/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer="" src="../js/three.min.js"></script>
+    <script defer="" src="../js/three-waves.min.js"></script>
+    <script defer="" src="../js/canvas_lines.min.js"></script>
+    <script defer="" src="../js/canvas_sphere.min.js"></script>
+
+
+  
+  <script data-pjax="">
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+  <script data-pjax="">
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id    : 34163,
+      el    : 'wpac-rating',
+      color : 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script data-pjax="">
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+<script data-pjax="">
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('../js/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+<link rel="stylesheet" href="../js/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('../js/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '425b9527efc45ef76990',
+      clientSecret: '4a956b1310ea8ab928ed1d278e85c98988ec51aa',
+      repo        : 'blog',
+      owner       : 'wuwenyishi',
+      admin       : ['wuwenyishi'],
+      id          : 'e0aadced31a8efcacb45e2f62e09a44d',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+
+<script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>
