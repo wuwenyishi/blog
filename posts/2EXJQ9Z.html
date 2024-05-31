@@ -276,31 +276,29 @@
 <p>此文章基于Windows 和CLion介绍</p>
 </blockquote>
 <p>示例：</p>
-<h2 id="创建C语言项目">创建C语言项目</h2>
-<p>使用CLoin 新建项目，如下图：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202405221651199.png" alt=""></p>
-<p>例如项目名为 MyCLibrary</p>
-<p>library.h</p>
+<h2 id="创建C语言项目"><a href="#创建C语言项目" class="headerlink" title="创建C语言项目"></a>创建C语言项目</h2><p>使用CLoin 新建项目，如下图：</p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202405221651199.png" alt="image-20240522165147134"> </p>
+<p>例如项目名为 MyCLibrary </p>
+<p>library.h </p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> MYCLIBRARY_LIBRARY_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MYCLIBRARY_LIBRARY_H</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hello_from_c</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//MYCLIBRARY_LIBRARY_H</span></span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>library.c</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"library.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hello_from_c</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello from C!\n"</span>);</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>CMakeLists.txt</p>
 <figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cmake<span class="constructor">_minimum_required(VERSION 3.19)</span></span><br><span class="line">project(MyCLibrary C)</span><br><span class="line"></span><br><span class="line">set(CMAKE_C_STANDARD <span class="number">99</span>)</span><br><span class="line"></span><br><span class="line">add<span class="constructor">_library(MyCLibrary SHARED <span class="params">library</span>.<span class="params">c</span> <span class="params">library</span>.<span class="params">h</span>)</span></span><br><span class="line"></span><br><span class="line"># 设置输出名称为<span class="module-access"><span class="module"><span class="identifier">MyCLibrary</span>.</span></span>dll，不带lib前缀</span><br><span class="line">set<span class="constructor">_target_properties(MyCLibrary PROPERTIES PREFIX <span class="string">""</span>)</span></span><br><span class="line"></span><br><span class="line"># 暴露头文件路径</span><br><span class="line">target<span class="constructor">_include_directories(MyCLibrary PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<p>构建项目，会在项目的 cmake-build-debug 文件夹下生成一个 MyCLibrary.dll 文件</p>
-<h2 id="创建C-项目">创建C++项目</h2>
-<p>使用CLoin 新建项目，如下图：</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202405221658745.png" alt=""></p>
-<p>例如项目名为 MyCppProject</p>
+<p> 构建项目，会在项目的 cmake-build-debug 文件夹下生成一个 MyCLibrary.dll 文件</p>
+<h2 id="创建C-项目"><a href="#创建C-项目" class="headerlink" title="创建C++项目"></a>创建C++项目</h2><p>使用CLoin 新建项目，如下图：</p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202405221658745.png" alt="image-20240522165814693"></p>
+<p>例如项目名为 MyCppProject </p>
 <p>将生成的 MyCLibrary.dll 文件放在主目录下</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202405221700771.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202405221700771.png" alt="image-20240522170041742"></p>
 <p>main.cpp</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 包含动态库的头文件</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">void</span> <span class="title">hello_from_c</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    <span class="comment">// 调用动态库中的函数</span></span></span><br><span class="line"><span class="function">    <span class="title">hello_from_c</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>CMakeLists.txt</p>
 <figure class="highlight cmake"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.19</span>)</span><br><span class="line"><span class="keyword">project</span>(MyCppProject)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加动态库到项目中</span></span><br><span class="line"><span class="keyword">add_library</span>(MyCLibrary SHARED IMPORTED)</span><br><span class="line"><span class="keyword">set_target_properties</span>(MyCLibrary PROPERTIES IMPORTED_LOCATION <span class="variable">${CMAKE_CURRENT_SOURCE_DIR}</span>/MyCLibrary.dll)</span><br><span class="line"><span class="keyword">set_target_properties</span>(MyCLibrary PROPERTIES IMPORTED_IMPLIB <span class="variable">${CMAKE_CURRENT_SOURCE_DIR}</span>/MyCLibrary.dll)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">14</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(MyCppProject main.cpp)</span><br><span class="line"><span class="comment"># 链接动态库到你的C++项目</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>(MyCppProject PRIVATE MyCLibrary)</span><br></pre></td></tr></tbody></table></figure>
-<p>再将 MyCLibrary.dll 文件放在主目录下 MyCppProject\cmake-build-debug 目录下，不然在执行时会报错找不到 MyCLibrary.dll</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202405221702953.png" alt=""></p>
+<p>再将 MyCLibrary.dll 文件放在主目录下 MyCppProject\cmake-build-debug 目录下，不然在执行时会报错找不到 MyCLibrary.dll </p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202405221702953.png" alt="image-20240522170202919"> </p>
 <p>然后执行项目</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/202405221703227.png" alt=""></p>
+<p><img data-src="https://xuemingde.com/pages/image/others/202405221703227.png" alt="image-20240522170333193"></p>
 
     </div>
    <div>
@@ -325,13 +323,13 @@
       <div class="popular-posts-title"><a href="/posts/2BJBJS3.html" rel="bookmark">C++设计模式</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/QVJ0P0.html" rel="bookmark">C++开发学习笔记2</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/R4F6YF.html" rel="bookmark">Effective C++</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/1CBWCJP.html" rel="bookmark">C++开发学习笔记3</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/QVJ0P0.html" rel="bookmark">C++开发学习笔记2</a></div>
     </li>
   </ul>
 
@@ -563,13 +561,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">1m</span>
+    <span title="站点总字数">998k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">15:15</span>
+    <span title="站点阅读时长">15:07</span>
 </div>
 
 <div>
