@@ -281,7 +281,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/collect/index.html</loc>
+    <loc>https://blog.xuemingde.com/backups/index.html</loc>
     
     <lastmod>2024-01-12</lastmod>
     
@@ -290,7 +290,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/backups/index.html</loc>
+    <loc>https://blog.xuemingde.com/collect/index.html</loc>
     
     <lastmod>2024-01-12</lastmod>
     
@@ -1379,7 +1379,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1NTK6KJ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/1BED9D0.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1388,7 +1388,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1BED9D0.html</loc>
+    <loc>https://blog.xuemingde.com/posts/1NTK6KJ.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1593,13 +1593,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/Java/</loc>
-    <lastmod>2024-07-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/tags/C/</loc>
     <lastmod>2024-07-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -1629,6 +1622,13 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/Mysql/</loc>
+    <lastmod>2024-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/Java/</loc>
     <lastmod>2024-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1700,14 +1700,14 @@
 
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/C-C/</loc>
+    <loc>https://blog.xuemingde.com/categories/Qt/</loc>
     <lastmod>2024-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/Qt/</loc>
+    <loc>https://blog.xuemingde.com/categories/C-C/</loc>
     <lastmod>2024-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
