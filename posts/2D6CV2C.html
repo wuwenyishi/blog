@@ -29,9 +29,13 @@
 <meta property="og:site_name" content="WiseWanderer">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-04-02T00:38:07.911Z">
+<meta property="article:modified_time" content="2024-07-03T03:41:28.452Z">
 <meta property="article:author" content="meadee">
-<meta property="article:tag" content="meadee">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="sql">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Socket">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.xuemingde.com/posts/2D6CV2C.html">
@@ -127,12 +131,12 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">172</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">173</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">28</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">30</span></a>
 
   </li>
         <li class="menu-item menu-item-bookmark">
@@ -227,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-02 08:38:07" itemprop="dateModified" datetime="2024-04-02T08:38:07+08:00">2024-04-02</time>
+                <time title="修改时间：2024-07-03 11:41:28" itemprop="dateModified" datetime="2024-07-03T11:41:28+08:00">2024-07-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,7 +239,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
                 </span>
             </span>
 
@@ -252,14 +256,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
+              <span>3.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -271,7 +275,90 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h3 id="activiti-的-databaseSchemaUpdate-true和create-drop的区别">activiti 的 databaseSchemaUpdate true和create-drop的区别</h3>
+<p>在 Activiti 中，<code>databaseSchemaUpdate</code> 属性用于指定在启动时如何处理数据库模式。它有两种主要选项：<code>true</code> 和 <code>create-drop</code>。</p>
+<p><strong>databaseSchemaUpdate=true</strong></p>
+<ul>
+<li><strong>含义</strong>：如果数据库模式不存在，则创建它。如果数据库模式存在，则更新它以匹配 Activiti 的最新版本。</li>
+<li><strong>优点</strong>：确保数据库模式始终是最新的，这对于在升级 Activiti 或进行数据库更改时非常有用。</li>
+<li><strong>缺点</strong>：在生产环境中可能不适合，因为每次启动应用程序时都会更新数据库模式，这可能会导致数据丢失或应用程序中断。</li>
+</ul>
+<p><strong>databaseSchemaUpdate=create-drop</strong></p>
+<ul>
+<li><strong>含义</strong>：在启动时删除现有的数据库模式（如果存在），然后创建新的数据库模式。</li>
+<li><strong>优点</strong>：确保数据库模式始终与 Activiti 的最新版本匹配，并且不会保留旧数据。</li>
+<li><strong>缺点</strong>：每次启动应用程序时都会丢失所有数据，因此不适合生产环境或需要持久化数据的应用程序。</li>
+</ul>
+<p><strong>选择哪一个？</strong></p>
+<p>选择 <code>databaseSchemaUpdate</code> 的正确值取决于你的具体需求：</p>
+<ul>
+<li><strong>开发和测试环境</strong>：<code>true</code> 通常是开发和测试环境的最佳选择，因为它允许你轻松地更新数据库模式而不丢失数据。</li>
+<li><strong>生产环境</strong>：<code>create-drop</code> 通常是生产环境的最佳选择，因为它确保数据库模式始终是最新的，并且不会保留旧数据。但是，你应该定期备份你的数据，以防万一出现问题。</li>
+</ul>
+<p><strong>其他注意事项</strong></p>
+<ul>
+<li>如果你的应用程序需要持久化数据，则不应使用 <code>create-drop</code>，因为每次启动应用程序时都会丢失数据。</li>
+<li>如果你的应用程序使用的是嵌入式数据库（例如 H2），则 <code>databaseSchemaUpdate</code> 的行为可能有所不同。请查阅嵌入式数据库的文档以获取更多详细信息。</li>
+</ul>
+<p>我希望这能帮助你理解 <code>databaseSchemaUpdate</code> 属性的不同选项以及如何选择最适合你需求的选项。</p>
+<h3 id="idea远程debug">idea远程debug</h3>
+<p>远程debug部署在docker容器里的服务，可在Dockerfile里增加下面代码：<br>
+ENTRYPOINT [“java”,“-jar”,“-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=端口号”,“服务jar包名.jar”]</p>
+<h3 id="java中一种密码加密包方式">java中一种密码加密包方式</h3>
+<p>BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();<br>
+System.out.println(encoder.encode(“123456”));</p>
+<h3 id="数据库初始化-jpa配置方式">数据库初始化-jpa配置方式</h3>
+<p>spring.datasource.initialization-mode 同样需要将配置设置为 always<br>
+使用jpa的配置方式，将ddl-auto设置为create或者create-drop时，会自动搜索<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2VudGl0eQ==">@entity<i class="fa fa-external-link-alt"></i></span>实体对象，并创建为对应的表<br>
+spring.jpa.hibernate.ddl-auto: update，此时在资源目录下，新建 data.sql<br>
+若spring.jpa.hibernate.ddl-auto: create，则再资源目录下，新建import.sql文件，来实现数据初始化</p>
+<p>本文中需要重点关注的几个配置:</p>
+<ul>
+<li>spring.datasource.initialization-mode: always 同样需要设置为always</li>
+<li>spring.jpa.generate-ddl: true 会根据<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2VudGl0eQ==">@entity<i class="fa fa-external-link-alt"></i></span>注解的实体类生成对应数据表</li>
+<li>spring.jpa.hibernate.ddl-auto: create/create-drop 这两个取值时，再创建表之后执行import.sql文件导入测试数据；若取值为update，则会执行data.sql</li>
+</ul>
+<h3 id="spring-jpa-hibernate-ddl-auto">spring.jpa.hibernate.ddl-auto</h3>
+<p><code>spring.jpa.hibernate.ddl-auto</code> 属性用于配置 Hibernate 如何在启动时管理数据库架构。它接受以下值：</p>
+<ul>
+<li>**create：**在启动时创建数据库架构，如果它不存在。</li>
+<li>**create-drop：**在启动时创建数据库架构，并在关闭时删除它。</li>
+<li>**update：**在启动时更新数据库架构，使其与实体类匹配。</li>
+<li>**validate：**验证数据库架构，使其与实体类匹配。如果架构不匹配，则抛出异常。</li>
+<li>**none：**不执行任何操作。</li>
+</ul>
+<p><strong>以下是一些示例：</strong></p>
+<ul>
+<li>**create：**此设置适用于在开发或测试环境中创建新数据库。</li>
+<li>**update：**此设置适用于在生产环境中更新现有数据库。</li>
+<li>**validate：**此设置适用于验证数据库架构是否与实体类匹配。</li>
+<li>**none：**此设置适用于不希望 Hibernate 管理数据库架构的情况。</li>
+</ul>
+<p><strong>默认值：</strong></p>
+<p>默认情况下，<code>spring.jpa.hibernate.ddl-auto</code> 设置为 <strong>none</strong>。这意味着 Hibernate 不会在启动时自动创建或更新数据库架构。</p>
+<p><strong>建议：</strong></p>
+<p>在生产环境中，建议将 <code>spring.jpa.hibernate.ddl-auto</code> 设置为 <strong>update</strong>。这将确保数据库架构与实体类保持同步。在开发或测试环境中，可以使用 <strong>create</strong> 或 <strong>create-drop</strong> 设置来创建和删除数据库架构。</p>
+<p>**注意：**如果使用 <code>create</code> 或 <code>create-drop</code> 设置，则在关闭应用程序时将删除数据库架构。因此，在使用这些设置时务必小心。</p>
+<h3 id="spring-datasource-schema-与-spring-datasource-data">spring.datasource.schema 与 spring.datasource.data</h3>
+<p>在 Spring Boot 中，<code>spring.datasource.schema</code> 和 <code>spring.datasource.data</code> 属性用于配置如何初始化数据源。</p>
+<ul>
+<li>**schema：**指定用于创建数据库架构的脚本。这些脚本通常用于创建表、索引和其他数据库对象。</li>
+<li>**data：**指定用于填充数据库数据的脚本。这些脚本通常用于插入测试数据或初始数据。</li>
+</ul>
+<p><strong>schema 和 data 之间的主要区别在于它们在初始化过程中的执行顺序。</strong></p>
+<ol>
+<li>Spring Boot 首先执行 <code>schema</code> 脚本。</li>
+<li>然后，Spring Boot 执行 <code>data</code> 脚本。</li>
+</ol>
+<p>此顺序很重要，因为 <code>schema</code> 脚本用于创建数据库结构，而 <code>data</code> 脚本用于填充数据。如果颠倒了顺序，则 <code>data</code> 脚本可能会失败，因为它们将尝试插入数据到不存在的表中。</p>
+<p><strong>以下是一些使用 schema 和 data 脚本的示例：</strong></p>
+<p><strong>schema.sql：</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> users (</span><br><span class="line">  id <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  name <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  email <span class="type">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (id)</span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>data.sql：</strong></p>
+<figure class="highlight pgsql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> users (<span class="type">name</span>, email) <span class="keyword">VALUES</span> (<span class="string">'John Doe'</span>, <span class="string">'john.doe@example.com'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> users (<span class="type">name</span>, email) <span class="keyword">VALUES</span> (<span class="string">'Jane Doe'</span>, <span class="string">'jane.doe@example.com'</span>);</span><br></pre></td></tr></tbody></table></figure>
+<p>这些脚本将创建一个名为 <code>users</code> 的表，并插入两行数据。</p>
+<p>**请注意：**您还可以使用 <code>spring.datasource.schema-locations</code> 和 <code>spring.datasource.data-locations</code> 属性来指定脚本的位置。这些属性接受指向脚本文件或目录的路径。</p>
+
     </div>
    <div>
         
@@ -286,6 +373,24 @@
     
     
       
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/3YNTVJH.html" rel="bookmark">Docker通讯问题</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/3DS4M6Q.html" rel="bookmark">Kafka面试连环炮-上</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2PQ961R.html" rel="bookmark">Qt中使用ModbusTcp </a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/3V8G3VM.html" rel="bookmark">Qt基础学习笔记01</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2AJQNK2.html" rel="bookmark">Qt开发学习笔记02</a></div>
+    </li>
+  </ul>
 
         <div class="reward-container">
   <div></div>
@@ -326,6 +431,14 @@
 
 
       <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+              <a href="/tags/sql/" rel="tag"><i class="fa fa-tag"></i> sql</a>
+              <a href="/tags/Docker/" rel="tag"><i class="fa fa-tag"></i> Docker</a>
+              <a href="/tags/Socket/" rel="tag"><i class="fa fa-tag"></i> Socket</a>
+          </div>
 
         
   <div class="post-widgets">
@@ -342,8 +455,8 @@
       <i class="fa fa-chevron-left"></i> Qt开发随笔
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/353RNP2.html" rel="next" title="Docker随笔">
-      Docker随笔 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/3YNTVJH.html" rel="next" title="Docker通讯问题">
+      Docker通讯问题 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -419,6 +532,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#activiti-%E7%9A%84-databaseSchemaUpdate-true%E5%92%8Ccreate-drop%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">activiti 的 databaseSchemaUpdate true和create-drop的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#idea%E8%BF%9C%E7%A8%8Bdebug"><span class="nav-number">2.</span> <span class="nav-text">idea远程debug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E4%B8%AD%E4%B8%80%E7%A7%8D%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E5%8C%85%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">java中一种密码加密包方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%9D%E5%A7%8B%E5%8C%96-jpa%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">数据库初始化-jpa配置方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-jpa-hibernate-ddl-auto"><span class="nav-number">5.</span> <span class="nav-text">spring.jpa.hibernate.ddl-auto</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-datasource-schema-%E4%B8%8E-spring-datasource-data"><span class="nav-number">6.</span> <span class="nav-text">spring.datasource.schema 与 spring.datasource.data</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -433,19 +547,19 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">172</span>
+          <span class="site-state-item-count">173</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -518,7 +632,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">15:26</span>
+    <span title="站点阅读时长">15:33</span>
 </div>
 
 <div>
