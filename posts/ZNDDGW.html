@@ -28,16 +28,17 @@
 <meta property="og:url" content="https://blog.xuemingde.com/posts/ZNDDGW.html">
 <meta property="og:site_name" content="WiseWanderer">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xuemingde.com/pages/image/others/20210315094833.png">
-<meta property="og:image" content="https://xuemingde.com/pages/image/others/image-20210315094912288.png">
-<meta property="og:image" content="https://xuemingde.com/pages/image/others/1606100383222-b82eb9d3-e207-4c7a-9a1f-d401c97e0a0e.png">
-<meta property="article:published_time" content="2022-08-13T08:46:48.942Z">
-<meta property="article:modified_time" content="2023-09-22T00:57:28.518Z">
+<meta property="og:image" content="https://mmbiz.qlogo.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyBZx0uFN9KX83laNsegXRqI49MY4D8qZNpECQhYxMv9rjCZWcYLZArg/0?wx_fmt=png&amp;from=appmsg">
+<meta property="og:image" content="https://mmbiz.qlogo.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwy7rtiaYTcUK2w9zhnXSGoia0IUW7Ba8MIqtQLiabYlfrALPLm2yeRS3XFQ/0?wx_fmt=png&amp;from=appmsg">
+<meta property="og:image" content="https://mmbiz.qlogo.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwymT1fasZLxv3gYSHmY32jSAsWelAo1ibniawYEZiciclJ28andBazXQj4aw/0?wx_fmt=png&amp;from=appmsg">
+<meta property="article:published_time" content="2024-07-18T05:30:51.756Z">
+<meta property="article:modified_time" content="2024-07-18T07:26:58.721Z">
 <meta property="article:author" content="meadee">
 <meta property="article:tag" content="C">
+<meta property="article:tag" content="Qt">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xuemingde.com/pages/image/others/20210315094833.png">
+<meta name="twitter:image" content="https://mmbiz.qlogo.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyBZx0uFN9KX83laNsegXRqI49MY4D8qZNpECQhYxMv9rjCZWcYLZArg/0?wx_fmt=png&amp;from=appmsg">
 
 <link rel="canonical" href="https://blog.xuemingde.com/posts/ZNDDGW.html">
 
@@ -132,12 +133,12 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">173</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">181</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">30</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">36</span></a>
 
   </li>
         <li class="menu-item menu-item-bookmark">
@@ -224,16 +225,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-08-13 16:46:48" itemprop="dateCreated datePublished" datetime="2022-08-13T16:46:48+08:00">2022-08-13</time>
+              <time title="创建时间：2024-07-18 13:30:51 / 修改时间：15:26:58" itemprop="dateCreated datePublished" datetime="2024-07-18T13:30:51+08:00">2024-07-18</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-22 08:57:28" itemprop="dateModified" datetime="2023-09-22T08:57:28+08:00">2023-09-22</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -312,10 +307,10 @@ put：key存在覆盖，不存在插入。</p>
 <h4 id="重新调整HashMap大小存在什么问题（JDK-7）">重新调整HashMap大小存在什么问题（JDK 7）</h4>
 <p>当重新调整HashMap大小的时候，确实存在条件竞争，因为如果两个线程都发现HashMap需要重新调整大小了，它们会同时试着调整大小。在调整大小的过程中，存储在链表中的元素的次序会反过来，因为移动到新的bucket位置的时候，HashMap并不会将元素放在链表的尾部，而是放在头部，这是为了避免尾部遍历(tail traversing)。如果条件竞争发生了，那么就死循环了。(多线程的环境下不使用HashMap）。</p>
 <h4 id="多线程环境下使用HashMap为什么会出现死循环">多线程环境下使用HashMap为什么会出现死循环</h4>
-<p><img data-src="https://xuemingde.com/pages/image/others/20210315094833.png" alt=""></p>
-<p><img data-src="https://xuemingde.com/pages/image/others/image-20210315094912288.png" alt=""></p>
+<p><img data-src="https://mmbiz.qlogo.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyBZx0uFN9KX83laNsegXRqI49MY4D8qZNpECQhYxMv9rjCZWcYLZArg/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
+<p><img data-src="https://mmbiz.qlogo.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwy7rtiaYTcUK2w9zhnXSGoia0IUW7Ba8MIqtQLiabYlfrALPLm2yeRS3XFQ/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <h4 id="HashMap-put执行过程">HashMap put执行过程</h4>
-<p><img data-src="https://xuemingde.com/pages/image/others/1606100383222-b82eb9d3-e207-4c7a-9a1f-d401c97e0a0e.png" alt=""></p>
+<p><img data-src="https://mmbiz.qlogo.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwymT1fasZLxv3gYSHmY32jSAsWelAo1ibniawYEZiciclJ28andBazXQj4aw/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <p>源码解析：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Implements Map.put and related methods</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> hash hash for key</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> key the key</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> value the value to put</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> onlyIfAbsent if true, don't change existing value</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> evict if false, the table is in creation mode.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> previous value, or null if none</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,</span></span></span><br><span class="line"><span class="function"><span class="params">			   <span class="keyword">boolean</span> evict)</span> </span>{</span><br><span class="line">	Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="keyword">int</span> n, i;</span><br><span class="line">	<span class="comment">//底层存储数据的数组tab为空，进行第一次扩容，同时初始化tab</span></span><br><span class="line">	<span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">		n = (tab = resize()).length;</span><br><span class="line">	<span class="comment">//计算要存储数据的下标index，如果当前位置为null，直接插入</span></span><br><span class="line">	<span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">		tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">	<span class="keyword">else</span> {</span><br><span class="line">		Node&lt;K,V&gt; e; K k;</span><br><span class="line">		<span class="comment">//tab[i]的首个元素就是key，直接覆盖</span></span><br><span class="line">		<span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">			((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">			e = p;</span><br><span class="line">		<span class="comment">//tab[i]为TreeNode，进行红黑树的插入</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">			e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">		<span class="comment">//链表遍历</span></span><br><span class="line">		<span class="keyword">else</span> {</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) {</span><br><span class="line">				<span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) {</span><br><span class="line">					p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">					<span class="comment">//链表长度大于8，转换为红黑树进行处理</span></span><br><span class="line">					<span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">						treeifyBin(tab, hash);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				}</span><br><span class="line">				<span class="comment">//找到已经存在的key，直接覆盖</span></span><br><span class="line">				<span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">					((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				p = e;</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span> (e != <span class="keyword">null</span>) { <span class="comment">// existing mapping for key</span></span><br><span class="line">			V oldValue = e.value;</span><br><span class="line">			<span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">				e.value = value;</span><br><span class="line">			afterNodeAccess(e);</span><br><span class="line">			<span class="keyword">return</span> oldValue;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	++modCount;</span><br><span class="line">	<span class="comment">//数据插入完成，size超过了扩容的阀值(容量*负载因子)，进行扩容</span></span><br><span class="line">	<span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">		resize();</span><br><span class="line">	afterNodeInsertion(evict);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="HashMap-get执行过程">HashMap get执行过程</h4>
@@ -421,16 +416,16 @@ ConcurrentHashMap的扩容只针对每个segment中的HashEntry数组进行扩�
       <div class="popular-posts-title"><a href="/posts/3V8G3VM.html" rel="bookmark">Qt基础学习笔记01</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/2D6CV2C.html" rel="bookmark">Java开发随笔</a></div>
+      <div class="popular-posts-title"><a href="/posts/3Y71AXZ.html" rel="bookmark">对象在内存中的内存布局</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/357C6XC.html" rel="bookmark">Java8中的Stream轻松遍历树形结构</a></div>
+      <div class="popular-posts-title"><a href="/posts/WTSYSE.html" rel="bookmark">Java并发常见知识点&amp;面试题总结_进阶篇</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/846ZWZ.html" rel="bookmark">搞懂Nginx 高性能网络工作原理</a></div>
+      <div class="popular-posts-title"><a href="/posts/3AX6RYY.html" rel="bookmark">理解ThreadLocal</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/3YNTVJH.html" rel="bookmark">Docker通讯问题</a></div>
+      <div class="popular-posts-title"><a href="/posts/2P9AR21.html" rel="bookmark">Kafka面试连环炮-下</a></div>
     </li>
   </ul>
 
@@ -476,6 +471,7 @@ ConcurrentHashMap的扩容只针对每个segment中的HashEntry数组进行扩�
           
           <div class="post-tags">
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+              <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
               <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
           </div>
 
@@ -490,12 +486,12 @@ ConcurrentHashMap的扩容只针对每个segment中的HashEntry数组进行扩�
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/28TV773.html" rel="prev" title="原型模式">
-      <i class="fa fa-chevron-left"></i> 原型模式
+    <a href="/posts/357C6XC.html" rel="prev" title="Java8中的Stream轻松遍历树形结构">
+      <i class="fa fa-chevron-left"></i> Java8中的Stream轻松遍历树形结构
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/3AX6RYY.html" rel="next" title="理解ThreadLocal">
-      理解ThreadLocal <i class="fa fa-chevron-right"></i>
+    <a href="/posts/MVEJAK.html" rel="next" title="HashMap与HashTable的区别">
+      HashMap与HashTable的区别 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -586,14 +582,14 @@ ConcurrentHashMap的扩容只针对每个segment中的HashEntry数组进行扩�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">173</span>
+          <span class="site-state-item-count">181</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -671,7 +667,7 @@ ConcurrentHashMap的扩容只针对每个segment中的HashEntry数组进行扩�
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">15:33</span>
+    <span title="站点阅读时长">15:39</span>
 </div>
 
 <div>

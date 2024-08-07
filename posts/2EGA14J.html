@@ -28,19 +28,20 @@
 <meta property="og:url" content="https://blog.xuemingde.com/posts/2EGA14J.html">
 <meta property="og:site_name" content="WiseWanderer">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://xuemingde.com/pages/image/2022/04/07/1107-Qd4URl.jpg">
-<meta property="og:image" content="https://xuemingde.com/pages/image/2022/04/07/1108-wTOpco.jpg">
-<meta property="og:image" content="https://xuemingde.com/pages/image/2022/04/07/1108-xGDuCw.jpg">
-<meta property="og:image" content="https://xuemingde.com/pages/image/2022/04/07/1108-3p8bmU.png">
-<meta property="og:image" content="https://xuemingde.com/pages/image/2022/04/07/1109-VOwtZ0.jpg">
-<meta property="article:published_time" content="2022-08-13T08:46:48.934Z">
-<meta property="article:modified_time" content="2022-08-13T08:46:48.934Z">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyeHN3ULeDuneMqaBzyWr7fbcwZDZQqSzYDtdOh7wIY2eq97ArAXhaFQ/0?wx_fmt=png&amp;from=appmsg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwybuAkpGKULZUCIGpUts2OdHUUKGZEfNg9aApTjZBE8txWxStFxb6UsA/0?wx_fmt=png&amp;from=appmsg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwysmrYWOI0iay9vPr62mrKfibBdON7gxrpqqnUkIYuVib07YFlibzY8SQsPg/0?wx_fmt=png&amp;from=appmsg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyGQer3Y0WmzicYBKicEPYLsoo0MyJSuOt8CpznIrYJ8rMldsCYCNLKfkg/0?wx_fmt=png&amp;from=appmsg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwykGiaSDT0w5LC2iaaPqu0O3owhnZ8IgSoibkZKXNicDbw3emULwZFiaCgq7w/0?wx_fmt=png&amp;from=appmsg">
+<meta property="article:published_time" content="2024-07-18T05:30:51.753Z">
+<meta property="article:modified_time" content="2024-07-18T07:01:13.715Z">
 <meta property="article:author" content="meadee">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="sql">
 <meta property="article:tag" content="Mysql">
+<meta property="article:tag" content="MQ">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xuemingde.com/pages/image/2022/04/07/1107-Qd4URl.jpg">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyeHN3ULeDuneMqaBzyWr7fbcwZDZQqSzYDtdOh7wIY2eq97ArAXhaFQ/0?wx_fmt=png&amp;from=appmsg">
 
 <link rel="canonical" href="https://blog.xuemingde.com/posts/2EGA14J.html">
 
@@ -135,12 +136,12 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">173</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">181</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">30</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">36</span></a>
 
   </li>
         <li class="menu-item menu-item-bookmark">
@@ -227,8 +228,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-08-13 16:46:48" itemprop="dateCreated datePublished" datetime="2022-08-13T16:46:48+08:00">2022-08-13</time>
+              <time title="创建时间：2024-07-18 13:30:51 / 修改时间：15:01:13" itemprop="dateCreated datePublished" datetime="2024-07-18T13:30:51+08:00">2024-07-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -285,7 +287,7 @@
 <h3 id="1、脏写问题"><strong>1、脏写问题</strong></h3>
 <p>在事务并发的时候，一个事务可以修改另外一个正在进行中的事务的数据，这可能会导致一个写的事务会覆盖另外一个写的事务数据，这也就是脏写问题。</p>
 <p>**案例：**以存取款为例，假设A与B同用一张银行卡，银行卡内余额为1000，如果两个事务可以对同一个数据进行修改时，可能会产下面 事务B 把事务A的数据覆盖了，导致事务A写入的数据丢失了。</p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/04/07/1107-Qd4URl.jpg" alt=""></p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyeHN3ULeDuneMqaBzyWr7fbcwZDZQqSzYDtdOh7wIY2eq97ArAXhaFQ/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <h3 id="如何解决脏写问题"><strong>如何解决脏写问题</strong></h3>
 <p>在事务隔离级别<strong>READ_UNCOMMITTED</strong>  解决了脏写的问题，其原理是在READ_UNCOMMITTED事务隔离级别下，当事务对数据进行修改时，首先会对数据加写锁，加写锁成功后只有等事务提交或者回滚后才会释放，所以已经有一个事务对数据加了写锁，那么其他事务就会因为无法获取对应数据的锁而阻塞，所以在READ_UNCOMMITTED事务隔离级别下，多个事务是无法对同一个数据同时进行修改。</p>
 <h3 id="2、脏读问题"><strong>2、脏读问题</strong></h3>
@@ -297,7 +299,7 @@
 <p>3、事务B：撤销事务，余额恢复为1000.</p>
 <p>4、事务A：进行存款500，余额=0+500。</p>
 <p>5、事务A：提交事务，最后账户余额为500。</p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/04/07/1108-wTOpco.jpg" alt=""></p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwybuAkpGKULZUCIGpUts2OdHUUKGZEfNg9aApTjZBE8txWxStFxb6UsA/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <h3 id="如何解决脏读问题"><strong>如何解决脏读问题</strong></h3>
 <p>在事务隔离级别<strong>READ_COMMITTED</strong>（读提交）解决了脏读的问题，其原理是在READ_COMMITTED的事务隔离级别下，当事务对数据进行修改时，得先要对数据加写锁，当事务读取数据时，首先需要对数据加读锁。 因为写锁与读锁不能共存，所以在修改数据的时候，其它事务会因为无法成功加读锁而阻塞，所以READ_COMMITTED  的事务隔离级别下，一个事务就无法读取另外一个未完成的事务所修改的数据了。</p>
 <h3 id="3、不可重复读问题"><strong>3、不可重复读问题</strong></h3>
@@ -308,7 +310,7 @@
 <p>3、事务B：取款1000。</p>
 <p>4、事务B：提交事务（此时余额为0）。</p>
 <p>5、事务A：查询余额，余额为0。</p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/04/07/1108-xGDuCw.jpg" alt=""></p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwysmrYWOI0iay9vPr62mrKfibBdON7gxrpqqnUkIYuVib07YFlibzY8SQsPg/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <h3 id="如何解决不可重复读"><strong>如何解决不可重复读</strong></h3>
 <p>不可重复读产生的核心问题是，在一个事务第1次读取和第2次读取数据的间隔过程中可以被另外一个事务修改，因为在READ_COMMITTED的事务隔离级别下，事务中每次读取数据结束后（事务未结束）就会释放读锁，而一旦读锁释放后另外一个事务就可以加写锁，最终导致事务中多次读取该数据的间隙中可以被其它事务修改。</p>
 <p>而<strong>REPEATABLE_READ</strong> **（可重复读）**的事务隔离级别下，一个事务中的读取操作会对数据加读锁（并且在当前事务结束之前不会释放），此时另外一个事务对该数据修改之前会尝试加写锁（此时不会成功，因为读写锁冲突），所以就避免了一个事务多次读取的数据的间隔可以被另外一个事务修改。</p>
@@ -317,13 +319,13 @@
 <p>在事务并发的时候，一个事务可以往另外一个正在读取的事务查询范围内插入新数据，导致另外一个事务在第二次查询数据里，要比前一次查询的数据要多，同样的SQL后面一次查询凭空多出了数据，像幻觉一样所以称为幻读。</p>
 <p><strong>案例：</strong> 以打印银行卡账单存款记录为例，假设A与B同用一张银行卡，银行卡内存款记录为两条。</p>
 <p><strong>操作：</strong> 如下图所示，存款表有2条数据，A对存款表进行读取，  当A第一次读取到存款记录的时候只有2条数据； 但是与此同时B往银行卡进行了一笔存款然后提交了事务，在B提交了存款事务之后，A执行了打印操  作，最后发现打印存款表信息的时候却发现有3条数据，与之前查出的数据不一样，这种平白无故多出来 的数据就好象发生了幻觉一样所以称为幻读；</p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/04/07/1108-3p8bmU.png" alt=""></p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyGQer3Y0WmzicYBKicEPYLsoo0MyJSuOt8CpznIrYJ8rMldsCYCNLKfkg/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <h3 id="解决幻读的两种方式"><strong>解决幻读的两种方式</strong></h3>
 <h3 id="1、设置事务隔离级别为SERIALIZABLE"><strong>1、设置事务隔离级别为SERIALIZABLE</strong></h3>
 <p>在SERIALIZABLE事务隔离级别下，所有的事务都串行化执行，一个事务的执行必须等前面的事务结束，这样的话查询的时候就无法有其他事务查询新的数据，所以不会产生幻读问题。</p>
 <h3 id="2、加间隙锁"><strong>2、加间隙锁</strong></h3>
 <p>幻读问题的本质在于，没有对查询范围内的所有数据进  (包括不存在的数据）进行加锁，而导致改查询范围内可以被插入新的数据，所以使用间隙锁，对查询的范围进行加锁，此时新插入的数据的事务会因为无法加锁成功而阻塞，所以就避免了幻读。比如表数据如下图， 那么此时如果执行select * from user where id&gt;2 时  ，间隙锁会对id&gt;2的空间加锁，所以此时我们另外一个事务插入ID为3 、4、6、7… 都会因为锁阻塞而无法成功。</p>
-<p><img data-src="https://xuemingde.com/pages/image/2022/04/07/1109-VOwtZ0.jpg" alt=""></p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwykGiaSDT0w5LC2iaaPqu0O3owhnZ8IgSoibkZKXNicDbw3emULwZFiaCgq7w/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <h2 id="总结"><strong>总结</strong></h2>
 <p>为解决不同场景的并发事务问题，事务定义了四种隔离级别，每个隔离级别都针对事务并发问题中的一种或几种进行解决，事务级别越高，解决的并发事务问题也就越多，同时也意味着加的锁就越多，所以性能也会越差。不同的隔离级别下它们加锁的情况如下：</p>
 <h3 id="READ-UNCOMMITTED"><strong>READ_UNCOMMITTED</strong></h3>
@@ -361,19 +363,19 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/J71QTX.html" rel="bookmark">秒杀系统设计</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/3DS4M6Q.html" rel="bookmark">Kafka面试连环炮-上</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2HNBAGV.html" rel="bookmark">基于代价的慢查询优化建议</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/33P1FY8.html" rel="bookmark">一文详解SQL关联子查询</a></div>
+    </li>
+    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/3YNTVJH.html" rel="bookmark">Docker通讯问题</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/QWTBG7.html" rel="bookmark">springBoot整合seata</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1J88EXM.html" rel="bookmark">如何设计一个秒杀系统</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/2SZHQ52.html" rel="bookmark">如何优雅地记录操作日志</a></div>
     </li>
   </ul>
 
@@ -421,6 +423,7 @@
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
               <a href="/tags/sql/" rel="tag"><i class="fa fa-tag"></i> sql</a>
               <a href="/tags/Mysql/" rel="tag"><i class="fa fa-tag"></i> Mysql</a>
+              <a href="/tags/MQ/" rel="tag"><i class="fa fa-tag"></i> MQ</a>
           </div>
 
         
@@ -434,12 +437,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/2HQQX90.html" rel="prev" title="JUC线程池 FutureTask详解">
-      <i class="fa fa-chevron-left"></i> JUC线程池 FutureTask详解
+    <a href="/posts/2J0546C.html" rel="prev" title="spring boot 中Spring data jpa命名策略">
+      <i class="fa fa-chevron-left"></i> spring boot 中Spring data jpa命名策略
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/1AAVASY.html" rel="next" title="nnoDB与MYISAM的区别">
-      nnoDB与MYISAM的区别 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/3K8NATX.html" rel="next" title="Mysql里的锁">
+      Mysql里的锁 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -530,14 +533,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">173</span>
+          <span class="site-state-item-count">181</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -615,7 +618,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">15:33</span>
+    <span title="站点阅读时长">15:39</span>
 </div>
 
 <div>
