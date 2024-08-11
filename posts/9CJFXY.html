@@ -273,32 +273,27 @@
 
       
         <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><p>CRC（循环冗余校验，Cyclic Redundancy Check）是一种用于检测数据传输或存储错误的算法。CRC 在数据通信和存储设备中广泛使用，以确保数据的完整性。它将数据视为一个二进制多项式，利用多项式除法生成一个校验值（即 CRC 值），并附加到数据块上。接收端使用相同的算法对接收到的数据计算 CRC，并与附加的 CRC 值进行比较。如果两者不一致，说明数据在传输或存储过程中出现了错误。</p>
-<h3 id="CRC的基本工作原理">CRC的基本工作原理</h3>
-<ol>
+<h3 id="CRC的基本工作原理"><a href="#CRC的基本工作原理" class="headerlink" title="CRC的基本工作原理"></a>CRC的基本工作原理</h3><ol>
 <li><strong>生成多项式</strong>: CRC 算法使用一个预定义的生成多项式（也称为多项式除数）。</li>
 <li><strong>数据编码</strong>: 数据被视为一个二进制多项式。</li>
 <li><strong>计算余数</strong>: 将数据多项式除以生成多项式，得到的余数就是 CRC 校验值。</li>
 <li><strong>附加CRC值</strong>: 将 CRC 校验值附加到数据后面一起传输。</li>
 <li><strong>接收端校验</strong>: 接收端使用相同的生成多项式对接收到的数据进行同样的计算，得到的余数与附加的 CRC 校验值进行比较。如果匹配，则认为数据无误；否则，数据出现了错误。</li>
 </ol>
-<h3 id="常见的CRC类型">常见的CRC类型</h3>
-<ul>
+<h3 id="常见的CRC类型"><a href="#常见的CRC类型" class="headerlink" title="常见的CRC类型"></a>常见的CRC类型</h3><ul>
 <li><strong>CRC-8</strong>: 8位的 CRC 校验。</li>
 <li><strong>CRC-16</strong>: 16位的 CRC 校验，常用于 Modbus 通信。</li>
 <li><strong>CRC-32</strong>: 32位的 CRC 校验，广泛用于网络传输和文件校验。</li>
 </ul>
-<h3 id="示例：CRC-16-计算">示例：CRC-16 计算</h3>
-<p>下面是一个 Java 实现 CRC-16 Modbus 校验的示例代码：</p>
+<h3 id="示例：CRC-16-计算"><a href="#示例：CRC-16-计算" class="headerlink" title="示例：CRC-16 计算"></a>示例：CRC-16 计算</h3><p>下面是一个 Java 实现 CRC-16 Modbus 校验的示例代码：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CRC16Modbus</span> </span>{</span><br><span class="line"></span><br><span class="line">    <span class="comment">// CRC16-MODBUS 生成多项式 0xA001</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> POLYNOMIAL = <span class="number">0xA001</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">        <span class="keyword">byte</span>[] data = {<span class="number">0x01</span>, <span class="number">0x03</span>, <span class="number">0x00</span>, <span class="number">0x65</span>, <span class="number">0x00</span>, <span class="number">0x03</span>};</span><br><span class="line">        <span class="keyword">int</span> crc = calculateCRC(data);</span><br><span class="line">        System.out.printf(<span class="string">"CRC16: %04X\n"</span>, crc);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">calculateCRC</span><span class="params">(<span class="keyword">byte</span>[] data)</span> </span>{</span><br><span class="line">        <span class="keyword">int</span> crc = <span class="number">0xFFFF</span>; <span class="comment">// 初始值</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">byte</span> b : data) {</span><br><span class="line">            crc ^= (b &amp; <span class="number">0xFF</span>); <span class="comment">// 将字节与 CRC 的低字节异或</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) {</span><br><span class="line">                <span class="keyword">if</span> ((crc &amp; <span class="number">0x0001</span>) != <span class="number">0</span>) {</span><br><span class="line">                    crc &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">                    crc ^= POLYNOMIAL;</span><br><span class="line">                } <span class="keyword">else</span> {</span><br><span class="line">                    crc &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> crc;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="解释">解释</h3>
-<ol>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><ol>
 <li><strong>初始值</strong>: CRC 的初始值通常设置为 <code>0xFFFF</code>。</li>
 <li><strong>异或操作</strong>: 将每个数据字节与 CRC 的低字节进行异或操作。</li>
 <li><strong>移位与异或</strong>: 根据最低位是 <code>1</code> 还是 <code>0</code> 决定是右移还是右移后再与多项式进行异或操作。</li>
 <li><strong>返回 CRC</strong>: 最终的 CRC 值即为校验结果。</li>
 </ol>
-<h3 id="应用">应用</h3>
-<p>CRC 被广泛应用于数据通信协议（如 Modbus、HDLC、以太网）、存储设备（如硬盘、光盘）、文件校验（如 zip 文件）等领域，以保证数据传输和存储的可靠性。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>CRC 被广泛应用于数据通信协议（如 Modbus、HDLC、以太网）、存储设备（如硬盘、光盘）、文件校验（如 zip 文件）等领域，以保证数据传输和存储的可靠性。</p>
 
     </div>
    <div>
@@ -570,7 +565,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">15:39</span>
+    <span title="站点阅读时长">15:31</span>
 </div>
 
 <div>
