@@ -1,0 +1,1060 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&amp;display=swap&amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../js/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="../js/pace-theme-minimal.min.css">
+  <script src="../js/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.xuemingde.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","width":300,"display":"always","padding":18,"offset":10,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="C++日期&amp;时间">
+<meta property="og:url" content="https://blog.xuemingde.com/posts/NFRYTW.html">
+<meta property="og:site_name" content="WiseWanderer">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-23T04:35:53.090Z">
+<meta property="article:modified_time" content="2024-08-23T04:35:53.091Z">
+<meta property="article:author" content="meadee">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.xuemingde.com/posts/NFRYTW.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C++日期&amp;时间 | WiseWanderer</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WiseWanderer</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">每个人都有反叛心理，越是强制越是反抗</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">182</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-bookmark">
+
+    <a href="/bookmark/" rel="section"><i class="fa fa-bookmark fa-fw"></i>书签</a>
+
+  </li>
+        <li class="menu-item menu-item-collect">
+
+    <a href="/collect/" rel="section"><i class="fa fa-star fa-fw"></i>收藏</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+           <div id="container-1">
+            <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.xuemingde.com/posts/NFRYTW.html">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpeg">
+      <meta itemprop="name" content="meadee">
+      <meta itemprop="description" content="沉默，有时候是一种无声的反抗">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WiseWanderer">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++日期&amp;时间
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-08-23 12:35:53" itemprop="dateCreated datePublished" datetime="2024-08-23T12:35:53+08:00">2024-08-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index"><span itemprop="name">C&amp;C++</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>12k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><p>结构类型 <strong>tm</strong> 把日期和时间以 C 结构的形式保存，tm 结构的定义如下：</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tm</span> {</span></span><br><span class="line">  <span class="keyword">int</span> tm_sec;   <span class="comment">// 秒，正常范围从 0 到 59，但允许至 61</span></span><br><span class="line">  <span class="keyword">int</span> tm_min;   <span class="comment">// 分，范围从 0 到 59</span></span><br><span class="line">  <span class="keyword">int</span> tm_hour;  <span class="comment">// 小时，范围从 0 到 23</span></span><br><span class="line">  <span class="keyword">int</span> tm_mday;  <span class="comment">// 一月中的第几天，范围从 1 到 31</span></span><br><span class="line">  <span class="keyword">int</span> tm_mon;   <span class="comment">// 月，范围从 0 到 11</span></span><br><span class="line">  <span class="keyword">int</span> tm_year;  <span class="comment">// 自 1900 年起的年数</span></span><br><span class="line">  <span class="keyword">int</span> tm_wday;  <span class="comment">// 一周中的第几天，范围从 0 到 6，从星期日算起</span></span><br><span class="line">  <span class="keyword">int</span> tm_yday;  <span class="comment">// 一年中的第几天，范围从 0 到 365，从 1 月 1 日算起</span></span><br><span class="line">  <span class="keyword">int</span> tm_isdst; <span class="comment">// 夏令时</span></span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<p>下面是 C/C++ 中关于日期和时间的重要函数。所有这些函数都是 C/C++ 标准库的组成部分，您可以在 C++ 标准库中查看一下各个函数的细节。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">函数 &amp; 描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/c-function-time.html"><strong>time_t time(time_t *time);</strong></a> 该函数返回系统的当前日历时间，自 1970 年 1 月 1 日以来经过的秒数。如果系统没有时间，则返回 -1。</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/c-function-ctime.html"><strong>char *ctime(const time_t *time);</strong></a> 该返回一个表示当地时间的字符串指针，字符串形式 <em>day month year hours:minutes:seconds year\n\0</em>。</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/c-function-localtime.html"><strong>struct tm *localtime(const time_t *time);</strong></a> 该函数返回一个指向表示本地时间的 <strong>tm</strong> 结构的指针。</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/c-function-clock.html"><strong>clock_t clock(void);</strong></a> 该函数返回程序执行起（一般为程序的开头），处理器时钟所使用的时间。如果时间不可用，则返回 -1。</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/c-function-asctime.html"><strong>char * asctime ( const struct tm * time );</strong></a> 该函数返回一个指向字符串的指针，字符串包含了 time 所指向结构中存储的信息，返回形式为：day month date hours:minutes:seconds year\n\0。</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/c-function-gmtime.html"><strong>struct tm *gmtime(const time_t *time);</strong></a> 该函数返回一个指向 time 的指针，time 为 tm 结构，用协调世界时（UTC）也被称为格林尼治标准时间（GMT）表示。</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/c-function-mktime.html"><strong>time_t  mktime(struct tm *time);</strong></a> 该函数返回日历时间，相当于 time 所指向结构中存储的时间。</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/c-function-difftime.html"><strong>double  difftime ( time_t time2, time_t time1 );</strong></a> 该函数返回 time1 和 time2 之间相差的秒数。</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/c-function-strftime.html"><strong>size_t strftime();</strong></a> 该函数可用于格式化日期和时间为指定的格式。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="获取当前时间">获取当前时间</h2>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">time_t</span> now = <span class="built_in">time</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 把 now 转换为字符串形式</span></span><br><span class="line"><span class="keyword">char</span>* dt = <span class="built_in">ctime</span>(&amp;now);</span><br><span class="line">cout &lt;&lt; <span class="string">"本地日期和时间："</span> &lt;&lt; dt &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">本地日期和时间：Fri Aug <span class="number">23</span> <span class="number">09</span>:<span class="number">49</span>:<span class="number">28</span> <span class="number">2024</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">time_t</span> now = <span class="built_in">time</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">// 将time_t转换为tm结构体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tm</span> *<span class="title">local</span> =</span> <span class="built_in">localtime</span>(&amp;now);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印年、月、日、时、分、秒</span></span><br><span class="line">std::cout &lt;&lt; <span class="number">1900</span> + local-&gt;tm_year &lt;&lt; <span class="string">'-'</span></span><br><span class="line">          &lt;&lt; <span class="number">1</span> + local-&gt;tm_mon &lt;&lt; <span class="string">'-'</span></span><br><span class="line">          &lt;&lt; local-&gt;tm_mday &lt;&lt; <span class="string">' '</span></span><br><span class="line">          &lt;&lt; local-&gt;tm_hour &lt;&lt; <span class="string">':'</span></span><br><span class="line">          &lt;&lt; local-&gt;tm_min &lt;&lt; <span class="string">':'</span></span><br><span class="line">          &lt;&lt; local-&gt;tm_sec &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line"><span class="number">2024</span><span class="number">-8</span><span class="number">-23</span> <span class="number">9</span>:<span class="number">50</span>:<span class="number">26</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">time_t</span> now = <span class="built_in">time</span>(<span class="number">0</span>);</span><br><span class="line">tm *gmtm = <span class="built_in">gmtime</span>(&amp;now);</span><br><span class="line">dt = <span class="built_in">asctime</span>(gmtm);</span><br><span class="line">cout &lt;&lt; <span class="string">"UTC 日期和时间："</span>&lt;&lt; dt &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">UTC 日期和时间: Fri Aug <span class="number">23</span> <span class="number">01</span>:<span class="number">58</span>:<span class="number">14</span> <span class="number">2024</span></span><br></pre></td></tr></tbody></table></figure>
+<p><code>time_t now = time(0);</code> 语句获取当前的时间，并将其存储在 <code>now</code> 变量中。这个时间值是一个 <code>time_t</code> 类型，通常表示自 Unix 纪元（1970 年 1 月 1 日 00:00:00 UTC）以来的秒数。</p>
+<p>接下来，<code>ctime(&amp;now)</code>、<code>localtime(&amp;now)</code> 和 <code>gmtime(&amp;now)</code> 都是将这个 <code>time_t</code> 类型的时间值转换为不同形式的时间表示。让我们看看它们之间的区别。</p>
+<h3 id="ctime-now"><code>ctime(&amp;now)</code></h3>
+<ul>
+<li><strong>功能</strong>: <code>ctime()</code> 将 <code>time_t</code> 类型的时间值转换为人类可读的字符串格式，表示本地时间。</li>
+<li><strong>返回值</strong>: 返回一个指向格式化字符串的 <code>char*</code>。例如 <code>"Wed Aug 23 14:55:02 2023\n"</code>。</li>
+<li><strong>特点</strong>:
+<ul>
+<li>输出的时间是基于系统的本地时区。</li>
+<li>返回的字符串包含换行符 <code>\n</code>，并以空字符 <code>\0</code> 结尾。</li>
+<li>由于字符串是静态分配的，后续对 <code>ctime()</code> 的调用会覆盖之前的值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="localtime-now"><code>localtime(&amp;now)</code></h3>
+<ul>
+<li><strong>功能</strong>: <code>localtime()</code> 将 <code>time_t</code> 类型的时间值转换为本地时间，并以 <code>struct tm</code> 结构的形式返回。</li>
+<li><strong>返回值</strong>: 返回一个指向 <code>struct tm</code> 结构的指针，该结构包含详细的本地时间信息，如年、月、日、时、分、秒等。</li>
+<li><strong>特点</strong>:
+<ul>
+<li>结构中的时间值是基于系统的本地时区。</li>
+<li>返回的 <code>struct tm</code> 结构的指针指向的是静态内存，后续对 <code>localtime()</code> 的调用会覆盖之前的值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="gmtime-now">gmtime(&amp;now)`</h3>
+<ul>
+<li><strong>功能</strong>: <code>gmtime()</code> 将 <code>time_t</code> 类型的时间值转换为 UTC（协调世界时，即 GMT）时间，并以 <code>struct tm</code> 结构的形式返回。</li>
+<li><strong>返回值</strong>: 返回一个指向 <code>struct tm</code> 结构的指针，该结构包含详细的 UTC 时间信息，如年、月、日、时、分、秒等。</li>
+<li><strong>特点</strong>:
+<ul>
+<li>结构中的时间值是基于 UTC 而非本地时区。</li>
+<li>返回的 <code>struct tm</code> 结构的指针指向的是静态内存，后续对 <code>gmtime()</code> 的调用会覆盖之前的值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结对比">总结对比</h3>
+<ul>
+<li>
+<p><strong>时区</strong>:</p>
+<ul>
+<li><code>ctime(&amp;now)</code>：返回基于本地时区的可读字符串。</li>
+<li><code>localtime(&amp;now)</code>：返回基于本地时区的 <code>struct tm</code> 结构。</li>
+<li><code>gmtime(&amp;now)</code>：返回基于 UTC（GMT）的 <code>struct tm</code> 结构。</li>
+</ul>
+</li>
+<li>
+<p><strong>返回类型</strong>:</p>
+<ul>
+<li><code>ctime(&amp;now)</code>：返回 <code>char*</code> 类型的字符串。</li>
+<li><code>localtime(&amp;now)</code> 和 <code>gmtime(&amp;now)</code>：返回 <code>struct tm*</code> 类型的指针，指向包含详细时间信息的结构。</li>
+</ul>
+</li>
+<li>
+<p><strong>使用场景</strong>:</p>
+<ul>
+<li>如果你只需要一个简单的、可读的本地时间字符串，使用 <code>ctime()</code>。</li>
+<li>如果你需要对本地时间的各个部分进行操作（例如计算日期差、处理时区），使用 <code>localtime()</code>。</li>
+<li>如果你需要操作 UTC 时间（例如在跨时区系统中），使用 <code>gmtime()</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="时间戳">时间戳</h2>
+<p>秒级</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">time_t timestamp;</span><br><span class="line">std::cout &lt;&lt; time(&amp;timestamp) &lt;&lt; std::endl;//秒级时间戳</span><br><span class="line"></span><br><span class="line"> time_t now = time(0);</span><br><span class="line"> std::cout &lt;&lt; now &lt;&lt; std::endl;//秒级时间戳</span><br></pre></td></tr></tbody></table></figure>
+<p>毫秒级</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取当前时间戳</span></span><br><span class="line"><span class="keyword">auto</span> now = chrono::system_clock::<span class="built_in">now</span>();</span><br><span class="line"><span class="comment">// 将时间戳转换为毫秒数</span></span><br><span class="line"><span class="keyword">auto</span> now_ms = chrono::time_point_cast&lt;chrono::milliseconds&gt;(now);</span><br><span class="line"><span class="keyword">auto</span> value = now_ms.<span class="built_in">time_since_epoch</span>().<span class="built_in">count</span>();</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="对比">对比</h2>
+<p>相差</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前时间</span></span><br><span class="line"><span class="keyword">time_t</span> start_time = <span class="built_in">time</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟一个延迟，等待 10 秒</span></span><br><span class="line">std::cout &lt;&lt; <span class="string">"等待 10 秒...\n"</span>;</span><br><span class="line"><span class="built_in">sleep</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取当前时间</span></span><br><span class="line"><span class="keyword">time_t</span> end_time = <span class="built_in">time</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算时间差</span></span><br><span class="line"><span class="keyword">double</span> seconds_diff = <span class="built_in">difftime</span>(end_time, start_time);</span><br><span class="line"></span><br><span class="line">std::cout &lt;&lt; <span class="string">"两个时间之间的差异为: "</span> &lt;&lt; seconds_diff &lt;&lt; <span class="string">" 秒"</span> &lt;&lt; std::endl;</span><br></pre></td></tr></tbody></table></figure>
+<p>大小</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前时间</span></span><br><span class="line"><span class="keyword">time_t</span> time1 = <span class="built_in">time</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模拟一个延迟，等待 5 秒</span></span><br><span class="line">std::cout &lt;&lt; <span class="string">"等待 5 秒...\n"</span>;</span><br><span class="line"><span class="built_in">sleep</span>(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取当前时间</span></span><br><span class="line"><span class="keyword">time_t</span> time2 = <span class="built_in">time</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 比较两个时间</span></span><br><span class="line"><span class="keyword">if</span> (time1 &lt; time2) {</span><br><span class="line">std::cout &lt;&lt; <span class="string">"time1 早于 time2"</span> &lt;&lt; std::endl;</span><br><span class="line">} <span class="keyword">else</span> <span class="keyword">if</span> (time1 &gt; time2) {</span><br><span class="line">std::cout &lt;&lt; <span class="string">"time1 晚于 time2"</span> &lt;&lt; std::endl;</span><br><span class="line">} <span class="keyword">else</span> {</span><br><span class="line">std::cout &lt;&lt; <span class="string">"time1 和 time2 相等"</span> &lt;&lt; std::endl;</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="偏移">偏移</h2>
+<p>当前时间加（减）一天</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前时间</span></span><br><span class="line"><span class="keyword">time_t</span> now = <span class="built_in">time</span>(<span class="number">0</span>);</span><br><span class="line">std::cout &lt;&lt; <span class="string">"当前时间: "</span> &lt;&lt; <span class="built_in">ctime</span>(&amp;now);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 time_t 转换为 tm 结构</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tm</span>* <span class="title">time_info</span> =</span> <span class="built_in">localtime</span>(&amp;now);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 增加一天</span></span><br><span class="line">time_info-&gt;tm_mday += <span class="number">1</span>;</span><br><span class="line"><span class="comment">//减一天</span></span><br><span class="line"><span class="comment">// time_info-&gt;tm_mday -= 1;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 增加一年</span></span><br><span class="line"><span class="comment">//time_info-&gt;tm_year += 1;</span></span><br><span class="line"><span class="comment">// 减一年</span></span><br><span class="line"><span class="comment">//time_info-&gt;tm_year -= 1;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将修改后的 tm 结构转换回 time_t</span></span><br><span class="line"><span class="keyword">time_t</span> future_time = <span class="built_in">mktime</span>(time_info);</span><br><span class="line"></span><br><span class="line">std::cout &lt;&lt; <span class="string">"增加1天后的时间: "</span> &lt;&lt; <span class="built_in">ctime</span>(&amp;future_time);</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="转化">转化</h2>
+<h3 id="字符串转化为时间戳">字符串转化为时间戳</h3>
+<p>在 C++ 中，将时间字符串转换为时间戳（<code>time_t</code> 类型）通常涉及以下步骤：</p>
+<ol>
+<li><strong>解析时间字符串</strong>：使用适当的库函数将时间字符串转换为 <code>struct tm</code>。</li>
+<li><strong>将 <code>struct tm</code> 转换为时间戳</strong>：使用 <code>mktime</code> 函数将 <code>struct tm</code> 转换为 <code>time_t</code> 类型。</li>
+</ol>
+<p>以下是几个常见的方法来实现这一转换：</p>
+<ol>
+<li>使用 <code>std::tm</code> 和 <code>mktime</code></li>
+</ol>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 时间字符串</span></span><br><span class="line">    std::string timeStr = <span class="string">"2024-08-23 14:30:00"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解析时间字符串到 std::tm 结构</span></span><br><span class="line">    std::tm tm = {};</span><br><span class="line">    <span class="function">std::istringstream <span class="title">ss</span><span class="params">(timeStr)</span></span>;</span><br><span class="line">    ss &gt;&gt; std::<span class="built_in">get_time</span>(&amp;tm, <span class="string">"%Y-%m-%d %H:%M:%S"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ss.<span class="built_in">fail</span>()) {</span><br><span class="line">        std::cerr &lt;&lt; <span class="string">"解析时间字符串失败"</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将 std::tm 转换为 time_t</span></span><br><span class="line">    std::<span class="keyword">time_t</span> timeStamp = std::<span class="built_in">mktime</span>(&amp;tm);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (timeStamp == <span class="number">-1</span>) {</span><br><span class="line">        std::cerr &lt;&lt; <span class="string">"转换时间戳失败"</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"时间戳: "</span> &lt;&lt; timeStamp &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ol start="2">
+<li>使用 <code>&lt;chrono&gt;</code> 和 <code>std::chrono::parse</code></li>
+</ol>
+<p>C++20 引入了新的时间解析功能，你可以使用 <code>std::chrono::parse</code> 函数（在某些实现中）来解析时间字符串。这需要使用 <code>&lt;chrono&gt;</code> 头文件，并且支持 C++20 的编译器和标准库。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;format&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 时间字符串</span></span><br><span class="line">    std::string timeStr = <span class="string">"2024-08-23 14:30:00"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解析时间字符串</span></span><br><span class="line">    std::chrono::system_clock::time_point tp;</span><br><span class="line">    <span class="function">std::istringstream <span class="title">iss</span><span class="params">(timeStr)</span></span>;</span><br><span class="line">    iss &gt;&gt; std::chrono::<span class="built_in">parse</span>(<span class="string">"%F %T"</span>, tp);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (iss.<span class="built_in">fail</span>()) {</span><br><span class="line">        std::cerr &lt;&lt; <span class="string">"解析时间字符串失败"</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转换为时间戳</span></span><br><span class="line">    <span class="keyword">auto</span> timeStamp = std::chrono::system_clock::<span class="built_in">to_time_t</span>(tp);</span><br><span class="line">    std::cout &lt;&lt; <span class="string">"时间戳: "</span> &lt;&lt; timeStamp &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ol start="3">
+<li>使用 Boost.Date_Time 库</li>
+</ol>
+<p>Boost.Date_Time 提供了更强大的时间处理功能，可以用于解析时间字符串和转换为时间戳。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/date_time/posix_time/posix_time.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 时间字符串</span></span><br><span class="line">    std::string timeStr = <span class="string">"2024-08-23 14:30:00"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解析时间字符串</span></span><br><span class="line">    boost::<span class="function">posix_time::ptime <span class="title">pt</span><span class="params">(boost::date_time::time_from_string(timeStr))</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转换为 time_t</span></span><br><span class="line">    std::<span class="keyword">time_t</span> timeStamp = (pt - boost::posix_time::<span class="built_in">from_time_t</span>(<span class="number">0</span>)).<span class="built_in">total_seconds</span>();</span><br><span class="line">    std::cout &lt;&lt; <span class="string">"时间戳: "</span> &lt;&lt; timeStamp &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>总结</p>
+<ul>
+<li><strong>使用 <code>std::tm</code> 和 <code>mktime</code></strong>：适用于 C++98 和 C++11，标准方法。</li>
+<li><strong>使用 <code>&lt;chrono&gt;</code> 和 C++20</strong>：提供现代化的时间处理功能，需支持 C++20。</li>
+<li><strong>使用 Boost.Date_Time</strong>：适用于 Boost 用户，功能丰富，支持复杂的日期和时间操作。</li>
+</ul>
+<p>选择合适的方法取决于你的编译器支持的 C++ 标准、是否使用 Boost 库以及具体的时间格式需求。</p>
+<h3 id="时间戳转化为字符串">时间戳转化为字符串</h3>
+<p>在 C++ 中，将时间戳（<code>time_t</code> 类型）转换为日期时间字符串可以通过以下几种方法实现。这些方法可以将 <code>time_t</code> 转换为 <code>std::tm</code> 结构，然后使用格式化函数将其转换为字符串。</p>
+<ol>
+<li>使用 <code>std::localtime</code> 和 <code>std::strftime</code></li>
+</ol>
+<p>这是 C++98 和 C++11 中最常用的方法，适用于大多数标准 C++ 编译器。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 时间戳</span></span><br><span class="line">    std::<span class="keyword">time_t</span> timeStamp = std::<span class="built_in">time</span>(<span class="literal">nullptr</span>); <span class="comment">// 当前时间戳</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转换为 std::tm 结构</span></span><br><span class="line">    std::tm* tm = std::<span class="built_in">localtime</span>(&amp;timeStamp);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 格式化为字符串</span></span><br><span class="line">    <span class="keyword">char</span> buffer[<span class="number">100</span>];</span><br><span class="line">    std::<span class="built_in">strftime</span>(buffer, <span class="built_in"><span class="keyword">sizeof</span></span>(buffer), <span class="string">"%Y-%m-%d %H:%M:%S"</span>, tm);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"日期时间字符串: "</span> &lt;&lt; buffer &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ol start="2">
+<li>使用 <code>&lt;chrono&gt;</code> 和 C++20</li>
+</ol>
+<p>C++20 引入了对时间格式化的支持，你可以使用 <code>std::chrono</code> 库来进行格式化。如果你的编译器支持 C++20，下面的示例可以直接使用。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;format&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 时间戳</span></span><br><span class="line">    std::<span class="keyword">time_t</span> timeStamp = std::<span class="built_in">time</span>(<span class="literal">nullptr</span>); <span class="comment">// 当前时间戳</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转换为 std::chrono::system_clock::time_point</span></span><br><span class="line">    <span class="keyword">auto</span> tp = std::chrono::system_clock::<span class="built_in">from_time_t</span>(timeStamp);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 格式化为字符串</span></span><br><span class="line">    std::string timeStr = std::format(<span class="string">"{:%Y-%m-%d %H:%M:%S}"</span>, std::chrono::floor&lt;std::chrono::seconds&gt;(tp));</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"日期时间字符串: "</span> &lt;&lt; timeStr &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ol start="3">
+<li>使用 Boost.Date_Time 库</li>
+</ol>
+<p>如果你在使用 Boost 库，<code>Boost.Date_Time</code> 提供了灵活的日期时间格式化功能。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/date_time/posix_time/posix_time.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 时间戳</span></span><br><span class="line">    std::<span class="keyword">time_t</span> timeStamp = std::<span class="built_in">time</span>(<span class="literal">nullptr</span>); <span class="comment">// 当前时间戳</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转换为 ptime</span></span><br><span class="line">    boost::posix_time::ptime pt = boost::posix_time::<span class="built_in">from_time_t</span>(timeStamp);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 格式化为字符串</span></span><br><span class="line">    std::string timeStr = boost::posix_time::<span class="built_in">to_simple_string</span>(pt);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"日期时间字符串: "</span> &lt;&lt; timeStr &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ol start="4">
+<li>使用 <code>std::put_time</code> 和 <code>std::localtime</code></li>
+</ol>
+<p>在 C++11 及之后的版本中，你可以使用 <code>std::put_time</code> 和 <code>std::localtime</code> 来实现格式化。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 时间戳</span></span><br><span class="line">    std::<span class="keyword">time_t</span> timeStamp = std::<span class="built_in">time</span>(<span class="literal">nullptr</span>); <span class="comment">// 当前时间戳</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转换为 std::tm 结构</span></span><br><span class="line">    std::tm* tm = std::<span class="built_in">localtime</span>(&amp;timeStamp);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 格式化为字符串</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"日期时间字符串: "</span> &lt;&lt; std::<span class="built_in">put_time</span>(tm, <span class="string">"%Y-%m-%d %H:%M:%S"</span>) &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>总结</p>
+<ul>
+<li><strong><code>std::localtime</code> 和 <code>std::strftime</code></strong>：适用于 C++98 和 C++11，简单直接。</li>
+<li><strong>C++20 <code>&lt;chrono&gt;</code> 和 <code>std::format</code></strong>：现代化的时间格式化，需支持 C++20。</li>
+<li><strong>Boost.Date_Time</strong>：功能丰富，适用于 Boost 用户。</li>
+<li><strong><code>std::put_time</code></strong>：适用于 C++11 及之后版本，提供便捷的时间格式化功能。</li>
+</ul>
+<p>根据你的编译器支持和项目需求选择适合的方法。</p>
+<h2 id="chrono库">chrono库</h2>
+<p>C++ 的 <code>&lt;chrono&gt;</code> 库是一个强大且灵活的时间库，提供了高精度的计时器、时钟、时间点、持续时间和时间单位。以下是 <code>&lt;chrono&gt;</code> 库的主要组件和常用用法的详细介绍：</p>
+<h3 id="时钟（Clocks）"><strong>时钟（Clocks）</strong></h3>
+<p>时钟用于获取当前的时间点。<code>&lt;chrono&gt;</code> 提供了几种不同的时钟：</p>
+<ul>
+<li><strong><code>std::chrono::system_clock</code></strong>：表示系统的墙钟时间（系统时间）。可以转换为 <code>time_t</code> 类型。</li>
+<li><strong><code>std::chrono::steady_clock</code></strong>：表示单调时间（不受系统时间更改影响）。适用于测量时间间隔。</li>
+<li><strong><code>std::chrono::high_resolution_clock</code></strong>：表示具有最高分辨率的时钟，通常基于 <code>steady_clock</code>。</li>
+</ul>
+<h4 id="示例：">示例：</h4>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 获取系统时间点</span></span><br><span class="line">    <span class="keyword">auto</span> now = std::chrono::system_clock::<span class="built_in">now</span>();</span><br><span class="line">    std::cout &lt;&lt; <span class="string">"系统时间点: "</span> &lt;&lt; now.<span class="built_in">time_since_epoch</span>().<span class="built_in">count</span>() &lt;&lt; <span class="string">" 以纪元为基准的纳秒数"</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取单调时间点</span></span><br><span class="line">    <span class="keyword">auto</span> steady_now = std::chrono::steady_clock::<span class="built_in">now</span>();</span><br><span class="line">    std::cout &lt;&lt; <span class="string">"单调时间点: "</span> &lt;&lt; steady_now.<span class="built_in">time_since_epoch</span>().<span class="built_in">count</span>() &lt;&lt; <span class="string">" 以纪元为基准的纳秒数"</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="时间点（Time-Points）"><strong>时间点（Time Points）</strong></h3>
+<p>时间点表示特定的时间。可以使用不同的时钟来表示时间点。</p>
+<h4 id="示例：-2">示例：</h4>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 获取系统时间点</span></span><br><span class="line">    <span class="keyword">auto</span> now = std::chrono::system_clock::<span class="built_in">now</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转换为 time_t 类型（自纪元以来的秒数）</span></span><br><span class="line">    std::<span class="keyword">time_t</span> now_c = std::chrono::system_clock::<span class="built_in">to_time_t</span>(now);</span><br><span class="line">    std::cout &lt;&lt; <span class="string">"当前时间: "</span> &lt;&lt; std::<span class="built_in">ctime</span>(&amp;now_c);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="持续时间（Durations）"><strong>持续时间（Durations）</strong></h3>
+<p>持续时间表示时间的长度。可以用不同的单位表示，例如秒、毫秒、微秒等。</p>
+<h4 id="示例：-3">示例：</h4>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 定义持续时间</span></span><br><span class="line">    std::<span class="function">chrono::seconds <span class="title">sec</span><span class="params">(<span class="number">60</span>)</span></span>;</span><br><span class="line">    std::<span class="function">chrono::minutes <span class="title">min</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    std::<span class="function">chrono::milliseconds <span class="title">ms</span><span class="params">(<span class="number">1000</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转换为秒</span></span><br><span class="line">    <span class="keyword">auto</span> sec_from_min = std::chrono::duration_cast&lt;std::chrono::seconds&gt;(min);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出结果</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"1 分钟等于 "</span> &lt;&lt; sec_from_min.<span class="built_in">count</span>() &lt;&lt; <span class="string">" 秒"</span> &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">"1000 毫秒等于 "</span> &lt;&lt; ms.<span class="built_in">count</span>() &lt;&lt; <span class="string">" 毫秒"</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="计算时间差（Duration-Between-Two-Time-Points）"><strong>计算时间差（Duration Between Two Time Points）</strong></h3>
+<p>计算两个时间点之间的持续时间。</p>
+<h4 id="示例：-4">示例：</h4>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 获取起始时间点</span></span><br><span class="line">    <span class="keyword">auto</span> start = std::chrono::high_resolution_clock::<span class="built_in">now</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 模拟操作（等待 2 秒）</span></span><br><span class="line">    std::this_thread::<span class="built_in">sleep_for</span>(std::chrono::<span class="built_in">seconds</span>(<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取结束时间点</span></span><br><span class="line">    <span class="keyword">auto</span> end = std::chrono::high_resolution_clock::<span class="built_in">now</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算时间差</span></span><br><span class="line">    <span class="keyword">auto</span> duration = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(end - start);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"操作耗时: "</span> &lt;&lt; duration.<span class="built_in">count</span>() &lt;&lt; <span class="string">" 毫秒"</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="时间单位（Time-Units）"><strong>时间单位（Time Units）</strong></h3>
+<p><code>&lt;chrono&gt;</code> 提供了多种时间单位，你可以自定义时间单位或使用标准单位，如秒、毫秒、微秒、纳秒等。</p>
+<h4 id="示例：-5">示例：</h4>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 定义时间单位</span></span><br><span class="line">    std::<span class="function">chrono::milliseconds <span class="title">ms</span><span class="params">(<span class="number">1000</span>)</span></span>;</span><br><span class="line">    std::chrono::seconds sec = std::chrono::duration_cast&lt;std::chrono::seconds&gt;(ms);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"1000 毫秒等于 "</span> &lt;&lt; sec.<span class="built_in">count</span>() &lt;&lt; <span class="string">" 秒"</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="暂停和延迟（Sleep-and-Delay）"><strong>暂停和延迟（Sleep and Delay）</strong></h3>
+<p>使用 <code>std::this_thread::sleep_for</code> 和 <code>std::this_thread::sleep_until</code> 来实现线程的暂停或延迟。</p>
+<h4 id="示例：-6">示例：</h4>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    std::cout &lt;&lt; <span class="string">"等待 3 秒..."</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 暂停 3 秒</span></span><br><span class="line">    std::this_thread::<span class="built_in">sleep_for</span>(std::chrono::<span class="built_in">seconds</span>(<span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"3 秒已过。"</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 sleep_until</span></span><br><span class="line">    <span class="keyword">auto</span> now = std::chrono::steady_clock::<span class="built_in">now</span>();</span><br><span class="line">    std::this_thread::<span class="built_in">sleep_until</span>(now + std::chrono::<span class="built_in">seconds</span>(<span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"额外的 2 秒已过。"</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="自定义时间单位"><strong>自定义时间单位</strong></h3>
+<p>你可以自定义时间单位来满足特定需求。</p>
+<h4 id="示例：-7">示例：</h4>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="comment">// 自定义时间单位</span></span><br><span class="line">    <span class="keyword">using</span> my_hours = std::chrono::duration&lt;<span class="keyword">int</span>, std::ratio&lt;<span class="number">3600</span>&gt;&gt;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义 1 小时</span></span><br><span class="line">    <span class="function">my_hours <span class="title">one_hour</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转换为秒</span></span><br><span class="line">    <span class="keyword">auto</span> seconds_in_one_hour = std::chrono::duration_cast&lt;std::chrono::seconds&gt;(one_hour);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">"1 小时等于 "</span> &lt;&lt; seconds_in_one_hour.<span class="built_in">count</span>() &lt;&lt; <span class="string">" 秒"</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+    </div>
+   <div>
+        
+            <div style="text-align:left;font-size:14px;">
+    <p style="text-align:center;color: #ccc;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</p>
+            </div>
+        
+    </div>
+
+   
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/8B53TM.html" rel="bookmark">Qt modbus数据转换</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2PQ961R.html" rel="bookmark">Qt中使用ModbusTcp </a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
+    </li>
+  </ul>
+
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wexinPay.jpeg" alt="meadee 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubaoPay.jpeg" alt="meadee 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>meadee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.xuemingde.com/posts/NFRYTW.html" title="C++日期&amp;时间">https://blog.xuemingde.com/posts/NFRYTW.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/2X20Q3S.html" rel="prev" title="Linux-文件操作-查看">
+      <i class="fa fa-chevron-left"></i> Linux-文件操作-查看
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+
+  </article>
+  
+  
+  
+
+
+
+           </div>
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+          
+<script src="https://readmore.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+<script>
+    const btw = new BTWPlugin();
+    btw.init({
+        id: 'container-1',
+        blogId: '29491-1649429697615-963',
+        name: '不闻一时',
+        qrcode: 'https://xuemingde.com/pages/image/2022/05/31093822.png',
+        keyword: 'meadel',
+    });
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">获取当前时间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ctime-now"><span class="nav-number">1.1.</span> <span class="nav-text">ctime(&amp;now)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#localtime-now"><span class="nav-number">1.2.</span> <span class="nav-text">localtime(&amp;now)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gmtime-now"><span class="nav-number">1.3.</span> <span class="nav-text">gmtime(&amp;now)`</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94"><span class="nav-number">1.4.</span> <span class="nav-text">总结对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3"><span class="nav-number">2.</span> <span class="nav-text">时间戳</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94"><span class="nav-number">3.</span> <span class="nav-text">对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%8F%E7%A7%BB"><span class="nav-number">4.</span> <span class="nav-text">偏移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">转化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%97%B6%E9%97%B4%E6%88%B3"><span class="nav-number">5.1.</span> <span class="nav-text">字符串转化为时间戳</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">5.2.</span> <span class="nav-text">时间戳转化为字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chrono%E5%BA%93"><span class="nav-number">6.</span> <span class="nav-text">chrono库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%92%9F%EF%BC%88Clocks%EF%BC%89"><span class="nav-number">6.1.</span> <span class="nav-text">时钟（Clocks）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-number">6.1.1.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E7%82%B9%EF%BC%88Time-Points%EF%BC%89"><span class="nav-number">6.2.</span> <span class="nav-text">时间点（Time Points）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-2"><span class="nav-number">6.2.1.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%81%E7%BB%AD%E6%97%B6%E9%97%B4%EF%BC%88Durations%EF%BC%89"><span class="nav-number">6.3.</span> <span class="nav-text">持续时间（Durations）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-3"><span class="nav-number">6.3.1.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%97%B6%E9%97%B4%E5%B7%AE%EF%BC%88Duration-Between-Two-Time-Points%EF%BC%89"><span class="nav-number">6.4.</span> <span class="nav-text">计算时间差（Duration Between Two Time Points）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-4"><span class="nav-number">6.4.1.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%8D%95%E4%BD%8D%EF%BC%88Time-Units%EF%BC%89"><span class="nav-number">6.5.</span> <span class="nav-text">时间单位（Time Units）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-5"><span class="nav-number">6.5.1.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%82%E5%81%9C%E5%92%8C%E5%BB%B6%E8%BF%9F%EF%BC%88Sleep-and-Delay%EF%BC%89"><span class="nav-number">6.6.</span> <span class="nav-text">暂停和延迟（Sleep and Delay）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-6"><span class="nav-number">6.6.1.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%97%B6%E9%97%B4%E5%8D%95%E4%BD%8D"><span class="nav-number">6.7.</span> <span class="nav-text">自定义时间单位</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-7"><span class="nav-number">6.7.1.</span> <span class="nav-text">示例：</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="meadee" src="/images/touxiang.jpeg">
+  <p class="site-author-name" itemprop="name">meadee</p>
+  <div class="site-description" itemprop="description">沉默，有时候是一种无声的反抗</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">182</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vdXNlci80MDE5NDcwMjQ0MjU4NTUyL3Bvc3Rz" title="掘金 → https://juejin.cn/user/4019470244258552/posts"><i class="fa fa-share-alt fa-fw"></i>掘金</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vbWVhZGVyL25vdGUvYm9hcmQ/ZnVsbHNjcmVlbj0x" title="issues → https://gitee.com/meader/note/board?fullscreen=1"><i class="fab fa-github-alt fa-fw"></i>issues</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h1ZV9taW5k" title="CSDN → https://blog.csdn.net/xue_mind"><i class="fa fa-th-list fa-fw"></i>CSDN</span>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90ZWNoLm1laXR1YW4uY29tLw==" title="https://tech.meituan.com/">美团团队</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLw==" title="http://www.ruanyifeng.com/blog/">阮一峰网络日志</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jbi9wcm9ibGVtc2V0L2FsbC8=" title="https://leetcode.cn/problemset/all/">LeetCode</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  © 2016 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">meadee</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 ≈</span>
+    <span title="站点阅读时长">15:52</span>
+</div>
+
+<div>
+<span id="timeDate2">载入天数...</span><span id="times2"></span>
+<script>
+    var now2 = new Date(); 
+    function createtime3() { 
+        var grt= new Date("03/28/1992 00:00:00");//在此处修改你的建站时间
+        now2.setTime(now2.getTime()+250); 
+        var days = (now2 - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        var hours = (now2 - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now2 - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        var mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        var seconds = (now2 - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        var snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate2").innerHTML = "走过了 "+dnum+" 个日夜，从嘤嘤坠地，到步履蹒跚，从年少无知，到心事重重，岁月啊，总让人平添太多无奈"; 
+    } 
+setInterval("createtime3()",250);
+</script>
+</div>
+  <div class="powered-by">  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax="" async="" src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zindex="-1" src="../js/canvas-ribbon.js"></script>
+  <script src="../js/anime.min.js"></script>
+  <script src="../js/pjax.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery.fancybox.min.js"></script>
+  <script src="../js/medium-zoom.min.js"></script>
+  <script src="../js/lozad.min.js"></script>
+  <script src="../js/pangu.min.js"></script>
+  <script src="../js/velocity.min.js"></script>
+  <script src="../js/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer="" src="../js/three.min.js"></script>
+    <script defer="" src="../js/three-waves.min.js"></script>
+    <script defer="" src="../js/canvas_lines.min.js"></script>
+    <script defer="" src="../js/canvas_sphere.min.js"></script>
+
+
+  
+  <script data-pjax="">
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+  <script data-pjax="">
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id    : 34163,
+      el    : 'wpac-rating',
+      color : 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script data-pjax="">
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+<script data-pjax="">
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('../js/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+<link rel="stylesheet" href="../js/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('../js/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '425b9527efc45ef76990',
+      clientSecret: '4a956b1310ea8ab928ed1d278e85c98988ec51aa',
+      repo        : 'blog',
+      owner       : 'wuwenyishi',
+      admin       : ['wuwenyishi'],
+      id          : '4509b565cd469a2164370c1d947711d4',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+
+<script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>
