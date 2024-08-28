@@ -26,7 +26,7 @@
   <meta property="og:type" content="article">
 <meta property="og:title" content="springBoot项目打成的jar包无法获取resources下文件">
 <meta property="og:url" content="https://blog.xuemingde.com/posts/3V4Q1GY.html">
-<meta property="og:site_name" content="WiseWanderer">
+<meta property="og:site_name" content="XMD">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xuemingde.com/pages/image/others/bdDMAq.png">
 <meta property="og:image" content="https://xuemingde.com/pages/image/others/yC8St7.png">
@@ -52,7 +52,7 @@
   };
 </script>
 
-  <title>springBoot项目打成的jar包无法获取resources下文件 | WiseWanderer</title>
+  <title>springBoot项目打成的jar包无法获取resources下文件 | XMD</title>
   
 
 
@@ -107,10 +107,10 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">WiseWanderer</h1>
+      <h1 class="site-title">XMD</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">每个人都有反叛心理，越是强制越是反抗</p>
+      <p class="site-subtitle" itemprop="description">无语</p>
   </div>
 
   <div class="site-nav-right">
@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">182</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">183</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -207,11 +207,11 @@
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/touxiang.jpeg">
       <meta itemprop="name" content="meadee">
-      <meta itemprop="description" content="沉默，有时候是一种无声的反抗">
+      <meta itemprop="description" content="沉默">
     </span>
 
     <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WiseWanderer">
+      <meta itemprop="name" content="XMD">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -275,15 +275,11 @@
       
         <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><p>错误：</p>
 <blockquote>
-<p>cannot be resolved to absolute file path because it does not reside in the file system: jar:file:/U</p>
+<p>cannot be resolved to absolute file path because it does not reside in the file system: jar:file:/U  </p>
 </blockquote>
-<p>spring boot项目打成的 jar包无法获取src/main/resources下文件</p>
-<p><img data-src="https://xuemingde.com/pages/image/others/bdDMAq.png" alt=""><br>
-打成Jar后<br>
-<img data-src="https://xuemingde.com/pages/image/others/yC8St7.png" alt=""></p>
-<p>获取resources下的文件<br>
-<img data-src="https://xuemingde.com/pages/image/others/et123k.png" alt=""></p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ClassPathResource classPathResource = <span class="keyword">new</span> ClassPathResource(<span class="string">"img/tofflon-logo.png"</span>);</span><br><span class="line">URL url = classPathResource.getURL();</span><br><span class="line">Image image = Image.getInstance(url);</span><br></pre></td></tr></tbody></table></figure>
+<p>spring boot项目打成的 jar包无法获取src/main/resources下文件  </p>
+<p><img data-src="https://xuemingde.com/pages/image/others/bdDMAq.png" alt="bdDMAq"><br>打成Jar后<br><img data-src="https://xuemingde.com/pages/image/others/yC8St7.png" alt="yC8St7">  </p>
+<p>获取resources下的文件<br><img data-src="https://xuemingde.com/pages/image/others/et123k.png" alt="et123k"><br></p><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ClassPathResource classPathResource = <span class="keyword">new</span> ClassPathResource(<span class="string">"img/tofflon-logo.png"</span>);</span><br><span class="line">URL url = classPathResource.getURL();</span><br><span class="line">Image image = Image.getInstance(url);</span><br></pre></td></tr></tbody></table></figure><p></p>
 
     </div>
    <div>
@@ -374,12 +370,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/RQ90BT.html" rel="prev" title="mapstruct使用报错">
-      <i class="fa fa-chevron-left"></i> mapstruct使用报错
+    <a href="/posts/32Z7N4H.html" rel="prev" title="Hexo 打包报错">
+      <i class="fa fa-chevron-left"></i> Hexo 打包报错
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/2SH00H4.html" rel="next" title="spring是如何解决循环依赖的">
-      spring是如何解决循环依赖的 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/RQ90BT.html" rel="next" title="mapstruct使用报错">
+      mapstruct使用报错 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -462,14 +458,14 @@
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="meadee" src="/images/touxiang.jpeg">
   <p class="site-author-name" itemprop="name">meadee</p>
-  <div class="site-description" itemprop="description">沉默，有时候是一种无声的反抗</div>
+  <div class="site-description" itemprop="description">沉默</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">182</span>
+          <span class="site-state-item-count">183</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -481,7 +477,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

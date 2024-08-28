@@ -26,7 +26,7 @@
   <meta property="og:type" content="article">
 <meta property="og:title" content="C语言生成动态库并在C++中链接">
 <meta property="og:url" content="https://blog.xuemingde.com/posts/2EXJQ9Z.html">
-<meta property="og:site_name" content="WiseWanderer">
+<meta property="og:site_name" content="XMD">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyEuIFwskrzicuOb8Hic0FsRdyG2yeJPFGcgYk3zIeEB9WczU9MWJNVF9w/0?wx_fmt=png&amp;from=appmsg">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyiaep1O91XibNP9sex26eI6crLX8Tf4nC1nmPlZJ5jmlS9cRhfwlvgOzQ/0?wx_fmt=png&amp;from=appmsg">
@@ -37,6 +37,7 @@
 <meta property="article:modified_time" content="2024-07-18T06:34:07.034Z">
 <meta property="article:author" content="meadee">
 <meta property="article:tag" content="C">
+<meta property="article:tag" content="windows">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyEuIFwskrzicuOb8Hic0FsRdyG2yeJPFGcgYk3zIeEB9WczU9MWJNVF9w/0?wx_fmt=png&amp;from=appmsg">
@@ -54,7 +55,7 @@
   };
 </script>
 
-  <title>C语言生成动态库并在C++中链接 | WiseWanderer</title>
+  <title>C语言生成动态库并在C++中链接 | XMD</title>
   
 
 
@@ -109,10 +110,10 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">WiseWanderer</h1>
+      <h1 class="site-title">XMD</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">每个人都有反叛心理，越是强制越是反抗</p>
+      <p class="site-subtitle" itemprop="description">无语</p>
   </div>
 
   <div class="site-nav-right">
@@ -134,7 +135,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">182</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">183</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -209,11 +210,11 @@
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/touxiang.jpeg">
       <meta itemprop="name" content="meadee">
-      <meta itemprop="description" content="沉默，有时候是一种无声的反抗">
+      <meta itemprop="description" content="沉默">
     </span>
 
     <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WiseWanderer">
+      <meta itemprop="name" content="XMD">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -286,29 +287,27 @@
 <p>此文章基于Windows 和CLion介绍</p>
 </blockquote>
 <p>示例：</p>
-<h2 id="创建C语言项目">创建C语言项目</h2>
-<p>使用CLoin 新建项目，如下图：</p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyEuIFwskrzicuOb8Hic0FsRdyG2yeJPFGcgYk3zIeEB9WczU9MWJNVF9w/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
-<p>例如项目名为 MyCLibrary</p>
-<p>library.h</p>
+<h2 id="创建C语言项目"><a href="#创建C语言项目" class="headerlink" title="创建C语言项目"></a>创建C语言项目</h2><p>使用CLoin 新建项目，如下图：</p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyEuIFwskrzicuOb8Hic0FsRdyG2yeJPFGcgYk3zIeEB9WczU9MWJNVF9w/0?wx_fmt=png&amp;from=appmsg" alt=""> </p>
+<p>例如项目名为 MyCLibrary </p>
+<p>library.h </p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> MYCLIBRARY_LIBRARY_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MYCLIBRARY_LIBRARY_H</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hello_from_c</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//MYCLIBRARY_LIBRARY_H</span></span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>library.c</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"library.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hello_from_c</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello from C!\n"</span>);</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>CMakeLists.txt</p>
 <figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cmake<span class="constructor">_minimum_required(VERSION 3.19)</span></span><br><span class="line">project(MyCLibrary C)</span><br><span class="line"></span><br><span class="line">set(CMAKE_C_STANDARD <span class="number">99</span>)</span><br><span class="line"></span><br><span class="line">add<span class="constructor">_library(MyCLibrary SHARED <span class="params">library</span>.<span class="params">c</span> <span class="params">library</span>.<span class="params">h</span>)</span></span><br><span class="line"></span><br><span class="line"># 设置输出名称为<span class="module-access"><span class="module"><span class="identifier">MyCLibrary</span>.</span></span>dll，不带lib前缀</span><br><span class="line">set<span class="constructor">_target_properties(MyCLibrary PROPERTIES PREFIX <span class="string">""</span>)</span></span><br><span class="line"></span><br><span class="line"># 暴露头文件路径</span><br><span class="line">target<span class="constructor">_include_directories(MyCLibrary PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<p>构建项目，会在项目的 cmake-build-debug 文件夹下生成一个 MyCLibrary.dll 文件</p>
-<h2 id="创建C-项目">创建C++项目</h2>
-<p>使用CLoin 新建项目，如下图：</p>
+<p> 构建项目，会在项目的 cmake-build-debug 文件夹下生成一个 MyCLibrary.dll 文件</p>
+<h2 id="创建C-项目"><a href="#创建C-项目" class="headerlink" title="创建C++项目"></a>创建C++项目</h2><p>使用CLoin 新建项目，如下图：</p>
 <p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyiaep1O91XibNP9sex26eI6crLX8Tf4nC1nmPlZJ5jmlS9cRhfwlvgOzQ/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
-<p>例如项目名为 MyCppProject</p>
+<p>例如项目名为 MyCppProject </p>
 <p>将生成的 MyCLibrary.dll 文件放在主目录下</p>
 <p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyiaY4AUZhhUMjfbXpwyOZnJiaXiatwUb6FAWiclGKbdCkQNbEQn9BbQE57A/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <p>main.cpp</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 包含动态库的头文件</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">void</span> <span class="title">hello_from_c</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">    <span class="comment">// 调用动态库中的函数</span></span></span><br><span class="line"><span class="function">    <span class="title">hello_from_c</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>CMakeLists.txt</p>
 <figure class="highlight cmake"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.19</span>)</span><br><span class="line"><span class="keyword">project</span>(MyCppProject)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加动态库到项目中</span></span><br><span class="line"><span class="keyword">add_library</span>(MyCLibrary SHARED IMPORTED)</span><br><span class="line"><span class="keyword">set_target_properties</span>(MyCLibrary PROPERTIES IMPORTED_LOCATION <span class="variable">${CMAKE_CURRENT_SOURCE_DIR}</span>/MyCLibrary.dll)</span><br><span class="line"><span class="keyword">set_target_properties</span>(MyCLibrary PROPERTIES IMPORTED_IMPLIB <span class="variable">${CMAKE_CURRENT_SOURCE_DIR}</span>/MyCLibrary.dll)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">14</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_executable</span>(MyCppProject main.cpp)</span><br><span class="line"><span class="comment"># 链接动态库到你的C++项目</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>(MyCppProject PRIVATE MyCLibrary)</span><br></pre></td></tr></tbody></table></figure>
-<p>再将 MyCLibrary.dll 文件放在主目录下 MyCppProject\cmake-build-debug 目录下，不然在执行时会报错找不到 MyCLibrary.dll</p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwybVherCRsRYhLDwKLgyJQQ0icHKxdByHTGObKYA3TzCUylh2gwnLSQQQ/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
+<p>再将 MyCLibrary.dll 文件放在主目录下 MyCppProject\cmake-build-debug 目录下，不然在执行时会报错找不到 MyCLibrary.dll </p>
+<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwybVherCRsRYhLDwKLgyJQQ0icHKxdByHTGObKYA3TzCUylh2gwnLSQQQ/0?wx_fmt=png&amp;from=appmsg" alt=""> </p>
 <p>然后执行项目</p>
 <p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwydoVlrNMeicTE93z3qriaiaeOUCJOSsAVADezA24ccZmDvRaoCV14aGWFA/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 
@@ -329,19 +328,19 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/8B53TM.html" rel="bookmark">Qt modbus数据转换</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/2PQ961R.html" rel="bookmark">Qt中使用ModbusTcp </a></div>
+      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2AJQNK2.html" rel="bookmark">Qt开发学习笔记02</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2VB0MVT.html" rel="bookmark">C++开发学习笔记1</a></div>
     </li>
   </ul>
 
@@ -387,6 +386,7 @@
           
           <div class="post-tags">
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+              <a href="/tags/windows/" rel="tag"><i class="fa fa-tag"></i> windows</a>
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
           </div>
 
@@ -490,14 +490,14 @@
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="meadee" src="/images/touxiang.jpeg">
   <p class="site-author-name" itemprop="name">meadee</p>
-  <div class="site-description" itemprop="description">沉默，有时候是一种无声的反抗</div>
+  <div class="site-description" itemprop="description">沉默</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">182</span>
+          <span class="site-state-item-count">183</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -509,7 +509,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

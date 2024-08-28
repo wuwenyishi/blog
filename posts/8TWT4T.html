@@ -26,14 +26,13 @@
   <meta property="og:type" content="article">
 <meta property="og:title" content="MQTT简介">
 <meta property="og:url" content="https://blog.xuemingde.com/posts/8TWT4T.html">
-<meta property="og:site_name" content="WiseWanderer">
+<meta property="og:site_name" content="XMD">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-22T05:28:38.853Z">
 <meta property="article:modified_time" content="2024-07-22T05:34:17.977Z">
 <meta property="article:author" content="meadee">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="Qt">
-<meta property="article:tag" content="MQ">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.xuemingde.com/posts/8TWT4T.html">
@@ -49,7 +48,7 @@
   };
 </script>
 
-  <title>MQTT简介 | WiseWanderer</title>
+  <title>MQTT简介 | XMD</title>
   
 
 
@@ -104,10 +103,10 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">WiseWanderer</h1>
+      <h1 class="site-title">XMD</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">每个人都有反叛心理，越是强制越是反抗</p>
+      <p class="site-subtitle" itemprop="description">无语</p>
   </div>
 
   <div class="site-nav-right">
@@ -129,7 +128,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">182</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">183</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -204,11 +203,11 @@
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/touxiang.jpeg">
       <meta itemprop="name" content="meadee">
-      <meta itemprop="description" content="沉默，有时候是一种无声的反抗">
+      <meta itemprop="description" content="沉默">
     </span>
 
     <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WiseWanderer">
+      <meta itemprop="name" content="XMD">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -252,7 +251,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -271,23 +270,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="什么是MQTT">什么是MQTT</h2>
-<p>MQTT（消息队列遥测传输协议）</p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="什么是MQTT"><a href="#什么是MQTT" class="headerlink" title="什么是MQTT"></a>什么是MQTT</h2><p>MQTT（消息队列遥测传输协议）</p>
 <p>MQTT 是一种轻量级的、基于发布/订阅的物联网（IoT）协议，用于在设备和服务器之间传输数据。</p>
 <p><strong>特点：</strong></p>
 <ul>
-<li>**轻量级：**MQTT 仅需少量代码即可实现，非常适用于资源受限的设备。</li>
-<li>**发布/订阅：**设备可以发布消息到主题（话题），而订阅该主题的设备可以接收这些消息。</li>
-<li>**可靠性：**MQTT 提供三种服务质量（QoS）级别，以确保消息的可靠传输。</li>
-<li>**低功耗：**MQTT 使用持久会话和心跳机制来保持连接，即使设备处于休眠状态。</li>
-<li>**安全性：**MQTT 支持 TLS/SSL 加密和用户名/密码身份验证。</li>
+<li><strong>轻量级：</strong>MQTT 仅需少量代码即可实现，非常适用于资源受限的设备。</li>
+<li><strong>发布/订阅：</strong>设备可以发布消息到主题（话题），而订阅该主题的设备可以接收这些消息。</li>
+<li><strong>可靠性：</strong>MQTT 提供三种服务质量（QoS）级别，以确保消息的可靠传输。</li>
+<li><strong>低功耗：</strong>MQTT 使用持久会话和心跳机制来保持连接，即使设备处于休眠状态。</li>
+<li><strong>安全性：</strong>MQTT 支持 TLS/SSL 加密和用户名/密码身份验证。</li>
 </ul>
 <p><strong>工作原理：</strong></p>
 <p>MQTT 使用以下组件：</p>
 <ul>
-<li>**设备：**发布和订阅消息的 IoT 设备。</li>
-<li>**MQTT 代理：**充当消息中介，将消息从发布者路由到订阅者。</li>
-<li>**主题：**设备发布和订阅消息的命名空间。</li>
+<li><strong>设备：</strong>发布和订阅消息的 IoT 设备。</li>
+<li><strong>MQTT 代理：</strong>充当消息中介，将消息从发布者路由到订阅者。</li>
+<li><strong>主题：</strong>设备发布和订阅消息的命名空间。</li>
 </ul>
 <p>设备连接到 MQTT 代理后，它们可以发布消息到主题或订阅主题。代理将消息路由到所有订阅该主题的设备。</p>
 <p><strong>应用：</strong></p>
@@ -313,8 +311,7 @@
 <li>QoS 级别可能增加开销</li>
 <li>可能存在代理故障风险</li>
 </ul>
-<h2 id="MQTT-原理">MQTT 原理</h2>
-<p><strong>MQTT（消息队列遥测传输协议）原理</strong></p>
+<h2 id="MQTT-原理"><a href="#MQTT-原理" class="headerlink" title="MQTT 原理"></a>MQTT 原理</h2><p><strong>MQTT（消息队列遥测传输协议）原理</strong></p>
 <p>MQTT 是一种轻量级的、基于发布/订阅的物联网（IoT）协议，用于在设备和服务器之间传输数据。其工作原理如下：</p>
 <p><strong>1. 连接：</strong></p>
 <ul>
@@ -344,12 +341,12 @@
 <p><strong>服务质量 (QoS)</strong></p>
 <p>MQTT 提供三种服务质量（QoS）级别，以确保消息的可靠传输：</p>
 <ul>
-<li>**QoS 0（最多一次）：**消息可能丢失，但不会被重复。</li>
-<li>**QoS 1（至少一次）：**消息至少会被传递一次，但可能被重复。</li>
-<li>**QoS 2（只有一次）：**消息只会被传递一次，并且在接收方确认之前不会被释放。</li>
+<li><strong>QoS 0（最多一次）：</strong>消息可能丢失，但不会被重复。</li>
+<li><strong>QoS 1（至少一次）：</strong>消息至少会被传递一次，但可能被重复。</li>
+<li><strong>QoS 2（只有一次）：</strong>消息只会被传递一次，并且在接收方确认之前不会被释放。</li>
 </ul>
 <p><strong>主题</strong></p>
-<p>主题是设备发布和订阅消息的命名空间。主题可以是分层的，使用斜杠（/）分隔。例如，“home/temperature” 主题可以用于发布和订阅有关家庭温度的数据。</p>
+<p>主题是设备发布和订阅消息的命名空间。主题可以是分层的，使用斜杠（/）分隔。例如，”home/temperature” 主题可以用于发布和订阅有关家庭温度的数据。</p>
 <p><strong>持久会话</strong></p>
 <p>MQTT 支持持久会话，这意味着即使设备断开连接，代理也会保留其订阅。当设备重新连接时，它将自动重新订阅其之前的主题。</p>
 <p><strong>遗嘱消息</strong></p>
@@ -374,19 +371,19 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/3AX6RYY.html" rel="bookmark">理解ThreadLocal</a></div>
+      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/2HNBAGV.html" rel="bookmark">基于代价的慢查询优化建议</a></div>
+      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/QAQAP8.html" rel="bookmark">算法基础14：树结构的实际应用</a></div>
+      <div class="popular-posts-title"><a href="/posts/23YYJYJ.html" rel="bookmark">Qt开发随笔</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/R3W64Q.html" rel="bookmark">Linux-磁盘操作</a></div>
+      <div class="popular-posts-title"><a href="/posts/1WT7A0X.html" rel="bookmark">Qt QSqlDatabaseremoveDatabase()遇到的问题</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/846ZWZ.html" rel="bookmark">搞懂Nginx 高性能网络工作原理</a></div>
+      <div class="popular-posts-title"><a href="/posts/1EM73BZ.html" rel="bookmark">QSharedMemory介绍与使用</a></div>
     </li>
   </ul>
 
@@ -433,7 +430,6 @@
           <div class="post-tags">
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
               <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
-              <a href="/tags/MQ/" rel="tag"><i class="fa fa-tag"></i> MQ</a>
           </div>
 
         
@@ -536,14 +532,14 @@
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="meadee" src="/images/touxiang.jpeg">
   <p class="site-author-name" itemprop="name">meadee</p>
-  <div class="site-description" itemprop="description">沉默，有时候是一种无声的反抗</div>
+  <div class="site-description" itemprop="description">沉默</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">182</span>
+          <span class="site-state-item-count">183</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -555,7 +551,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

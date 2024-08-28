@@ -26,12 +26,13 @@
   <meta property="og:type" content="article">
 <meta property="og:title" content="windows计划任务">
 <meta property="og:url" content="https://blog.xuemingde.com/posts/1XAWCGH.html">
-<meta property="og:site_name" content="WiseWanderer">
+<meta property="og:site_name" content="XMD">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-20T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-07-18T05:30:51.734Z">
 <meta property="article:author" content="meadee">
 <meta property="article:tag" content="C">
+<meta property="article:tag" content="windows">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.xuemingde.com/posts/1XAWCGH.html">
@@ -47,7 +48,7 @@
   };
 </script>
 
-  <title>windows计划任务 | WiseWanderer</title>
+  <title>windows计划任务 | XMD</title>
   
 
 
@@ -102,10 +103,10 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">WiseWanderer</h1>
+      <h1 class="site-title">XMD</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">每个人都有反叛心理，越是强制越是反抗</p>
+      <p class="site-subtitle" itemprop="description">无语</p>
   </div>
 
   <div class="site-nav-right">
@@ -127,7 +128,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">182</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">183</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -202,11 +203,11 @@
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/touxiang.jpeg">
       <meta itemprop="name" content="meadee">
-      <meta itemprop="description" content="沉默，有时候是一种无声的反抗">
+      <meta itemprop="description" content="沉默">
     </span>
 
     <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WiseWanderer">
+      <meta itemprop="name" content="XMD">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -271,14 +272,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="脚本">脚本</h2>
-<p>startup.bat</p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><p>startup.bat</p>
 <figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line"><span class="comment">REM 设置 sur.exe 的路径</span></span><br><span class="line">set APP_PATH=D:\ASD\ASD-Server\sur.exe</span><br><span class="line"></span><br><span class="line"><span class="comment">REM 检查 sur.exe 是否在运行</span></span><br><span class="line">tasklist /FI "IMAGENAME eq sur.exe" 2&gt;NUL | find /I /N "sur.exe"&gt;NUL</span><br><span class="line">if "%ERRORLEVEL%"=="0" (</span><br><span class="line">    echo sur.exe is already running.</span><br><span class="line">    exit</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">REM 启动 sur.exe</span></span><br><span class="line">start "" "%APP_PATH%"</span><br><span class="line"></span><br><span class="line"><span class="comment">REM 退出脚本</span></span><br><span class="line">exit</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>假设 sur.exe 文件在D:\ASD\ASD-Server路径下</p>
 </blockquote>
-<h2 id="设置任务计划程序">设置任务计划程序</h2>
-<ol>
+<h2 id="设置任务计划程序"><a href="#设置任务计划程序" class="headerlink" title="设置任务计划程序"></a>设置任务计划程序</h2><ol>
 <li>打开任务计划程序（在Windows搜索栏中输入 “任务计划程序”）。</li>
 <li>在任务计划程序中，点击 “创建基本任务”。</li>
 <li>输入任务的名称，例如 “RestartSur”，然后点击 “下一步”。</li>
@@ -306,19 +305,19 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/2D6CV2C.html" rel="bookmark">Java开发随笔</a></div>
+      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/23YYJYJ.html" rel="bookmark">Qt开发随笔</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1WT7A0X.html" rel="bookmark">Qt QSqlDatabaseremoveDatabase()遇到的问题</a></div>
+      <div class="popular-posts-title"><a href="/posts/1EM73BZ.html" rel="bookmark">QSharedMemory介绍与使用</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
     </li>
   </ul>
 
@@ -364,6 +363,7 @@
           
           <div class="post-tags">
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+              <a href="/tags/windows/" rel="tag"><i class="fa fa-tag"></i> windows</a>
           </div>
 
         
@@ -466,14 +466,14 @@
         <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="meadee" src="/images/touxiang.jpeg">
   <p class="site-author-name" itemprop="name">meadee</p>
-  <div class="site-description" itemprop="description">沉默，有时候是一种无声的反抗</div>
+  <div class="site-description" itemprop="description">沉默</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">182</span>
+          <span class="site-state-item-count">183</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -485,7 +485,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

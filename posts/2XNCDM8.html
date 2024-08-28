@@ -1,0 +1,940 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&amp;display=swap&amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../js/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="../js/pace-theme-minimal.min.css">
+  <script src="../js/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.xuemingde.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":true,"sidebar":{"position":"left","width":300,"display":"always","padding":18,"offset":10,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="C++存储类">
+<meta property="og:url" content="https://blog.xuemingde.com/posts/2XNCDM8.html">
+<meta property="og:site_name" content="XMD">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-28T00:40:01.998Z">
+<meta property="article:modified_time" content="2024-08-28T00:40:01.998Z">
+<meta property="article:author" content="meadee">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="windows">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.xuemingde.com/posts/2XNCDM8.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C++存储类 | XMD</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">XMD</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">无语</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">183</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">36</span></a>
+
+  </li>
+        <li class="menu-item menu-item-bookmark">
+
+    <a href="/bookmark/" rel="section"><i class="fa fa-bookmark fa-fw"></i>书签</a>
+
+  </li>
+        <li class="menu-item menu-item-collect">
+
+    <a href="/collect/" rel="section"><i class="fa fa-star fa-fw"></i>收藏</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" placeholder="搜索..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+           <div id="container-1">
+            <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.xuemingde.com/posts/2XNCDM8.html">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/touxiang.jpeg">
+      <meta itemprop="name" content="meadee">
+      <meta itemprop="description" content="沉默">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XMD">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++存储类
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-08-28 08:40:01" itemprop="dateCreated datePublished" datetime="2024-08-28T08:40:01+08:00">2024-08-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index"><span itemprop="name">C&amp;C++</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 ≈</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h2><p>这是默认的存储类说明符，通常可以省略不写。auto 指定的变量具有自动存储期，即它们的生命周期仅限于定义它们的块（block）。auto 变量通常在栈上分配。</p>
+<p>C++98标准中auto关键字用于自动变量的声明，但由于使用极少且多余，在C++11中已删除这一用法。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> f=<span class="number">3.14</span>;      <span class="comment">//double</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">s</span><span class="params">(<span class="string">"hello"</span>)</span></span>;  <span class="comment">//const char*</span></span><br><span class="line"><span class="keyword">auto</span> z = <span class="keyword">new</span> <span class="built_in"><span class="keyword">auto</span></span>(<span class="number">9</span>); <span class="comment">// int*</span></span><br><span class="line"><span class="keyword">auto</span> x1 = <span class="number">5</span>, x2 = <span class="number">5.0</span>, x3=<span class="string">'r'</span>;<span class="comment">//错误，必须是初始化为同一类型</span></span><br></pre></td></tr></tbody></table></figure>
+<p><span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL2NwcC9jcHAvYXV0by1jcHA/dmlldz1tc3ZjLTE3MA==">auto (C++) | Microsoft Learn<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="register"><a href="#register" class="headerlink" title="register"></a>register</h2><p>用于声明变量，并提示编译器将这些变量存储在寄存器中，以便快速访问。</p>
+<p>使用 register 关键字可以提高程序的执行速度，因为它减少了对内存的访问次数。</p>
+<p>然而，需要注意的是，register 存储类只是一种提示，编译器可以忽略它，因为现代的编译器通常会自动优化代码，选择合适的存储位置。</p>
+<p>用于定义存储在寄存器中而不是 RAM 中的局部变量。这意味着变量的最大尺寸等于寄存器的大小（通常是一个词），且不能对它应用一元的 ‘&amp;’ 运算符（因为它没有内存位置）。</p>
+<p><strong>语法格式：</strong></p>
+<figure class="highlight elm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">register</span> data_<span class="keyword">type</span> variable_name;</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><code>register</code> 是存储类的关键字，用于提示编译器将变量存储在寄存器中。</li>
+<li><code>data_type</code> 是变量的数据类型，可以是任何合法的 C++ 数据类型。</li>
+<li><code>variable_name</code> 是变量的名称。</li>
+</ul>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">register</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; ++i) {</span><br><span class="line">        <span class="comment">// 循环体</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>register 存储类用于提示编译器将变量存储在寄存器中，以便提高访问速度。然而，由于现代编译器的自动优化能力，使用 register 关键字并不是必需的，而且在实践中很少使用。</p>
+<p>在 C++11 标准中，register 关键字不再是一个存储类说明符，而是一个废弃的特性。这意味着在 C++11 及以后的版本中，使用 register 关键字将不会对程序产生任何影响。</p>
+<p>在 C++ 中，可以使用引用或指针来提高访问速度，尤其是在处理大型数据结构时。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">register</span> <span class="keyword">int</span> y = <span class="number">20</span>; <span class="comment">// 使用register存储类，但编译器可能会忽略</span></span><br><span class="line"></span><br><span class="line">std::cout &lt;&lt; <span class="string">"Value of y: "</span> &lt;&lt; y &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意：register关键字在现代C++中并不常用，因为编译器会自动优化</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>用于定义具有静态存储期的变量或函数，它们的生命周期贯穿整个程序的运行期。在函数内部，static变量的值在函数调用之间保持不变。在文件内部或全局作用域，static变量具有内部链接，只能在定义它们的文件中访问。</p>
+<p><strong>static</strong>存储类指示编译器在程序而不是创建和每次进入和进入的作用域之时摧毁它的寿命时间内保持一个局部变量存在。因此，将局部变量设为静态可以使它们在函数调用之间保持其值。static饰符也可以应用于全局变量。完成此操作后，它将导致该变量的作用域仅限于声明该变量的文件。</p>
+<p>在C++中，当对类数据成员使用static时，它将导致该类的所有对象仅共享该成员的一个副本。</p>
+<p><strong>static</strong> 存储类指示编译器在程序的生命周期内保持局部变量的存在，而不需要在每次它进入和离开作用域时进行创建和销毁。因此，使用 static 修饰局部变量可以在函数调用之间保持局部变量的值。</p>
+<p>static 修饰符也可以应用于全局变量。当 static 修饰全局变量时，会使变量的作用域限制在声明它的文件内。</p>
+<p>在 C++ 中，当 static 用在类数据成员上时，会导致仅有一个该成员的副本被类的所有对象共享。</p>
+<p><strong><code>static</code></strong> 关键字可用于在全局范围、命名空间范围和类范围声明变量和函数。 静态变量还可在本地范围声明。</p>
+<p>静态持续时间意味着，在程序启动时分配对象或变量，并在程序结束时释放对象或变量。 外部链接意味着，变量的名称在用于声明变量的文件的外部是可见的。 相反，内部链接意味着，名称在用于声明变量的文件的外部是不可见的。 默认情况下，在全局命名空间中定义的对象或变量具有静态持续时间和外部链接。 在以下情况下，可使用 <strong><code>static</code></strong> 关键字。</p>
+<ol>
+<li>在文件范围（全局和/或命名空间范围）内声明变量或函数时，<strong><code>static</code></strong> 关键字将指定变量或函数具有内部链接。 在声明变量时，变量具有静态持续时间，并且除非您指定另一个值，否则编译器会将变量初始化为 0。</li>
+<li>在函数中声明变量时，<strong><code>static</code></strong> 关键字将指定变量将在对该函数的调用中保持其状态。</li>
+<li>在类声明中声明数据成员时，<strong><code>static</code></strong> 关键字将指定类的所有实例共享该成员的一个副本。 必须在文件范围内定义 <code>static</code> 数据成员。 声明为 <strong><code>const static</code></strong> 的整型数据成员可以有初始化表达式。</li>
+<li>在类声明中声明成员函数时，<strong><code>static</code></strong> 关键字将指定类的所有实例共享该函数。 由于函数没有隐式 <strong><code>this</code></strong> 指针，因此 <code>static</code> 成员函数不能访问实例成员。 若要访问实例成员，请使用作为实例指针或引用的参数来声明函数。</li>
+<li>不能将 <code>union</code> 的成员声明为 <strong><code>static</code></strong>。 但是，全局声明的匿名 <code>union</code> 必须是显式声明的 <strong><code>static</code></strong>。</li>
+</ol>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> count = <span class="number">10</span>; <span class="comment">/* 全局变量 */</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">while</span>(count--)</span><br><span class="line">    {</span><br><span class="line">       <span class="built_in">func</span>();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 函数定义</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">( <span class="keyword">void</span> )</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">5</span>; <span class="comment">// 局部静态变量</span></span><br><span class="line">    i++;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">"变量 i 为 "</span> &lt;&lt; i ;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">" , 变量 count 为 "</span> &lt;&lt; count &lt;&lt; std::endl;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>此示例说明了函数中声明的变量 <strong><code>static</code></strong> 如何在对该函数的调用间保持其状态。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// static1.cpp</span></span><br><span class="line"><span class="comment">// compile with: /EHsc</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">showstat</span><span class="params">( <span class="keyword">int</span> curr )</span> </span>{</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">int</span> nStatic;    <span class="comment">// 保留nStatic的值</span></span><br><span class="line">                          <span class="comment">// 在每个函数调用之间</span></span><br><span class="line">   nStatic += curr;</span><br><span class="line">   cout &lt;&lt; <span class="string">"nStatic is "</span> &lt;&lt; nStatic &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">   <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++ )</span><br><span class="line">      <span class="built_in">showstat</span>( i );</span><br><span class="line">}</span><br><span class="line">nStatic is <span class="number">0</span></span><br><span class="line">nStatic is <span class="number">1</span></span><br><span class="line">nStatic is <span class="number">3</span></span><br><span class="line">nStatic is <span class="number">6</span></span><br><span class="line">nStatic is <span class="number">10</span></span><br></pre></td></tr></tbody></table></figure>
+<p>此示例说明了 <strong><code>static</code></strong> 在类中的用法。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// static2.cpp</span></span><br><span class="line"><span class="comment">// compile with: /EHsc</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CMyClass</span> {</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">int</span> m_i;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> CMyClass::m_i = <span class="number">0</span>;</span><br><span class="line">CMyClass myObject1;</span><br><span class="line">CMyClass myObject2;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">   cout &lt;&lt; myObject1.m_i &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; myObject2.m_i &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">   myObject1.m_i = <span class="number">1</span>;</span><br><span class="line">   cout &lt;&lt; myObject1.m_i &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; myObject2.m_i &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">   myObject2.m_i = <span class="number">2</span>;</span><br><span class="line">   cout &lt;&lt; myObject1.m_i &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; myObject2.m_i &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">   CMyClass::m_i = <span class="number">3</span>;</span><br><span class="line">   cout &lt;&lt; myObject1.m_i &lt;&lt; endl;</span><br><span class="line">   cout &lt;&lt; myObject2.m_i &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></tbody></table></figure>
+<p>以下示例显示了成员函数中声明的局部变量 <strong><code>static</code></strong>。 <strong><code>static</code></strong> 变量对整个程序可用；该类型的所有实例共享 <strong><code>static</code></strong> 变量的同一副本。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// static3.cpp</span></span><br><span class="line"><span class="comment">// compile with: /EHsc</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">C</span> {</span></span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">Test</span><span class="params">(<span class="keyword">int</span> value)</span> </span>{</span><br><span class="line">      <span class="keyword">static</span> <span class="keyword">int</span> var = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">if</span> (var == value)</span><br><span class="line">         cout &lt;&lt; <span class="string">"var == value"</span> &lt;&lt; endl;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">         cout &lt;&lt; <span class="string">"var != value"</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">      var = value;</span><br><span class="line">   }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">   C c1;</span><br><span class="line">   C c2;</span><br><span class="line">   c1.<span class="built_in">Test</span>(<span class="number">100</span>);</span><br><span class="line">   c2.<span class="built_in">Test</span>(<span class="number">100</span>);</span><br><span class="line">}</span><br><span class="line">var != value</span><br><span class="line">var == value</span><br></pre></td></tr></tbody></table></figure>
+<p>从 C++11 开始，可以保证 <strong><code>static</code></strong> 局部变量初始化是线程安全的。 此功能有时称为神奇的静态对象。 但是，在多线程应用程序中，必须同步所有后续分配。 可以通过使用 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/build/reference/zc-threadsafeinit-thread-safe-local-static-initialization?view=msvc-170"><code>/Zc:threadSafeInit-</code></a> 标志避免对 CRT 形成依赖，来禁用线程安全的静态初始化功能。</p>
+<h2 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h2><p><strong>extern</strong> 存储类用于提供一个全局变量的引用，全局变量对所有的程序文件都是可见的。当您使用 ‘extern’ 时，对于无法初始化的变量，会把变量名指向一个之前定义过的存储位置。</p>
+<p>当您有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 <em>extern</em> 来得到已定义的变量或函数的引用。可以这么理解，<em>extern</em> 是用来在另一个文件中声明一个全局变量或函数</p>
+<p><strong>xtern</strong>存储类是用来给一个全局变量，那就是所有程序文件可见的参考。当您使用“extern”时，变量无法初始化，因为将变量名指向先前已定义的存储位置即可。当您有多个文件并且定义了一个全局变量或函数时，也将在其他文件中使用该变量或函数，然后在另一个文件中使用extern来引用已定义的变量或函数。只是为了理解，extern用于在另一个文件中声明全局变量或函数。</p>
+<p>extern 修饰符通常用于当有两个或多个文件共享相同的全局变量或函数的时候，如下所示：</p>
+<p>第一个文件：main.cpp</p>
+<p>实例</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> count ;</span><br><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">void</span> <span class="title">write_extern</span><span class="params">()</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">   count = <span class="number">5</span>;</span><br><span class="line">   <span class="built_in">write_extern</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>第二个文件：support.cpp</p>
+<p>实例</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> count;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_extern</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">   std::cout &lt;&lt; <span class="string">"Count is "</span> &lt;&lt; count &lt;&lt; std::endl;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>在这里，第二个文件中的 <em>extern</em> 关键字用于声明已经在第一个文件 main.cpp 中定义的 count。现在 ，编译这两个文件，如下所示：</p>
+<figure class="highlight stylus"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ <span class="selector-tag">main</span><span class="selector-class">.cpp</span> support<span class="selector-class">.cpp</span> -o write</span><br></pre></td></tr></tbody></table></figure>
+<p>这会产生 <strong>write</strong> 可执行程序，尝试执行 <strong>write</strong>，它会产生下列结果：</p>
+<figure class="highlight applescript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./<span class="built_in">write</span></span><br><span class="line">Count <span class="keyword">is</span> <span class="number">5</span></span><br></pre></td></tr></tbody></table></figure>
+<p>关键字 <strong><code>extern</code></strong> 可以应用于全局变量、函数或模板声明。 它指定符号具有 <em>external 链接</em>。 有关链接的背景信息以及为何不鼓励使用全局变量，请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL2NwcC9jcHAvcHJvZ3JhbS1hbmQtbGlua2FnZS1jcHA/dmlldz1tc3ZjLTE3MA==">翻译单元和链接<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>关键字 <strong><code>extern</code></strong> 具有四种含义，具体取决于上下文：</p>
+<ul>
+<li>在非 <strong><code>const</code></strong> 全局变量声明中，<strong><code>extern</code></strong> 指定变量或函数在另一个转换单元中定义。 必须在除定义变量的文件之外的所有文件中应用 <strong><code>extern</code></strong>。</li>
+<li>在 <strong><code>const</code></strong> 变量声明中，它指定变量具有 external 链接。 <strong><code>extern</code></strong> 必须应用于所有文件中的所有声明。 （默认情况下，全局 <strong><code>const</code></strong> 变量具有内部链接。）</li>
+<li><strong><code>extern "C"</code></strong> 指定函数在别处定义并使用 C 语言调用约定。 <code>extern "C"</code> 修饰符也可以应用于块中的多个函数声明。</li>
+<li>在模板声明中，<strong><code>extern</code></strong> 指定模板已在其他位置实例化。 <strong><code>extern</code></strong> 告知编译器它可以重复使用另一个实例化，而不是在当前位置创建新实例。 有关使用 <strong><code>extern</code></strong> 的详细信息，请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL2NwcC9jcHAvZXhwbGljaXQtaW5zdGFudGlhdGlvbj92aWV3PW1zdmMtMTcw">显式实例化<i class="fa fa-external-link-alt"></i></span>。</li>
+</ul>
+<h3 id="extern-非-const-全局链接"><a href="#extern-非-const-全局链接" class="headerlink" title="extern 非 const 全局链接"></a><code>extern</code> 非 <code>const</code> 全局链接</h3><p>链接器在全局变量声明之前看到 <strong><code>extern</code></strong> 时，它会在另一个转换单元中查找定义。 默认情况下，全局范围内的非 <strong><code>const</code></strong> 变量声明为 external。 仅将 <strong><code>extern</code></strong> 用于未提供定义的声明。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//fileA.cpp</span></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>; <span class="comment">// declaration and definition</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//fileB.cpp</span></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> i;  <span class="comment">// declaration only. same as i in FileA</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//fileC.cpp</span></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> i;  <span class="comment">// declaration only. same as i in FileA</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//fileD.cpp</span></span><br><span class="line"><span class="keyword">int</span> i = <span class="number">43</span>; <span class="comment">// LNK2005! 'i' already has a definition.</span></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> i = <span class="number">43</span>; <span class="comment">// same error (extern is ignored on definitions)</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="extern-全局-const-链接"><a href="#extern-全局-const-链接" class="headerlink" title="extern 全局 const 链接"></a><code>extern</code> 全局 <code>const</code> 链接</h3><p>默认情况下，<strong><code>const</code></strong> 全局变量具有内部链接。 如果希望变量具有 external 链接，请将 <strong><code>extern</code></strong> 关键字应用于定义以及其他文件中的所有其他声明：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//fileA.cpp</span></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">int</span> i = <span class="number">42</span>; <span class="comment">// extern const definition</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//fileB.cpp</span></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">int</span> i;  <span class="comment">// declaration only. same as i in FileA</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="extern-constexpr-链接"><a href="#extern-constexpr-链接" class="headerlink" title="extern constexpr 链接"></a><code>extern constexpr</code> 链接</h3><p>在 Visual Studio 2017 版本 15.3 或更早版本中，编译器总是提供 <strong><code>constexpr</code></strong> 变量内部链接，即使在变量标记为 <strong><code>extern</code></strong> 时也是如此。 在 Visual Studio 2017 版本 15.5 或更高版本中，<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/build/reference/zc-externconstexpr?view=msvc-170"><code>/Zc:externConstexpr</code></a> 编译器开关启用正确且符合标准的行为。 选项最终将成为默认设置。 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/build/reference/permissive-standards-conformance?view=msvc-170"><code>/permissive-</code></a> 选项不启用 <strong><code>/Zc:externConstexpr</code></strong>。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">constexpr</span> <span class="keyword">int</span> x = <span class="number">10</span>; <span class="comment">//error LNK2005: "int const x" already defined</span></span><br></pre></td></tr></tbody></table></figure>
+<p>如果头文件包含声明 <strong><code>extern</code></strong> <strong><code>constexpr</code></strong> 的变量，必须将它标记为 <code>__declspec(selectany)</code>，以便正确组合其重复声明：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">constexpr</span> __declspec(selectany) <span class="keyword">int</span> x = <span class="number">10</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="extern-quot-C-quot-和-extern-quot-C-quot-函数声明"><a href="#extern-quot-C-quot-和-extern-quot-C-quot-函数声明" class="headerlink" title="extern &quot;C&quot; 和 extern &quot;C++&quot; 函数声明"></a><code>extern "C"</code> 和 <code>extern "C++"</code> 函数声明</h3><p>在 C++ 中，与字符串一起使用时，<strong><code>extern</code></strong> 指定其他语言的链接约定将用于声明符。 仅在之前被声明为具有 C 链接的情况下，才能访问 C 函数和数据。 但是，必须在单独编译的翻译单元中定义它们。</p>
+<p>Microsoft C++ 支持 <em>string-literal</em> 字段中的字符串 <strong><code>"C"</code></strong> 和 <strong><code>"C++"</code></strong>。 所有标准包含文件都使用 <strong><code>extern "C"</code></strong> 语法以允许运行时库函数用于 C++ 程序。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>以下示例演示如何声明具有 C 链接的名称：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Declare printf with C linkage.</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">int</span> <span class="title">printf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *fmt, ...)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  Cause everything in the specified</span></span><br><span class="line"><span class="comment">//  header files to have C linkage.</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> {</span><br><span class="line">    <span class="comment">// add your #include statements here</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//  Declare the two functions ShowChar</span></span><br><span class="line"><span class="comment">//  and GetChar with C linkage.</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> {</span><br><span class="line">    <span class="function"><span class="keyword">char</span> <span class="title">ShowChar</span><span class="params">(<span class="keyword">char</span> ch)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">char</span> <span class="title">GetChar</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//  Define the two functions</span></span><br><span class="line"><span class="comment">//  ShowChar and GetChar with C linkage.</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">char</span> <span class="title">ShowChar</span><span class="params">(<span class="keyword">char</span> ch)</span> </span>{</span><br><span class="line">    <span class="built_in">putchar</span>(ch);</span><br><span class="line">    <span class="keyword">return</span> ch;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">char</span> <span class="title">GetChar</span><span class="params">(<span class="keyword">void</span>)</span> </span>{</span><br><span class="line">    <span class="keyword">char</span> ch;</span><br><span class="line">    ch = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">return</span> ch;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// Declare a global variable, errno, with C linkage.</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="keyword">int</span> errno;</span><br></pre></td></tr></tbody></table></figure>
+<p>如果一个函数具有多个链接规范，这些规范必须统一。 声明函数同时具有 C 和 C++ 链接是错误的。 此外，如果一个函数的两个声明出现在一个程序中，并且它们一个有链接规范，另一个没有，则有链接规范的声明必须是第一个。 将为已具有链接规范的函数的所有冗余声明提供第一个声明中指定的链接。 例如：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">int</span> <span class="title">CFunc1</span><span class="params">()</span></span>;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CFunc1</span><span class="params">()</span></span>;            <span class="comment">// Redeclaration is benign; C linkage is</span></span><br><span class="line">                         <span class="comment">//  retained.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CFunc2</span><span class="params">()</span></span>;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">int</span> <span class="title">CFunc2</span><span class="params">()</span></span>; <span class="comment">// Error: not the first declaration of</span></span><br><span class="line">                         <span class="comment">//  CFunc2;  cannot contain linkage</span></span><br><span class="line">                         <span class="comment">//  specifier.</span></span><br></pre></td></tr></tbody></table></figure>
+<p>从 Visual Studio 2019 开始，当指定 <strong><code>/permissive-</code></strong> 时，编译器会检查 <code>extern "C"</code> 函数参数的声明是否也匹配。 不能重载声明为 <code>extern "C"</code> 的函数。 从 Visual Studio 2019 版本 16.3 开始，可以使用 <strong><code>/permissive-</code></strong> 选项后面的 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/build/reference/zc-externc?view=msvc-170"><code>/Zc:externC-</code></a> 编译器选项替代此检查。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL2NwcC9jcHAvZXh0ZXJuLWNwcD92aWV3PW1zdmMtMTcw">extern (C++) | Microsoft Learn<i class="fa fa-external-link-alt"></i></span></p>
+<h2 id="thread-local"><a href="#thread-local" class="headerlink" title="thread_local"></a>thread_local</h2><p>使用 thread_local 说明符声明的变量仅可在它在其上创建的线程上访问。 变量在创建线程时创建，并在销毁线程时销毁。 每个线程都有其自己的变量副本。</p>
+<p>thread_local 说明符可以与 static 或 extern 合并。</p>
+<p>可以将 thread_local 仅应用于数据声明和定义，thread_local 不能用于函数声明或定义。</p>
+<p>以下演示了可以被声明为 thread_local 的变量：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">thread_local</span> <span class="keyword">int</span> x;  <span class="comment">// 命名空间下的全局变量</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span></span></span><br><span class="line"><span class="class">{</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">thread_local</span> std::string s; <span class="comment">// 类的static成员变量</span></span><br><span class="line">};</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">thread_local</span> std::string X::s;  <span class="comment">// X::s 是需要定义的</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">thread_local</span> std::vector&lt;<span class="keyword">int</span>&gt; v;  <span class="comment">// 本地变量</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>使用 <strong><code>thread_local</code></strong> 说明符声明的变量仅可在它在其上创建的线程上访问。 变量在创建线程时创建，并在销毁线程时销毁。 每个线程都有其自己的变量副本。 在 Windows 上，<strong><code>thread_local</code></strong> 在功能上等效于特定于 Microsoft 的 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/cpp/thread?view=msvc-150"><code>__declspec( thread )</code></a> 属性。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">thread_local</span> <span class="keyword">float</span> f = <span class="number">42.0</span>; <span class="comment">// 全局命名空间。不是隐式静态的。</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">S</span> // 不能应用于类型定义</span></span><br><span class="line"><span class="class">{</span></span><br><span class="line">    <span class="keyword">thread_local</span> <span class="keyword">int</span> i; <span class="comment">//非法的。成员必须是静态的。</span></span><br><span class="line">    <span class="keyword">thread_local</span> <span class="keyword">static</span> <span class="keyword">char</span> buf[<span class="number">10</span>]; <span class="comment">// OK</span></span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DoSomething</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="comment">//将thread_local应用于局部变量。</span></span><br><span class="line"><span class="comment">//隐式地"thread_local static S my_struct"。</span></span><br><span class="line">    <span class="keyword">thread_local</span> S my_struct;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>有关 <strong><code>thread_local</code></strong> 说明符的注意事项：</p>
+<ul>
+<li>DLL 中动态初始化的线程局部变量可能无法在所有调用线程上正确初始化。 有关详细信息，请参阅 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/cpp/thread?view=msvc-150"><code>thread</code></a>。</li>
+<li><strong><code>thread_local</code></strong> 说明符可以与 <strong><code>static</code></strong> 或 <strong><code>extern</code></strong> 合并。</li>
+<li>可以将 <strong><code>thread_local</code></strong> 仅应用于数据声明和定义；<strong><code>thread_local</code></strong> 不能用于函数声明或定义。</li>
+<li>只能在具有静态存储持续时间的数据项上指定 <strong><code>thread_local</code></strong>，其中包括全局数据对象（<strong><code>static</code></strong> 和 <strong><code>extern</code></strong>）、局部静态对象和类的静态数据成员。 如果未提供其他存储类，则声明 <strong><code>thread_local</code></strong> 的任何局部变量都为隐式静态；换句话说，在块范围内，<strong><code>thread_local</code></strong> 等效于 <strong><code>thread_local static</code></strong>。</li>
+<li>必须为线程本地对象的声明和定义指定 <strong><code>thread_local</code></strong>，无论声明和定义是在同一文件中发生还是在单独的文件中发生。</li>
+<li>不建议将 <strong><code>thread_local</code></strong> 变量与 <code>std::launch::async</code> 一起使用。 有关详细信息，请参阅 <span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL2NwcC9zdGFuZGFyZC1saWJyYXJ5L2Z1dHVyZS1mdW5jdGlvbnM/dmlldz1tc3ZjLTE1MA==">`` 函数<i class="fa fa-external-link-alt"></i></span>。</li>
+</ul>
+<p>在 Windows 上，<strong><code>thread_local</code></strong> 在功能上等效于 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/cpp/thread?view=msvc-150"><code>__declspec(thread)</code></a>，但 _<em>`\</em>__declspec(thread)<code>** 可以应用于类型定义并且在 C 代码中有效。 请尽可能使用 **</code>thread_local`**，因为它是 C++ 标准的一部分，因此更易于移植。</p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9tdXJwaHlwZWkuZ2l0aHViLmlvL2Jsb2cvMjAyMC8wMi90aHJlYWQtbG9jYWw=">C++11 thread_local 用法 | 拾荒志<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vYndiZmlnaHQvcC8xODAyNTc1Mg==">thread_local的一些用法 - 白伟碧一些小心得 - 博客园<i class="fa fa-external-link-alt"></i></span></p>
+
+    </div>
+   <div>
+        
+            <div style="text-align:left;font-size:14px;">
+    <p style="text-align:center;color: #ccc;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</p>
+            </div>
+        
+    </div>
+
+   
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2AJQNK2.html" rel="bookmark">Qt开发学习笔记02</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2VB0MVT.html" rel="bookmark">C++开发学习笔记1</a></div>
+    </li>
+  </ul>
+
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wexinPay.jpeg" alt="meadee 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/zhifubaoPay.jpeg" alt="meadee 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>meadee
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.xuemingde.com/posts/2XNCDM8.html" title="C++存储类">https://blog.xuemingde.com/posts/2XNCDM8.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC96aC1DTg=="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
+              <a href="/tags/windows/" rel="tag"><i class="fa fa-tag"></i> windows</a>
+              <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C++</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/NFRYTW.html" rel="prev" title="C++日期&amp;时间">
+      <i class="fa fa-chevron-left"></i> C++日期&amp;时间
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+
+  </article>
+  
+  
+  
+
+
+
+           </div>
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+          
+<script src="https://readmore.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+<script>
+    const btw = new BTWPlugin();
+    btw.init({
+        id: 'container-1',
+        blogId: '29491-1649429697615-963',
+        name: '不闻一时',
+        qrcode: 'https://xuemingde.com/pages/image/2022/05/31093822.png',
+        keyword: 'meadel',
+    });
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#auto"><span class="nav-number">1.</span> <span class="nav-text">auto</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#register"><span class="nav-number">2.</span> <span class="nav-text">register</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static"><span class="nav-number">3.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extern"><span class="nav-number">4.</span> <span class="nav-text">extern</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#extern-%E9%9D%9E-const-%E5%85%A8%E5%B1%80%E9%93%BE%E6%8E%A5"><span class="nav-number">4.1.</span> <span class="nav-text">extern 非 const 全局链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern-%E5%85%A8%E5%B1%80-const-%E9%93%BE%E6%8E%A5"><span class="nav-number">4.2.</span> <span class="nav-text">extern 全局 const 链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern-constexpr-%E9%93%BE%E6%8E%A5"><span class="nav-number">4.3.</span> <span class="nav-text">extern constexpr 链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extern-quot-C-quot-%E5%92%8C-extern-quot-C-quot-%E5%87%BD%E6%95%B0%E5%A3%B0%E6%98%8E"><span class="nav-number">4.4.</span> <span class="nav-text">extern "C" 和 extern "C++" 函数声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.5.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thread-local"><span class="nav-number">5.</span> <span class="nav-text">thread_local</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="meadee" src="/images/touxiang.jpeg">
+  <p class="site-author-name" itemprop="name">meadee</p>
+  <div class="site-description" itemprop="description">沉默</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">183</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uY24vdXNlci80MDE5NDcwMjQ0MjU4NTUyL3Bvc3Rz" title="掘金 → https://juejin.cn/user/4019470244258552/posts"><i class="fa fa-share-alt fa-fw"></i>掘金</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRlZS5jb20vbWVhZGVyL25vdGUvYm9hcmQ/ZnVsbHNjcmVlbj0x" title="issues → https://gitee.com/meader/note/board?fullscreen=1"><i class="fab fa-github-alt fa-fw"></i>issues</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h1ZV9taW5k" title="CSDN → https://blog.csdn.net/xue_mind"><i class="fa fa-th-list fa-fw"></i>CSDN</span>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly90ZWNoLm1laXR1YW4uY29tLw==" title="https://tech.meituan.com/">美团团队</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cDovL3d3dy5ydWFueWlmZW5nLmNvbS9ibG9nLw==" title="http://www.ruanyifeng.com/blog/">阮一峰网络日志</span>
+        </li>
+        <li class="links-of-blogroll-item">
+          <span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jbi9wcm9ibGVtc2V0L2FsbC8=" title="https://leetcode.cn/problemset/all/">LeetCode</span>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  © 2016 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">meadee</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 ≈</span>
+    <span title="站点阅读时长">15:52</span>
+</div>
+
+<div>
+<span id="timeDate2">载入天数...</span><span id="times2"></span>
+<script>
+    var now2 = new Date(); 
+    function createtime3() { 
+        var grt= new Date("03/28/1992 00:00:00");//在此处修改你的建站时间
+        now2.setTime(now2.getTime()+250); 
+        var days = (now2 - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        var hours = (now2 - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now2 - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        var mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        var seconds = (now2 - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        var snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate2").innerHTML = "走过了 "+dnum+" 个日夜，从嘤嘤坠地，到步履蹒跚，从年少无知，到心事重重，岁月啊，总让人平添太多无奈"; 
+    } 
+setInterval("createtime3()",250);
+</script>
+</div>
+  <div class="powered-by">  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax="" async="" src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zindex="-1" src="../js/canvas-ribbon.js"></script>
+  <script src="../js/anime.min.js"></script>
+  <script src="../js/pjax.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery.fancybox.min.js"></script>
+  <script src="../js/medium-zoom.min.js"></script>
+  <script src="../js/lozad.min.js"></script>
+  <script src="../js/pangu.min.js"></script>
+  <script src="../js/velocity.min.js"></script>
+  <script src="../js/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  <script defer="" src="../js/three.min.js"></script>
+    <script defer="" src="../js/three-waves.min.js"></script>
+    <script defer="" src="../js/canvas_lines.min.js"></script>
+    <script defer="" src="../js/canvas_sphere.min.js"></script>
+
+
+  
+  <script data-pjax="">
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+  <script data-pjax="">
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id    : 34163,
+      el    : 'wpac-rating',
+      color : 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script data-pjax="">
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+<script data-pjax="">
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('../js/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+<link rel="stylesheet" href="../js/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('../js/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '425b9527efc45ef76990',
+      clientSecret: '4a956b1310ea8ab928ed1d278e85c98988ec51aa',
+      repo        : 'blog',
+      owner       : 'wuwenyishi',
+      admin       : ['wuwenyishi'],
+      id          : 'c770a2b366cdadaf36cc57127873f6c0',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+
+
+<script type="text/javascript" charset="utf-8" src="/js/lazyload-plugin/lazyload.intersectionObserver.min.js"></script></body></html>
