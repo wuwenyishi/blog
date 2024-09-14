@@ -29,11 +29,12 @@
 <meta property="og:site_name" content="XMD">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-18T05:30:51.735Z">
+<meta property="article:modified_time" content="2024-09-14T02:21:59.531Z">
 <meta property="article:author" content="meadee">
 <meta property="article:tag" content="C">
-<meta property="article:tag" content="windows">
 <meta property="article:tag" content="Qt">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="windows">
 <meta property="article:tag" content="系统">
 <meta name="twitter:card" content="summary">
 
@@ -130,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">191</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">192</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -230,7 +231,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-07-18 13:30:51" itemprop="dateModified" datetime="2024-07-18T13:30:51+08:00">2024-07-18</time>
+                <time title="修改时间：2024-09-14 10:21:59" itemprop="dateModified" datetime="2024-09-14T10:21:59+08:00">2024-09-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,14 +256,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.2k</span>
+              <span>8.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 ≈</span>
-              <span>4 分钟</span>
+              <span>8 分钟</span>
             </span>
 
         </div>
@@ -397,7 +398,95 @@
 </li>
 </ol>
 <p>​</p>
-<p>​</p>
+<h3 id="QSharedMemory-的使用场景">QSharedMemory 的使用场景</h3>
+<p><code>QSharedMemory</code> 是 Qt 提供的用于不同进程间共享内存的类。它允许在多个进程间共享一块内存区域，而无需通过网络或文件进行数据传递。典型的使用场景包括：</p>
+<ol>
+<li>
+<p><strong>进程间通信（IPC）</strong>：多个进程需要共享数据时，<code>QSharedMemory</code> 提供了高效的内存共享方式，避免了文件I/O和网络传输的开销。常见的应用包括分布式系统、服务器和客户端之间的通信。</p>
+</li>
+<li>
+<p><strong>数据传递</strong>：在高性能场景下，一个进程可以将大块数据写入共享内存，另一个进程可以直接读取该数据，而不必经过复杂的序列化和反序列化。</p>
+</li>
+<li>
+<p><strong>多进程并发应用</strong>：对于并发应用，<code>QSharedMemory</code> 可以用来共享状态数据，如进度、设置、缓存等信息。多个进程可以同时访问该共享数据，并基于该数据进行不同的操作。</p>
+</li>
+<li>
+<p><strong>避免进程重复启动</strong>：可以通过共享内存实现单例模式来避免同一个应用程序的多次启动。启动时检查共享内存是否已存在，如果存在则不再创建新进程。</p>
+</li>
+<li>
+<p><strong>实时系统</strong>：在需要实时交换数据的系统中，如多媒体处理、传感器数据收集等，<code>QSharedMemory</code> 可以实现多个进程之间快速、低延迟的数据交换。</p>
+</li>
+</ol>
+<p>使用 <code>QSharedMemory</code> 需要注意同步问题，比如防止多个进程同时访问共享内存而导致数据竞争，因此通常需要结合一些同步机制（如 <code>QMutex</code>）来保证数据的一致性和正确性。</p>
+<h3 id="示例">示例</h3>
+<p>以下是一个使用 <code>QSharedMemory</code> 的简单示例，演示如何在两个进程之间共享数据。该示例分为两个部分：一个进程写入共享内存，另一个进程从共享内存中读取数据。</p>
+<h4 id="1-写入进程（Writer）">1. 写入进程（Writer）</h4>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QCoreApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QSharedMemory&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QBuffer&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDataStream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>{</span><br><span class="line">    <span class="function">QCoreApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一个共享内存对象</span></span><br><span class="line">    <span class="function">QSharedMemory <span class="title">sharedMemory</span><span class="params">(<span class="string">"SharedMemoryExample"</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果共享内存已经存在，先分离</span></span><br><span class="line">    <span class="keyword">if</span> (sharedMemory.<span class="built_in">isAttached</span>()) {</span><br><span class="line">        sharedMemory.<span class="built_in">detach</span>();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 分配共享内存，大小为 1024 字节</span></span><br><span class="line">    <span class="keyword">if</span> (!sharedMemory.<span class="built_in">create</span>(<span class="number">1024</span>)) {</span><br><span class="line">        <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"Unable to create shared memory segment."</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 准备要写入的数据</span></span><br><span class="line">    QByteArray data;</span><br><span class="line">    <span class="function">QBuffer <span class="title">buffer</span><span class="params">(&amp;data)</span></span>;</span><br><span class="line">    buffer.<span class="built_in">open</span>(QBuffer::WriteOnly);</span><br><span class="line">    <span class="function">QDataStream <span class="title">out</span><span class="params">(&amp;buffer)</span></span>;</span><br><span class="line">    out &lt;&lt; <span class="built_in">QString</span>(<span class="string">"Hello from writer!"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将数据写入共享内存</span></span><br><span class="line">    sharedMemory.<span class="built_in">lock</span>();  <span class="comment">// 加锁以确保写入过程的安全</span></span><br><span class="line">    <span class="keyword">char</span> *to = (<span class="keyword">char</span>*)sharedMemory.<span class="built_in">data</span>();</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *from = data.<span class="built_in">data</span>();</span><br><span class="line">    <span class="built_in">memcpy</span>(to, from, <span class="built_in">qMin</span>(sharedMemory.<span class="built_in">size</span>(), data.<span class="built_in">size</span>()));</span><br><span class="line">    sharedMemory.<span class="built_in">unlock</span>();  <span class="comment">// 解锁</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"Data written to shared memory."</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="2-读取进程（Reader）">2. 读取进程（Reader）</h4>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QCoreApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QSharedMemory&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QBuffer&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDataStream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>{</span><br><span class="line">    <span class="function">QCoreApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 连接到共享内存对象</span></span><br><span class="line">    <span class="function">QSharedMemory <span class="title">sharedMemory</span><span class="params">(<span class="string">"SharedMemoryExample"</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!sharedMemory.<span class="built_in">attach</span>()) {</span><br><span class="line">        <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"Unable to attach to shared memory segment."</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 读取共享内存中的数据</span></span><br><span class="line">    sharedMemory.<span class="built_in">lock</span>();  <span class="comment">// 加锁以确保读取过程的安全</span></span><br><span class="line">    QByteArray data;</span><br><span class="line">    data.<span class="built_in">resize</span>(sharedMemory.<span class="built_in">size</span>());</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *from = (<span class="keyword">const</span> <span class="keyword">char</span>*)sharedMemory.<span class="built_in">constData</span>();</span><br><span class="line">    <span class="built_in">memcpy</span>(data.<span class="built_in">data</span>(), from, <span class="built_in">qMin</span>(sharedMemory.<span class="built_in">size</span>(), data.<span class="built_in">size</span>()));</span><br><span class="line">    sharedMemory.<span class="built_in">unlock</span>();  <span class="comment">// 解锁</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解码数据</span></span><br><span class="line">    <span class="function">QBuffer <span class="title">buffer</span><span class="params">(&amp;data)</span></span>;</span><br><span class="line">    buffer.<span class="built_in">open</span>(QBuffer::ReadOnly);</span><br><span class="line">    <span class="function">QDataStream <span class="title">in</span><span class="params">(&amp;buffer)</span></span>;</span><br><span class="line">    QString message;</span><br><span class="line">    in &gt;&gt; message;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">qDebug</span>() &lt;&lt; <span class="string">"Data read from shared memory:"</span> &lt;&lt; message;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="运行步骤">运行步骤</h4>
+<ol>
+<li><strong>启动写入进程</strong>：首先运行写入进程，它将把 “Hello from writer!” 写入共享内存。</li>
+<li><strong>启动读取进程</strong>：然后运行读取进程，它会从共享内存中读取该消息并打印出来。</li>
+</ol>
+<h4 id="关键点">关键点</h4>
+<ul>
+<li><code>QSharedMemory::create()</code> 用于分配共享内存。</li>
+<li><code>QSharedMemory::attach()</code> 用于连接到现有的共享内存段。</li>
+<li><code>lock()</code> 和 <code>unlock()</code> 用于确保对共享内存的安全访问，避免数据竞争问题。</li>
+<li>通过 <code>QBuffer</code> 和 <code>QDataStream</code> 对数据进行序列化和反序列化。</li>
+</ul>
+<p>这种方式可以在两个独立的进程之间共享数据，同时使用锁机制确保访问的安全性。</p>
+<h3 id="实现原理">实现原理</h3>
+<p><code>QSharedMemory</code> 的实现基于操作系统提供的共享内存机制，其工作原理可以总结为以下几个步骤：</p>
+<h4 id="1-共享内存的创建与管理">1. <strong>共享内存的创建与管理</strong></h4>
+<p><code>QSharedMemory</code> 通过操作系统提供的 API（如 POSIX 的 <code>shmget</code>、<code>shmat</code>，或 Windows 的 <code>CreateFileMapping</code> 和 <code>MapViewOfFile</code>）实现进程间的共享内存。其原理是为不同进程创建一个内存段，使得这些进程可以通过指定的名称或标识符访问同一个内存区域。</p>
+<ul>
+<li>
+<p><strong>创建共享内存</strong>：一个进程通过 <code>create()</code> 方法申请一块共享内存。如果这块内存已经存在，则 <code>create()</code> 会返回失败。这可以用来避免多个进程同时创建同一块内存。</p>
+</li>
+<li>
+<p><strong>连接到共享内存</strong>：其他进程通过 <code>attach()</code> 方法连接到已经存在的共享内存。这样，多个进程可以在内存区域中读写数据。</p>
+</li>
+</ul>
+<h4 id="2-内存映射">2. <strong>内存映射</strong></h4>
+<p>操作系统为每个进程提供虚拟地址空间，进程通过 <code>QSharedMemory</code> 将这块共享内存映射到各自的虚拟地址空间中。虽然多个进程有各自的虚拟地址空间，但实际都指向相同的物理内存块。</p>
+<ul>
+<li>在 Linux/Unix 系统中，<code>shmget()</code> 和 <code>shmat()</code> 系统调用会将共享内存段映射到进程的地址空间。</li>
+<li>在 Windows 系统中，使用 <code>CreateFileMapping()</code> 和 <code>MapViewOfFile()</code> 进行类似的操作。</li>
+</ul>
+<h4 id="3-同步访问">3. <strong>同步访问</strong></h4>
+<p>共享内存本身并没有提供任何同步机制，多个进程同时读写共享内存可能会导致数据竞争。因此，<code>QSharedMemory</code> 提供了 <code>lock()</code> 和 <code>unlock()</code> 方法来保护对共享内存的访问。其工作原理是通过底层的操作系统机制（如互斥锁、信号量等）确保只有一个进程在给定时刻可以访问共享内存的特定部分。</p>
+<ul>
+<li>在 Linux/Unix 系统中，通常使用 <code>pthread_mutex</code> 或 POSIX 的 <code>sem_open()</code> 实现锁机制。</li>
+<li>在 Windows 系统中，可以使用 <code>CreateMutex()</code> 等同步工具。</li>
+</ul>
+<h4 id="4-序列化与数据传输">4. <strong>序列化与数据传输</strong></h4>
+<p>在共享内存中进行数据传输时，通常会将数据序列化为字节流。例如在前面的示例中，使用 <code>QBuffer</code> 和 <code>QDataStream</code> 将复杂的 Qt 数据类型（如 <code>QString</code>）转化为二进制数据，再存入共享内存。读取进程则会通过反序列化（解码）将二进制数据恢复为原始的数据结构。</p>
+<ul>
+<li>数据序列化使得结构化数据（如字符串、对象）可以以连续的字节流形式在共享内存中存储并传递。</li>
+</ul>
+<h4 id="5-进程的分离与共享内存的销毁">5. <strong>进程的分离与共享内存的销毁</strong></h4>
+<p>每个进程使用完共享内存后，需要调用 <code>detach()</code> 方法将其从虚拟地址空间中移除。如果所有进程都分离了共享内存且没有其他进程在使用它，操作系统会自动释放这块共享内存。</p>
+<ul>
+<li>在 Linux/Unix 中，<code>shmdt()</code> 用于分离共享内存，而当最后一个进程分离时，<code>shmctl(IPC_RMID)</code> 会销毁共享内存。</li>
+<li>在 Windows 中，<code>UnmapViewOfFile()</code> 和 <code>CloseHandle()</code> 分别用于解除内存映射和释放文件映射对象。</li>
+</ul>
+<h4 id="6-使用场景中的典型问题">6. <strong>使用场景中的典型问题</strong></h4>
+<ul>
+<li>
+<p><strong>数据竞争</strong>：如果多个进程同时修改共享内存中的数据，可能会产生数据竞争问题，导致数据不一致或损坏。使用 <code>lock()</code> 和 <code>unlock()</code> 可以避免这种问题。</p>
+</li>
+<li>
+<p><strong>大小限制</strong>：共享内存的大小通常有系统限制，过大的共享内存分配可能失败。需要根据系统的可用资源合理分配。</p>
+</li>
+<li>
+<p><strong>名称冲突</strong>：共享内存通过名称标识，在不同进程中必须使用相同的名称来访问同一块内存。如果名称不一致，进程之间无法共享数据。</p>
+</li>
+</ul>
+<h4 id="总结">总结</h4>
+<p><code>QSharedMemory</code> 的实现原理依赖于操作系统底层的共享内存 API，通过虚拟内存映射技术让多个进程可以同时访问同一块物理内存。它结合了锁机制，保证了多进程之间的同步访问。程序员需要管理好内存的分配、同步与销毁，以确保系统的稳定性和安全性。<br>
+​</p>
 
     </div>
    <div>
@@ -419,16 +508,16 @@
       <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/2AJQNK2.html" rel="bookmark">Qt开发学习笔记02</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/JKRFFM.html" rel="bookmark">MinGW与MSVC的区别</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
+      <div class="popular-posts-title"><a href="/posts/3GHHYS4.html" rel="bookmark">Qt&amp;C++面试题</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/3YNTVJH.html" rel="bookmark">Docker通讯问题</a></div>
     </li>
   </ul>
 
@@ -474,8 +563,9 @@
           
           <div class="post-tags">
               <a href="/tags/C/" rel="tag"><i class="fa fa-tag"></i> C</a>
-              <a href="/tags/windows/" rel="tag"><i class="fa fa-tag"></i> windows</a>
               <a href="/tags/Qt/" rel="tag"><i class="fa fa-tag"></i> Qt</a>
+              <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+              <a href="/tags/windows/" rel="tag"><i class="fa fa-tag"></i> windows</a>
               <a href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag"><i class="fa fa-tag"></i> 系统</a>
           </div>
 
@@ -571,7 +661,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#QSharedMemory-%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">QSharedMemory 详细介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">成员函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">具体使用：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E9%99%84%E5%8A%A0%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E6%AE%B5%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">创建和附加共享内存段：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%BB%E5%86%99%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E6%AE%B5%EF%BC%9A"><span class="nav-number">1.2.2.</span> <span class="nav-text">读写共享内存段：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">详细介绍：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">具体使用方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">写入数据到共享内存：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8E%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">从共享内存中读取数据：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E7%90%86%E5%92%8C%E9%87%8A%E6%94%BE%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%EF%BC%9A"><span class="nav-number">3.3.</span> <span class="nav-text">清理和释放共享内存：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">4.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">成员方法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#QSharedMemory-%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">QSharedMemory 详细介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">成员函数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">具体使用：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E9%99%84%E5%8A%A0%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E6%AE%B5%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">创建和附加共享内存段：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%BB%E5%86%99%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E6%AE%B5%EF%BC%9A"><span class="nav-number">1.2.2.</span> <span class="nav-text">读写共享内存段：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">详细介绍：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">具体使用方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E5%88%B0%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">写入数据到共享内存：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8E%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E4%B8%AD%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">从共享内存中读取数据：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E7%90%86%E5%92%8C%E9%87%8A%E6%94%BE%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%EF%BC%9A"><span class="nav-number">3.3.</span> <span class="nav-text">清理和释放共享内存：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">4.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">成员方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QSharedMemory-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">6.</span> <span class="nav-text">QSharedMemory 的使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">7.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%86%99%E5%85%A5%E8%BF%9B%E7%A8%8B%EF%BC%88Writer%EF%BC%89"><span class="nav-number">7.1.</span> <span class="nav-text">1. 写入进程（Writer）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%AF%BB%E5%8F%96%E8%BF%9B%E7%A8%8B%EF%BC%88Reader%EF%BC%89"><span class="nav-number">7.2.</span> <span class="nav-text">2. 读取进程（Reader）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%AD%A5%E9%AA%A4"><span class="nav-number">7.3.</span> <span class="nav-text">运行步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9"><span class="nav-number">7.4.</span> <span class="nav-text">关键点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">8.</span> <span class="nav-text">实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E7%AE%A1%E7%90%86"><span class="nav-number">8.1.</span> <span class="nav-text">1. 共享内存的创建与管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84"><span class="nav-number">8.2.</span> <span class="nav-text">2. 内存映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%90%8C%E6%AD%A5%E8%AE%BF%E9%97%AE"><span class="nav-number">8.3.</span> <span class="nav-text">3. 同步访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93"><span class="nav-number">8.4.</span> <span class="nav-text">4. 序列化与数据传输</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%88%86%E7%A6%BB%E4%B8%8E%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%E7%9A%84%E9%94%80%E6%AF%81"><span class="nav-number">8.5.</span> <span class="nav-text">5. 进程的分离与共享内存的销毁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E4%B8%AD%E7%9A%84%E5%85%B8%E5%9E%8B%E9%97%AE%E9%A2%98"><span class="nav-number">8.6.</span> <span class="nav-text">6. 使用场景中的典型问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">8.7.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -586,7 +676,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">191</span>
+          <span class="site-state-item-count">192</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -674,7 +764,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">16:48</span>
+    <span title="站点阅读时长">16:54</span>
 </div>
 
 <div>
