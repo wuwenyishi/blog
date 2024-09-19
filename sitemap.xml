@@ -1460,7 +1460,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/SFARPJ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/2FA73PT.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1469,7 +1469,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2FA73PT.html</loc>
+    <loc>https://blog.xuemingde.com/posts/SFARPJ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1604,7 +1604,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/32Z7N4H.html</loc>
+    <loc>https://blog.xuemingde.com/posts/8MQSXZ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1613,7 +1613,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/8MQSXZ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/32Z7N4H.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1667,6 +1667,15 @@
   </url>
   
   <url>
+    <loc>https://blog.xuemingde.com/posts/1Y4GWTQ.html</loc>
+    
+    <lastmod>2024-07-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xuemingde.com/posts/1XAWCGH.html</loc>
     
     <lastmod>2024-07-18</lastmod>
@@ -1686,15 +1695,6 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/23YYJYJ.html</loc>
-    
-    <lastmod>2024-07-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/posts/1Y4GWTQ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1800,13 +1800,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/windows/</loc>
-    <lastmod>2024-09-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/tags/C/</loc>
     <lastmod>2024-09-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -1815,13 +1808,6 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/Qt/</loc>
-    <lastmod>2024-09-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/tags/Python/</loc>
     <lastmod>2024-09-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1849,6 +1835,13 @@
   </url>
   
   <url>
+    <loc>https://blog.xuemingde.com/tags/windows/</loc>
+    <lastmod>2024-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xuemingde.com/tags/%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2024-09-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -1857,6 +1850,13 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2024-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/Python/</loc>
     <lastmod>2024-09-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1935,13 +1935,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2024-09-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2024-09-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -1949,7 +1942,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/</loc>
+    <loc>https://blog.xuemingde.com/categories/%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2024-09-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1957,6 +1950,13 @@
   
   <url>
     <loc>https://blog.xuemingde.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2024-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/</loc>
     <lastmod>2024-09-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
