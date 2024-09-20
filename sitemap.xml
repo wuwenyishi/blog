@@ -929,7 +929,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2EXJQ9Z.html</loc>
+    <loc>https://blog.xuemingde.com/posts/QQ777T.html</loc>
     
     <lastmod>2024-09-11</lastmod>
     
@@ -938,7 +938,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/QQ777T.html</loc>
+    <loc>https://blog.xuemingde.com/posts/2EXJQ9Z.html</loc>
     
     <lastmod>2024-09-11</lastmod>
     
@@ -1514,7 +1514,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/ZPHKXJ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/2E8KBMS.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1523,7 +1523,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2E8KBMS.html</loc>
+    <loc>https://blog.xuemingde.com/posts/ZPHKXJ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1667,15 +1667,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1XAWCGH.html</loc>
-    
-    <lastmod>2024-07-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/posts/1Y4GWTQ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
@@ -1685,7 +1676,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/23YYJYJ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/1XAWCGH.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1695,6 +1686,15 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/5MYGY1.html</loc>
+    
+    <lastmod>2024-07-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/posts/23YYJYJ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1800,27 +1800,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/Docker/</loc>
-    <lastmod>2024-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/tags/linux/</loc>
-    <lastmod>2024-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/tags/windows/</loc>
-    <lastmod>2024-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/tags/C/</loc>
     <lastmod>2024-09-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -1843,6 +1822,20 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/linux/</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/windows/</loc>
     <lastmod>2024-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1898,6 +1891,13 @@
   </url>
   
   <url>
+    <loc>https://blog.xuemingde.com/tags/Docker/</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xuemingde.com/tags/Mongo/</loc>
     <lastmod>2024-09-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -1905,13 +1905,6 @@
   </url>
   
 
-  
-  <url>
-    <loc>https://blog.xuemingde.com/categories/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2024-09-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
   
   <url>
     <loc>https://blog.xuemingde.com/categories/Qt/</loc>
@@ -1922,6 +1915,13 @@
   
   <url>
     <loc>https://blog.xuemingde.com/categories/java/</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2024-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
