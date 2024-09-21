@@ -286,59 +286,67 @@
 <p>将服务器B里部署Java服务容器网络配置改为bridge，两个Mysql都能连接成功；（数据连接必须使用IP地址，不能使用localhost）；</p>
 <p>查了资料得知以下：</p>
 <ul>
-<li>在 Windows 上，<code>docker network host</code> 不起作用的原因是因为 Docker Desktop for Windows 使用了 Hyper-V 虚拟网络，而不是主机网络。因此，在 Windows 上使用 <code>docker network host</code> 命令将容器连接到虚拟网络，而不是主机网络，因此容器无法访问主机上的服务。</li>
-</ul>
-<ul>
-<li><p>在 Windows 上，Docker 并不支持直接使用 <code>--network=host</code> 参数来设置容器的网络模式为主机模式。这是因为 Windows 和 Linux 在网络方面的架构有所不同，而 Docker 在 Windows 上不支持完全的主机网络模式。</p>
+<li>
+<p>在 Windows 上，<code>docker network host</code> 不起作用的原因是因为 Docker Desktop for Windows 使用了 Hyper-V 虚拟网络，而不是主机网络。因此，在 Windows 上使用 <code>docker network host</code> 命令将容器连接到虚拟网络，而不是主机网络，因此容器无法访问主机上的服务。</p>
+</li>
+<li>
+<p>在 Windows 上，Docker 并不支持直接使用 <code>--network=host</code> 参数来设置容器的网络模式为主机模式。这是因为 Windows 和 Linux 在网络方面的架构有所不同，而 Docker 在 Windows 上不支持完全的主机网络模式。</p>
 <p>如果你尝试在 Windows 上运行 <code>docker network host</code> 命令，你会收到错误消息，指示网络主机不存在，因为 Docker 引擎无法识别或实现该命令。</p>
 <p>要在 Windows 上实现类似的功能，你可以考虑以下替代方法：</p>
 <ol>
-<li><p><strong>使用桥接网络或 Overlay 网络</strong>：创建一个自定义的 Docker 网络，并将容器连接到该网络中。这样可以允许容器之间相互通信，也可以让容器与主机进行通信。</p>
+<li>
+<p><strong>使用桥接网络或 Overlay 网络</strong>：创建一个自定义的 Docker 网络，并将容器连接到该网络中。这样可以允许容器之间相互通信，也可以让容器与主机进行通信。</p>
 </li>
-<li><p><strong>显式端口绑定</strong>：使用 <code>-p</code> 或 <code>--publish</code> 参数，将容器的端口映射到主机上的端口。这样可以实现容器和主机之间的通信。</p>
+<li>
+<p><strong>显式端口绑定</strong>：使用 <code>-p</code> 或 <code>--publish</code> 参数，将容器的端口映射到主机上的端口。这样可以实现容器和主机之间的通信。</p>
 </li>
-<li><p><strong>使用其他网络解决方案</strong>：考虑使用其他网络解决方案，例如 Docker Compose 中的网络设置、容器编排工具等。</p>
+<li>
+<p><strong>使用其他网络解决方案</strong>：考虑使用其他网络解决方案，例如 Docker Compose 中的网络设置、容器编排工具等。</p>
 </li>
 </ol>
 <p>综上所述，在 Windows 上，你需要使用其他方法来实现类似于主机网络模式的功能，而不能直接使用 <code>docker network host</code> 命令。</p>
 </li>
-</ul>
-<ul>
-<li><p>Unfortunately <em>host</em> networking is <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vbmV0d29yay9uZXR3b3JrLXR1dG9yaWFsLWhvc3QvI3ByZXJlcXVpc2l0ZXM=">not available<i class="fa fa-external-link-alt"></i></span> for <em>Docker for Windows</em> and <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vbmV0d29yay9uZXR3b3JrLXR1dG9yaWFsLW1hY3ZsYW4vI3ByZXJlcXVpc2l0ZXM=">neither is<i class="fa fa-external-link-alt"></i></span> <em>macvlan</em> networking. If you are not stuck on <em>Hyper-V</em>, consider using <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vdG9vbGJveC8=">Docker Toolbox<i class="fa fa-external-link-alt"></i></span> on Windows.</p>
+<li>
+<p>Unfortunately <em>host</em> networking is <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vbmV0d29yay9uZXR3b3JrLXR1dG9yaWFsLWhvc3QvI3ByZXJlcXVpc2l0ZXM=">not available<i class="fa fa-external-link-alt"></i></span> for <em>Docker for Windows</em> and <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vbmV0d29yay9uZXR3b3JrLXR1dG9yaWFsLW1hY3ZsYW4vI3ByZXJlcXVpc2l0ZXM=">neither is<i class="fa fa-external-link-alt"></i></span> <em>macvlan</em> networking. If you are not stuck on <em>Hyper-V</em>, consider using <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vdG9vbGJveC8=">Docker Toolbox<i class="fa fa-external-link-alt"></i></span> on Windows.</p>
 <p>Quoted from: <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20vbmV0d29yay9uZXR3b3JrLXR1dG9yaWFsLWhvc3QvI3ByZXJlcXVpc2l0ZXM=">https://docs.docker.com/network/network-tutorial-host/#prerequisites<i class="fa fa-external-link-alt"></i></span></p>
 <blockquote>
 <p>The host networking driver only works on Linux hosts, and is not supported on Docker for Mac, Docker for Windows, or Docker EE for Windows Server.</p>
 </blockquote>
-<p><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNDg5MTU0NTgvd2luZG93cy1ydW4tZG9ja2VyLXdpdGgtbmV0d29yay1ob3N0LWFuZC1hY2Nlc3Mtd2l0aC0xMjctMC0wLTE=">windows run docker with —network=host and access with 127.0.0.1 - Stack Overflow<i class="fa fa-external-link-alt"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNDg5MTU0NTgvd2luZG93cy1ydW4tZG9ja2VyLXdpdGgtbmV0d29yay1ob3N0LWFuZC1hY2Nlc3Mtd2l0aC0xMjctMC0wLTE=">windows run docker with --network=host and access with 127.0.0.1 - Stack Overflow<i class="fa fa-external-link-alt"></i></span></p>
 </li>
 </ul>
 <p>Docker 网络解析：</p>
 <p>在 Docker 中，网络是一个重要的概念，用于管理容器之间的通信以及容器与外部世界的连接。Docker 提供了不同类型的网络模式，允许您根据需求配置容器的网络连接方式。以下是一些常见的 Docker 网络模式和解析：</p>
 <ol>
-<li><p><strong>桥接网络（Bridge Network）</strong>：</p>
+<li>
+<p><strong>桥接网络（Bridge Network）</strong>：</p>
 <ul>
 <li>默认情况下，Docker 使用桥接网络来连接容器。每个容器都有自己的 IP 地址，并且可以通过容器名称或 IP 地址相互通信。</li>
 <li>桥接网络允许容器与主机以及其他容器进行通信，但默认情况下不允许容器之间的外部访问。</li>
 </ul>
 </li>
-<li><p><strong>主机网络（Host Network）</strong>：</p>
+<li>
+<p><strong>主机网络（Host Network）</strong>：</p>
 <ul>
 <li>使用主机网络模式时，容器与主机共享网络命名空间。容器将直接使用主机的网络接口，因此可以访问主机上的所有网络服务。</li>
 <li>这种模式的优点是网络性能更好，因为容器与主机之间没有额外的网络地址转换。</li>
 </ul>
 </li>
-<li><p><strong>无网络（None Network）</strong>：</p>
+<li>
+<p><strong>无网络（None Network）</strong>：</p>
 <ul>
 <li>在无网络模式下，容器不会连接到任何网络。这意味着容器无法通过网络与外部通信，但仍可以在容器内部进行通信。</li>
 </ul>
 </li>
-<li><p><strong>覆盖网络（Overlay Network）</strong>：</p>
+<li>
+<p><strong>覆盖网络（Overlay Network）</strong>：</p>
 <ul>
 <li>覆盖网络允许跨多个 Docker 守护程序连接容器。这对于在多个主机上运行容器的分布式应用程序非常有用。</li>
 <li>使用覆盖网络，容器可以在不同主机上的不同容器之间建立通信。</li>
 </ul>
 </li>
-<li><p><strong>自定义网络（Custom Networks）</strong>：</p>
+<li>
+<p><strong>自定义网络（Custom Networks）</strong>：</p>
 <ul>
 <li>您还可以创建自定义网络，以便更好地控制容器之间的通信。通过创建自定义网络，您可以定义子网、网关和其他网络设置。</li>
 <li>自定义网络可以帮助组织和管理容器，并允许容器在不同网络环境中运行，而不会受到外部网络的干扰。</li>
@@ -625,7 +633,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">16:48</span>
+    <span title="站点阅读时长">16:56</span>
 </div>
 
 <div>
