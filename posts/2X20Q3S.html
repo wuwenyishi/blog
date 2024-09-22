@@ -269,7 +269,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>语法： cat  选项  文件</p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h3 id="cat">cat</h3>
+<p>语法： cat  选项  文件</p>
 <p><strong>参数说明：</strong></p>
 <ul>
 <li><code>-n</code>：显示行号，会在输出的每一行前加上行号。</li>
@@ -281,55 +282,72 @@
 </ul>
 <p><strong>示例：</strong></p>
 <ul>
-<li><p><strong>查看文件内容：</strong>显示文件 filename 的内容。</p>
+<li>
+<p>**查看文件内容：**显示文件 filename 的内容。</p>
 <figure class="highlight ebnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cat filename</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><strong>创建文件：</strong>将标准输入重定向到文件 filename，覆盖该文件的内容</p>
+<li>
+<p>**创建文件：**将标准输入重定向到文件 filename，覆盖该文件的内容</p>
 <figure class="highlight matlab"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &gt; filename</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><strong>追加内容到文件：</strong>将标准输入追加到文件 filename 的末尾。</p>
+<li>
+<p>**追加内容到文件：**将标准输入追加到文件 filename 的末尾。</p>
 <figure class="highlight matlab"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &gt;&gt; filename</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><strong>连接文件：</strong>将 file1 和 file2 的内容合并到 file3 中。</p>
+<li>
+<p>**连接文件：**将 file1 和 file2 的内容合并到 file3 中。</p>
 <figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cat</span> file<span class="number">1</span> file<span class="number">2</span> &gt; file<span class="number">3</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><strong>显示多个文件的内容：</strong>同时显示 file1 和 file2 的内容。</p>
+<li>
+<p>**显示多个文件的内容：**同时显示 file1 和 file2 的内容。</p>
 <figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cat</span> file<span class="number">1</span> file<span class="number">2</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><strong>使用管道：</strong>将 cat 命令的输出作为另一个命令的输入。</p>
+<li>
+<p>**使用管道：**将 cat 命令的输出作为另一个命令的输入。</p>
 <figure class="highlight vim"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> filename | <span class="keyword">command</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><strong>查看文件的最后几行：</strong>显示文件 filename 的最后 10 行。</p>
+<li>
+<p>**查看文件的最后几行：**显示文件 filename 的最后 10 行。</p>
 <figure class="highlight 1c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat filename <span class="string">| tail -n 10</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><strong>使用 -n 选项显示行号：</strong>显示文件 filename 的内容，并在每行的前面加上行号。</p>
+<li>
+<p>**使用 -n 选项显示行号：**显示文件 filename 的内容，并在每行的前面加上行号。</p>
 <figure class="highlight ebnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cat -n filename</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p>使用 -b 选项仅显示非空行的行号：</p>
+<li>
+<p>使用 -b 选项仅显示非空行的行号：</p>
 <figure class="highlight armasm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">cat</span> -<span class="keyword">b</span> filename</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><strong>使用 -s 选项合并空行：</strong>显示文件 filename 的内容，并合并连续的空行</p>
+<li>
+<p>**使用 -s 选项合并空行：**显示文件 filename 的内容，并合并连续的空行</p>
 <figure class="highlight ebnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cat -s filename</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><strong>使用 -t 选项显示制表符：</strong>显示文件 filename 的内容，并用 ^I 表示制表符。</p>
+<li>
+<p>**使用 -t 选项显示制表符：**显示文件 filename 的内容，并用 ^I 表示制表符。</p>
 <figure class="highlight ebnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cat -t filename</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><strong>使用 -e 选项显示行结束符：</strong>显示文件 filename 的内容，并用 $ 表示行结束。</p>
+<li>
+<p>**使用 -e 选项显示行结束符：**显示文件 filename 的内容，并用 $ 表示行结束。</p>
 <figure class="highlight ebnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cat -e filename</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p>把 textfile1 的文档内容加上行号后输入 textfile2 这个文档里：</p>
+<li>
+<p>把 textfile1 的文档内容加上行号后输入 textfile2 这个文档里：</p>
 <figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cat</span> -n textfile<span class="number">1</span> &gt; textfile<span class="number">2</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p>把 textfile1 和 textfile2 的文档内容加上行号（空白行不加）之后将内容附加到 textfile3 文档里：</p>
+<li>
+<p>把 textfile1 和 textfile2 的文档内容加上行号（空白行不加）之后将内容附加到 textfile3 文档里：</p>
 <figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cat</span> -b textfile<span class="number">1</span> textfile<span class="number">2</span> &gt;&gt; textfile<span class="number">3</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p>清空 /etc/test.txt 文档内容：</p>
+<li>
+<p>清空 /etc/test.txt 文档内容：</p>
 <figure class="highlight gradle"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="regexp">/dev/</span><span class="keyword">null</span> &gt; <span class="regexp">/etc/</span>test.txt</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p>cat 也可以用来制作镜像文件。例如要制作软盘的镜像文件，将软盘放好后输入：</p>
+<li>
+<p>cat 也可以用来制作镜像文件。例如要制作软盘的镜像文件，将软盘放好后输入：</p>
 <figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="regexp">/dev/</span>fd0 &gt; OUTFILE</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p>相反的，如果想把 image file 写到软盘，输入：</p>
+<li>
+<p>相反的，如果想把 image file 写到软盘，输入：</p>
 <figure class="highlight arcade"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat IMG_FILE &gt; <span class="regexp">/dev/</span>fd0</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
@@ -358,16 +376,16 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
-    </li>
-    <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1XAWCGH.html" rel="bookmark">windows计划任务</a></div>
+      <div class="popular-posts-title"><a href="/posts/23YYJYJ.html" rel="bookmark">Qt开发随笔</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/23YYJYJ.html" rel="bookmark">Qt开发随笔</a></div>
+      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/1XAWCGH.html" rel="bookmark">windows计划任务</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/1WT7A0X.html" rel="bookmark">Qt QSqlDatabaseremoveDatabase()遇到的问题</a></div>
@@ -613,7 +631,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">16:48</span>
+    <span title="站点阅读时长">16:56</span>
 </div>
 
 <div>
