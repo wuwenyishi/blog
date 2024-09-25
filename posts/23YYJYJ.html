@@ -274,19 +274,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h3 id="Qt-Python-打包">Qt Python 打包</h3>
-<p>命令：pyinstaller -D -w ./main.py<br>
-main.py为启动文件 打包好的文件在 dist文件夹下</p>
-<h3 id="QModbusDataUnit-的newValueCount最大是多少">QModbusDataUnit 的newValueCount最大是多少</h3>
-<p>在Qt Modbus模块中，QModbusDataUnit类用于表示Modbus协议中的数据单元。其中，newValueCount属性表示要写入或读取的值的数量。根据Qt 5.15 文档，newValueCount的最大值由Modbus协议的规范决定，通常取决于数据类型和寄存器的数量。</p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h3 id="Qt-Python-打包"><a href="#Qt-Python-打包" class="headerlink" title="Qt Python 打包"></a>Qt Python 打包</h3><p>命令：pyinstaller -D -w ./main.py<br>main.py为启动文件 打包好的文件在 dist文件夹下</p>
+<h3 id="QModbusDataUnit-的newValueCount最大是多少"><a href="#QModbusDataUnit-的newValueCount最大是多少" class="headerlink" title="QModbusDataUnit 的newValueCount最大是多少"></a>QModbusDataUnit 的newValueCount最大是多少</h3><p>在Qt Modbus模块中，QModbusDataUnit类用于表示Modbus协议中的数据单元。其中，newValueCount属性表示要写入或读取的值的数量。根据Qt 5.15 文档，newValueCount的最大值由Modbus协议的规范决定，通常取决于数据类型和寄存器的数量。</p>
 <p>通常情况下，以下是对于不同类型的Modbus数据单元的newValueCount的最大值：</p>
 <ol>
 <li>对于QModbusDataUnit::Coils和QModbusDataUnit::DiscreteInputs类型，newValueCount的最大值为 2000。</li>
 <li>对于QModbusDataUnit::InputRegisters和QModbusDataUnit::HoldingRegisters类型，newValueCount的最大值为 125。</li>
 </ol>
 <p>这些最大值是基于Modbus协议的常见限制。但实际可用的最大值可能会因具体的Modbus设备和通信设置而有所不同。因此，在使用时，建议参考你所使用的Modbus设备的文档或规范以获得准确的限制。</p>
-<h3 id="Qt在Windows下部署步骤">Qt在Windows下部署步骤</h3>
-<ol>
+<h3 id="Qt在Windows下部署步骤"><a href="#Qt在Windows下部署步骤" class="headerlink" title="Qt在Windows下部署步骤"></a>Qt在Windows下部署步骤</h3><ol>
 <li>在Qt 开发工具下选择 Release 构建，打包</li>
 <li>在某个盘符下新建一个文件夹（例如：在D盘下新建user文件夹）</li>
 <li>在使用 Release 构建打包的文件下的release文件夹下的 .exe文件复制到新建的文件夹下</li>
@@ -295,13 +291,7 @@ main.py为启动文件 打包好的文件在 dist文件夹下</p>
 <li>接着在窗口中输入 windeployqt xxxxx.exe （xxxxx 是复制进去的.exe 文件的名称）</li>
 <li>将整个新建的文件夹复制到想要部署的机器中即可；（在生成的文件中，找到.exe文件，可直接运行了）</li>
 </ol>
-<h3 id="Qt-重启当前程序">Qt 重启当前程序</h3>
-<p>// 获取当前应用程序的路径和参数<br>
-QString program = QApplication::applicationFilePath();<br>
-QStringList arguments = QApplication::arguments();<br>
-// 启动一个新的实例，并关闭当前实例<br>
-QProcess::startDetached(program, arguments);<br>
-QApplication::quit();</p>
+<h3 id="Qt-重启当前程序"><a href="#Qt-重启当前程序" class="headerlink" title="Qt 重启当前程序"></a>Qt 重启当前程序</h3><p>// 获取当前应用程序的路径和参数<br>QString program = QApplication::applicationFilePath();<br>QStringList arguments = QApplication::arguments();<br>// 启动一个新的实例，并关闭当前实例<br>QProcess::startDetached(program, arguments);<br>QApplication::quit();</p>
 
     </div>
    <div>
@@ -320,10 +310,10 @@ QApplication::quit();</p>
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
+      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
+      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/1EM73BZ.html" rel="bookmark">QSharedMemory介绍与使用</a></div>
@@ -578,7 +568,7 @@ QApplication::quit();</p>
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">16:57</span>
+    <span title="站点阅读时长">16:49</span>
 </div>
 
 <div>

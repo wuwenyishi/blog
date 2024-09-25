@@ -277,24 +277,23 @@
         <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><p>设计模式：单例模式</p>
 <p>有8种写法，比较完美的有两种</p>
 <p>第一种写法 饿汉式 （推荐使用）</p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyZfF3eInf0h27aZsnNub4fX9GvBjAzAAgZguzYTAsmno7nr7WuPncOA/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
+<p>  <img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyZfF3eInf0h27aZsnNub4fX9GvBjAzAAgZguzYTAsmno7nr7WuPncOA/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <p>第二种写法 （与第一个没多大区别）</p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyo79T09Jzrk7CHtneKglCVCdOTzRNeK4h3XplAWGnE0tTpAZwXfcJGw/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
+<p>  <img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyo79T09Jzrk7CHtneKglCVCdOTzRNeK4h3XplAWGnE0tTpAZwXfcJGw/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <p>第三种  懒汉式</p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyICia15ibz0GrRLBJXGXe2ABuyHWcbOZTxHhTusBibYyI1x6nPo8vibjNIA/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
+<p>  <img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyICia15ibz0GrRLBJXGXe2ABuyHWcbOZTxHhTusBibYyI1x6nPo8vibjNIA/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <blockquote>
 <p>在多线程的情况下，会出现混乱的问题。</p>
 </blockquote>
 <p>第四种写法 也称为懒汉式 ，为了解决3的问题，加锁，但是效率会降低</p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyD9fkwfDee8l1e0rtQfmsOSQIuZ8yxSpjP9pUGwuSEMba0RHAPV8FbQ/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
+<p>  <img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyD9fkwfDee8l1e0rtQfmsOSQIuZ8yxSpjP9pUGwuSEMba0RHAPV8FbQ/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <p>第五种写法 也称为懒汉式 但还是不能彻底混乱的问题</p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyK5WuLYCU1BXYZuG33GuiaTwuNWFR3ld8wCHqia6mA0MvetLuVprrSUzA/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
+<p> <img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyK5WuLYCU1BXYZuG33GuiaTwuNWFR3ld8wCHqia6mA0MvetLuVprrSUzA/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <p>第六种写法 也称为懒汉式  双重检查</p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwycba6ZxBzXCMm0wCvISQp6MRkib7YQwn3TDlKiaFeYvgpWeJKibvAupTLg/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
-<p>第七种写法   比较完美的写法之一 ，静态内部类 ，比第一个完美一些 ，JVM保证了线程安全<br>
-<img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyk2tDj2s7PibVUxp5EDRVuLjqafZm27IxIntSQySTs4OJ9dvr3KKaGjQ/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
+<p>  <img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwycba6ZxBzXCMm0wCvISQp6MRkib7YQwn3TDlKiaFeYvgpWeJKibvAupTLg/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
+<p>第七种写法   比较完美的写法之一 ，静态内部类 ，比第一个完美一些 ，JVM保证了线程安全<br><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyk2tDj2s7PibVUxp5EDRVuLjqafZm27IxIntSQySTs4OJ9dvr3KKaGjQ/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <p>第八种写法 完美之二的写法  但实际应用很少</p>
-<p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyI8HibkRNznDC5S6bibiaWGqDNkZapY9kiciaP5PL5QAj1tHEl1vUV3kZiaKw/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
+<p> <img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyI8HibkRNznDC5S6bibiaWGqDNkZapY9kiciaP5PL5QAj1tHEl1vUV3kZiaKw/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 
     </div>
    <div>
@@ -313,16 +312,16 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/23YYJYJ.html" rel="bookmark">Qt开发随笔</a></div>
+      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/1XAWCGH.html" rel="bookmark">windows计划任务</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
+      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/23YYJYJ.html" rel="bookmark">Qt开发随笔</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/1WT7A0X.html" rel="bookmark">Qt QSqlDatabaseremoveDatabase()遇到的问题</a></div>
@@ -567,7 +566,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">16:57</span>
+    <span title="站点阅读时长">16:49</span>
 </div>
 
 <div>
