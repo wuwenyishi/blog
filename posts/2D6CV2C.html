@@ -256,7 +256,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
+              <span>3.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -275,7 +275,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h3 id="activiti-的-databaseSchemaUpdate-true和create-drop的区别"><a href="#activiti-的-databaseSchemaUpdate-true和create-drop的区别" class="headerlink" title="activiti 的 databaseSchemaUpdate true和create-drop的区别"></a>activiti 的 databaseSchemaUpdate true和create-drop的区别</h3><p>在 Activiti 中，<code>databaseSchemaUpdate</code> 属性用于指定在启动时如何处理数据库模式。它有两种主要选项：<code>true</code> 和 <code>create-drop</code>。</p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h3 id="activiti-的-databaseSchemaUpdate-true和create-drop的区别">activiti 的 databaseSchemaUpdate true和create-drop的区别</h3>
+<p>在 Activiti 中，<code>databaseSchemaUpdate</code> 属性用于指定在启动时如何处理数据库模式。它有两种主要选项：<code>true</code> 和 <code>create-drop</code>。</p>
 <p><strong>databaseSchemaUpdate=true</strong></p>
 <ul>
 <li><strong>含义</strong>：如果数据库模式不存在，则创建它。如果数据库模式存在，则更新它以匹配 Activiti 的最新版本。</li>
@@ -300,39 +301,49 @@
 <li>如果你的应用程序使用的是嵌入式数据库（例如 H2），则 <code>databaseSchemaUpdate</code> 的行为可能有所不同。请查阅嵌入式数据库的文档以获取更多详细信息。</li>
 </ul>
 <p>我希望这能帮助你理解 <code>databaseSchemaUpdate</code> 属性的不同选项以及如何选择最适合你需求的选项。</p>
-<h3 id="idea远程debug"><a href="#idea远程debug" class="headerlink" title="idea远程debug"></a>idea远程debug</h3><p>远程debug部署在docker容器里的服务，可在Dockerfile里增加下面代码：<br>ENTRYPOINT [“java”,”-jar”,”-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=端口号”,”服务jar包名.jar”]</p>
-<h3 id="java中一种密码加密包方式"><a href="#java中一种密码加密包方式" class="headerlink" title="java中一种密码加密包方式"></a>java中一种密码加密包方式</h3><p>BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();<br>System.out.println(encoder.encode(“123456”));</p>
-<h3 id="数据库初始化-jpa配置方式"><a href="#数据库初始化-jpa配置方式" class="headerlink" title="数据库初始化-jpa配置方式"></a>数据库初始化-jpa配置方式</h3><p>spring.datasource.initialization-mode 同样需要将配置设置为 always<br>使用jpa的配置方式，将ddl-auto设置为create或者create-drop时，会自动搜索<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2VudGl0eQ==">@entity<i class="fa fa-external-link-alt"></i></span>实体对象，并创建为对应的表<br>spring.jpa.hibernate.ddl-auto: update，此时在资源目录下，新建 data.sql<br>若spring.jpa.hibernate.ddl-auto: create，则再资源目录下，新建import.sql文件，来实现数据初始化</p>
+<h3 id="idea远程debug">idea远程debug</h3>
+<p>远程debug部署在docker容器里的服务，可在Dockerfile里增加下面代码：<br>
+ENTRYPOINT [“java”,“-jar”,“-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=端口号”,“服务jar包名.jar”]</p>
+<h3 id="java中一种密码加密包方式">java中一种密码加密包方式</h3>
+<p>BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();<br>
+System.out.println(encoder.encode(“123456”));</p>
+<h3 id="数据库初始化-jpa配置方式">数据库初始化-jpa配置方式</h3>
+<p>spring.datasource.initialization-mode 同样需要将配置设置为 always<br>
+使用jpa的配置方式，将ddl-auto设置为create或者create-drop时，会自动搜索<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2VudGl0eQ==">@entity<i class="fa fa-external-link-alt"></i></span>实体对象，并创建为对应的表<br>
+spring.jpa.hibernate.ddl-auto: update，此时在资源目录下，新建 data.sql<br>
+若spring.jpa.hibernate.ddl-auto: create，则再资源目录下，新建import.sql文件，来实现数据初始化</p>
 <p>本文中需要重点关注的几个配置:</p>
 <ul>
 <li>spring.datasource.initialization-mode: always 同样需要设置为always</li>
 <li>spring.jpa.generate-ddl: true 会根据<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2VudGl0eQ==">@entity<i class="fa fa-external-link-alt"></i></span>注解的实体类生成对应数据表</li>
 <li>spring.jpa.hibernate.ddl-auto: create/create-drop 这两个取值时，再创建表之后执行import.sql文件导入测试数据；若取值为update，则会执行data.sql</li>
 </ul>
-<h3 id="spring-jpa-hibernate-ddl-auto"><a href="#spring-jpa-hibernate-ddl-auto" class="headerlink" title="spring.jpa.hibernate.ddl-auto"></a>spring.jpa.hibernate.ddl-auto</h3><p><code>spring.jpa.hibernate.ddl-auto</code> 属性用于配置 Hibernate 如何在启动时管理数据库架构。它接受以下值：</p>
+<h3 id="spring-jpa-hibernate-ddl-auto">spring.jpa.hibernate.ddl-auto</h3>
+<p><code>spring.jpa.hibernate.ddl-auto</code> 属性用于配置 Hibernate 如何在启动时管理数据库架构。它接受以下值：</p>
 <ul>
-<li><strong>create：</strong>在启动时创建数据库架构，如果它不存在。</li>
-<li><strong>create-drop：</strong>在启动时创建数据库架构，并在关闭时删除它。</li>
-<li><strong>update：</strong>在启动时更新数据库架构，使其与实体类匹配。</li>
-<li><strong>validate：</strong>验证数据库架构，使其与实体类匹配。如果架构不匹配，则抛出异常。</li>
-<li><strong>none：</strong>不执行任何操作。</li>
+<li>**create：**在启动时创建数据库架构，如果它不存在。</li>
+<li>**create-drop：**在启动时创建数据库架构，并在关闭时删除它。</li>
+<li>**update：**在启动时更新数据库架构，使其与实体类匹配。</li>
+<li>**validate：**验证数据库架构，使其与实体类匹配。如果架构不匹配，则抛出异常。</li>
+<li>**none：**不执行任何操作。</li>
 </ul>
 <p><strong>以下是一些示例：</strong></p>
 <ul>
-<li><strong>create：</strong>此设置适用于在开发或测试环境中创建新数据库。</li>
-<li><strong>update：</strong>此设置适用于在生产环境中更新现有数据库。</li>
-<li><strong>validate：</strong>此设置适用于验证数据库架构是否与实体类匹配。</li>
-<li><strong>none：</strong>此设置适用于不希望 Hibernate 管理数据库架构的情况。</li>
+<li>**create：**此设置适用于在开发或测试环境中创建新数据库。</li>
+<li>**update：**此设置适用于在生产环境中更新现有数据库。</li>
+<li>**validate：**此设置适用于验证数据库架构是否与实体类匹配。</li>
+<li>**none：**此设置适用于不希望 Hibernate 管理数据库架构的情况。</li>
 </ul>
 <p><strong>默认值：</strong></p>
 <p>默认情况下，<code>spring.jpa.hibernate.ddl-auto</code> 设置为 <strong>none</strong>。这意味着 Hibernate 不会在启动时自动创建或更新数据库架构。</p>
 <p><strong>建议：</strong></p>
 <p>在生产环境中，建议将 <code>spring.jpa.hibernate.ddl-auto</code> 设置为 <strong>update</strong>。这将确保数据库架构与实体类保持同步。在开发或测试环境中，可以使用 <strong>create</strong> 或 <strong>create-drop</strong> 设置来创建和删除数据库架构。</p>
-<p><strong>注意：</strong>如果使用 <code>create</code> 或 <code>create-drop</code> 设置，则在关闭应用程序时将删除数据库架构。因此，在使用这些设置时务必小心。</p>
-<h3 id="spring-datasource-schema-与-spring-datasource-data"><a href="#spring-datasource-schema-与-spring-datasource-data" class="headerlink" title="spring.datasource.schema 与 spring.datasource.data"></a>spring.datasource.schema 与 spring.datasource.data</h3><p>在 Spring Boot 中，<code>spring.datasource.schema</code> 和 <code>spring.datasource.data</code> 属性用于配置如何初始化数据源。</p>
+<p>**注意：**如果使用 <code>create</code> 或 <code>create-drop</code> 设置，则在关闭应用程序时将删除数据库架构。因此，在使用这些设置时务必小心。</p>
+<h3 id="spring-datasource-schema-与-spring-datasource-data">spring.datasource.schema 与 spring.datasource.data</h3>
+<p>在 Spring Boot 中，<code>spring.datasource.schema</code> 和 <code>spring.datasource.data</code> 属性用于配置如何初始化数据源。</p>
 <ul>
-<li><strong>schema：</strong>指定用于创建数据库架构的脚本。这些脚本通常用于创建表、索引和其他数据库对象。</li>
-<li><strong>data：</strong>指定用于填充数据库数据的脚本。这些脚本通常用于插入测试数据或初始数据。</li>
+<li>**schema：**指定用于创建数据库架构的脚本。这些脚本通常用于创建表、索引和其他数据库对象。</li>
+<li>**data：**指定用于填充数据库数据的脚本。这些脚本通常用于插入测试数据或初始数据。</li>
 </ul>
 <p><strong>schema 和 data 之间的主要区别在于它们在初始化过程中的执行顺序。</strong></p>
 <ol>
@@ -346,7 +357,7 @@
 <p><strong>data.sql：</strong></p>
 <figure class="highlight pgsql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> users (<span class="type">name</span>, email) <span class="keyword">VALUES</span> (<span class="string">'John Doe'</span>, <span class="string">'john.doe@example.com'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> users (<span class="type">name</span>, email) <span class="keyword">VALUES</span> (<span class="string">'Jane Doe'</span>, <span class="string">'jane.doe@example.com'</span>);</span><br></pre></td></tr></tbody></table></figure>
 <p>这些脚本将创建一个名为 <code>users</code> 的表，并插入两行数据。</p>
-<p><strong>请注意：</strong>您还可以使用 <code>spring.datasource.schema-locations</code> 和 <code>spring.datasource.data-locations</code> 属性来指定脚本的位置。这些属性接受指向脚本文件或目录的路径。</p>
+<p>**请注意：**您还可以使用 <code>spring.datasource.schema-locations</code> 和 <code>spring.datasource.data-locations</code> 属性来指定脚本的位置。这些属性接受指向脚本文件或目录的路径。</p>
 
     </div>
    <div>
@@ -377,7 +388,7 @@
       <div class="popular-posts-title"><a href="/posts/2ZZM48T.html" rel="bookmark">Column注解解析</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/3N8921N.html" rel="bookmark">彻底讲透Elasticsearch</a></div>
+      <div class="popular-posts-title"><a href="/posts/2SZHQ52.html" rel="bookmark">如何优雅地记录操作日志</a></div>
     </li>
   </ul>
 
@@ -624,7 +635,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">16:49</span>
+    <span title="站点阅读时长">16:57</span>
 </div>
 
 <div>

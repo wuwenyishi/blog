@@ -291,7 +291,8 @@
 <p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyPTux5ia1L4ibzFQbmD69wJ5418wU26ZvMicT41ibDHgmC4LvC7Lr0dibZrw/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <p>上面的思维导图已经给大家列出了三种使用 WebSocket 的方式，下文会对它们的特点进行一一解读，不同的方式具有不同的特点，我们先按下不表。</p>
 <p>在这里，我想让大家思考一下我在思维导图中列举的第四种做 WebScoket 支持的方案可能是什么？不知道大家能不能猜对，后文将会给出答案。</p>
-<h2 id="WS简介"><a href="#WS简介" class="headerlink" title="WS简介"></a>WS简介</h2><p>在正式开始之前，我觉得有必要简单介绍一下 WebSocket 协议，引入任何一个东西之前都有必要知道我们为什么需要它？</p>
+<h2 id="WS简介">WS简介</h2>
+<p>在正式开始之前，我觉得有必要简单介绍一下 WebSocket 协议，引入任何一个东西之前都有必要知道我们为什么需要它？</p>
 <p>在 Web 开发领域，我们最常用的协议是 HTTP，HTTP 协议和 WS 协议都是基于 TCP 所做的封装，但是 HTTP 协议从一开始便被设计成请求 -&gt; 响应的模式，所以在很长一段时间内 HTTP 都是只能从客户端发向服务端，并不具备从服务端主动推送消息的功能，这也导致在浏览器端想要做到服务器主动推送的效果只能用一些轮询和长轮询的方案来做，但因为它们并不是真正的全双工，所以在消耗资源多的同时，实时性也没理想中那么好。</p>
 <p>既然市场有需求，那肯定也会有对应的新技术出现，WebSocket 就是这样的背景下被开发与制定出来的，并且它作为 HTML5 规范的一部分，得到了所有主流浏览器的支持，同时它还兼容了 HTTP 协议，默认使用 HTTP 的80端口和443端口，同时使用 HTTP header 进行协议升级。</p>
 <p>和 HTTP 相比，WS 至少有以下几个优点：</p>
@@ -312,7 +313,8 @@
 <li><strong>PONG 消息</strong>（PING的回复就是PONG）</li>
 </ol>
 <p>那我们既然知道了 WS 主要有以上六种操作，那么一个正常的 WS 框架应当可以很轻松的处理以上这几种消息，所以接下来就是本文的中心内容，看看以下这几种 WS 框架能不能很方便的处理这几种 WS 消息。</p>
-<h2 id="J2EE-方式"><a href="#J2EE-方式" class="headerlink" title="J2EE 方式"></a>J2EE 方式</h2><p>先来 J2EE，一般我把 javax 包里面对 JavaWeb 的扩展都叫做 J2EE，这个定义是否完全正确我觉得没必要深究，只是一种个人习惯，而本章节所介绍的 J2EE 方式则是指 Tomcat 为 WS 所做的支持，这套代码的包名前缀叫做：<code>javax.websocket</code>。</p>
+<h2 id="J2EE-方式">J2EE 方式</h2>
+<p>先来 J2EE，一般我把 javax 包里面对 JavaWeb 的扩展都叫做 J2EE，这个定义是否完全正确我觉得没必要深究，只是一种个人习惯，而本章节所介绍的 J2EE 方式则是指 Tomcat 为 WS 所做的支持，这套代码的包名前缀叫做：<code>javax.websocket</code>。</p>
 <p>这套代码中定义了一套适用于 WS 开发的注解和相关支持，我们可以利用它和 Tomcat 进行WS 开发，由于现在更多的都是使用 SpringBoot 的内嵌容器了，所以这次我们就来按照 SpringBoot 内嵌容器的方式来演示。</p>
 <p>首先是引入 <code>SpringBoot - Web</code> 的依赖，因为这个依赖中引入了内嵌式容器 Tomcat：</p>
 <figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
@@ -334,7 +336,8 @@
 <p><strong>Tips</strong>：在不使用内嵌容器的时候可以不做以上步骤。</p>
 <p>最后上个简陋的 WS 效果示例图，前端方面直接使用 HTML5 的 WebScoket 标准库，具体可以查看我的仓库代码：</p>
 <p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyW1RjXTOU6lTW170Ig0W2zb34M08siakb3p6CMBoicBg0CtTGTFWqxlUA/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
-<h2 id="Spring-方式"><a href="#Spring-方式" class="headerlink" title="Spring 方式"></a>Spring 方式</h2><p>第二部分来说 Spring 方式，Spring 作为 Java 开发界的老大哥，几乎封装了一切可以封装的，对于 WS 开发呢 Spring 也提供了一套相关支持，而且从使用方面我觉得要比 J2EE 的更易用。</p>
+<h2 id="Spring-方式">Spring 方式</h2>
+<p>第二部分来说 Spring 方式，Spring 作为 Java 开发界的老大哥，几乎封装了一切可以封装的，对于 WS 开发呢 Spring 也提供了一套相关支持，而且从使用方面我觉得要比 J2EE 的更易用。</p>
 <p>使用它的第一步我们先引入 <code>SpringBoot - WS</code> 依赖，这个依赖包也会隐式依赖 SpringBoot - Web 包：</p>
 <figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-websocket<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">复制代码</span><br></pre></td></tr></tbody></table></figure>
 <p>第二步就是准备一个用来处理 WS 请求的 Handle了，Spring 为此提供了一个接口—— WebSocketHandler，我们可以通过实现此接口重写其接口方法的方式自定义逻辑，我们来看一个例子：</p>
@@ -351,8 +354,8 @@
 <ol>
 <li><strong>BinaryMessage</strong>：二进制消息体</li>
 <li><strong>TextMessage</strong>：文本消息体</li>
-<li><strong>PingMessage：</strong> Ping <em>**</em>消息体</li>
-<li><strong>PongMessage：</strong> Pong <em>**</em>消息体</li>
+<li><strong>PingMessage：</strong> Ping ****消息体</li>
+<li><strong>PongMessage：</strong> Pong ****消息体</li>
 </ol>
 <p>但是由于 <code>handleMessage</code> 这个方法参数是<code>WebSocketMessage</code>，所以我们实际使用中可能需要判断一下当前来的消息具体是它的哪个子类，比如这样：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(WebSocketSession session, WebSocketMessage&lt;?&gt; message)</span> <span class="keyword">throws</span> Exception </span>{</span><br><span class="line">        <span class="keyword">if</span> (message <span class="keyword">instanceof</span> TextMessage) {</span><br><span class="line">            <span class="keyword">this</span>.handleTextMessage(session, (TextMessage)message);</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> (message <span class="keyword">instanceof</span> BinaryMessage) {</span><br><span class="line">            <span class="keyword">this</span>.handleBinaryMessage(session, (BinaryMessage)message);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">复制代码</span><br></pre></td></tr></tbody></table></figure>
@@ -364,9 +367,10 @@
 <p>Spring 的方式也就以上这些内容了，不知道大家是否感觉 Spring 所提供的 WS 封装要比 J2EE 的更方便也更全面一些，起码我只要看 <strong>WebSocketHandler</strong> 接口就能知道所有常用功能的用法，所以对于 WS 开发来说我是比较推荐 Spring 方式的。</p>
 <p>最后上个简陋的 WS 效果示例图，前端方面直接使用 HTML5 的 WebScoket 标准库，具体可以查看我的仓库代码：</p>
 <p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwy1KkC6ywDspg2VlN5iaMEzC1g7vq6NlaVbXKibian3TOeQs2OZ1fYbDphQ/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
-<h2 id="SocketIO-方式"><a href="#SocketIO-方式" class="headerlink" title="SocketIO 方式"></a>SocketIO 方式</h2><p>SocketIO 方式和上面两种有点不太一样，因为 SocketIO 诞生初就是为了兼容性作为考量的，前端的读者们应该对它更熟悉，因为它是一个 JS 库，我们先来看一下维基百科对它的定义：</p>
-<p>Socket.IO 是一个面向实时 web 应用的 JavaScript 库。它使得服务器和客户端之间实时双向的通信成为可能。他有两个部分：在浏览器中运行的客户端库，和一个面向Node.js的服务端库，两者有着几乎一样的API。</p>
-<p>Socket.IO 主要使用WebSocket协议。但是如果需要的话，Socket.io可以回退到几种其它方法，例如Adobe Flash Sockets，JSONP拉取，或是传统的AJAX拉取，并且在同时提供完全相同的接口。</p>
+<h2 id="SocketIO-方式">SocketIO 方式</h2>
+<p>SocketIO 方式和上面两种有点不太一样，因为 SocketIO 诞生初就是为了兼容性作为考量的，前端的读者们应该对它更熟悉，因为它是一个 JS 库，我们先来看一下维基百科对它的定义：</p>
+<p><span class="exturl" data-url="aHR0cDovL1NvY2tldC5JTw==">Socket.IO<i class="fa fa-external-link-alt"></i></span> 是一个面向实时 web 应用的 JavaScript 库。它使得服务器和客户端之间实时双向的通信成为可能。他有两个部分：在浏览器中运行的客户端库，和一个面向Node.js的服务端库，两者有着几乎一样的API。</p>
+<p><span class="exturl" data-url="aHR0cDovL1NvY2tldC5JTw==">Socket.IO<i class="fa fa-external-link-alt"></i></span> 主要使用WebSocket协议。但是如果需要的话，Socket.io可以回退到几种其它方法，例如Adobe Flash Sockets，JSONP拉取，或是传统的AJAX拉取，并且在同时提供完全相同的接口。</p>
 <p>所以我觉得使用它更多是因为兼容性，因为 HTML5 之后原生的 WS 应该也够用了，然而它是一个前端库，所以 Java 语言这块并没有官方支持，好在民间大神已经以 Netty 为基础开发了能与它对接的 Java 库： <code>netty-socketio</code>。</p>
 <p>不过我要先给大家提个醒，不再建议使用它了，不是因为它很久没更新了，而是因为它支持的 Socket-Client 版本太老了，截止到 2022-04-29 日，SocketIO 已经更新到 4.X 了，但是 NettySocketIO 还只支持 2.X 的 Socket-Client 版本。</p>
 <p>说了这么多，该教大家如何使用它了，第一步还是引入最新的依赖：</p>
@@ -382,7 +386,8 @@
 <p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwyh4icT3BKjnQLzQJI9Zp8dRF40ibap2HJm9F2149ZGnicjcX9qo7LecWtw/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
 <p>由于前端代码不再是标准的 HTML5 的连接方式，所以我这里简要贴一下相关代码，具体更多内容可以看我的代码仓库：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function">function <span class="title">changeSocketStatus</span><span class="params">()</span> </span>{</span><br><span class="line">        let element = document.getElementById(<span class="string">"socketStatus"</span>);</span><br><span class="line">        <span class="keyword">if</span> (socketStatus) {</span><br><span class="line">            element.textContent = <span class="string">"关闭WebSocket"</span>;</span><br><span class="line">            <span class="keyword">const</span> socketUrl=<span class="string">"ws://127.0.0.1:8001"</span>;</span><br><span class="line">            socket = io.connect(socketUrl, {</span><br><span class="line">                transports: [<span class="string">'websocket'</span>],</span><br><span class="line">                path: <span class="string">"/socketio-ws"</span></span><br><span class="line">            });</span><br><span class="line">            <span class="comment">//打开事件</span></span><br><span class="line">            socket.on(<span class="string">'connect'</span>, () =&gt; {</span><br><span class="line">                console.log(<span class="string">"websocket已打开"</span>);</span><br><span class="line">            });</span><br><span class="line">            <span class="comment">//获得消息事件</span></span><br><span class="line">            socket.on(<span class="string">'chatMsg'</span>, (msg) =&gt; {</span><br><span class="line">                <span class="keyword">const</span> serverMsg = <span class="string">"收到服务端信息："</span> + msg;</span><br><span class="line">                pushContent(serverMsg, <span class="number">2</span>);</span><br><span class="line">            });</span><br><span class="line">            <span class="comment">//关闭事件</span></span><br><span class="line">            socket.on(<span class="string">'disconnect'</span>, () =&gt; {</span><br><span class="line">                console.log(<span class="string">"websocket已关闭"</span>);</span><br><span class="line">            });</span><br><span class="line">            <span class="comment">//发生了错误事件</span></span><br><span class="line">            socket.on(<span class="string">'connect_error'</span>, () =&gt; {</span><br><span class="line">                console.log(<span class="string">"websocket发生了错误"</span>);</span><br><span class="line">            })</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">复制代码</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="第四种方式？"><a href="#第四种方式？" class="headerlink" title="第四种方式？"></a>第四种方式？</h2><p>第四种方式其实就是 Netty 了，Netty 作为 Java 界大名鼎鼎的开发组件，对于常见协议也全部进行了封装，所以我们可以直接在 Netty 中去很方便的使用 WebSocket，接下来我们可以看看 Netty 怎么作为 WS 的服务器进行开发。</p>
+<h2 id="第四种方式？">第四种方式？</h2>
+<p>第四种方式其实就是 Netty 了，Netty 作为 Java 界大名鼎鼎的开发组件，对于常见协议也全部进行了封装，所以我们可以直接在 Netty 中去很方便的使用 WebSocket，接下来我们可以看看 Netty 怎么作为 WS 的服务器进行开发。</p>
 <p>注意：以下内容如果没有 Netty 基础可能一脸蒙的进，一脸蒙的出，不过还是建议大家看看，Netty 其实很简单。</p>
 <p>第一步需要先引入一个 Netty 开发包，我这里为了方便一般都是 All In：</p>
 <figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.netty<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>netty-all<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.1.75.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">复制代码</span><br></pre></td></tr></tbody></table></figure>
@@ -396,7 +401,8 @@
 <p>至于为什么没有连接成功后的处理，这个是和 Netty 的相关机制有关，可以在 <strong>channelActive</strong> 方法中处理，大家有兴趣的可以了解一下 Netty。</p>
 <p>最后上个简陋的 WS 效果示例图，前端方面直接使用 HTML5 的 WebScoket 标准库，具体可以查看我的仓库代码：</p>
 <p><img data-src="https://mmbiz.qpic.cn/mmbiz_png/3eqXwttvOLvED4MbUa8NsovrpXwicGqwynVVG1FiaxSOd105hh8M828ZfGNT33HB1eBWlzFpKwJk9k2hE8JoVP1A/0?wx_fmt=png&amp;from=appmsg" alt=""></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>洋洋洒洒五千字，有了收获别忘赞。</strong></p>
+<h2 id="总结">总结</h2>
+<p><strong>洋洋洒洒五千字，有了收获别忘赞。</strong></p>
 <p>在上文中，我总共介绍了四种在 Java 中使用 WS 的方式，从我个人使用意向来说我感觉应该是这样的：<code>Spring 方式 &gt; Netty 方式 &gt; J2EE 方式 &gt; SocketIO 方式</code>，当然了，如果你的业务存在浏览器兼容性问题，其实只有一种选择：SocketIO。</p>
 <p>最后，我估计某些读者会去具体拉代码看代码，所以我简单说一下代码结构：</p>
 <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">├─java</span><br><span class="line">│  └─com</span><br><span class="line">│      └─example</span><br><span class="line">│          └─springwebsocket</span><br><span class="line">│              │  SpringWebsocketApplication.java</span><br><span class="line">│              │  TestController.java</span><br><span class="line">│              │</span><br><span class="line">│              ├─j2ee</span><br><span class="line">│              │      WebSocketConfig.java</span><br><span class="line">│              │      WebSocketServer.java</span><br><span class="line">│              │</span><br><span class="line">│              ├─socketio</span><br><span class="line">│              │      SocketIoConfig.java</span><br><span class="line">│              │      SocketIoHandle.java</span><br><span class="line">│              │</span><br><span class="line">│              └─spring</span><br><span class="line">│                      SpringSocketConfig.java</span><br><span class="line">│                      SpringSocketHandle.java</span><br><span class="line">│</span><br><span class="line">└─resources</span><br><span class="line">    └─templates</span><br><span class="line">            J2eeIndex.html</span><br><span class="line">            SocketIoIndex.html</span><br><span class="line">            SpringIndex.html</span><br></pre></td></tr></tbody></table></figure>
@@ -432,7 +438,7 @@
       <div class="popular-posts-title"><a href="/posts/QVJ0P0.html" rel="bookmark">C++开发学习笔记2</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/39H1R44.html" rel="bookmark">new Object()到底占用几个字节</a></div>
+      <div class="popular-posts-title"><a href="/posts/2GN96QM.html" rel="bookmark">谈谈你对 JVM 方法区的理解</a></div>
     </li>
   </ul>
 
@@ -677,7 +683,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">16:49</span>
+    <span title="站点阅读时长">16:57</span>
 </div>
 
 <div>
