@@ -1613,7 +1613,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/32Z7N4H.html</loc>
+    <loc>https://blog.xuemingde.com/posts/8MQSXZ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1622,7 +1622,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/8MQSXZ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/32Z7N4H.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1676,7 +1676,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1Y4GWTQ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/1XAWCGH.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1685,7 +1685,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1XAWCGH.html</loc>
+    <loc>https://blog.xuemingde.com/posts/1Y4GWTQ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1721,7 +1721,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/R4F6YF.html</loc>
+    <loc>https://blog.xuemingde.com/posts/2BJBJS3.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1730,7 +1730,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2BJBJS3.html</loc>
+    <loc>https://blog.xuemingde.com/posts/R4F6YF.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1809,6 +1809,13 @@
   </url>
   
   <url>
+    <loc>https://blog.xuemingde.com/tags/windows/</loc>
+    <lastmod>2024-09-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xuemingde.com/tags/C/</loc>
     <lastmod>2024-09-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -1838,13 +1845,6 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/linux/</loc>
-    <lastmod>2024-09-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/tags/windows/</loc>
     <lastmod>2024-09-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
