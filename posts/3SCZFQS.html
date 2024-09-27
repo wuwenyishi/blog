@@ -273,10 +273,12 @@
 
       
         <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><p>在使用Mingw编译器编译没有问题的代码，如果使用MSVC编译器编译可能会出现字符集的问题。</p>
-<h2 id="Qt-Creator"><a href="#Qt-Creator" class="headerlink" title="Qt Creator"></a>Qt Creator</h2><p>从Mingw编译器改为MSVC，需要在.pro文件中增加：</p>
+<h2 id="Qt-Creator">Qt Creator</h2>
+<p>从Mingw编译器改为MSVC，需要在.pro文件中增加：</p>
 <figure class="highlight jboss-cli"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">msvc {</span><br><span class="line">    QMAKE_CFLAGS += <span class="string">/utf-8</span></span><br><span class="line">    QMAKE_CXXFLAGS += <span class="string">/utf-8</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>如果不增加，会有报错，报错是由于字符集编码导致。</p>
-<h2 id="CLion"><a href="#CLion" class="headerlink" title="CLion"></a>CLion</h2><p>修改 CMakeLists.txt 文件</p>
+<h2 id="CLion">CLion</h2>
+<p>修改 CMakeLists.txt 文件</p>
 <p>编译器改为msvc</p>
 <figure class="highlight stylus"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">set</span><span class="params">(CMAKE_PREFIX_PATH <span class="string">"D:/install/Qt/Qt5.12.2/5.12.2/msvc2017_64"</span>)</span></span></span><br></pre></td></tr></tbody></table></figure>
 <p>增加编码</p>
@@ -285,19 +287,20 @@
 <p>必须在 add_executable 之前</p>
 </blockquote>
 <p>CLoin添加VS</p>
-<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.7egpman90z.jpg" alt="image"></p>
-<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.5fkivyjekv.jpg" alt="image"></p>
-<h2 id="VS"><a href="#VS" class="headerlink" title="VS"></a>VS</h2><p>安装 Qt VS Tools for Visual Studio 插件</p>
+<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.7egpman90z.jpg" alt=""></p>
+<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.5fkivyjekv.jpg" alt=""></p>
+<h2 id="VS">VS</h2>
+<p>安装 Qt VS Tools for Visual Studio 插件</p>
 <p>安装后配置</p>
-<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.b8u6p0lef.jpg" alt="image"></p>
-<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.7p3jfgm14e.jpg" alt="image"></p>
+<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.b8u6p0lef.jpg" alt=""></p>
+<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.7p3jfgm14e.jpg" alt=""></p>
 <blockquote>
 <p>这里安装的是Qt5.12，根据自己安装的版本情况来设定</p>
 <p>也可点击Autodetect来自动设定</p>
 <p>要选择需要的编译器</p>
 </blockquote>
-<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.lvnzuhjw6.jpg" alt="image"></p>
-<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.1hs5farwh3.jpg" alt="image"></p>
+<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.lvnzuhjw6.jpg" alt=""></p>
+<p><img data-src="https://github.com/wuwenyishi/picx-images-hosting/raw/master/20240828/image.1hs5farwh3.jpg" alt=""></p>
 
     </div>
    <div>
@@ -572,7 +575,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">16:49</span>
+    <span title="站点阅读时长">16:57</span>
 </div>
 
 <div>
