@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/14PRYVC.html</loc>
+    <loc>https://blog.xuemingde.com/posts/17D139G.html</loc>
     
     <lastmod>2024-09-13</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/17D139G.html</loc>
+    <loc>https://blog.xuemingde.com/posts/14PRYVC.html</loc>
     
     <lastmod>2024-09-13</lastmod>
     
@@ -1523,7 +1523,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/ZPHKXJ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/2E8KBMS.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1532,7 +1532,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2E8KBMS.html</loc>
+    <loc>https://blog.xuemingde.com/posts/ZPHKXJ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1577,7 +1577,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/N8AQ70.html</loc>
+    <loc>https://blog.xuemingde.com/posts/11TFME1.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1586,7 +1586,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/11TFME1.html</loc>
+    <loc>https://blog.xuemingde.com/posts/N8AQ70.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1649,7 +1649,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/3GHHYS4.html</loc>
+    <loc>https://blog.xuemingde.com/posts/8B53TM.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1658,7 +1658,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/8B53TM.html</loc>
+    <loc>https://blog.xuemingde.com/posts/3GHHYS4.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -2140,13 +2140,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/Nginx/</loc>
-    <lastmod>2024-09-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/Modbus/</loc>
     <lastmod>2024-09-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -2155,6 +2148,13 @@
   
   <url>
     <loc>https://blog.xuemingde.com/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/Socket/</loc>
+    <lastmod>2024-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/Nginx/</loc>
     <lastmod>2024-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
