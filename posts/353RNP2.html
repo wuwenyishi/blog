@@ -273,35 +273,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h3 id="linux-docker-远程连接配置">linux docker 远程连接配置</h3>
-<p>修改Docker服务文件：</p>
-<p>vi /lib/systemd/system/docker.service</p>
-<p>在ExecStart后添加：-H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock</p>
-<p>重新加载配置文件、重启Docker服务</p>
-<p>systemctl daemon-reload</p>
-<p>systemctl restart docker</p>
-<h2 id="命令">命令</h2>
-<h6 id="清理磁盘，删除关闭的容器、无用的数据卷和网络，以及dangling镜像-即无tag的镜像">清理磁盘，删除关闭的容器、无用的数据卷和网络，以及dangling镜像(即无tag的镜像)</h6>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker system prune # 命令清理得更加彻底，可以将没有容器使用Docker镜像都删掉。注意，这两个命令会把你暂时关闭的容器，以及暂时没有用到的Docker镜像都删掉了 </span><br><span class="line">docker system prune -a</span><br></pre></td></tr></tbody></table></figure>
-<h6 id="删除悬空的镜像">删除悬空的镜像</h6>
-<h5 id="删除无用的容器">删除无用的容器</h5>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 会清理掉所有处于stopped状态的容器</span> </span><br><span class="line">docker container prune</span><br></pre></td></tr></tbody></table></figure>
-<h6 id="删除无用的卷">删除无用的卷</h6>
-<h6 id="删除无用的网络">删除无用的网络</h6>
-<h6 id="删除所有悬空镜像，不删除未使用镜像">删除所有悬空镜像，不删除未使用镜像</h6>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -f "dangling=true" -q)</span><br></pre></td></tr></tbody></table></figure>
-<h6 id="删除所有未使用镜像和悬空镜像">删除所有未使用镜像和悬空镜像</h6>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -q)</span><br></pre></td></tr></tbody></table></figure>
-<h6 id="删除所有未被容器引用的卷">删除所有未被容器引用的卷</h6>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume rm $(docker volume ls -qf dangling=true)</span><br></pre></td></tr></tbody></table></figure>
-<h6 id="删除所有已退出的容器">删除所有已退出的容器</h6>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -v $(docker ps -aq -f status=exited)</span><br></pre></td></tr></tbody></table></figure>
-<h6 id="删除所有状态为dead的容器">删除所有状态为dead的容器</h6>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -v $(docker ps -aq -f status=dead)</span><br></pre></td></tr></tbody></table></figure>
-<h6 id="查找指定目录下所有大于100M的所有文件">查找指定目录下所有大于100M的所有文件</h6>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /var/lib/docker/overlay2/ -type f -size +100M -print0 | xargs -0 du -h | sort -nr</span><br></pre></td></tr></tbody></table></figure>
-<h6 id="把-var目录下所有日志文件清空">把/var目录下所有日志文件清空</h6>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for i in `find /var -name *.log*`;do &gt;$i;done</span><br></pre></td></tr></tbody></table></figure>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h3 id="linux-docker-远程连接配置"><a href="#linux-docker-远程连接配置" class="headerlink" title="linux docker 远程连接配置"></a>linux docker 远程连接配置</h3><p>修改Docker服务文件： </p>
+<p>vi /lib/systemd/system/docker.service   </p>
+<p>在ExecStart后添加：-H tcp://0.0.0.0:2375 -H unix://var/run/docker.sock   </p>
+<p>重新加载配置文件、重启Docker服务   </p>
+<p>systemctl daemon-reload     </p>
+<p>systemctl restart docker   </p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h6 id="清理磁盘，删除关闭的容器、无用的数据卷和网络，以及dangling镜像-即无tag的镜像"><a href="#清理磁盘，删除关闭的容器、无用的数据卷和网络，以及dangling镜像-即无tag的镜像" class="headerlink" title="清理磁盘，删除关闭的容器、无用的数据卷和网络，以及dangling镜像(即无tag的镜像)"></a>清理磁盘，删除关闭的容器、无用的数据卷和网络，以及dangling镜像(即无tag的镜像)</h6><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker system prune # 命令清理得更加彻底，可以将没有容器使用Docker镜像都删掉。注意，这两个命令会把你暂时关闭的容器，以及暂时没有用到的Docker镜像都删掉了 </span><br><span class="line">docker system prune -a</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="删除悬空的镜像"><a href="#删除悬空的镜像" class="headerlink" title="删除悬空的镜像"></a>删除悬空的镜像</h6><h5 id="删除无用的容器"><a href="#删除无用的容器" class="headerlink" title="删除无用的容器"></a>删除无用的容器</h5><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 会清理掉所有处于stopped状态的容器</span> </span><br><span class="line">docker container prune</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="删除无用的卷"><a href="#删除无用的卷" class="headerlink" title="删除无用的卷"></a>删除无用的卷</h6><h6 id="删除无用的网络"><a href="#删除无用的网络" class="headerlink" title="删除无用的网络"></a>删除无用的网络</h6><h6 id="删除所有悬空镜像，不删除未使用镜像"><a href="#删除所有悬空镜像，不删除未使用镜像" class="headerlink" title="删除所有悬空镜像，不删除未使用镜像"></a>删除所有悬空镜像，不删除未使用镜像</h6><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -f "dangling=true" -q)</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="删除所有未使用镜像和悬空镜像"><a href="#删除所有未使用镜像和悬空镜像" class="headerlink" title="删除所有未使用镜像和悬空镜像"></a>删除所有未使用镜像和悬空镜像</h6><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -q)</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="删除所有未被容器引用的卷"><a href="#删除所有未被容器引用的卷" class="headerlink" title="删除所有未被容器引用的卷"></a>删除所有未被容器引用的卷</h6><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker volume rm $(docker volume ls -qf dangling=true)</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="删除所有已退出的容器"><a href="#删除所有已退出的容器" class="headerlink" title="删除所有已退出的容器"></a>删除所有已退出的容器</h6><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -v $(docker ps -aq -f status=exited)</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="删除所有状态为dead的容器"><a href="#删除所有状态为dead的容器" class="headerlink" title="删除所有状态为dead的容器"></a>删除所有状态为dead的容器</h6><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -v $(docker ps -aq -f status=dead)</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="查找指定目录下所有大于100M的所有文件"><a href="#查找指定目录下所有大于100M的所有文件" class="headerlink" title="查找指定目录下所有大于100M的所有文件"></a>查找指定目录下所有大于100M的所有文件</h6><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /var/lib/docker/overlay2/ -type f -size +100M -print0 | xargs -0 du -h | sort -nr</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="把-var目录下所有日志文件清空"><a href="#把-var目录下所有日志文件清空" class="headerlink" title="把/var目录下所有日志文件清空"></a>把/var目录下所有日志文件清空</h6><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for i in `find /var -name *.log*`;do &gt;$i;done</span><br></pre></td></tr></tbody></table></figure>
 
     </div>
    <div>
@@ -397,8 +383,8 @@
       <i class="fa fa-chevron-left"></i> IDEA本地将镜像推送到coding制品仓库
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/2NPWEZZ.html" rel="next" title="InnoDB锁专题">
-      InnoDB锁专题 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/VQ077V.html" rel="next" title="Innodb的MVCC实现原理">
+      Innodb的MVCC实现原理 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -577,7 +563,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">17:01</span>
+    <span title="站点阅读时长">16:52</span>
 </div>
 
 <div>
