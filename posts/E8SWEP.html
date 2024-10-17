@@ -266,69 +266,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="void-date-alarm-const-int-address-与-void-date-alarm-int-address-的区别">void date_alarm(const int&amp; address) 与 void date_alarm(int address)的区别</h2>
-<p>在 C++ 中，<code>void date_alarm(const int&amp; address)</code> 和 <code>void date_alarm(int address)</code> 的区别主要体现在参数传递的方式上，即是否使用<strong>传值</strong>或<strong>传引用</strong>，以及是否使用 <code>const</code> 来保护参数。</p>
-<h3 id="1-传值-int-address">1. <strong>传值 (<code>int address</code>)</strong></h3>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">date_alarm</span><span class="params">(<span class="keyword">int</span> address)</span></span></span><br></pre></td></tr></tbody></table></figure>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="void-date-alarm-const-int-amp-address-与-void-date-alarm-int-address-的区别"><a href="#void-date-alarm-const-int-amp-address-与-void-date-alarm-int-address-的区别" class="headerlink" title="void date_alarm(const int&amp; address) 与 void date_alarm(int address)的区别"></a>void date_alarm(const int&amp; address) 与 void date_alarm(int address)的区别</h2><p>在 C++ 中，<code>void date_alarm(const int&amp; address)</code> 和 <code>void date_alarm(int address)</code> 的区别主要体现在参数传递的方式上，即是否使用<strong>传值</strong>或<strong>传引用</strong>，以及是否使用 <code>const</code> 来保护参数。</p>
+<h3 id="1-传值-int-address"><a href="#1-传值-int-address" class="headerlink" title="1. 传值 (int address)"></a>1. <strong>传值 (<code>int address</code>)</strong></h3><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">date_alarm</span><span class="params">(<span class="keyword">int</span> address)</span></span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li><strong>参数类型</strong>：值传递。</li>
 <li><strong>含义</strong>：在调用 <code>date_alarm</code> 时，实参的值会被<strong>复制</strong>到函数的形参 <code>address</code> 中。函数内部对 <code>address</code> 的修改不会影响调用时的实参。</li>
 <li><strong>效率</strong>：对于像 <code>int</code> 这种较小的基本类型，值传递的开销较小，因为复制的成本几乎可以忽略不计。值传递的一个好处是可以保证原始值不会被改变。</li>
 </ul>
-<h3 id="2-传常量引用-const-int-address">2. <strong>传常量引用 (<code>const int&amp; address</code>)</strong></h3>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">date_alarm</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; address)</span></span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="2-传常量引用-const-int-amp-address"><a href="#2-传常量引用-const-int-amp-address" class="headerlink" title="2. 传常量引用 (const int&amp; address)"></a>2. <strong>传常量引用 (<code>const int&amp; address</code>)</strong></h3><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">date_alarm</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; address)</span></span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li><strong>参数类型</strong>：引用传递，且加上 <code>const</code>。</li>
 <li><strong>含义</strong>：传递的是一个引用，这意味着函数内部的 <code>address</code> 是对实参的<strong>引用</strong>（指向同一个变量），但是由于加了 <code>const</code> 修饰符，函数内部不能修改 <code>address</code> 的值。因此，<code>const int&amp;</code> 保证了引用的安全性，防止实参被意外修改。</li>
 <li><strong>效率</strong>：引用避免了值传递时的复制过程，因此理论上来说，对于较大的对象（如结构体或类实例），引用传递比值传递更高效。但对于像 <code>int</code> 这样的小数据类型，引用传递和值传递的效率相差无几，甚至值传递有时会更快，因为对整数等小型数据进行引用操作时，可能还会有额外的指针间接开销。</li>
 </ul>
-<h3 id="3-总结对比">3. <strong>总结对比</strong></h3>
-<ul>
-<li>
-<p><strong><code>int address</code>（值传递）</strong>：在函数内部会复制一份参数，适合基本类型和小数据结构。修改 <code>address</code> 不会影响外部变量。</p>
+<h3 id="3-总结对比"><a href="#3-总结对比" class="headerlink" title="3. 总结对比"></a>3. <strong>总结对比</strong></h3><ul>
+<li><p><strong><code>int address</code>（值传递）</strong>：在函数内部会复制一份参数，适合基本类型和小数据结构。修改 <code>address</code> 不会影响外部变量。</p>
 </li>
-<li>
-<p><strong><code>const int&amp; address</code>（常量引用传递）</strong>：传递一个引用，但由于使用了 <code>const</code> 修饰符，不能修改引用的值。它避免了复制的开销，尤其适用于较大的对象（如类、结构体）。对于基本类型如 <code>int</code>，效率差异不大。</p>
+<li><p><strong><code>const int&amp; address</code>（常量引用传递）</strong>：传递一个引用，但由于使用了 <code>const</code> 修饰符，不能修改引用的值。它避免了复制的开销，尤其适用于较大的对象（如类、结构体）。对于基本类型如 <code>int</code>，效率差异不大。</p>
 </li>
 </ul>
 <p>对于 <code>int</code> 这种基本类型，通常使用值传递（<code>int address</code>）是最常见的做法，因为它简洁且高效。<code>const int&amp; address</code> 更适合大对象，但在这个场景下对 <code>int</code> 来说没有明显优势。</p>
-<h2 id="void-date-alarm-const-QString-address-与-void-date-alarm-QString-address-的区别">void date_alarm(const QString&amp; address) 与 void date_alarm(QString address)的区别</h2>
-<p>在 C++ 和 Qt 中，<code>void date_alarm(const QString&amp; address)</code> 和 <code>void date_alarm(QString address)</code> 的区别主要体现在参数传递方式上。由于 <code>QString</code> 是一个复杂的数据类型（即非基本类型），传值和传引用的差异在性能和内存使用上会有较大影响。</p>
-<h3 id="1-传值-QString-address">1. <strong>传值 (<code>QString address</code>)</strong></h3>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">date_alarm</span><span class="params">(QString address)</span></span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="void-date-alarm-const-QString-amp-address-与-void-date-alarm-QString-address-的区别"><a href="#void-date-alarm-const-QString-amp-address-与-void-date-alarm-QString-address-的区别" class="headerlink" title="void date_alarm(const QString&amp; address) 与 void date_alarm(QString address)的区别"></a>void date_alarm(const QString&amp; address) 与 void date_alarm(QString address)的区别</h2><p>在 C++ 和 Qt 中，<code>void date_alarm(const QString&amp; address)</code> 和 <code>void date_alarm(QString address)</code> 的区别主要体现在参数传递方式上。由于 <code>QString</code> 是一个复杂的数据类型（即非基本类型），传值和传引用的差异在性能和内存使用上会有较大影响。</p>
+<h3 id="1-传值-QString-address"><a href="#1-传值-QString-address" class="headerlink" title="1. 传值 (QString address)"></a>1. <strong>传值 (<code>QString address</code>)</strong></h3><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">date_alarm</span><span class="params">(QString address)</span></span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li><strong>参数类型</strong>：值传递。</li>
 <li><strong>含义</strong>：在调用 <code>date_alarm</code> 时，<code>QString</code> 对象会被<strong>复制</strong>。调用函数时，实参会被完整地复制一份给形参 <code>address</code>，这意味着在函数内部对 <code>address</code> 的任何修改都不会影响调用时的实参。</li>
-<li><strong>性能影响</strong>：由于 <code>QString</code> 是一个复杂对象，传值时会触发深拷贝。虽然 <code>QString</code> 采用了**隐式共享（copy-on-write）**机制，减少了实际的深拷贝次数（即当拷贝时，只有在写操作发生时才会创建一个新副本），但仍然有一定的开销，尤其是在没有修改字符串的情况下，这种拷贝是不必要的。</li>
+<li><strong>性能影响</strong>：由于 <code>QString</code> 是一个复杂对象，传值时会触发深拷贝。虽然 <code>QString</code> 采用了<strong>隐式共享（copy-on-write）</strong>机制，减少了实际的深拷贝次数（即当拷贝时，只有在写操作发生时才会创建一个新副本），但仍然有一定的开销，尤其是在没有修改字符串的情况下，这种拷贝是不必要的。</li>
 <li><strong>效率</strong>：虽然 <code>QString</code> 使用隐式共享来减少内存和性能开销，但依然需要进行引用计数的维护和一些额外的处理。因此，传值的开销比传引用要大。</li>
 </ul>
-<h3 id="2-传常量引用-const-QString-address">2. <strong>传常量引用 (<code>const QString&amp; address</code>)</strong></h3>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">date_alarm</span><span class="params">(<span class="keyword">const</span> QString&amp; address)</span></span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="2-传常量引用-const-QString-amp-address"><a href="#2-传常量引用-const-QString-amp-address" class="headerlink" title="2. 传常量引用 (const QString&amp; address)"></a>2. <strong>传常量引用 (<code>const QString&amp; address</code>)</strong></h3><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">date_alarm</span><span class="params">(<span class="keyword">const</span> QString&amp; address)</span></span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li><strong>参数类型</strong>：引用传递，并且加上 <code>const</code> 限定符。</li>
 <li><strong>含义</strong>：在这个例子中，传递的是 <code>QString</code> 的引用，而不是值的副本。由于加上了 <code>const</code> 限定符，函数内部不能修改 <code>address</code>，因此传递的是<strong>只读引用</strong>。传递引用不会导致数据复制，也不会影响实参的值。</li>
 <li><strong>性能影响</strong>：引用传递避免了复制对象的开销，只传递一个指向原始数据的引用。因此，对于复杂类型如 <code>QString</code>，使用 <code>const QString&amp;</code> 会更加高效，因为它避免了不必要的拷贝。</li>
 <li><strong>安全性</strong>：由于加上了 <code>const</code>，函数无法修改原始数据。这不仅避免了不必要的副本，还保证了数据的安全性。</li>
 </ul>
-<h3 id="3-对比总结">3. <strong>对比总结</strong></h3>
-<ul>
-<li>
-<p><strong><code>QString address</code>（值传递）</strong>：</p>
+<h3 id="3-对比总结"><a href="#3-对比总结" class="headerlink" title="3. 对比总结"></a>3. <strong>对比总结</strong></h3><ul>
+<li><p><strong><code>QString address</code>（值传递）</strong>：</p>
 <ul>
 <li><strong>性能开销</strong>：传值时会进行数据的复制，对于小型 <code>QString</code> 对象影响不大，但对于大型 <code>QString</code>（例如长字符串），会有较大开销。即使 <code>QString</code> 采用了隐式共享机制，仍会有一些引用计数和内存管理的额外负担。</li>
 <li><strong>实参安全</strong>：函数内部的修改不会影响原始实参。</li>
 </ul>
 </li>
-<li>
-<p><strong><code>const QString&amp; address</code>（常量引用传递）</strong>：</p>
+<li><p><strong><code>const QString&amp; address</code>（常量引用传递）</strong>：</p>
 <ul>
 <li><strong>性能开销</strong>：避免了数据复制，传递引用时只需传递指向原始对象的地址，性能开销更小，尤其对于大型或复杂对象而言。</li>
 <li><strong>实参安全</strong>：通过 <code>const</code> 限定符，确保函数内部不会修改传入的实参。</li>
 </ul>
 </li>
 </ul>
-<h3 id="4-建议">4. <strong>建议</strong></h3>
-<p>在大多数情况下，特别是当你<strong>不需要修改</strong> <code>QString</code> 参数时，使用 <code>const QString&amp;</code> 是更优的选择，因为它避免了不必要的拷贝和性能开销。</p>
+<h3 id="4-建议"><a href="#4-建议" class="headerlink" title="4. 建议"></a>4. <strong>建议</strong></h3><p>在大多数情况下，特别是当你<strong>不需要修改</strong> <code>QString</code> 参数时，使用 <code>const QString&amp;</code> 是更优的选择，因为它避免了不必要的拷贝和性能开销。</p>
 <p>因此，建议使用：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">date_alarm</span><span class="params">(<span class="keyword">const</span> QString&amp; address)</span></span></span><br></pre></td></tr></tbody></table></figure>
 <p>这既能提高性能，又能保证实参不被修改。</p>
@@ -350,10 +337,10 @@
   <div class="popular-posts-header">相关文章</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
+      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
+      <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/3F5H4K8.html" rel="bookmark">QMap遍历方式</a></div>
@@ -504,7 +491,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#void-date-alarm-const-int-address-%E4%B8%8E-void-date-alarm-int-address-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">void date_alarm(const int&amp; address) 与 void date_alarm(int address)的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BC%A0%E5%80%BC-int-address"><span class="nav-number">1.1.</span> <span class="nav-text">1. 传值 (int address)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BC%A0%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8-const-int-address"><span class="nav-number">1.2.</span> <span class="nav-text">2. 传常量引用 (const int&amp; address)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.</span> <span class="nav-text">3. 总结对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#void-date-alarm-const-QString-address-%E4%B8%8E-void-date-alarm-QString-address-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">void date_alarm(const QString&amp; address) 与 void date_alarm(QString address)的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BC%A0%E5%80%BC-QString-address"><span class="nav-number">2.1.</span> <span class="nav-text">1. 传值 (QString address)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BC%A0%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8-const-QString-address"><span class="nav-number">2.2.</span> <span class="nav-text">2. 传常量引用 (const QString&amp; address)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="nav-number">2.3.</span> <span class="nav-text">3. 对比总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%BB%BA%E8%AE%AE"><span class="nav-number">2.4.</span> <span class="nav-text">4. 建议</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#void-date-alarm-const-int-amp-address-%E4%B8%8E-void-date-alarm-int-address-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">void date_alarm(const int&amp; address) 与 void date_alarm(int address)的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BC%A0%E5%80%BC-int-address"><span class="nav-number">1.1.</span> <span class="nav-text">1. 传值 (int address)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BC%A0%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8-const-int-amp-address"><span class="nav-number">1.2.</span> <span class="nav-text">2. 传常量引用 (const int&amp; address)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.</span> <span class="nav-text">3. 总结对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#void-date-alarm-const-QString-amp-address-%E4%B8%8E-void-date-alarm-QString-address-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">void date_alarm(const QString&amp; address) 与 void date_alarm(QString address)的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BC%A0%E5%80%BC-QString-address"><span class="nav-number">2.1.</span> <span class="nav-text">1. 传值 (QString address)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BC%A0%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8-const-QString-amp-address"><span class="nav-number">2.2.</span> <span class="nav-text">2. 传常量引用 (const QString&amp; address)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="nav-number">2.3.</span> <span class="nav-text">3. 对比总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%BB%BA%E8%AE%AE"><span class="nav-number">2.4.</span> <span class="nav-text">4. 建议</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -607,7 +594,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">17:01</span>
+    <span title="站点阅读时长">16:52</span>
 </div>
 
 <div>
