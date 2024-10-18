@@ -1586,7 +1586,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/N8AQ70.html</loc>
+    <loc>https://blog.xuemingde.com/posts/11TFME1.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1595,7 +1595,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/11TFME1.html</loc>
+    <loc>https://blog.xuemingde.com/posts/N8AQ70.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1622,7 +1622,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/32Z7N4H.html</loc>
+    <loc>https://blog.xuemingde.com/posts/8MQSXZ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1631,7 +1631,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/8MQSXZ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/32Z7N4H.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1685,15 +1685,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/5MYGY1.html</loc>
-    
-    <lastmod>2024-07-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/posts/1Y4GWTQ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
@@ -1712,7 +1703,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1WT7A0X.html</loc>
+    <loc>https://blog.xuemingde.com/posts/5MYGY1.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1722,6 +1713,15 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/23YYJYJ.html</loc>
+    
+    <lastmod>2024-07-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/posts/1WT7A0X.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1832,13 +1832,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/windows/</loc>
-    <lastmod>2024-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/tags/sql/</loc>
     <lastmod>2024-10-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -1854,6 +1847,13 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/linux/</loc>
+    <lastmod>2024-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/windows/</loc>
     <lastmod>2024-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1932,14 +1932,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/</loc>
+    <loc>https://blog.xuemingde.com/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2024-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/</loc>
     <lastmod>2024-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2016,20 +2016,6 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/BUG/</loc>
-    <lastmod>2024-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/categories/java/SpringBoot/</loc>
-    <lastmod>2024-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.xuemingde.com/categories/java/JVM/</loc>
     <lastmod>2024-10-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -2037,7 +2023,21 @@
   </url>
   
   <url>
+    <loc>https://blog.xuemingde.com/categories/java/BUG/</loc>
+    <lastmod>2024-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
+    <lastmod>2024-10-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/categories/java/SpringBoot/</loc>
     <lastmod>2024-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
