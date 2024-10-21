@@ -268,44 +268,35 @@
 
       
         <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><p><code>Make</code> 是一种构建自动化工具，主要用于管理和控制软件项目的编译和构建过程。它使用一个叫做 <code>Makefile</code> 的文件来定义项目的构建规则，包括哪些文件需要编译、如何编译、以及在什么顺序下编译。</p>
-<h3 id="Make-的基本概念">Make 的基本概念</h3>
-<ul>
-<li>
-<p><strong>Makefile</strong>: 这是 <code>Make</code> 使用的配置文件，通常命名为 <code>Makefile</code> 或 <code>makefile</code>。它定义了项目的构建规则和依赖关系。一个典型的 <code>Makefile</code> 包含多个目标（target）、依赖项（dependencies）、以及构建命令（commands）。</p>
+<h3 id="Make-的基本概念"><a href="#Make-的基本概念" class="headerlink" title="Make 的基本概念"></a>Make 的基本概念</h3><ul>
+<li><p><strong>Makefile</strong>: 这是 <code>Make</code> 使用的配置文件，通常命名为 <code>Makefile</code> 或 <code>makefile</code>。它定义了项目的构建规则和依赖关系。一个典型的 <code>Makefile</code> 包含多个目标（target）、依赖项（dependencies）、以及构建命令（commands）。</p>
 </li>
-<li>
-<p><strong>目标（Target）</strong>: <code>Makefile</code> 中的一个目标通常是一个可以生成的文件或是一个伪目标（如 <code>all</code> 或 <code>clean</code>）。每个目标都与一组依赖项相关联，并定义了生成该目标所需的命令。</p>
+<li><p><strong>目标（Target）</strong>: <code>Makefile</code> 中的一个目标通常是一个可以生成的文件或是一个伪目标（如 <code>all</code> 或 <code>clean</code>）。每个目标都与一组依赖项相关联，并定义了生成该目标所需的命令。</p>
 </li>
-<li>
-<p><strong>依赖项（Dependencies）</strong>: 目标的依赖项是指在生成目标之前必须存在或更新的文件。<code>Make</code> 通过检查文件的时间戳，来决定是否需要重新构建目标。</p>
+<li><p><strong>依赖项（Dependencies）</strong>: 目标的依赖项是指在生成目标之前必须存在或更新的文件。<code>Make</code> 通过检查文件的时间戳，来决定是否需要重新构建目标。</p>
 </li>
-<li>
-<p><strong>命令（Commands）</strong>: 这是实际用于生成目标的命令，通常是编译命令、链接命令、或其他用于生成目标文件的操作。</p>
+<li><p><strong>命令（Commands）</strong>: 这是实际用于生成目标的命令，通常是编译命令、链接命令、或其他用于生成目标文件的操作。</p>
 </li>
 </ul>
-<h3 id="Makefile-示例">Makefile 示例</h3>
-<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 变量定义</span></span><br><span class="line">CC = gcc</span><br><span class="line">CFLAGS = -Wall -g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 目标和依赖关系</span></span><br><span class="line"><span class="section">all: my_program</span></span><br><span class="line"></span><br><span class="line"><span class="section">my_program: main.o util.o</span></span><br><span class="line">    <span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -o my_program main.o util.o</span><br><span class="line"></span><br><span class="line"><span class="section">main.o: main.c</span></span><br><span class="line">    <span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c main.c</span><br><span class="line"></span><br><span class="line"><span class="section">util.o: util.c</span></span><br><span class="line">    <span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c util.c</span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">    rm -f my_program main.o util.o</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Makefile-示例"><a href="#Makefile-示例" class="headerlink" title="Makefile 示例"></a>Makefile 示例</h3><figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 变量定义</span></span><br><span class="line">CC = gcc</span><br><span class="line">CFLAGS = -Wall -g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 目标和依赖关系</span></span><br><span class="line"><span class="section">all: my_program</span></span><br><span class="line"></span><br><span class="line"><span class="section">my_program: main.o util.o</span></span><br><span class="line">    <span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -o my_program main.o util.o</span><br><span class="line"></span><br><span class="line"><span class="section">main.o: main.c</span></span><br><span class="line">    <span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c main.c</span><br><span class="line"></span><br><span class="line"><span class="section">util.o: util.c</span></span><br><span class="line">    <span class="variable">$(CC)</span> <span class="variable">$(CFLAGS)</span> -c util.c</span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">    rm -f my_program main.o util.o</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li><strong>all</strong>: 这是一个伪目标，它表示所有目标都应被构建。执行 <code>make</code> 时，默认构建 <code>all</code> 目标。</li>
 <li><strong>my_program</strong>: 这是最终的可执行文件，由 <code>main.o</code> 和 <code>util.o</code> 生成。</li>
 <li><strong>main.o</strong> 和 <strong>util.o</strong>: 这些是中间目标，由相应的 C 源文件生成。</li>
 <li><strong>clean</strong>: 这是一个用于清理构建文件的目标。执行 <code>make clean</code> 时，会删除所有编译生成的文件。</li>
 </ul>
-<h3 id="Make-的工作原理">Make 的工作原理</h3>
-<p>当你运行 <code>make</code> 时，它会：</p>
+<h3 id="Make-的工作原理"><a href="#Make-的工作原理" class="headerlink" title="Make 的工作原理"></a>Make 的工作原理</h3><p>当你运行 <code>make</code> 时，它会：</p>
 <ol>
 <li>读取 <code>Makefile</code>。</li>
 <li>查找 <code>Makefile</code> 中的第一个目标（通常是 <code>all</code>）。</li>
 <li>检查这个目标的依赖项，如果依赖项比目标新或目标不存在，<code>Make</code> 就会执行关联的命令来重新生成目标。</li>
 <li>按照定义的规则和顺序，递归地构建项目。</li>
 </ol>
-<h3 id="Make-的应用场景">Make 的应用场景</h3>
-<ul>
+<h3 id="Make-的应用场景"><a href="#Make-的应用场景" class="headerlink" title="Make 的应用场景"></a>Make 的应用场景</h3><ul>
 <li><strong>编译和链接 C/C++ 项目</strong>: <code>Make</code> 常用于大型 C/C++ 项目的编译管理，通过 <code>Makefile</code> 定义如何编译各个源文件并链接成最终的可执行文件。</li>
 <li><strong>自动化任务</strong>: 虽然 <code>Make</code> 最常用于软件构建，但它也可以用于任何需要自动化的任务，例如文档生成、测试执行、文件转换等。</li>
 </ul>
-<h3 id="Make-的替代品">Make 的替代品</h3>
-<p>虽然 <code>Make</code> 是最传统和常用的构建工具之一，但现代开发中还有一些替代品，如：</p>
+<h3 id="Make-的替代品"><a href="#Make-的替代品" class="headerlink" title="Make 的替代品"></a>Make 的替代品</h3><p>虽然 <code>Make</code> 是最传统和常用的构建工具之一，但现代开发中还有一些替代品，如：</p>
 <ul>
 <li><strong>CMake</strong>: 一种跨平台的构建系统，它可以生成 <code>Makefile</code>，但也可以生成其他构建系统的文件（如 Visual Studio 项目文件）。</li>
 <li><strong>Ninja</strong>: 一个更现代、更快的构建系统，特别适合大型项目的并行编译。</li>
@@ -588,7 +579,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">17:01</span>
+    <span title="站点阅读时长">16:52</span>
 </div>
 
 <div>
