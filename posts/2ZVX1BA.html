@@ -248,7 +248,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
+              <span>3.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -268,57 +268,46 @@
 
       
         <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><p><code>QSplashScreen</code> 是 Qt 提供的一个用于显示启动画面的类，常用于在应用程序启动时显示一个临时的提示窗口，告诉用户程序正在加载。它通常用来展示一个图片（如应用程序的 logo 或启动信息），直到应用的主窗口准备好显示为止。</p>
-<h3 id="QSplashScreen-的主要特性">QSplashScreen 的主要特性</h3>
-<ul>
+<h3 id="QSplashScreen-的主要特性"><a href="#QSplashScreen-的主要特性" class="headerlink" title="QSplashScreen 的主要特性"></a>QSplashScreen 的主要特性</h3><ul>
 <li><strong>显示图片</strong>：可以在启动画面中显示图片（通常是程序的 logo 或者加载提示）。</li>
 <li><strong>置顶显示</strong>：启动画面通常会置于所有窗口之上，以确保用户可以立即看到。</li>
 <li><strong>支持更新状态</strong>：你可以在程序加载过程中使用 <code>showMessage()</code> 来在启动画面上显示加载状态信息（如“正在加载数据”）。</li>
 <li><strong>控制显示时间</strong>：你可以手动控制启动画面的显示时间，或者在主窗口加载完成时自动隐藏它。</li>
 </ul>
-<h3 id="QSplashScreen-使用步骤">QSplashScreen 使用步骤</h3>
-<ol>
+<h3 id="QSplashScreen-使用步骤"><a href="#QSplashScreen-使用步骤" class="headerlink" title="QSplashScreen 使用步骤"></a>QSplashScreen 使用步骤</h3><ol>
 <li><strong>创建并显示 QSplashScreen</strong>。</li>
 <li><strong>加载主窗口或耗时任务</strong>。</li>
 <li><strong>主窗口加载完成后，关闭 QSplashScreen</strong>。</li>
 </ol>
-<h3 id="QSplashScreen-的简单示例">QSplashScreen 的简单示例</h3>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMainWindow&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QSplashScreen&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QThread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>{</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建 QSplashScreen 对象并显示启动图片</span></span><br><span class="line">    QSplashScreen splash;</span><br><span class="line">    splash.<span class="built_in">setPixmap</span>(<span class="built_in">QPixmap</span>(<span class="string">":/resources/splash_image.png"</span>)); <span class="comment">// 设置启动图片</span></span><br><span class="line">    splash.<span class="built_in">show</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 强制刷新以确保显示启动画面</span></span><br><span class="line">    QCoreApplication::<span class="built_in">processEvents</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 模拟加载过程，例如初始化一些数据</span></span><br><span class="line">    QThread::<span class="built_in">sleep</span>(<span class="number">3</span>);  <span class="comment">// 假装主窗口加载需要 3 秒</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建主窗口</span></span><br><span class="line">    QMainWindow mainWindow;</span><br><span class="line">    mainWindow.<span class="built_in">show</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主窗口显示后，隐藏启动画面</span></span><br><span class="line">    splash.<span class="built_in">finish</span>(&amp;mainWindow);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="关键点解释">关键点解释</h3>
-<ol>
+<h3 id="QSplashScreen-的简单示例"><a href="#QSplashScreen-的简单示例" class="headerlink" title="QSplashScreen 的简单示例"></a>QSplashScreen 的简单示例</h3><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMainWindow&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QSplashScreen&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QThread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>{</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建 QSplashScreen 对象并显示启动图片</span></span><br><span class="line">    QSplashScreen splash;</span><br><span class="line">    splash.<span class="built_in">setPixmap</span>(<span class="built_in">QPixmap</span>(<span class="string">":/resources/splash_image.png"</span>)); <span class="comment">// 设置启动图片</span></span><br><span class="line">    splash.<span class="built_in">show</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 强制刷新以确保显示启动画面</span></span><br><span class="line">    QCoreApplication::<span class="built_in">processEvents</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 模拟加载过程，例如初始化一些数据</span></span><br><span class="line">    QThread::<span class="built_in">sleep</span>(<span class="number">3</span>);  <span class="comment">// 假装主窗口加载需要 3 秒</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建主窗口</span></span><br><span class="line">    QMainWindow mainWindow;</span><br><span class="line">    mainWindow.<span class="built_in">show</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 主窗口显示后，隐藏启动画面</span></span><br><span class="line">    splash.<span class="built_in">finish</span>(&amp;mainWindow);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="关键点解释"><a href="#关键点解释" class="headerlink" title="关键点解释"></a>关键点解释</h3><ol>
 <li><strong><code>QSplashScreen splash</code></strong>：创建一个 <code>QSplashScreen</code> 对象，并设置启动图片（<code>setPixmap()</code>）。</li>
 <li><strong><code>splash.show()</code></strong>：启动画面显示在屏幕上。</li>
 <li><strong><code>QCoreApplication::processEvents()</code></strong>：确保启动画面立即刷新，避免显示延迟。</li>
 <li><strong><code>QThread::sleep(3)</code></strong>：模拟主窗口加载过程中的延迟。实际使用中，加载数据或初始化复杂组件通常会耗时。</li>
 <li><strong><code>splash.finish(&amp;mainWindow)</code></strong>：当主窗口准备好显示时，调用 <code>finish()</code> 隐藏启动画面。</li>
 </ol>
-<h3 id="QSplashScreen-的主要功能和常用方法">QSplashScreen 的主要功能和常用方法</h3>
-<ul>
+<h3 id="QSplashScreen-的主要功能和常用方法"><a href="#QSplashScreen-的主要功能和常用方法" class="headerlink" title="QSplashScreen 的主要功能和常用方法"></a>QSplashScreen 的主要功能和常用方法</h3><ul>
 <li><strong><code>QSplashScreen::setPixmap(const QPixmap &amp;)</code></strong>：设置启动画面显示的图片。</li>
 <li><strong><code>QSplashScreen::showMessage(const QString &amp;message, int alignment = Qt::AlignLeft, const QColor &amp;color = Qt::black)</code></strong>：在启动画面上显示状态消息（如“正在加载… ”）。</li>
 <li><strong><code>QSplashScreen::clearMessage()</code></strong>：清除启动画面上的文字信息。</li>
 <li><strong><code>QSplashScreen::finish(QWidget *mainWin)</code></strong>：当主窗口加载完成时，调用该方法关闭启动画面。</li>
 <li><strong><code>QSplashScreen::close()</code></strong>：立即关闭启动画面。</li>
 </ul>
-<h3 id="显示启动信息（使用-showMessage-）">显示启动信息（使用 <code>showMessage()</code>）</h3>
-<p>在应用程序启动时，通常会显示一些加载状态信息。<code>QSplashScreen</code> 提供了 <code>showMessage()</code> 方法，可以在启动画面的指定位置显示文字信息。</p>
+<h3 id="显示启动信息（使用-showMessage-）"><a href="#显示启动信息（使用-showMessage-）" class="headerlink" title="显示启动信息（使用 showMessage()）"></a>显示启动信息（使用 <code>showMessage()</code>）</h3><p>在应用程序启动时，通常会显示一些加载状态信息。<code>QSplashScreen</code> 提供了 <code>showMessage()</code> 方法，可以在启动画面的指定位置显示文字信息。</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMainWindow&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QSplashScreen&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QThread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>{</span><br><span class="line">    <span class="function">QApplication <span class="title">app</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line"></span><br><span class="line">    QSplashScreen splash;</span><br><span class="line">    splash.<span class="built_in">setPixmap</span>(<span class="built_in">QPixmap</span>(<span class="string">":/resources/splash_image.png"</span>));</span><br><span class="line">    splash.<span class="built_in">show</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 显示加载状态信息</span></span><br><span class="line">    splash.<span class="built_in">showMessage</span>(<span class="string">"Loading modules..."</span>, Qt::AlignBottom | Qt::AlignCenter, Qt::white);</span><br><span class="line">    QCoreApplication::<span class="built_in">processEvents</span>(); <span class="comment">// 强制刷新</span></span><br><span class="line"></span><br><span class="line">    QThread::<span class="built_in">sleep</span>(<span class="number">2</span>);  <span class="comment">// 模拟加载模块</span></span><br><span class="line"></span><br><span class="line">    splash.<span class="built_in">showMessage</span>(<span class="string">"Initializing data..."</span>, Qt::AlignBottom | Qt::AlignCenter, Qt::white);</span><br><span class="line">    QCoreApplication::<span class="built_in">processEvents</span>(); <span class="comment">// 强制刷新</span></span><br><span class="line"></span><br><span class="line">    QThread::<span class="built_in">sleep</span>(<span class="number">2</span>);  <span class="comment">// 模拟初始化数据</span></span><br><span class="line"></span><br><span class="line">    QMainWindow mainWindow;</span><br><span class="line">    mainWindow.<span class="built_in">show</span>();</span><br><span class="line"></span><br><span class="line">    splash.<span class="built_in">finish</span>(&amp;mainWindow);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> app.<span class="built_in">exec</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="设置启动画面为置顶">设置启动画面为置顶</h3>
-<p>为了确保启动画面能够始终位于其他窗口的上方，<code>QSplashScreen</code> 默认会使用窗口标志 <code>Qt::SplashScreen</code>，这会使启动画面保持在其他窗口的上方。</p>
+<h3 id="设置启动画面为置顶"><a href="#设置启动画面为置顶" class="headerlink" title="设置启动画面为置顶"></a>设置启动画面为置顶</h3><p>为了确保启动画面能够始终位于其他窗口的上方，<code>QSplashScreen</code> 默认会使用窗口标志 <code>Qt::SplashScreen</code>，这会使启动画面保持在其他窗口的上方。</p>
 <p>你可以手动设置 <code>QSplashScreen</code> 的窗口标志，使其保持置顶：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">splash.<span class="built_in">setWindowFlags</span>(Qt::WindowStaysOnTopHint | Qt::SplashScreen);</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="QSplashScreen-的常见问题与注意事项">QSplashScreen 的常见问题与注意事项</h3>
-<ol>
-<li>
-<p><strong>主线程阻塞</strong>：如果启动画面显示过程中主线程被阻塞（如大量数据加载或复杂的初始化任务），用户界面可能会卡住。为避免卡顿，应该尽量在后台线程中执行耗时操作，或者通过 <code>QCoreApplication::processEvents()</code> 保持事件循环的运行。</p>
+<h3 id="QSplashScreen-的常见问题与注意事项"><a href="#QSplashScreen-的常见问题与注意事项" class="headerlink" title="QSplashScreen 的常见问题与注意事项"></a>QSplashScreen 的常见问题与注意事项</h3><ol>
+<li><p><strong>主线程阻塞</strong>：如果启动画面显示过程中主线程被阻塞（如大量数据加载或复杂的初始化任务），用户界面可能会卡住。为避免卡顿，应该尽量在后台线程中执行耗时操作，或者通过 <code>QCoreApplication::processEvents()</code> 保持事件循环的运行。</p>
 </li>
-<li>
-<p><strong>鼠标点击无响应</strong>：默认情况下，<code>QSplashScreen</code> 不会响应用户的鼠标点击。如果你希望用户点击启动画面关闭它，可以捕获鼠标事件并手动处理：</p>
+<li><p><strong>鼠标点击无响应</strong>：默认情况下，<code>QSplashScreen</code> 不会响应用户的鼠标点击。如果你希望用户点击启动画面关闭它，可以捕获鼠标事件并手动处理：</p>
 </li>
 </ol>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">splash.<span class="built_in">setWindowFlags</span>(Qt::WindowStaysOnTopHint | Qt::SplashScreen | Qt::WindowTransparentForInput);</span><br></pre></td></tr></tbody></table></figure>
 <p>这种方式使启动画面仍然显示，但不会阻止其他窗口接收输入。</p>
-<h3 id="总结">总结</h3>
-<ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
 <li><code>QSplashScreen</code> 用于在应用启动时显示一个启动画面，通常用于加载状态的展示。</li>
 <li>可以通过 <code>setPixmap()</code> 设置启动图片，通过 <code>showMessage()</code> 显示加载状态信息。</li>
 <li><code>QSplashScreen</code> 的主要特点是显示一个图片并保持在顶层，直到主窗口准备好显示。</li>
@@ -344,10 +333,10 @@
       <div class="popular-posts-title"><a href="/posts/1Y4GWTQ.html" rel="bookmark">Qt开发学习笔记04</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/23YYJYJ.html" rel="bookmark">Qt开发随笔</a></div>
+      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/posts/5MYGY1.html" rel="bookmark">Qt开发学习笔记05</a></div>
+      <div class="popular-posts-title"><a href="/posts/23YYJYJ.html" rel="bookmark">Qt开发随笔</a></div>
     </li>
     <li class="popular-posts-item">
       <div class="popular-posts-title"><a href="/posts/1EM73BZ.html" rel="bookmark">QSharedMemory介绍与使用</a></div>
@@ -595,7 +584,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">15:56</span>
+    <span title="站点阅读时长">16:52</span>
 </div>
 
 <div>
