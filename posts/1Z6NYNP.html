@@ -270,31 +270,23 @@
 
       
         <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><p>在C语言和C++中，使用 <code>#define</code> 来设置常量是可以的，但相比于C++中的 <code>const</code>、<code>enum</code> 和 <code>inline</code>，<code>#define</code>有一些缺点和弊端。以下是 <code>#define</code>设置常量的主要弊端：</p>
-<h3 id="1-缺乏类型安全">1. 缺乏类型安全</h3>
-<p><code>#define</code>只是简单的文本替换，编译器不会对它进行类型检查。这可能会导致一些意想不到的错误。</p>
+<h3 id="1-缺乏类型安全"><a href="#1-缺乏类型安全" class="headerlink" title="1. 缺乏类型安全"></a>1. 缺乏类型安全</h3><p><code>#define</code>只是简单的文本替换，编译器不会对它进行类型检查。这可能会导致一些意想不到的错误。</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PI 3.14159</span></span><br><span class="line"><span class="keyword">int</span> radius = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">double</span> area = PI * radius * radius; <span class="comment">// 没问题</span></span><br><span class="line"><span class="keyword">double</span> circumference = PI * radius; <span class="comment">// 没问题</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TEN 10</span></span><br><span class="line"><span class="keyword">int</span> sum = TEN + <span class="number">1.5</span>; <span class="comment">// sum 将变为 11.5，但这是一个int，期望的结果应该是11。</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="2-调试困难">2. 调试困难</h3>
-<p><code>#define</code> 在预处理阶段进行替换，因此调试器在调试时无法识别宏名称，只能看到替换后的文本。这使得调试和跟踪代码变得困难。</p>
+<h3 id="2-调试困难"><a href="#2-调试困难" class="headerlink" title="2. 调试困难"></a>2. 调试困难</h3><p><code>#define</code> 在预处理阶段进行替换，因此调试器在调试时无法识别宏名称，只能看到替换后的文本。这使得调试和跟踪代码变得困难。</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_SIZE 100</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> array[MAX_SIZE];</span><br><span class="line">    <span class="comment">// 在调试时，无法看到 MAX_SIZE，只能看到100</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="3-作用域问题">3. 作用域问题</h3>
-<p><code>#define</code> 的宏在整个预处理阶段全局可见，容易引起命名冲突。而 <code>const</code>、<code>enum</code> 和 <code>inline</code> 可以遵循C++的作用域规则，限制在特定的命名空间或类中，避免命名冲突。</p>
+<h3 id="3-作用域问题"><a href="#3-作用域问题" class="headerlink" title="3. 作用域问题"></a>3. 作用域问题</h3><p><code>#define</code> 的宏在整个预处理阶段全局可见，容易引起命名冲突。而 <code>const</code>、<code>enum</code> 和 <code>inline</code> 可以遵循C++的作用域规则，限制在特定的命名空间或类中，避免命名冲突。</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_VALUE 100</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bar</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> MAX_VALUE = <span class="number">200</span>; <span class="comment">// 可能会引起混淆和错误</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="4-宏函数的潜在问题">4. 宏函数的潜在问题</h3>
-<p>使用 <code>#define</code> 定义的宏函数可能会引入一些意想不到的问题，因为它们只是简单的文本替换，没有类型检查和语法检查。</p>
+<h3 id="4-宏函数的潜在问题"><a href="#4-宏函数的潜在问题" class="headerlink" title="4. 宏函数的潜在问题"></a>4. 宏函数的潜在问题</h3><p>使用 <code>#define</code> 定义的宏函数可能会引入一些意想不到的问题，因为它们只是简单的文本替换，没有类型检查和语法检查。</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SQUARE(x) ((x) * (x))</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> result = <span class="built_in">SQUARE</span>(<span class="number">1</span> + <span class="number">2</span>); <span class="comment">// 结果是 1 + 2 * 1 + 2 = 5，而不是期望的 9</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="5-不能使用命名空间">5. 不能使用命名空间</h3>
-<p>C++中引入了命名空间来组织代码和避免命名冲突，但 <code>#define</code> 宏无法使用命名空间，这进一步增加了命名冲突的风险。</p>
-<h3 id="使用-const-的优势">使用 <code>const</code> 的优势</h3>
-<ol>
+<h3 id="5-不能使用命名空间"><a href="#5-不能使用命名空间" class="headerlink" title="5. 不能使用命名空间"></a>5. 不能使用命名空间</h3><p>C++中引入了命名空间来组织代码和避免命名冲突，但 <code>#define</code> 宏无法使用命名空间，这进一步增加了命名冲突的风险。</p>
+<h3 id="使用-const-的优势"><a href="#使用-const-的优势" class="headerlink" title="使用 const 的优势"></a>使用 <code>const</code> 的优势</h3><ol>
 <li><strong>类型安全</strong>：<code>const</code>变量有类型，编译器会进行类型检查，避免潜在的错误。</li>
 <li><strong>作用域控制</strong>：<code>const</code>变量遵循C++的作用域规则，可以限定在特定的命名空间或类中，避免命名冲突。</li>
 <li><strong>调试支持</strong>：<code>const</code>变量在调试时可以被识别，可以直接查看其值。</li>
 <li><strong>优化</strong>：编译器可以更好地优化 <code>const</code>变量，因为它们有具体的类型和作用域。</li>
 </ol>
-<h3 id="使用-const-代替-define-的示例">使用 <code>const</code> 代替 <code>#define</code> 的示例</h3>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 #define</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PI 3.14159</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 const</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">double</span> radius = <span class="number">10.0</span>;</span><br><span class="line">    <span class="keyword">double</span> area = pi * radius * radius; <span class="comment">// 使用 const</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="总结">总结</h3>
-<p>虽然在一些简单的情况下，使用 <code>#define</code> 设置常量是可行的，但在C++中，使用 <code>const</code>、<code>enum</code> 和 <code>inline</code> 提供了更好的类型安全性、作用域控制和调试支持，符合C++语言的设计理念和最佳实践。因此，在C++中，推荐使用 <code>const</code>、<code>enum</code> 和 <code>inline</code> 来替代 <code>#define</code>。</p>
+<h3 id="使用-const-代替-define-的示例"><a href="#使用-const-代替-define-的示例" class="headerlink" title="使用 const 代替 #define 的示例"></a>使用 <code>const</code> 代替 <code>#define</code> 的示例</h3><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 #define</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PI 3.14159</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 const</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">    <span class="keyword">double</span> radius = <span class="number">10.0</span>;</span><br><span class="line">    <span class="keyword">double</span> area = pi * radius * radius; <span class="comment">// 使用 const</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>虽然在一些简单的情况下，使用 <code>#define</code> 设置常量是可行的，但在C++中，使用 <code>const</code>、<code>enum</code> 和 <code>inline</code> 提供了更好的类型安全性、作用域控制和调试支持，符合C++语言的设计理念和最佳实践。因此，在C++中，推荐使用 <code>const</code>、<code>enum</code> 和 <code>inline</code> 来替代 <code>#define</code>。</p>
 
     </div>
    <div>
@@ -389,8 +381,8 @@
       <i class="fa fa-chevron-left"></i> CRC是什么
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/1QR2QPE.html" rel="next" title="Qt基础学习笔记02">
-      Qt基础学习笔记02 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/C8CVJR.html" rel="next" title="Qt基础学习笔记03">
+      Qt基础学习笔记03 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -569,7 +561,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">17:01</span>
+    <span title="站点阅读时长">16:52</span>
 </div>
 
 <div>
