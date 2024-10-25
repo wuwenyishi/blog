@@ -277,8 +277,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="copy命令用法"><a href="#copy命令用法" class="headerlink" title="copy命令用法"></a>copy命令用法</h2><blockquote>
-<p> Windows 官方文档：<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMvY29weSNzeW50YXg=">copy | Microsoft Learn<i class="fa fa-external-link-alt"></i></span></p>
+        <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><h2 id="copy命令用法">copy命令用法</h2>
+<blockquote>
+<p>Windows 官方文档：<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMvY29weSNzeW50YXg=">copy | Microsoft Learn<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
 <p><code>copy</code> 命令用于将一个或多个文件从一个位置复制到另一个位置。</p>
 <p>它的基本语法如下：</p>
@@ -288,7 +289,6 @@
 <li><code>destination</code>: 指定复制文件的目标位置。可以是一个目录，也可以是一个包含文件名的目标路径。</li>
 </ul>
 <p>以下是一些常见的 <code>copy</code> 命令选项和用法：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -343,18 +343,24 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="跳过已经存在的文件"><a href="#跳过已经存在的文件" class="headerlink" title="跳过已经存在的文件"></a>跳过已经存在的文件</h3><p>使用<code>copy</code>命令并不能直接跳过已存在的文件</p>
-<h2 id="xcopy命令用法"><a href="#xcopy命令用法" class="headerlink" title="xcopy命令用法"></a>xcopy命令用法</h2><blockquote>
+<h3 id="跳过已经存在的文件">跳过已经存在的文件</h3>
+<p>使用<code>copy</code>命令并不能直接跳过已存在的文件</p>
+<p>##xcopy命令用法</p>
+<blockquote>
 <p>Windows 官方文档：<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMveGNvcHk=">xcopy | Microsoft Learn<i class="fa fa-external-link-alt"></i></span></p>
 </blockquote>
 <p>复制文件和目录，包括子目录。</p>
 <p><code>xcopy</code>命令是Windows系统中用于复制文件和目录的命令行工具，它比<code>copy</code>命令更强大，并支持更多的选项。下面是<code>xcopy</code>命令的基本用法和一些常用选项：</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcopy [源文件/目录] [目标文件/目录] [/选项]</span><br></pre></td></tr></tbody></table></figure>
 <ul>
-<li><code>[源文件/目录]</code>：要复制的文件或目录的路径。</li>
-<li><code>[目标文件/目录]</code>：复制的文件或目录的目标路径。</li>
-<li><p><code>/选项</code>：可选的命令选项，如<code>/s</code>、<code>/e</code>等。下面是一些常用的选项：</p>
+<li>
+<p><code>[源文件/目录]</code>：要复制的文件或目录的路径。</p>
+</li>
+<li>
+<p><code>[目标文件/目录]</code>：复制的文件或目录的目标路径。</p>
+</li>
+<li>
+<p><code>/选项</code>：可选的命令选项，如<code>/s</code>、<code>/e</code>等。下面是一些常用的选项：</p>
 <ul>
 <li><code>/s</code>：复制目录及其子目录，但不包括空目录。</li>
 <li><code>/e</code>：复制目录及其子目录，包括空目录。</li>
@@ -366,18 +372,20 @@
 </ul>
 <p>示例用法：</p>
 <ol>
-<li><p>将一个文件复制到另一个目录：</p>
+<li>
+<p>将一个文件复制到另一个目录：</p>
  <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcopy C:\source\file.txt D:\destination\</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p>将一个目录及其子目录中的所有文件复制到另一个目录：</p>
+<li>
+<p>将一个目录及其子目录中的所有文件复制到另一个目录：</p>
  <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcopy C:\source\* D:\destination\ /s /i</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p>将一个目录及其子目录中的所有文件和子目录复制到另一个目录：</p>
+<li>
+<p>将一个目录及其子目录中的所有文件和子目录复制到另一个目录：</p>
  <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcopy C:\source\* D:\destination\ /e /i</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ol>
 <p>请注意，<code>xcopy</code>命令在复制文件时不会询问是否覆盖目标文件，除非使用了<code>/y</code>选项。因此，请谨慎使用<code>xcopy</code>命令以避免意外覆盖文件。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -396,7 +404,7 @@
 </tr>
 <tr>
 <td>/W</td>
-<td>在开始复制文件之前显示以下消息并等待你的响应：按任意键开始复制文件<em>**</em></td>
+<td>在开始复制文件之前显示以下消息并等待你的响应：按任意键开始复制文件****</td>
 </tr>
 <tr>
 <td>/p</td>
@@ -432,7 +440,7 @@
 </tr>
 <tr>
 <td>/u</td>
-<td>从仅存在于目标上的源复制文件<em>**</em>。</td>
+<td>从仅存在于目标上的源复制文件****。</td>
 </tr>
 <tr>
 <td>/i</td>
@@ -440,19 +448,19 @@
 </tr>
 <tr>
 <td>/s</td>
-<td>复制目录和子目录，除非它们是空的。 如果省略 /s，则 <code>xcopy</code> 在单个目录中运行<em>**</em>。</td>
+<td>复制目录和子目录，除非它们是空的。 如果省略 /s，则 <code>xcopy</code> 在单个目录中运行****。</td>
 </tr>
 <tr>
 <td>/e</td>
-<td>复制所有子目录，即使它们是空的。 将 /e 与 /s 和 /t 命令行选项结合使用<strong><strong><em>**</em></strong></strong>。</td>
+<td>复制所有子目录，即使它们是空的。 将 /e 与 /s 和 /t 命令行选项结合使用************。</td>
 </tr>
 <tr>
 <td>/t</td>
-<td>仅复制子目录结构（即树），而不复制文件。 若要复制空目录，必须包含 /e 命令行选项<em>**</em>。</td>
+<td>仅复制子目录结构（即树），而不复制文件。 若要复制空目录，必须包含 /e 命令行选项****。</td>
 </tr>
 <tr>
 <td>/k</td>
-<td>复制文件，并保留目标文件的只读属性（如果存在于源文件上）<em>**</em>。 默认情况下，<code>xcopy</code> 会删除只读属性。</td>
+<td>复制文件，并保留目标文件的只读属性（如果存在于源文件上）****。 默认情况下，<code>xcopy</code> 会删除只读属性。</td>
 </tr>
 <tr>
 <td>/r</td>
@@ -464,15 +472,15 @@
 </tr>
 <tr>
 <td>/a</td>
-<td>仅复制设置了存档文件属性的源文件<strong>。 </strong>/a<strong> 不会修改源文件的存档文件属性。 有关如何使用 attrib 设置存档文件属性的信息，请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMveGNvcHkjcmVsYXRlZC1saW5rcw==">相关链接<i class="fa fa-external-link-alt"></i></span>**</strong>。</td>
+<td>仅复制设置了存档文件属性的源文件**。 <strong>/a</strong> 不会修改源文件的存档文件属性。 有关如何使用 attrib 设置存档文件属性的信息，请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMveGNvcHkjcmVsYXRlZC1saW5rcw==">相关链接<i class="fa fa-external-link-alt"></i></span>****。</td>
 </tr>
 <tr>
 <td>/m</td>
-<td>复制设置了存档文件属性的源文件<strong>。 与 /a 不同，/m 会关闭源中指定的文件的存档文件属性<strong>**</strong></strong>。 有关如何使用 attrib 设置存档文件属性的信息，请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMveGNvcHkjcmVsYXRlZC1saW5rcw==">相关链接<i class="fa fa-external-link-alt"></i></span><em>**</em>。</td>
+<td>复制设置了存档文件属性的源文件**。 与 /a 不同，/m 会关闭源中指定的文件的存档文件属性********。 有关如何使用 attrib 设置存档文件属性的信息，请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMveGNvcHkjcmVsYXRlZC1saW5rcw==">相关链接<i class="fa fa-external-link-alt"></i></span>****。</td>
 </tr>
 <tr>
 <td>/n</td>
-<td>使用 NTFS 短文件名或目录名创建副本。 将文件或目录从 NTFS 卷复制到 FAT 卷，或者当目标上需要 FAT 文件系统命名约定（即 8.3 命名规则字符）时，/n 是必需的<strong>**</strong>。 <em>目标</em>文件系统可以是 FAT 或 NTFS。</td>
+<td>使用 NTFS 短文件名或目录名创建副本。 将文件或目录从 NTFS 卷复制到 FAT 卷，或者当目标上需要 FAT 文件系统命名约定（即 8.3 命名规则字符）时，/n 是必需的******。 <em>目标</em>文件系统可以是 FAT 或 NTFS。</td>
 </tr>
 <tr>
 <td>/o</td>
@@ -480,11 +488,11 @@
 </tr>
 <tr>
 <td>/x</td>
-<td>复制文件审核设置和系统访问控制列表 (SACL) 信息（隐含 /o）<em>**</em>。</td>
+<td>复制文件审核设置和系统访问控制列表 (SACL) 信息（隐含 /o）****。</td>
 </tr>
 <tr>
 <td>/exclude:FileName1[+[FileName2]][+<a href="">FileName3</a>]</td>
-<td>指定文件列表。 必须至少指定一个文件。 每个文件将包含搜索字符串，每个字符串在文件中独占一行。 当任一字符串与要复制的文件的绝对路径的任一部分匹配时，将排除该文件的复制。 例如，指定字符串 obj 将排除目录 obj 下的所有文件，或扩展名为 .obj 的所有文件<strong><strong><em>**</em></strong></strong>。</td>
+<td>指定文件列表。 必须至少指定一个文件。 每个文件将包含搜索字符串，每个字符串在文件中独占一行。 当任一字符串与要复制的文件的绝对路径的任一部分匹配时，将排除该文件的复制。 例如，指定字符串 obj 将排除目录 obj 下的所有文件，或扩展名为 .obj 的所有文件************。</td>
 </tr>
 <tr>
 <td>/y</td>
@@ -520,10 +528,10 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="跳过已经存在的文件-1"><a href="#跳过已经存在的文件-1" class="headerlink" title="跳过已经存在的文件"></a>跳过已经存在的文件</h3><p><code>xcopy</code>命令本身没有直接提供一个选项来跳过目标文件夹中已经存在的文件。但是，你可以结合使用一些其他命令和技巧来实现这个目的。</p>
-<h2 id="robocopy命令用法"><a href="#robocopy命令用法" class="headerlink" title="robocopy命令用法"></a>robocopy命令用法</h2><blockquote>
-</blockquote>
+<h3 id="跳过已经存在的文件-2">跳过已经存在的文件</h3>
+<p><code>xcopy</code>命令本身没有直接提供一个选项来跳过目标文件夹中已经存在的文件。但是，你可以结合使用一些其他命令和技巧来实现这个目的。</p>
+<h2 id="robocopy命令用法">robocopy命令用法</h2>
+<blockquote></blockquote>
 <p>将文件数据从一个位置复制到另一个位置。</p>
 <p><code>robocopy</code> 命令是 Windows 中一个非常强大的文件复制工具，其语法如下：</p>
 <figure class="highlight gradle"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ROBOCOPY <span class="keyword">source</span> destination [<span class="keyword">file</span> [<span class="keyword">file</span>]...] [<span class="keyword">options</span>]</span><br></pre></td></tr></tbody></table></figure>
@@ -546,7 +554,6 @@
 </ul>
 <p>以上只是 <code>robocopy</code> 命令的一些常见选项。你可以使用 <code>robocopy /?</code> 命令在命令行中查看完整的帮助文档，以了解更多选项和用法。</p>
 <p>复制文件限制选项：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -557,22 +564,20 @@
 <tbody>
 <tr>
 <td>/iomaxsize:<code>&lt;n&gt;</code>[kmg]</td>
-<td>每个读取/写入周期请求的最大 i/o 大小，以 <em>n**</em>千<strong>字节、</strong>兆<strong>字节或</strong>千兆**字节为单位。</td>
+<td>每个读取/写入周期请求的最大 i/o 大小，以 <em>n</em><strong>千</strong>字节、<strong>兆</strong>字节或<strong>千兆</strong>字节为单位。</td>
 </tr>
 <tr>
 <td>/iorate:<code>&lt;n&gt;</code>[kmg]</td>
-<td>每秒请求的 i/o 速率，以 <em>n**</em>千<strong>字节、</strong>兆<strong>字节或</strong>千兆**字节为单位。</td>
+<td>每秒请求的 i/o 速率，以 <em>n</em><strong>千</strong>字节、<strong>兆</strong>字节或<strong>千兆</strong>字节为单位。</td>
 </tr>
 <tr>
 <td>/threshold:<code>&lt;n&gt;</code>[kmg]</td>
-<td>限制的文件大小阈值，以 <em>n**</em>千<strong>字节、</strong>兆<strong>字节或</strong>千兆**字节为单位（请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMvcm9ib2NvcHkjcmVtYXJrcw==">备注<i class="fa fa-external-link-alt"></i></span>）。</td>
+<td>限制的文件大小阈值，以 <em>n</em><strong>千</strong>字节、<strong>兆</strong>字节或<strong>千兆</strong>字节为单位（请参阅<span class="exturl" data-url="aHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL3poLWNuL3dpbmRvd3Mtc2VydmVyL2FkbWluaXN0cmF0aW9uL3dpbmRvd3MtY29tbWFuZHMvcm9ib2NvcHkjcmVtYXJrcw==">备注<i class="fa fa-external-link-alt"></i></span>）。</td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>这些限制选项可用于指定 Robocopy 允许使用的最大 I/O 带宽（以“字节/秒”为单位）。 如果未以“字节/秒”为单位进行指定，则可在已指定 <strong>k</strong>、<strong>m</strong> 或 <strong>g</strong> 的情况下使用整数。 即使指定了较小值，受限的最小 I/O 带宽依然为 <strong>524288</strong> 字节。</p>
 <p>文件选择选项：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -599,7 +604,7 @@
 </tr>
 <tr>
 <td>/xf <code>&lt;filename&gt;[ ...]</code></td>
-<td>排除与指定的名称或路径匹配的文件。 支持通配符（<strong>*</strong> 和 <strong>?</strong>）。</td>
+<td>排除与指定的名称或路径匹配的文件。 支持通配符（***** 和 <strong>?</strong>）。</td>
 </tr>
 <tr>
 <td>/xd <code>&lt;directory&gt;[ ...]</code></td>
@@ -683,9 +688,7 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>重试选项：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -716,13 +719,11 @@
 </tr>
 <tr>
 <td>/lfsm:<code>&lt;n&gt;</code>[kmg]</td>
-<td>指定下限值，以 <em>n**</em>千<strong>字节、</strong>兆<strong>字节或</strong>千兆**字节为单位。</td>
+<td>指定下限值，以 <em>n</em><strong>千</strong>字节、<strong>兆</strong>字节或<strong>千兆</strong>字节为单位。</td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>日志记录选项：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -813,9 +814,7 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>作业选项：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -850,26 +849,31 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p><strong>robocopy 的 /purge  /mir 解析</strong></p>
 <p><code>robocopy</code> 是 Windows 操作系统中的一个高级文件复制实用程序，用于在目录之间复制文件和目录。<code>robocopy</code> 有很多选项来控制其行为，其中 <code>/purge</code> 和 <code>/mir</code> 是非常常用的两个选项。下面是对这两个选项的详细解析：</p>
-<h3 id="mir-选项"><a href="#mir-选项" class="headerlink" title="/mir 选项"></a><code>/mir</code> 选项</h3><p><code>/mir</code> 是 <code>/e</code> 和 <code>/purge</code> 的组合选项。具体功能如下：</p>
+<h3 id="mir-选项"><code>/mir</code> 选项</h3>
+<p><code>/mir</code> 是 <code>/e</code> 和 <code>/purge</code> 的组合选项。具体功能如下：</p>
 <ul>
 <li><code>/e</code>: 复制所有子目录，包括空的子目录。</li>
 <li><code>/purge</code>: 删除目标目录中源目录不存在的文件和目录。</li>
 </ul>
 <p>所以，使用 <code>/mir</code> 选项时，<code>robocopy</code> 会进行镜像复制，即它会使目标目录成为源目录的精确副本。这意味着它不仅会复制源目录中的所有文件和子目录（包括空的子目录），还会删除目标目录中那些在源目录中已经不存在的文件和目录。</p>
-<h3 id="purge-选项"><a href="#purge-选项" class="headerlink" title="/purge 选项"></a><code>/purge</code> 选项</h3><p><code>/purge</code> 选项用于删除目标目录中源目录不存在的文件和目录。当你使用 <code>/purge</code> 选项时，<code>robocopy</code> 将会检查目标目录中的每一个文件和子目录，如果它们在源目录中不存在，它们将被删除。这个选项通常与其他复制选项一起使用，以确保目标目录与源目录保持同步。</p>
-<h3 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h3><p>假设有如下两个目录：</p>
+<h3 id="purge-选项"><code>/purge</code> 选项</h3>
+<p><code>/purge</code> 选项用于删除目标目录中源目录不存在的文件和目录。当你使用 <code>/purge</code> 选项时，<code>robocopy</code> 将会检查目标目录中的每一个文件和子目录，如果它们在源目录中不存在，它们将被删除。这个选项通常与其他复制选项一起使用，以确保目标目录与源目录保持同步。</p>
+<h3 id="举例说明">举例说明</h3>
+<p>假设有如下两个目录：</p>
 <ul>
-<li><p><strong>源目录</strong>：<code>C:\Source</code></p>
+<li>
+<p><strong>源目录</strong>：<code>C:\Source</code></p>
 <figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">C:\Source</span><br><span class="line">├── <span class="module-access"><span class="module"><span class="identifier">File1</span>.</span></span>txt</span><br><span class="line">├── <span class="module-access"><span class="module"><span class="identifier">File2</span>.</span></span>txt</span><br><span class="line">└── SubDir</span><br><span class="line">    └── <span class="module-access"><span class="module"><span class="identifier">File3</span>.</span></span>txt</span><br></pre></td></tr></tbody></table></figure>
 </li>
-<li><p><strong>目标目录</strong>：<code>D:\Destination</code></p>
+<li>
+<p><strong>目标目录</strong>：<code>D:\Destination</code></p>
 <figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">D:\Destination</span><br><span class="line">├── <span class="module-access"><span class="module"><span class="identifier">File1</span>.</span></span>txt</span><br><span class="line">├── <span class="module-access"><span class="module"><span class="identifier">File4</span>.</span></span>txt</span><br><span class="line">└── SubDir</span><br><span class="line">    └── <span class="module-access"><span class="module"><span class="identifier">File3</span>.</span></span>txt</span><br><span class="line">    └── <span class="module-access"><span class="module"><span class="identifier">File5</span>.</span></span>txt</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
-<p>执行以下命令：<br></p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy C:\Source D:\Destination /mir</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>执行以下命令：</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocopy C:\Source D:\Destination /mir</span><br></pre></td></tr></tbody></table></figure>
 <p>运行结果：</p>
 <ul>
 <li><code>File1.txt</code> 会被复制，因为它存在于源目录中。</li>
@@ -878,8 +882,10 @@
 <li><code>File3.txt</code> 会被保留，因为它在两个目录中都存在。</li>
 <li><code>File5.txt</code> 会被删除，因为它在目标目录中存在但在源目录中不存在。</li>
 </ul>
-<p>最终，目标目录 <code>D:\Destination</code> 会变成：<br></p><figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">D:\Destination</span><br><span class="line">├── <span class="module-access"><span class="module"><span class="identifier">File1</span>.</span></span>txt</span><br><span class="line">├── <span class="module-access"><span class="module"><span class="identifier">File2</span>.</span></span>txt</span><br><span class="line">└── SubDir</span><br><span class="line">    └── <span class="module-access"><span class="module"><span class="identifier">File3</span>.</span></span>txt</span><br></pre></td></tr></tbody></table></figure><p></p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
+<p>最终，目标目录 <code>D:\Destination</code> 会变成：</p>
+<figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">D:\Destination</span><br><span class="line">├── <span class="module-access"><span class="module"><span class="identifier">File1</span>.</span></span>txt</span><br><span class="line">├── <span class="module-access"><span class="module"><span class="identifier">File2</span>.</span></span>txt</span><br><span class="line">└── SubDir</span><br><span class="line">    └── <span class="module-access"><span class="module"><span class="identifier">File3</span>.</span></span>txt</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="小结">小结</h3>
+<ul>
 <li><code>/mir</code>：确保目标目录是源目录的精确副本，包括复制所有文件和子目录（包括空的子目录）并删除源目录中不存在的文件和子目录。</li>
 <li><code>/purge</code>：删除目标目录中源目录不存在的文件和目录。</li>
 </ul>
@@ -1056,7 +1062,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#copy%E5%91%BD%E4%BB%A4%E7%94%A8%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">copy命令用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BF%87%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">跳过已经存在的文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xcopy%E5%91%BD%E4%BB%A4%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">xcopy命令用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BF%87%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E6%96%87%E4%BB%B6-1"><span class="nav-number">2.1.</span> <span class="nav-text">跳过已经存在的文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#robocopy%E5%91%BD%E4%BB%A4%E7%94%A8%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">robocopy命令用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mir-%E9%80%89%E9%A1%B9"><span class="nav-number">3.1.</span> <span class="nav-text">/mir 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#purge-%E9%80%89%E9%A1%B9"><span class="nav-number">3.2.</span> <span class="nav-text">/purge 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="nav-number">3.3.</span> <span class="nav-text">举例说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#copy%E5%91%BD%E4%BB%A4%E7%94%A8%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">copy命令用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BF%87%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">跳过已经存在的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BF%87%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E6%96%87%E4%BB%B6-2"><span class="nav-number">1.2.</span> <span class="nav-text">跳过已经存在的文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#robocopy%E5%91%BD%E4%BB%A4%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">robocopy命令用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mir-%E9%80%89%E9%A1%B9"><span class="nav-number">2.1.</span> <span class="nav-text">/mir 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#purge-%E9%80%89%E9%A1%B9"><span class="nav-number">2.2.</span> <span class="nav-text">/purge 选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="nav-number">2.3.</span> <span class="nav-text">举例说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">2.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1159,7 +1165,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 ≈</span>
-    <span title="站点阅读时长">16:52</span>
+    <span title="站点阅读时长">17:01</span>
 </div>
 
 <div>
