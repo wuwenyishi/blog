@@ -947,7 +947,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/QQ777T.html</loc>
+    <loc>https://blog.xuemingde.com/posts/2EXJQ9Z.html</loc>
     
     <lastmod>2024-09-11</lastmod>
     
@@ -956,7 +956,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2EXJQ9Z.html</loc>
+    <loc>https://blog.xuemingde.com/posts/QQ777T.html</loc>
     
     <lastmod>2024-09-11</lastmod>
     
@@ -1532,7 +1532,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/2E8KBMS.html</loc>
+    <loc>https://blog.xuemingde.com/posts/ZPHKXJ.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1541,7 +1541,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/ZPHKXJ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/2E8KBMS.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1658,7 +1658,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/8B53TM.html</loc>
+    <loc>https://blog.xuemingde.com/posts/3GHHYS4.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1667,7 +1667,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/3GHHYS4.html</loc>
+    <loc>https://blog.xuemingde.com/posts/8B53TM.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1685,6 +1685,15 @@
   </url>
   
   <url>
+    <loc>https://blog.xuemingde.com/posts/1Y4GWTQ.html</loc>
+    
+    <lastmod>2024-07-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.xuemingde.com/posts/1XAWCGH.html</loc>
     
     <lastmod>2024-07-18</lastmod>
@@ -1694,7 +1703,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1Y4GWTQ.html</loc>
+    <loc>https://blog.xuemingde.com/posts/1WT7A0X.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1721,7 +1730,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/posts/1WT7A0X.html</loc>
+    <loc>https://blog.xuemingde.com/posts/R4F6YF.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1731,15 +1740,6 @@
   
   <url>
     <loc>https://blog.xuemingde.com/posts/2BJBJS3.html</loc>
-    
-    <lastmod>2024-07-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/posts/R4F6YF.html</loc>
     
     <lastmod>2024-07-18</lastmod>
     
@@ -1784,7 +1784,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/tags/index.html</loc>
+    <loc>https://blog.xuemingde.com/categories/index.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1793,7 +1793,7 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/index.html</loc>
+    <loc>https://blog.xuemingde.com/tags/index.html</loc>
     
     <lastmod>2022-08-13</lastmod>
     
@@ -1812,13 +1812,6 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/C/</loc>
-    <lastmod>2024-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.xuemingde.com/tags/windows/</loc>
     <lastmod>2024-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1854,6 +1847,13 @@
   
   <url>
     <loc>https://blog.xuemingde.com/tags/linux/</loc>
+    <lastmod>2024-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.xuemingde.com/tags/windows/</loc>
     <lastmod>2024-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2023,14 +2023,14 @@
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/JVM/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
     <lastmod>2024-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.xuemingde.com/categories/java/Spring/</loc>
+    <loc>https://blog.xuemingde.com/categories/java/JVM/</loc>
     <lastmod>2024-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
